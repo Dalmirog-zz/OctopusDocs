@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Branching</h1><p>This section describes how different branching strategies can be modeled in Octopus Deploy.</p>
+<div class="alert alert-info"><p><strong>Channels in Octopus 3.2</strong><br />
+In Octopus 3.2 we implemented <a href="/docs/v/3.10/key-concepts/projects/channels" class="alert-link">Channels</a> as a way to support deployments using some of the source code branching strategies discussed here. We've produced a <a href="https://octopus.com/blog/channels-walkthrough" class="alert-link">comprehensive walkthrough of Channels</a> that covers most of these strategies in detail.</p>
+</div>
+<h2 id="Branching-Branchingstrategies">Branching strategies</h2>
+<p>When thinking about branching and Octopus, keep this rule in mind:</p>
+<blockquote class="blockquote">
+<p>Octopus doesn't care about branches. It cares about NuGet packages.</p>
+</blockquote>
+<p>Your build server cares about source code and branches, and uses them to compile and <a href="/docs/v/3.10/packaging-applications">package your application</a>.</p>
+<p>Octopus, on the other hand, only sees packages. It doesn't particularly care which branch they came from, or how they were built, or which source control system you used.</p>
+<p>The section below describes some common branching strategies, and what they mean in terms of NuGet packages and releases in Octopus.</p>
+<h3 id="Branching-Nobranches">No branches</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+Channels don't do anything to help with this scenario, but we do discuss this scenario in the <a href="https://octopus.com/blog/channels-walkthrough#safer-standard-release-promotion" class="alert-link">Channels Walkthrough</a> as &quot;standard release promotion&quot;.</p>
+</div>
+<p>The simplest branching workflow is, of course, no branches - all developers work directly on trunk or master. For small projects with few developers, and when the project isn't really in &quot;production&quot; yet, this strategy can work well.</p>
+<p><img src='/docs/images/3048919/3278438.png' class="img-fluid center" alt='' /></p>
+<p>Builds from this single branch will produce a NuGet package, and that package goes into a release which is deployed by Octopus.</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278468.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278468.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Branching-Releasebranches">Release branches</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+Channels don't do anything to help with this scenario.</p>
+</div>
+<p>Sometimes developers work on new features that aren't quite ready to ship, whilst also maintaining a current production release. Bugs can be fixed on the release branch, and deployed, without needing to also ship the half-baked features.</p>
+<p><img src='/docs/images/3048919/3278439.png' class="img-fluid center" alt='' /></p>
+<p>So long as one release branch never overlaps another, from an Octopus point of view, the process is similar to the &quot;no branches&quot; scenario above - new NuGet packages are built, and those packages go into a release, which is deployed. Octopus doesn't care that they came from a branch; to Octopus, there's just a stream of new, incrementing package versions.</p>
+<h3 id="Branching-Multipleactivereleasebranches">Multiple active release branches</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+Channels can help with this strategy as discussed in the <a href="https://octopus.com/blog/channels-walkthrough#supporting-multiple-versions" class="alert-link">Channels Walkthrough: Supporting multiple versions</a>. If your project has 5 packages, when you go to the Release creation page, it might show all 3.x versions of the packages when you want to make a 2.x version, since it sorts by version numbers. The <a href="https://octopusdeploy.uservoice.com/forums/170787-general/suggestions/3480536-branch-support-for-deploying-older-app-versions" class="alert-link" rel="nofollow">original UserVoice suggestion for this feature</a> was simply to make this page a little more user friendly.</p>
+</div>
+<p>Multiple release branches may be supported over a period of time. For example, you may have customers who are using your 2.x versions of your software in production, and early adopters testing your 3.x versions while you work to make it stable. You'll need to fix bugs in the 2.x version as well as the 3.x version, and deploy them both.</p>
+<p><img src='/docs/images/3048919/3278440.png' class="img-fluid center" alt='' /></p>
+<p>Modeling this in Octopus is a little more complicated than the scenarios above, but still easy to achieve. If the only thing that changes between branches is the NuGet package version numbers, and you create releases infrequently, then you can simply choose the correct package versions when creating a release via the release creation page:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278469.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278469.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>If you plan to create many releases from both branches, or your deployment process is different between branches, then you will need to use channels. Channels are a feature in Octopus that lets you model differences in releases:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278470.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278470.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>In this example, packages that start with 2.x go to the &quot;Stable&quot; channel, while packages that start with 3.x go to the &quot;Early Adopter&quot; channel.</p>
+<div class="alert alert-info"><p><strong>Tip: Channels aren't branches</strong><br />
+When designing channels in Octopus, don't think about channels as another name for branches:</p>
+<ul>
+<li><strong>Branches</strong> can be short lived and tend to get merged, and model the way code changes in the system.</li>
+<li><strong>Channels</strong> are often long lived, and model your release process.</li>
+</ul>
+<p>For example, <a href="https://www.chromium.org/getting-involved/dev-channel" class="alert-link" rel="nofollow">Google Chrome have four different channels</a> (Stable, Beta, Dev, and Canary). Their channels are designed around user's tolerance for bleeding edge features vs. stability. Underneath, they may have many release branches contributing to those channels. You can read about implementing <a href="https://octopus.com/blog/channels-walkthrough#early-access-programs" class="alert-link">early-access programs in the Channels Walkthrough</a>.</p>
+<p>It's important to realize that <strong>branches will map to different channels over time</strong>. For example, right now, packages from the <code>release/v2</code> branch might map to your &quot;Stable&quot; channel in Octopus, while packages from <code>release/v3</code> go to your &quot;Early Adopter&quot; channel.</p>
+<p>Eventually, <code>release/v3</code> will become more and more stable, and packages from it will eventually go to your Stable channel, while <code>release/v4</code> packages will begin to go to your Early Adopter channel.</p>
+</div>
+<h3 id="Branching-Featurebranches">Feature branches</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+Again, channels make creating releases a little easier here, but users can do feature branching without channels too. We also discuss <a href="https://octopus.com/blog/channels-walkthrough#feature-branch-deployments" class="alert-link">feature branches in the Channels Walkthrough</a>.</p>
+</div>
+<p>Feature branches are usually short lived, and allow developers to work on a new feature in isolation. When the feature is complete, it is merged back to trunk/master. Often, feature branches are not deployed, and so don't need to be mapped in Octopus.</p>
+<p><img src='/docs/images/3048919/3278442.png' class="img-fluid center" alt='' /></p>
+<p>If feature branches do need to be deployed, then you can create NuGet packages from them, and then release them with Octopus as per normal. To keep feature branch packages separate from release-ready packages, <a href="https://docs.nuget.org/create/versioning#really-brief-introduction-to-semver" rel="nofollow">we recommend using SemVer tags</a> in the NuGet package version. You should be able to <a href="https://octopusdeploy.com/blog/teamcity-version-numbers-based-on-branches" rel="nofollow">configure your build server to generate version numbers based on the feature branch</a>.</p>
+<p><img src='/docs/images/3048919/3278443.png' class="img-fluid center" alt='' /></p>
+<p>Again, channels can be used to make it easier to create releases for feature branches:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278471.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278471.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Branching-Environmentbranches">Environment branches</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+Channels don't do anything to help with this scenario.</p>
+</div>
+<p>A final branching strategy that we see is to use a branch per environment that gets deployed to. Code is promoted from one environment to another by merging code between branches.</p>
+<p><img src='/docs/images/3048919/3278444.png' class="img-fluid center" alt='' /></p>
+<p>We do not like or recommend this strategy, as it violates the principle of <a href="http://octopusdeploy.com/blog/build-your-binaries-once" rel="nofollow">Build your Binaries Once</a>.</p>
+<ul>
+<li>The code that will eventually run in production may not match 100% the code run during testing</li>
+<li>It's easy for a merge to go wrong and result in different code than you expected running in production</li>
+<li>Packages have to be rebuilt, and different dependencies might be used</li>
+</ul>
+<p>You can make this work in Octopus, by creating a package for each environment and pushing them to environment-specific <a href="/docs/v/3.10/packaging-applications/package-repositories">feeds</a>, and then binding the NuGet feed selector in your package steps to an environment-scoped variable:</p>
+<p>However, on the whole, this isn't a scenario we've set out to support in Octopus, and we don't believe it's a good idea in general.</p>
+<h2 id="Branching-Otherconsiderations">Other considerations</h2>
+<p>The above section describes common branching strategies and how they map to NuGet packages, releases and channels in Octopus. However, depending on your release process, there may be other things to consider. Below are some issues that often come up in relation to branching and Octopus.</p>
+<h3 id="Branching-Multiplebranchescanbe&amp;quot;currentlydeployed&amp;quot;atthesametime">Multiple branches can be &quot;currently deployed&quot; at the same time</h3>
+<p>Normally in Octopus, a single release for a project is deployed to a single environment at a time - for example, only one release is &quot;currently&quot; in Production. When you have multiple active release branches, or sometimes even feature branches, it might be that you actually have more than one &quot;current&quot; release.</p>
+<p>For example:</p>
+<ul>
+<li>The Stable channel is deployed to the same web servers as the Early Adopter channel, but each goes to a different IIS website</li>
+<li>The Stable channel and Early Adopter channels go to different web servers</li>
+<li>Each feature branch goes to its own virtual directory</li>
+</ul>
+<p>Your dashboard in Octopus should reflect this reality by displaying each channel individually:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278472.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278472.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+In <a href="https://octopusdeploy.com/blog/rfc-branching" class="alert-link" rel="nofollow">the RFC post</a>, we never mentioned this, but it's something we've since discussed a few times and always assumed it would be part of release channels. That said, I'm considering whether we should ship channels without this feature. The Project Overview could still show different channels easily (since each release belongs to a channel), but the global dashboard might not be able to. We can see if there's a big demand for this feature.</p>
+</div>
+<h3 id="Branching-Mybranchesareverydifferent,andIneedmydeploymentprocesstoworkdifferentlybetweenthem">My branches are very different, and I need my deployment process to work differently between them</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+This scenario is why we allow scoping steps and variables to a channel; currently everyone clones projects, and it's hard to maintain.</p>
+</div>
+<p>Sometimes a new branch might introduce a new component that needs to be deployed, which doesn't exist in the old branch. If you use channels, you can scope deployment steps and variables to channels to support this.</p>
+<p>For example, the Rate Service package was added as part of v3, so currently only applies to the Early Adopter channel:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278473.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278473.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Likewise, it has variables that only apply on Early Adopter:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278474.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278474.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>For more advanced uses, you may need to clone your project.</p>
+<h3 id="Branching-Wesometimesneedtomakehotfixesthataredeployedstraighttostaging/production">We sometimes need to make hotfixes that are deployed straight to staging/production</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+With Channels you can define which Lifecycle each Channel will use for promoting Releases. We discuss <a href="https://octopus.com/blog/channels-walkthrough#hotfix-deployments" class="alert-link">hotfix deployments in the Channels Walkthrough</a>.</p>
+</div>
+<p>Hotfixes are a special kind of release branch, but typically have a shorter lifecycle - they may need to go directly to production to fix a critical issue, and might skip certain deployment steps.</p>
+<p>Again, channels can handle this by creating a Hotfix channel, and assigning the Hotfix channel a different lifecycle:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278475.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278475.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Likewise, steps can be defined that apply to the Stable channel, but not to the Hotfix channel:</p>
+<p>When releases are created for the Hotfix channel, they can then be deployed straight to production:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278476.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278476.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>While stable releases still follow the usual testing lifecycle:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278477.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278477.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Branching-Weneedtodeploydifferentcomponentsdependingonwhetherit&amp;#39;sa&amp;quot;full&amp;quot;releaseora&amp;quot;partial&amp;quot;release">We need to deploy different components depending on whether it's a &quot;full&quot; release or a &quot;partial&quot; release</h3>
+<div class="alert alert-info"><p><strong>Development note</strong><br />
+This scenario often comes up: we have a microservice architecture with 50 different packages. Sometimes we deploy a few components, sometimes we deploy them all, sometimes just one.</p>
+<p>The only way to support that currently is with cloning, or skipping steps each deployment which is very tedious.</p>
+</div>
+<p>You might have a large project with many components. Sometimes you only need to deploy a single component, while other times you may need to deploy all components together.</p>
+<p>This can be modeled by creating a channel per component, plus a channel for a release of all components.</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278478.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278478.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Steps can then be scoped to their individual channel as well as the major release channel:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278479.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278479.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>When creating the release, you can then choose whether the release is for an individual component or all components:</p>
+<p><a href='#' data-featherlight='/docs/images/3048919/3278480.png' class='zoom' data-title=''><img src='/docs/images/3048919/3278480.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/patterns/branching'>Latest</a></li><li class=''><a href='/docs/v/3.14/patterns/branching'>3.14</a></li><li class=''><a href='/docs/v/3.13/patterns/branching'>3.13</a></li><li class=''><a href='/docs/v/3.12/patterns/branching'>3.12</a></li><li class=''><a href='/docs/v/3.11/patterns/branching'>3.11</a></li><li class='disabled'><a href='/docs/v/3.10/patterns/branching'>3.10</a></li><li class=''><a href='/docs/v/3.9/patterns/branching'>3.9</a></li><li class=''><a href='/docs/v/3.8/patterns/branching'>3.8</a></li><li class=''><a href='/docs/v/3.7/patterns/branching'>3.7</a></li><li class=''><a href='/docs/v/3.6/patterns/branching'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

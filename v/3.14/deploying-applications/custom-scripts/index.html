@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Custom scripts</h1><p>As a convention-oriented deployment tool, Octopus can perform a number of actions automatically, such as <a href="/docs/v/3.14/deploying-applications/configuration-files">managing configuration files</a>, creating <a href="/docs/v/3.14/deploying-applications/iis-websites-and-application-pools">IIS websites and application pools</a>, and installing <a href="/docs/v/3.14/deploying-applications/windows-services">Windows Services</a>. Sometimes however you’ll need to do more than the built-in conventions support – and that’s where custom scripts come in.</p>
+<div class='toc'>
+  <ul>
+    <li class='toc-h2'><a href='#Customscripts-ScriptsinPackagesscripts-in-packages'>Scripts in Packages</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Scriptsinpackagestepsscripts-configured-in-steps'>Scripts in package steps</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Standalonescripts'>Standalone scripts</a></li>
+    <li class='toc-h2'><a href='#Customscripts-AzurePowerShellscripts'>Azure PowerShell scripts</a></li>
+    <li class='toc-h2'><a href='#Customscripts-ServiceFabricPowerShellScripts'>Service Fabric PowerShell scripts</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Variables'>Variables</a>
+      <ul>
+        <li class='toc-h3'><a href='#Customscripts-VariablesinPowerShellscripts'>Variables in PowerShell scripts</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#Customscripts-Passingparameterstoscripts'>Passing parameters to scripts</a>
+      <ul>
+        <li class='toc-h3'><a href='#Customscripts-PassingparameterstoPowerShellscripts'>Passing parameters to PowerShell scripts</a></li>
+        <li class='toc-h3'><a href='#Customscripts-PassingparameterstoC#scripts'>Passing parameters to C# scripts</a></li>
+        <li class='toc-h3'><a href='#Customscripts-PassingparameterstoBashscripts'>Passing parameters to Bash scripts</a></li>
+        <li class='toc-h3'><a href='#Customscripts-PassingparameterstoF#scripts'>Passing parameters to F# scripts</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#Customscripts-Logging'>Logging</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Errorhandling'>Error handling</a>
+      <ul>
+        <li class='toc-h3'><a href='#Customscripts-ErrorhandlinginPowerShellscripts'>Error handling in PowerShell scripts</a></li>
+        <li class='toc-h3'><a href='#failing-a-script-with-a-message'>Failing a script with a message</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#Customscripts-Outputvariables'>Output variables</a>
+      <ul>
+        <li class='toc-h3'><a href='#creating-an-output-variable'>Creating an Output Variable</a></li>
+        <li class='toc-h3'><a href='#using-the-variable-in-another-step'>Using the variable in another step</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#Customscripts-Collectingartifacts'>Collecting artifacts</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Securityandpermissions'>Security and permissions</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Testingscripts'>Testing scripts</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Workingdirectories'>Working directories</a></li>
+    <li class='toc-h2'><a href='#preventing-the-powershell-profile-from-running'>Preventing the PowerShell profile from running</a></li>
+    <li class='toc-h2'><a href='#Customscripts-Scriptsthatblockdeployments'>Scripts that block deployments</a></li>
+    <li class='toc-h2'><a href='#in-this-section'>In this section</a></li>
+  </ul>
+</div>
+<div class="alert alert-info"><p><strong>Supported script types</strong><br />
+Octopus Deploy supports PowerShell scripts (<code>.ps1</code>), C# scripts (<code>.csx</code>) using <a href="https://github.com/scriptcs/scriptcs" class="alert-link" rel="nofollow">ScriptCS</a>, Bash scripts (<code>.sh</code>), and in Octopus 3.4 we introduced support for F# scripts (<code>.fsx</code>).</p>
+</div>
+<div class="alert alert-info"><p><strong>How your scripts are bootstrapped by Calamari</strong><br />
+Each of your scripts will be bootstrapped by the <a href="https://github.com/OctopusDeploy/Calamari" class="alert-link" rel="nofollow">open-source Calamari project</a> to provide access to variables and helper functions. You can see how your scripts are bootstrapped in the <a href="https://github.com/OctopusDeploy/Calamari/tree/master/source/Calamari/Integration/Scripting" class="alert-link" rel="nofollow">Calamari source code</a>.</p>
+</div>
+<h2 id="Customscripts-ScriptsinPackagesscripts-in-packages">Scripts in Packages</h2>
+<p>In your package, you can add any of the following script files in any of the scripting languages supported by Octopus where <code>&lt;ext&gt;</code> is the appropriate extension for your scripting language of choice:</p>
+<ul>
+<li><code>PreDeploy.&lt;ext&gt;</code></li>
+<li><code>Deploy.&lt;ext&gt;</code></li>
+<li><code>PostDeploy.&lt;ext&gt;</code></li>
+<li><code>DeployFailed.&lt;ext&gt;</code></li>
+</ul>
+<p>After extracting your package, Calamari will detect these scripts and invoke them. Which file you use depends on when you need your custom activity to run – see the section on <a href="/docs/v/3.14/reference/package-deployment-feature-ordering">what order are conventions run in</a> for details. Your scripts can do anything your scripting language supports, as well as setting <a href="/docs/v/3.14/deploying-applications/variables/output-variables">output variables</a> and <a href="/docs/v/3.14/deploying-applications/artifacts">collecting artifacts</a>. These scripts must be located in the root of your package.</p>
+<p>As mentioned above, you can create a file named <code>DeployFailed.&lt;ext&gt;</code>, which will be invoked if the package deployment fails. Our blog post about this feature <a href="https://octopus.com/blog/deployfailed">describes how DeployFailed.<ext> works</a>.</p>
+<div class="alert alert-info"><p><strong>Script Support on Deployment Targets</strong><br />
+Of course, Bash scripts will only be supported on Linux / OSX Targets and PowerShell and Script CS will only run on Windows. So ensure you've selected the correct language for your deployment target</p>
+</div>
+<div class="alert alert-success"><p>Make sure that the scripts are included in your package. If you are using OctoPack for an ASP.NET web application, you'll need to make sure the file is marked as <strong>Build Action =</strong> <strong>Content</strong>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048092/3277766.png' class='zoom' data-title=''><img src='/docs/images/3048092/3277766.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>If you are using OctoPack to package a Windows Service or console application, set <strong>Copy to Output Directory</strong> = <strong>Copy if newer</strong>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048092/3277765.png' class='zoom' data-title=''><img src='/docs/images/3048092/3277765.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Read more about <a href="/docs/v/3.14/packaging-applications/nuget-packages/using-octopack" class="alert-link">using OctoPack</a>.</p>
+</div>
+<h2 id="Customscripts-Scriptsinpackagestepsscripts-configured-in-steps">Scripts in package steps</h2>
+<p>Rather than embed scripts in packages, you can also define scripts within the package step definition in Octopus. This is a feature that can be enabled on package steps:</p>
+<p><a href='#' data-featherlight='/docs/images/3048092/3277758.png' class='zoom' data-title=''><img src='/docs/images/3048092/3277758.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>When enabled, you can define your PreDeploy/Deploy/PostDeploy scripts within the Octopus user interface:</p>
+<p><a href='#' data-featherlight='/docs/images/3048092/5865605.png' class='zoom' data-title=''><img src='/docs/images/3048092/5865605.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="Customscripts-Standalonescripts">Standalone scripts</h2>
+<p>Octopus also allows you to add standalone script steps to your deployment process. You can use standalone scripts to execute scripts on the Octopus Server or on <a href="/docs/v/3.14/deployment-targets">deployment targets</a>, where the script can be defined inline or as part of a package. Standalone scripts are so useful we've dedicated an entire page to them: <a href="/docs/v/3.14/deploying-applications/custom-scripts/standalone-scripts">Standalone scripts</a>.</p>
+<p><a href='#' data-featherlight='/docs/images/5671696/5865914.png' class='zoom' data-title=''><img src='/docs/images/5671696/5865914.png' class="img-fluid center" height="auto" width="170" alt='' /></a></p>
+<h2 id="Customscripts-AzurePowerShellscripts">Azure PowerShell scripts</h2>
+<p>You can manage your Azure subscription using custom PowerShell scripts and the Azure Resource Management (RM) or Service Management (SM) API - <a href="/docs/v/3.14/deploying-applications/custom-scripts/azure-powershell-scripts">more information</a>.</p>
+<p><a href='#' data-featherlight='/docs/images/5671696/5865912.png' class='zoom' data-title=''><img src='/docs/images/5671696/5865912.png' class="img-fluid center" height="auto" width="170" alt='' /></a></p>
+<p>For information about adding a step to the deployment process, see the <a href="/docs/v/3.14/deploying-applications/adding-steps">add step</a> section.</p>
+<h2 id="Customscripts-ServiceFabricPowerShellScripts">Service Fabric PowerShell scripts</h2>
+<p>You can manage your Service Fabric clusters using custom Service Fabric SDK PowerShell scripts - <a href="/docs/v/3.14/deploying-applications/custom-scripts/service-fabric-powershell-scripts">more information</a>.</p>
+<h2 id="Customscripts-Variables">Variables</h2>
+<p>Octopus allows you to <a href="/docs/v/3.14/deploying-applications/variables">define variables</a> to parameterize your deployments. These variables, along with some predefined variables, will be available from within your scripts.</p>
+<div class="alert alert-warning"><p><strong>All variables are strings</strong><br />
+Note that in scripts <strong>all Octopus variables are strings</strong> even if they look like numbers or other data types. You will need to cast to the appropriate type before using the value if you need something other than a string.</p>
+</div>
+<p>Let's consider an example where we have defined a project variable called <code>MyApp.ConnectionString</code>.</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#f5cd01fcf534' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#eff32bdc6bb0' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#77edee8334a3' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#f97d8515ad75' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='f5cd01fcf534'>
+<pre><code class="language-powershell"># It's a good idea to copy the value into a local variable to avoid quoting issues
+$connectionString = $OctopusParameters[&quot;MyApp.ConnectionString&quot;]
+Write-Host &quot;Connection string is: $connectionString&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='eff32bdc6bb0'>
+<pre><code class="language-c#">// It's a good idea to copy the value into a local variable to avoid quoting issues
+var connectionString = Octopus.Parameters[&quot;MyApp.ConnectionString&quot;];
+Console.WriteLine(&quot;MyApp.ConnectionString: &quot; + connectionString);
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='77edee8334a3'>
+<pre><code class="language-bash"># It's a good idea to copy the value into a variable to avoid quoting issues
+connectionString=$(get_octopusvariable &quot;MyApp.ConnectionString&quot;)
+echo &quot;Connection string is: $connectionString&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='f97d8515ad75'>
+<pre><code class="language-fsharp">// It's a good idea to copy the value into a variable to avoid quoting issues
+
+// tryFindVariable : name:string -&gt; string option
+let connectionString = Octopus.tryFindVariable &quot;MyApp.ConnectionString&quot;
+match connectionString with
+    | Some x -&gt; printf &quot;Connection string is: %s&quot; x
+    | None -&gt; printf &quot;Connection string not found&quot;
+ 
+// Or one of the simplified versions
+
+// Throws KeyNotFoundException when variable does not exist
+// findVariable : name:string -&gt; string
+let connectionString = Octopus.findVariable &quot;MyApp.ConnectionString&quot;
+
+// Returns default value when variable does not exist
+// findVariableOrDefault : defaultValue:string -&gt; name:string -&gt; string
+let connectionString = Octopus.findVariableOrDefault &quot;Default Value&quot; &quot;MyApp.ConnectionString&quot;
+</code></pre>
+  </div>
+ </div>
+</div>
+<div class="alert alert-success"><p>To see the F# API available to your F# scripts, take a look at our <a href="https://github.com/OctopusDeploy/Calamari/blob/develop/source/Calamari/Integration/Scripting/FSharp/Bootstrap.fsi" class="alert-link" rel="nofollow">F# signature file</a>.</p>
+</div>
+<h3 id="Customscripts-VariablesinPowerShellscripts">Variables in PowerShell scripts</h3>
+<p>In PowerShell we have pre-defined some script-scoped variables for you as a convenience. Consider the same example as before, a variable named &quot;MyApp.ConnectionString&quot; will be available as both:</p>
+<ul>
+<li><code>$OctopusParameters[&quot;MyApp.ConnectionString&quot;]</code></li>
+<li><code>$MyAppConnectionString</code></li>
+</ul>
+<p>In the first form the variable name appears just as they appear in the Octopus web portal, while in the second example special characters have been removed. The first form is the most flexible, but in some cases the second form may be more convenient.</p>
+<div class="alert alert-info"><p><strong>$key variable</strong><br />
+We <a href="https://github.com/OctopusDeploy/Issues/issues/2329" class="alert-link" rel="nofollow">fixed an issue</a> which was causing a collision with variables called <code>$key</code>. You can either rename your variable or update to Octopus 3.3.10 or newer.</p>
+</div>
+<h2 id="Customscripts-Passingparameterstoscripts">Passing parameters to scripts</h2>
+<div class="alert alert-info"><p>Script parameters are available in Octopus 3.3.21 or newer. You can use script parameters for file-based scripts that are sourced from a package.</p>
+</div>
+<p>Octopus can pass parameters to your custom script files for any of the supported scripting languages. This means you can use existing scripts, or write and test your own parameterized scripts that have no knowledge of Octopus, passing Octopus Variables directly to your scripts as parameters. The Octopus scripting API is still available within the context of your script, meaning you can use a mixture of parameters and other Octopus variables and functions.</p>
+<p>Consider this example PowerShell script:</p>
+<p><strong>PowerShell script using Octopus Variables</strong></p>
+<pre><code class="language-powershell">$environment = $OctopusParameters[&quot;Octopus.Environment.Name&quot;]
+Write-Host &quot;Environment: $environment&quot;
+</code></pre>
+<p>You can parameterize this script making it easier to test outside of Octopus:</p>
+<p><strong>PowerShell script using parameters</strong></p>
+<pre><code class="language-powershell">Params (
+	[Parameter(Mandatory=$True)]
+	[string]$Environment
+)
+Write-Host &quot;Environment: $Environment&quot;
+</code></pre>
+<p>When you call external scripts (sourced from a file inside a package) you can pass parameters to your script. This means you can write &quot;vanilla&quot; scripts that are unaware of Octopus, and test them in your local development environment.</p>
+<p>You can define your parameters in the <strong>Script Parameters</strong> field using the format expected by your scripting execution environment (see below for examples).</p>
+<p><a href='#' data-featherlight='/docs/images/3048092/5865635.png' class='zoom' data-title=''><img src='/docs/images/3048092/5865635.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>Delimiting string values</strong><br />
+Don't forget to correctly delimit your parameters correctly for the scripting engine. In the example above we have surrounded the parameter value in double-quotes to handle cases where the Environment Name has spaces: <code>&quot;#{Octopus.Environment.Name}&quot;</code></p>
+</div>
+<h3 id="Customscripts-PassingparameterstoPowerShellscripts">Passing parameters to PowerShell scripts</h3>
+<p>You can pass parameters to PowerShell scripts as if you were calling the script yourself from PowerShell, using positional or named parameters.</p>
+<p><strong>Script Parameters in Octopus</strong></p>
+<pre><code class="language-bash">-Environment &quot;#{Octopus.Environment.Name}&quot; -StoragePath &quot;#{MyApplication.Storage.Path}&quot;
+</code></pre>
+<p><strong>Usage in PowerShell script</strong></p>
+<pre><code class="language-powershell">Param (
+	[Parameter(Mandatory=$True)]
+	[string]$Environment,
+	[Parameter(Mandatory=$True)]
+	[string]$StoragePath
+)
+ 
+Write-Host &quot;$Environment storage path: $StoragePath&quot;
+</code></pre>
+<h3 id="Customscripts-PassingparameterstoC#scripts">Passing parameters to C# scripts</h3>
+<p>You can pass parameters to C# scripts <a href="https://github.com/scriptcs/scriptcs/wiki/Pass-arguments-to-scripts" rel="nofollow">as described here for the ScriptCS engine</a>. ScriptCS only supports positional parameters.</p>
+<p><strong>Script Parameters in Octopus</strong></p>
+<pre><code class="language-bash">-- &quot;#{Octopus.Environment.Name}&quot; &quot;#{MyApplication.Storage.Path}&quot;
+</code></pre>
+<p><strong>Usage in C# script</strong></p>
+<pre><code class="language-c#">var environment = Env.ScriptArgs[0]
+var storagePath = Env.ScriptArgs[1]
+Console.WriteLine(&quot;{0} storage path: {1}&quot;, environment, storagePath);
+</code></pre>
+<h3 id="Customscripts-PassingparameterstoBashscripts">Passing parameters to Bash scripts</h3>
+<p>You can pass parameters to Bash scripts <a href="https://www.gnu.org/software/bash/manual/bash.html#Positional-Parameters" rel="nofollow">as described in Bash manual.</a></p>
+<p><strong>Script Parameters in Octopus</strong></p>
+<pre><code class="language-powershell">&quot;#{Octopus.Environment.Name}&quot; &quot;#{MyApplication.Storage.Path}&quot;
+</code></pre>
+<p><strong>Usage in Bash script</strong></p>
+<pre><code class="language-bash">environment=&quot;$1&quot;
+storagePath=&quot;$2&quot;
+echo &quot;$environment storage path: $storagePath&quot;
+</code></pre>
+<h3 id="Customscripts-PassingparameterstoF#scripts">Passing parameters to F# scripts</h3>
+<p>You can pass parameters to FSharp scripts <a href="https://msdn.microsoft.com/en-us/visualfsharpdocs/conceptual/fsharp-interactive-%5Bfsi.exe%5D-reference#differences-between-the-interactive-scripting-and-compiled-environments" rel="nofollow">as described in MSDN.</a></p>
+<p><strong>Script Parameters in Octopus</strong></p>
+<pre><code class="language-powershell">&quot;#{Octopus.Environment.Name}&quot; &quot;#{MyApplication.Storage.Path}&quot;
+</code></pre>
+<p><strong>Usage in F# script</strong></p>
+<pre><code class="language-fsharp">let environment = fsi.CommandLineArgs.[1]
+let storagePath = fsi.CommandLineArgs.[2]
+printfn &quot;$s storage path: $s&quot; environment storagePath
+</code></pre>
+<h2 id="Customscripts-Logging">Logging</h2>
+<p>When your scripts emit messages Octopus will display the messages in the Task Logs at the most appropriate level for the message. For example:</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#413024a9e4db' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#e659e262fcb5' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#fa5c0f7d65eb' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#46c3ea337661' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='413024a9e4db'>
+<pre><code class="language-powershell">Write-Verbose &quot;This will be logged as a Verbose message - verbose messages are hidden by default&quot;
+Write-Host &quot;This will be logged as Information&quot;
+Write-Output &quot;This will be logged as Information too!&quot;
+Write-Warning &quot;This will be logged as a Warning&quot;
+Write-Error &quot;This will be logged as an Error and may cause your script to stop running - take a look at the section on Error Handling&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='e659e262fcb5'>
+<pre><code class="language-c#">Console.WriteLine(&quot;This will be logged as Information&quot;);
+Console.Out.WriteLine(&quot;This will be logged as Information too!&quot;);
+Console.Error.WriteLine(&quot;This will be logged as an Error.&quot;);
+ 
+Console.WriteLine(&quot;##octopus[stdout-verbose]&quot;);
+Console.WriteLine(&quot;And now messages written to stdout will be logged as Verbose&quot;);
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='fa5c0f7d65eb'>
+<pre><code class="language-bash">echo &quot;This will be logged as Information&quot;
+&gt;&amp;2 echo &quot;This will be logged as an Error&quot;
+echoerror() { echo &quot;$@&quot; 1&gt;&amp;2; }
+echoerror &quot;You can even define your own function to echo an error!&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='46c3ea337661'>
+<pre><code class="language-fsharp">printfn &quot;This will be logged as Information&quot; 
+eprintfn &quot;This will be logged as Error&quot; 
+</code></pre>
+  </div>
+ </div>
+</div>
+<p>Try these out for yourself using the <a href="/docs/v/3.14/administration/script-console">Script Console</a>!</p>
+<h2 id="Customscripts-Errorhandling">Error handling</h2>
+<p>Calamari examines the exit code of the script engine to determine whether the script failed. If the exit code is zero, Calamari assumes the script ran successfully. If the exit code is non-zero, then Calamari assumes the script failed.</p>
+<p>Syntax errors and unhandled exceptions will result in a non-zero exit code from the script engine, which will fail the deployment</p>
+<h3 id="Customscripts-ErrorhandlinginPowerShellscripts">Error handling in PowerShell scripts</h3>
+<p>For PowerShell scripts Calamari also sets the <code>$ErrorActionPreference</code> to <strong>Stop</strong> before invoking your script. This means that if a command fails, the rest of the script won't be executed. For example:</p>
+<pre><code class="language-powershell">Write-Output &quot;Hello&quot;
+Write-Error &quot;Something went wrong&quot;
+Write-Output &quot;Goodbye&quot;
+</code></pre>
+<p>The third line will not be executed. To change this behavior, set <code>$ErrorActionPreference</code> to <strong>Continue</strong> at the top of your script.</p>
+<p>At the end of the script, Calamari also checks <code>$LastExitCode</code> to see if the last Windows-based program that you invoked exited successfully. Note that some Windows programs use non-zero exit codes even when they run successfully - for example, Robocopy returns the number of files copied. This can mean that Calamari assumes your script failed even if it actually ran successfully. Best practice is to call <code>Exit 0</code> yourself if your script ran successfully.</p>
+<p>Note that you'll need to check <code>$LastExitCode</code> yourself if you run multiple Windows programs. For example, with this script, Calamari would correctly see that ping returned an exit code of 1 (the host couldn't be contacted) and will assume the script failed:</p>
+<pre><code class="language-powershell">&amp; ping 255.255.255.0  # Host does not exist, will return exit code 1
+</code></pre>
+<p>But if your script looks like this, Calamari will only examine the exit code from the last line (which is successful), so it will assume the script was successful.</p>
+<pre><code class="language-powershell">&amp; ping 255.255.255.0  # Host does not exist, will return exit code 1
+&amp; ping 127.0.0.1      # Host exists, will return exit code 0
+</code></pre>
+<p>The best practice here is to always check the exit code when invoking programs:</p>
+<pre><code class="language-powershell">&amp; ping 255.255.255.0
+if ($LastExitCode -ne 0) {
+    throw &quot;Couldn't find 255.255.255.0&quot;
+}
+&amp; ping 127.0.0.1
+if ($LastExitCode -ne 0) {
+    throw &quot;Couldn't find 127.0.0.1&quot;
+}
+</code></pre>
+<h3 id="failing-a-script-with-a-message">Failing a script with a message</h3>
+<p>The fail step function will stop your script execution and return a non-zero error code. An optional message can be supplied. If supplied, the message replaces
+the <code>The remote script failed with exit code &lt;code&gt;</code> text in the deployment process overview page.</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#28dd05faec1e' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#9c94a86320f1' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#4c0bab9ad711' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#03fe23b64911' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='28dd05faec1e'>
+<pre><code class="language-powershell">Fail-Step &quot;A friendly message&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='9c94a86320f1'>
+<pre><code class="language-c#">Octopus.FailStep(&quot;A friendly message&quot;);
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='4c0bab9ad711'>
+<pre><code class="language-bash">fail_step &quot;A friendly message&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='03fe23b64911'>
+<pre><code class="language-fsharp">Octopus.failStep &quot;A friendly message&quot;
+</code></pre>
+  </div>
+ </div>
+</div>
+<h2 id="Customscripts-Outputvariables">Output variables</h2>
+<p>Your scripts can emit variables that are available in subsequent deployment steps. This means you can factor your deployment into smaller, more well-defined steps that leverage the result of prior steps. It is an extremely powerful feature and you should refer to the documentation on <a href="/docs/v/3.14/deploying-applications/variables/output-variables">output variables</a> for more information.</p>
+<p>This example is from the sample project in the <a href="https://octopus.com/blog/channels-walkthrough#prerequisites">Channels Walkthrough</a> which is also available on our <a href="https://demo.octopusdeploy.com/app#/projects/channels-sample" rel="nofollow">demo server</a>. Step 1 calculates a name by convention, which is used by subsequent steps.</p>
+<p><a href='#' data-featherlight='/docs/images/3048092/5865520.png' class='zoom' data-title=''><img src='/docs/images/3048092/5865520.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="creating-an-output-variable">Creating an Output Variable</h3>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#78ec04bd6daa' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#2c8d1b46ca75' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#1a9bb5ecd656' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#ed8fddd00d8a' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='78ec04bd6daa'>
+<pre><code class="language-powershell">Set-OctopusVariable -name &quot;AppInstanceName&quot; -value &quot;MyAppInstance&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='2c8d1b46ca75'>
+<pre><code class="language-c#">Octopus.SetVariable(&quot;AppInstanceName&quot;, &quot;MyAppInstance&quot;);
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='1a9bb5ecd656'>
+<pre><code class="language-bash">set_octopusvariable &quot;AppInstanceName&quot; &quot;MyAppInstance&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='ed8fddd00d8a'>
+<pre><code class="language-fsharp">Octopus.setVariable &quot;AppInstanceName&quot; &quot;MyAppInstance&quot;
+</code></pre>
+  </div>
+ </div>
+</div>
+<h3 id="using-the-variable-in-another-step">Using the variable in another step</h3>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#fc7875c9c795' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#fc001178f1f7' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#06de6b2320f2' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#164cfa01058b' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='fc7875c9c795'>
+<pre><code class="language-powershell">$appInstanceName = $OctopusParameters[&quot;Octopus.Action[Determine App Instance Name].Output.AppInstanceName&quot;]
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='fc001178f1f7'>
+<pre><code class="language-c#">var appInstanceName = Octopus.Parameters[&quot;Octopus.Action[Determine App Instance Name].Output.AppInstanceName&quot;]
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='06de6b2320f2'>
+<pre><code class="language-bash">appInstanceName = $(get_octopusvariable &quot;Octopus.Action[Determine App Instance Name].Output.AppInstanceName&quot;)
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='164cfa01058b'>
+<pre><code class="language-fsharp">//throw if not found
+let appInstanceName1 = Octopus.findVariable &quot;Octopus.Action[Determine App Instance Name].Output.AppInstanceName&quot;
+
+//supply a default value to use if not found
+let appInstanceName2 = Octopus.findVariableOrDefault &quot;Value if not found&quot; &quot;Octopus.Action[Determine App Instance Name].Output.AppInstanceName&quot;
+
+//return an Option type
+let appInstanceName3 = Octopus.tryFindVariable &quot;Octopus.Action[Determine App Instance Name].Output.AppInstanceName&quot;
+</code></pre>
+  </div>
+ </div>
+</div>
+<h2 id="Customscripts-Collectingartifacts">Collecting artifacts</h2>
+<p>Does your deployment produce a log file, configuration files, binaries, or test results you want to publish and keep as part of your deployment? Your scripts can instruct the Octopus server to collect files as deployment artifacts. Refer to the documentation on <a href="/docs/v/3.14/deploying-applications/artifacts">artifacts</a> for more information.</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#06b4bba57611' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#6867b67b102e' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#5af1f92ba24b' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#c463aa07278a' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='06b4bba57611'>
+<pre><code class="language-powershell">New-OctopusArtifact -Path &quot;C:\Windows\System32\drivers\etc\hosts&quot; -Name &quot;$([System.Environment]::MachineName)-hosts.txt&quot; 
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='6867b67b102e'>
+<pre><code class="language-c#">Octopus.CreateArtifact(@&quot;C:\Windows\System32\drivers\etc\hosts&quot;, System.Environment.MachineName + &quot;-hosts.txt&quot;);
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='5af1f92ba24b'>
+<pre><code class="language-bash">new_octopusartifact /etc/hosts $(hostname)-hosts.txt
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='c463aa07278a'>
+<pre><code class="language-fsharp">Octopus.createArtifact @&quot;C:\Windows\System32\drivers\etc\hosts&quot; (System.Environment.MachineName + &quot;-hosts.txt&quot;)
+</code></pre>
+  </div>
+ </div>
+</div>
+<p><a href='#' data-featherlight='/docs/images/3048092/5865519.png' class='zoom' data-title=''><img src='/docs/images/3048092/5865519.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="Customscripts-Securityandpermissions">Security and permissions</h2>
+<p>Keep in mind that scripts are executed in the context of the account that the Tentacle Windows Service (which invokes Calamari) or SSH session runs as.</p>
+<div class="alert alert-info"><p>By default Tentacle runs as <strong>Local System</strong>, which has extensive local privileges, but usually cannot access file shares, remote SQL databases, or other external resources. If you need wider permissions, you’ll need to configure Tentacle to run under a custom service account.</p>
+</div>
+<div class="alert alert-warning"><p><strong>PowerShell ExecutionPolicy: Unrestricted</strong><br />
+When Calamari invokes PowerShell.exe, it uses the <strong>unrestricted</strong> execution policy for the session. You can see how PowerShell scripts are executed in more detail by <a href="https://github.com/OctopusDeploy/Calamari/tree/master/source/Calamari/Integration/Scripting/WindowsPowerShell" class="alert-link" rel="nofollow">looking at the open-source Calamari project</a>.</p>
+</div>
+<h2 id="Customscripts-Testingscripts">Testing scripts</h2>
+<p>You may find that your script runs differently under Calamari than it does when run from PowerShell directly.</p>
+<p>The easiest way to test your scripts under Calamari is to use the <a href="/docs/v/3.14/administration/script-console">Script Console</a>. Alternatively you can invoke <code>Calamari.exe run-script</code> via the command line to test a script.</p>
+<p><strong>Calamari run-script command</strong></p>
+<pre><code class="language-text">Usage: Calamari run-script [&lt;options&gt;]
+Where [&lt;options&gt;] is any of:
+      --variables=VALUE      Path to a JSON file containing variables.
+      --package=VALUE        Path to the package to extract that contains the
+                             package.
+      --script=VALUE         Path to the script to execute. If --package is
+                             used, it can be a script inside the package.
+      --scriptParameters=VALUE
+							 Parameters to pass to the script. Parameters 
+							 need to be provided in a language specific way. 
+							 E.g. -Parameter1 Value1 -Parameter2 Value2 for PowerShell or 
+							 Value1 Value2 for Bash.
+      --sensitiveVariables=VALUE
+                             Password protected JSON file containing
+                             sensitive-variables.
+      --sensitiveVariablesPassword=VALUE
+                             Password used to decrypt sensitive-variables.
+      --substituteVariables  Perform variable substitution on the script body
+                             before executing it.
+</code></pre>
+<h2 id="Customscripts-Workingdirectories">Working directories</h2>
+<p>Octopus Scripts are executed by Calamari, the command-line tool invoked by the Octopus Server or Tentacle during a deployment, within a the context of a working directory.  This location is C:\Octopus\Work\ by default.  If you're executing a script contained within a package, the package contents will be uncompressed and copied to this directory but the working directory is the directory containing the script within it.</p>
+<h2 id="preventing-the-powershell-profile-from-running">Preventing the PowerShell profile from running</h2>
+<p>The execution of the Tentacle service account's PowerShell profile script can sometimes cause a long delay each time a script is run. Starting in version 3.3.21, to prevent it being run,
+add a variable named <code>Octopus.Action.PowerShell.ExecuteWithoutProfile</code> with a value of <code>true</code> to your project.</p>
+<h2 id="Customscripts-Scriptsthatblockdeployments">Scripts that block deployments</h2>
+<p>Sometimes a script launches a service or application that runs continuously. In this case the script does not complete until the application is terminated.  When the script is run in an Octopus deployment, the deployment will continue executing until the script exits.  In most cases this is undesirable. In order to avoid this behavior the service or application should be launched in a separate process or session, allowing the deployment to continue executing immediately. For example:</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#99392c4c41f4' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#1c666537aee3' data-toggle='tab'>Bash</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='99392c4c41f4'>
+<pre><code class="language-powershell">Start-Process MyService
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='1c666537aee3'>
+<pre><code class="language-bash">screen -d -m -S &quot;MyService&quot; MyService
+</code></pre>
+  </div>
+ </div>
+</div>
+<h2 id="in-this-section">In this section</h2>
+<p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
+<ul>
+<li><a href="/docs/v/3.14/deploying-applications/custom-scripts/standalone-scripts">Standalone scripts</a></li>
+<li><a href="/docs/v/3.14/deploying-applications/custom-scripts/azure-powershell-scripts">Azure PowerShell scripts</a></li>
+<li><a href="/docs/v/3.14/deploying-applications/custom-scripts/service-fabric-powershell-scripts">Service Fabric PowerShell scripts</a></li>
+<li><a href="/docs/v/3.14/deploying-applications/custom-scripts/raw-scripting">Raw Scripting</a></li>
+<li><a href="/docs/v/3.14/deploying-applications/custom-scripts/debugging-powershell-scripts">Debugging PowerShell scripts</a></li>
+</ul>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/deploying-applications/custom-scripts'>Latest</a></li><li class='disabled'><a href='/docs/v/3.14/deploying-applications/custom-scripts'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/custom-scripts'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/custom-scripts'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/custom-scripts'>3.11</a></li><li class=''><a href='/docs/v/3.10/deploying-applications/custom-scripts'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/custom-scripts'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/custom-scripts'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications/custom-scripts'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/custom-scripts'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

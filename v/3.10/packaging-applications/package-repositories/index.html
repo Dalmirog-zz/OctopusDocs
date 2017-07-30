@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Package repositories</h1><p>When planning your Octopus installation, you will need to decide how to host your packages. Your continuous integration server should create your packages, and publish them to a package repository.</p>
+<div class="alert alert-info"><p><strong>Supported package and repository types</strong><br />
+The Octopus built-in repository <a href="/docs/v/3.10/packaging-applications/supported-packages" class="alert-link">supports several different types of packages</a>. If you would like to use a package type other than NuGet (zip or tar.gz for example) you must use the Octopus built-in repository.</p>
+<p>If you would like to use an external repository, two types of external repositories are supported:</p>
+<ul>
+<li><a href="https://docs.nuget.org/create/hosting-your-own-nuget-feeds" class="alert-link" rel="nofollow">NuGet feeds</a> (either HTTP or file-system based feeds).</li>
+<li><a href="/docs/v/3.10/deploying-applications/docker-containers/registries" class="alert-link">Docker feeds</a></li>
+</ul>
+</div>
+<p>Your package repository will typically be:</p>
+<ul>
+<li>The Octopus server's built-in repository</li>
+<li>A <a href="http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds#Creating_Remote_Feeds" rel="nofollow" title="Remote NuGet feeds">remote feed</a> exposed over HTTP</li>
+<li>A <a href="http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds#Creating_Local_Feeds" rel="nofollow" title="Local NuGet package repositories">local feed</a> exposed as a File Share or local directory</li>
+<li>A <a href="http://blogs.jetbrains.com/dotnet/2011/08/native-nuget-support-in-teamcity/" rel="nofollow" title="JetBrains TeamCity">JetBrains TeamCity</a> server (version 7 and above)</li>
+<li>A <a href="http://www.myget.org/" rel="nofollow" title="MyGet">MyGet</a> server</li>
+<li>A <a href="https://www.visualstudio.com/en-us/docs/package/overview" rel="nofollow">VSTS or TFS Package Management</a> feed (see note below)</li>
+</ul>
+<div class="alert alert-success"><p><strong>Mix and match feeds</strong><br />
+Octopus can consume packages from multiple feeds at once if necessary.</p>
+</div>
+<div class="alert alert-warning"><p><strong>NuGet v3 feed support</strong><br />
+Support for NuGet v3 external feeds was introduced in Octopus Deploy 3.4.</p>
+<p>Earlier releases of Octopus Deploy only support external NuGet v2 feeds:</p>
+<ul>
+<li>If you are using a MyGet external feed, please use the <a href="http://docs.myget.org/docs/reference/feed-endpoints" class="alert-link" rel="nofollow">v2 API URL</a> or upgrade to Octopus 3.4 (or later)</li>
+</ul>
+</div>
+<div class="alert alert-warning"><p><strong>VSTS Package Feeds</strong><br />
+If you are using VSTS Package Management, Octopus can consume either the v2 or v3 NuGet feeds.</p>
+<ul>
+<li>To connect to the v3 URL, you must use <a href="https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview" class="alert-link" rel="nofollow">a Personal Access Token</a> in the password field. The username field is not checked, so you can put anything in here as long as it is not blank. Ensure that the PAT has (at least) the <em>Packaging (read)</em> scope.</li>
+<li>To connect to the v2 URL, you can use either <a href="https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview" class="alert-link" rel="nofollow">alternate credentials or a Personal Access Token</a> in the password field.</li>
+</ul>
+</div>
+<div class="alert alert-warning"><p><strong>TFS Package Feeds</strong><br />
+If you are using TFS Package Management, Octopus can consume either the v2 or v3 NuGet feeds. Use a user account's username and password to authenticate.</p>
+<p>Although the TFS documentation states that a Personal Access Token can be used, we have not had success authenticating using one with <code>NuGet.exe</code>.</p>
+</div>
+<h2 id="Packagerepositories-Choosingtherightrepository">Choosing the right repository</h2>
+<div class="alert alert-success"><p>The Octopus built-in repository is generally the best choice for deployment packages because it offers better performance and most suitable <a href="/docs/v/3.10/administration/retention-policies" class="alert-link">retention policies</a>.</p>
+</div>
+<p>Our recommendation is to use different repositories for different purposes, and each repository provides different benefits. A typical example is where you produce your own application library packages in addition to your own deployment packages:</p>
+<ul>
+<li>For application library packages consider using the repository provided by your build server, a <a href="http://docs.nuget.org/docs/creating-packages/hosting-your-own-nuget-feeds#Creating_Local_Feeds" rel="nofollow">file-share</a>, or something like <a href="http://www.myget.org/" rel="nofollow" title="MyGet">MyGet</a> or <a href="https://www.visualstudio.com/en-us/docs/package/overview" rel="nofollow">VSTS Package Management</a>.</li>
+<li>For deployment packages consider using the Octopus built-in repository (see below).</li>
+</ul>
+<p>This configuration will make it easier to find the right packages for the right purpose, but the most important benefit of the built-in repository is that Octopus Deploy knows exactly which deployment packages are still required according to the <a href="/docs/v/3.10/administration/retention-policies">retention policies</a> you have configured, and which packages can be cleaned up.</p>
+<h2 id="Packagerepositories-Usingthebuilt-inrepository">Using the built-in repository</h2>
+<p>Your Octopus server comes with a built-in repository which is the best choice for deployment packages. It offers <strong>better performance</strong> for your deployments and the most <strong>robust <a href="/docs/v/3.10/administration/retention-policies">retention policy</a> support</strong> for deployment packages.</p>
+<div class="alert alert-info"><p><strong>Built-in feed can only be consumed by Octopus</strong><br />
+It is important to understand that the Octopus server provides a write-only repository; intended for hosting deployment packages only. Packages that are pushed to the Octopus server can't be consumed by other NuGet clients like Visual Studio. If you need a NuGet feed for sharing libraries between your development projects, a separate NuGet repository is required.</p>
+</div>
+<h3 id="Packagerepositories-Pushingpackagestothebuilt-inrepository">Pushing packages to the built-in repository</h3>
+<p>We offer several ways to add packages to the built-in repository, so many that we built a new page: <a href="/docs/v/3.10/packaging-applications/package-repositories/pushing-packages-to-the-built-in-repository">pushing packages to the built-in repository</a>. Alternatively you can go to <span class="path">Library ➜ Packages</span> which describes some of the most convenient ways to push packages to the built-in repository.  Simply click the <code>Show examples</code> link to see options to upload packages.</p>
+<p><a href='#' data-featherlight='/docs/images/3048094/3277775.png' class='zoom' data-title=''><img src='/docs/images/3048094/3277775.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p>To push packages to the built-in repository you will need an <a href="/docs/v/3.10/how-to/how-to-create-an-api-key" class="alert-link">Octopus API key</a>.</p>
+</div>
+<h3 id="Packagerepositories-Securityconsiderations">Security considerations</h3>
+<p>To add a new package to the built-in feed requires the <code>BuiltInFeedPush</code> permission. To delete a package, or replace an existing package requires the <code>BuiltInFeedAdminister</code> permission.</p>
+<p>For your convenience Octopus Deploy provides a built-in role called <strong>Package Publisher</strong> that has been granted the <code>BuiltInFeedPush</code> permission.</p>
+<div class="alert alert-info"><p><strong>Consider using a Service Account</strong><br />
+Instead of using your own API key, consider using a <a href="/docs/v/3.10/administration/managing-users-and-teams/service-accounts" class="alert-link">Service Account</a> to provide limited permissions since packages will normally be pushed by an automated service like your build server. Service Accounts are API-only accounts that cannot be used sign in to the Octopus Deploy web portal.</p>
+</div>
+<div class="alert alert-info"><p><strong>Using automatic release creation?</strong><br />
+If you are using <a href="/docs/v/3.10/deploying-applications/automatic-release-creation" class="alert-link">automatic release creation</a> you will also require the permissions to create a release for all of the relevant projects in the required environments. To diagnose issues with pushing packages used for automatic release creation follow the troubleshooting guide on the <a href="/docs/v/3.10/deploying-applications/automatic-release-creation" class="alert-link">automatic release creation</a> page.</p>
+</div>
+<h3 id="Packagerepositories-Movingthelocationofthebuilt-inrepository">Moving the location of the built-in repository</h3>
+<p>See <a href="/docs/v/3.10/administration/server-configuration-and-file-storage/moving-octopus-server-folders#MovingOctopusServerfolders-OctopusHome">moving Octopus server folders</a></p>
+<h2 id="Packagerepositories-Usingexternalrepositories">Using external repositories</h2>
+<div class="alert alert-info"><p><strong>Only NuGet and Docker feeds are supported</strong><br />
+The only external repository type supported are NuGet and Docker. If you wish to use an external repository, you must use NuGet packages or <a href="/docs/v/3.10/deploying-applications/docker-containers/registries" class="alert-link">Docker registries as feeds</a>.</p>
+</div>
+<div class="alert alert-warning"><p><strong>NuGet v3 feed support</strong><br />
+Support for NuGet v3 external feeds was introduced in Octopus Deploy 3.4.</p>
+<p>Earlier releases of Octopus Deploy only support external NuGet v2 feeds:</p>
+<ul>
+<li>If you are using a MyGet external feed, please use the <a href="http://docs.myget.org/docs/reference/feed-endpoints" class="alert-link" rel="nofollow">v2 API URL</a> or upgrade to Octopus 3.4 (or later)</li>
+</ul>
+</div>
+<p>If you're using an external NuGet feed, you can register it with Octopus and use them as part of your deployments. Go to <span class="path">Library ➜ External Feeds</span>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048094/3277774.png' class='zoom' data-title=''><img src='/docs/images/3048094/3277774.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>You can add NuGet feeds by clicking the <strong>Add feed</strong> button.</p>
+<p><a href='#' data-featherlight='/docs/images/3048094/3277773.png' class='zoom' data-title=''><img src='/docs/images/3048094/3277773.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>In the URL field, enter the HTTP/HTTPS URL to the feed, or the file share or local directory path. Then click <strong>Save and test</strong>.</p>
+<p>On the test page, you can check whether the feed is working by searching for packages:</p>
+<p><a href='#' data-featherlight='/docs/images/3048094/3277772.png' class='zoom' data-title=''><img src='/docs/images/3048094/3277772.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="Packagerepositories-NuGet.Serverperformance">NuGet.Server performance</h2>
+<p>A popular external NuGet hosting option is <strong>NuGet.Server</strong>. However, be aware that it suffers from performance problems when dealing with large packages or large numbers of smaller packages. Users may report high CPU usage, timeouts when displaying package details, or memory issues. A great alternative that we recommend is <a href="https://github.com/themotleyfool/NuGet.Lucene" rel="nofollow">NuGet.Lucene</a>.</p>
+<p>The built-in NuGet server in Octopus stores metadata in SQL Server, and doesn't suffer from these performance issues.</p>
+<h2 id="Packagerepositories-Troubleshooting">Troubleshooting</h2>
+<ul>
+<li>For network file shares, keep in mind that Octopus and Tentacle run under system accounts by default, which may not have access to the file share</li>
+<li>NuGet.Server only allows 30MB packages <a href="http://help.octopusdeploy.com/discussions/problems/184-30mb-default-maximum-nuget-package-size" rel="nofollow">by default</a></li>
+</ul>
+<p>To troubleshoot authentication issues, use <code>NuGet.exe</code> 3.5 and issue a list packages command. You may need to add the feed as a source first. For example:</p>
+<pre><code>nuget.exe sources Add -Name MyFeed -Source &quot;http://example.com/MyFeed/nuget/v3/index.json&quot; -Username Bob -Password pass123
+nuget.exe list -Source MyFeed
+</code></pre>
+<h2 id="in-this-section">In this section</h2>
+<p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
+<ul>
+<li><a href="/docs/v/3.10/packaging-applications/package-repositories/built-in-repository-reindexing">Built-in Repository Reindexing</a></li>
+<li><a href="/docs/v/3.10/packaging-applications/package-repositories/pushing-packages-to-the-built-in-repository">Pushing packages to the Built-In repository</a></li>
+</ul>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/packaging-applications/package-repositories'>Latest</a></li><li class=''><a href='/docs/v/3.14/packaging-applications/package-repositories'>3.14</a></li><li class=''><a href='/docs/v/3.13/packaging-applications/package-repositories'>3.13</a></li><li class=''><a href='/docs/v/3.12/packaging-applications/package-repositories'>3.12</a></li><li class=''><a href='/docs/v/3.11/packaging-applications/package-repositories'>3.11</a></li><li class='disabled'><a href='/docs/v/3.10/packaging-applications/package-repositories'>3.10</a></li><li class=''><a href='/docs/v/3.9/packaging-applications/package-repositories'>3.9</a></li><li class=''><a href='/docs/v/3.8/packaging-applications/package-repositories'>3.8</a></li><li class=''><a href='/docs/v/3.7/packaging-applications/package-repositories'>3.7</a></li><li class=''><a href='/docs/v/3.6/packaging-applications/package-repositories'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

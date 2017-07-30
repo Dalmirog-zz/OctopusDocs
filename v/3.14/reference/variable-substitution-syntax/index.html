@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Variable Substitution Syntax</h1><p>Variable substitutions are a flexible way to adjust configuration based on your variables and the context of your deployment. You can often tame the number and complexity of your variables by breaking them down into simple variables and combining them together using expressions.</p>
+<h2 id="VariableSubstitutionSyntax-BasicSyntax">Basic Syntax</h2>
+<p>Octopus <a href="/docs/v/3.14/deploying-applications/variables">variables</a> support substitution throughout: a variable may be bound to an expression that incorporates the values of other variables:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DatabaseServer</code></td>
+<td><code>PDB001</code></td>
+<td>Production</td>
+</tr>
+<tr>
+<td><code>DatabaseServer</code></td>
+<td><code>TDB001</code></td>
+<td>Test</td>
+</tr>
+<tr>
+<td><code>ConnectionString</code></td>
+<td><code>Server=#{DatabaseServer};</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The syntax <code>#{VarName}</code> will insert the value of the <code>VarName</code> variable in-place. For example the <code>ConnectionString</code>variable will have the value <code>Server=PDB001;</code> when evaluated in the <em>Production</em> environment. The use of one or more variables in the declaration of another is called a <em>binding.</em></p>
+<p>In regular variable declarations, binding to a non-existent value will yield an empty string, so evaluating <code>ConnectionString</code> in the <em>Dev</em> environment will yield <code>Server=;</code> because no <code>DatabaseServer</code> is defined in that environment.</p>
+<p NotToBeReplace>If the file undergoing variable replacement includes a string that <em>shouldn't</em> be getting replaced, for example <strong>#</strong>, you should include an extra hash (#) character to force the replacement to ignore the substitution and remove the extra #.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Expression</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>##{NotToBeReplaced}</code></td>
+<td><code>#{NotToBeReplaced}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="VariableSubstitutionSyntax-ExtendedSyntax">Extended Syntax</h2>
+<p>Octopus supports an extended variable substitution syntax with capabilities similar to text templating languages.  It's worth noting that this is now available everywhere whereas previously it was limited to certain scenarios.</p>
+<p>The capabilities of the extended syntax are:</p>
+<ul>
+<li>Index Replacement</li>
+<li>Conditionals - <code>if</code> and <code>unless</code></li>
+<li>Repetition - <code>each</code></li>
+<li>Filters - <code>HtmlEscape</code>, <code>Markdown</code> etc.</li>
+<li>Differences from regular variable bindings</li>
+<li>JSON Parsing</li>
+</ul>
+<div class="alert alert-info"><p><a href="https://github.com/OctopusDeploy/Octostache" class="alert-link" rel="nofollow">Octostache</a> is the open source component that powers this feature.</p>
+</div>
+<h3 id="VariableSubstitutionSyntax-IndexReplacement">Index Replacement</h3>
+<p>Variable substitution inside an index was added in Octopus 3.3.23.  This makes it easy to dynamically retrieve variables within arrays/dictionaries.</p>
+<p>Given the variables:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MyPassword[Rob]</code></td>
+<td><code>passwordX</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MyPassword[Steve]</code></td>
+<td><code>passwordY</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MyPassword[Mary]</code></td>
+<td><code>passwordZ</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>UserName</code></td>
+<td><code>Mary</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>#{MyPassword[#{UserName}]}</code> would evaluate to <code>passwordZ</code>.</p>
+<h3 id="VariableSubstitutionSyntax-Conditionalsconditionals">Conditionals</h3>
+<p>Two conditional statements are supported in Octopus prior to version 3.5 - <code>if</code> and <code>unless</code>; these have identical syntax, but <code>if</code> evaluates only if the variable is <em>truthy</em>, while <code>unless</code> evaluates if the variable is <em>falsy</em>.  <code>if</code> and <code>unless</code> syntax is as follows:</p>
+<p><code>#{if VariableName}conditional statements#{/if}</code></p>
+<p><code>#{unless VariableName}conditional statements#{/unless}</code></p>
+<p>Let's look at an example.  Given the variables:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DebugEnabled</code></td>
+<td><code>True</code></td>
+<td>Dev</td>
+</tr>
+<tr>
+<td><code>DebugEnabled</code></td>
+<td><code>False</code></td>
+<td>Production</td>
+</tr>
+</tbody>
+</table>
+<p>Then the following template:</p>
+<pre><code class="language-powershell">&lt;compilation #{if DebugEnabled}debug=&quot;true&quot;#{/if}&gt;
+</code></pre>
+<p>The resulting text in the <em>Dev</em> environment will be:</p>
+<pre><code class="language-xml">&lt;compilation debug=&quot;true&quot;&gt;
+</code></pre>
+<p>And in <em>Production</em> it will be:</p>
+<pre><code class="language-xml">&lt;compilation &gt;
+</code></pre>
+<p>You could achieve a similar result, with a different default/fallback behavior, using the unless syntax:</p>
+<pre><code class="language-powershell">&lt;compilation #{unless DebugDisabled}debug=&quot;true&quot;#{/unless}&gt;
+</code></pre>
+<h4 id="VariableSubstitutionSyntax-TruthyandFalsyvalues"><em>Truthy</em> and <em>Falsy</em> values</h4>
+<p>The <code>if</code> and <code>unless</code> statements consider a value to be <em>falsy</em> if it is undefined, empty, <code>False</code> or <code>0</code>. All other values are considered to be <em>truthy</em>.</p>
+<h3 id="complex-syntax">Complex syntax</h3>
+<p>Additional conditional statements are supported in Octopus 3.5 and onwards, including == and !=.</p>
+<p>Using complex syntax you can have expressions like <code>#{if Octopus.Environment.Name == &quot;Production&quot;}...#{/if}</code> and <code>#{if Octopus.Environment.Name != &quot;Production&quot;}...#{/if}</code></p>
+<h3 id="run-conditions">Run conditions</h3>
+<p>Conditions can be used to control whether a given step in a deployment process actually runs.  In this scenario the conditional statement should return true/false, depending on your requirements.</p>
+<p>Some examples would be,</p>
+<p><code>#{if Octopus.Environment.Name == &quot;Production&quot;}true#{/if}</code> would run the step only in Production.</p>
+<p><code>#{if Octopus.Environment.Name != &quot;Production&quot;}true#{/if}</code> would run the step in all environments other than Production.</p>
+<p><code>#{unless Octopus.Action[StepName].Output.HasRun == &quot;True&quot;}true#{/unless}</code> would run the step unless it has run before. This would be useful for preventing something like an email step from executing every time an auto deploy executed for new machines in an environment.  It would be used in conjunction with the step calling <code>Set-OctopusVariable -name &quot;HasRun&quot; -value &quot;True&quot;</code> when it does run.</p>
+<h3 id="VariableSubstitutionSyntax-Repetition">Repetition</h3>
+<p>The <code>each</code> statement supports repetition over a set of variables, or over the individual values in a variable separated with commas.</p>
+<h4 id="VariableSubstitutionSyntax-Iteratingoversetsofvalues">Iterating over sets of values</h4>
+<p>More complex sets of related values are handled using multiple variables:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Endpoint[A].Address</code></td>
+<td><code>http://a.example.com</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Endpoint[A].Description</code></td>
+<td><code>Master</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Endpoint[B].Address</code></td>
+<td><code>http://b.example.com</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Endpoint[B].Description</code></td>
+<td><code>Slave</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Given the template:</p>
+<pre><code class="language-powershell">Listening on:
+#{each endpoint in Endpoint}
+ - Endpoint #{endpoint} at #{endpoint.Address} is #{endpoint.Description}
+#{/each}
+</code></pre>
+<p>The result will be:</p>
+<pre><code class="language-powershell">Listening on:
+ - Endpoint A at http://a.example.com is Master
+ - Endpont B at http://b.example.com is Slave
+</code></pre>
+<h4 id="VariableSubstitutionSyntax-Iteratingovercomma-separatedvalues">Iterating over comma-separated values</h4>
+<p>Give the variable:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Endpoints</code></td>
+<td><code>http://a.example.com,http://b.example.com</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>And the template:</p>
+<pre><code class="language-powershell">Listening on:
+#{each endpoint in Endpoints}
+ - #{endpoint}
+#{/each}
+</code></pre>
+<p>The resulting text will be:</p>
+<pre><code class="language-powershell">Listening on:
+ - http://a.example.com
+ - http://b.example.com
+</code></pre>
+<h4 id="VariableSubstitutionSyntax-SpecialVariables">Special Variables</h4>
+<p>Within the context of an iteration template, some special variables are available.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Octopus.Template.Each.Index</code></td>
+<td>Zero-based index of the iteration count</td>
+</tr>
+<tr>
+<td><code>Octopus.Template.Each.First</code></td>
+<td><code>&quot;True&quot; if the element is the first in the collection</code>, otherwise &quot;False&quot;</td>
+</tr>
+<tr>
+<td><code>Octopus.Template.Each.Last</code></td>
+<td>&quot;True&quot; if the element is the last in the collection, otherwise &quot;False&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<p id="VariableSubstitutionSyntax-Filters">Filters </p>
+<p>By default, bindings are inserted into the output as-is; no consideration is given as to whether the target variable or file is XML, HTML, JSON etc. That is, the target file type is always treated as plain text.</p>
+<p>Octopus variable substitutions support <em>filters</em> to correctly encode values for a variety of target file types. These are invoked using the <code>|</code> (pipe) operator.</p>
+<p>Given the variable:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProjectName</code></td>
+<td><code>You &amp; I</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>An the template:</p>
+<pre><code class="language-powershell">&lt;h3&gt;#{ProjectName | HtmlEscape}&lt;/h3&gt;
+</code></pre>
+<p>The result will be:</p>
+<pre><code class="language-powershell">&lt;h3&gt;You &amp;amp; I&lt;/h3&gt;
+</code></pre>
+<p>That is, the ampersand has been encoded correctly for use in an HTML document.</p>
+<div class="alert alert-danger"><p>The filters provided by Octopus are for use with trusted input; don't rely on them to santize data from potentially malicious sources.</p>
+</div>
+<h4 id="VariableSubstitutionSyntax-Providedfilters">Provided filters</h4>
+<p>Octopus provides the following filters:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Purpose</th>
+<th>Example Input</th>
+<th>Example Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HtmlEscape</code></td>
+<td>Escapes entities for use in HTML content</td>
+<td>1 &lt; 2</td>
+<td>1 &lt; 2</td>
+</tr>
+<tr>
+<td><code>JsonEscape</code></td>
+<td>Escapes data for use in JSON strings</td>
+<td>He said &quot;Hello!&quot;</td>
+<td>He said &quot;Hello!&quot;</td>
+</tr>
+<tr>
+<td><code>Markdown</code></td>
+<td>Converts Markdown to HTML</td>
+<td>This _rocks_</td>
+<td><p>This <em>rocks</em></p></td>
+</tr>
+<tr>
+<td><code>ToLower</code></td>
+<td>Forces values to lowercase</td>
+<td>Automated Deployment</td>
+<td>automated deployment</td>
+</tr>
+<tr>
+<td><code>ToUpper</code></td>
+<td>Forces values to uppercase</td>
+<td>Automated Deployment</td>
+<td>AUTOMATED DEPLOYMENT</td>
+</tr>
+<tr>
+<td><code>XmlEscape</code></td>
+<td>Escapes entities for use in XML content</td>
+<td>1 &lt; 2</td>
+<td>1 &lt; 2</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>NowDate</em> and <em>NowDateUtc</em> filters take no variable input but can take an additional optional right-hand-side argument the define the string format (Defaults to ISO-8601 <a href="https://msdn.microsoft.com/en-us/library/az4se3k1#Roundtrip" rel="nofollow">Round-trip format</a>).</p>
+<table class="table">
+<thead>
+<tr>
+<th>MyFormat Variable</th>
+<th>Filter Expression</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><code>#{ | NowDate }</code></td>
+<td><code>2016-11-03T08:53:11.0946448</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>#{ | NowDateUtc}</code></td>
+<td><code>2016-11-02T23:01:46.9441479Z</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>#{ | NowDate \&quot;HH dd-MMM-yyyy\&quot;}</code></td>
+<td><code>09 03-Nov-2016</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>#{ | NowDateUtc zz}</code></td>
+<td><code>+00</code></td>
+</tr>
+<tr>
+<td>dd-MM-yyyy</td>
+<td><code>#{ | NowDate #{MyFormat}}</code></td>
+<td><code>03-Nov-2016</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <em>Format</em> filter available from Octopus Deploy version 3.5 allows for converting of input based on an additionally provided argument that is passed to the <em><code>.ToString()</code></em> method.</p>
+<table class="table">
+<thead>
+<tr>
+<th>MyVar Value</th>
+<th>Example Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.3</td>
+<td><code>#{ MyVar | Format C}</code></td>
+<td>$4.30</td>
+</tr>
+<tr>
+<td><code>2030/05/22 09:05:00</code></td>
+<td><code>#{ MyVar | Format yyyy}</code></td>
+<td>2030</td>
+</tr>
+<tr>
+<td></td>
+<td><code>#{ | NowDate | Format Date MMM}</code></td>
+<td>Nov</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info"><p>Filters were introduced in Octopus Deploy version 3.5</p>
+</div>
+<h3 id="VariableSubstitutionSyntax-Differencesfromregularvariablebindings">Differences from regular variable bindings</h3>
+<p>Because of the flexibility provided by the extended syntax, variables that are not defined will result in the source text, e.g. <code>#{UndefinedVar}</code> being echoed rather than an empty string, so that evaluation problems are easier to spot and debug. The <code>if</code> construct can be used to selectively bind to a variable only when it is defined, e.g. to obtain identical &quot;empty&quot; variable functionality as shown in the first example:</p>
+<pre><code class="language-powershell">Server=#{if DatabaseServer}#{DatabaseServer}#{/if};
+</code></pre>
+<h3 id="VariableSubstitutionSyntax-JSONParsingjson">JSON Parsing</h3>
+<p>Octostache 2.x (bundled with Octopus 3.5) includes an update to support parsing JSON formatted variables natively, and using their contained properties for variable substitution.</p>
+<p>Given the variable:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Custom.MyJson</code></td>
+<td><code>{Name: &quot;t-shirt&quot;, Description: &quot;I am a shirt&quot;, Sizes: [{size: &quot;small&quot;, price: 15.00}, {size: &quot;large&quot;, price: 20.00}]}</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Custom.MyJson.Description</code></td>
+<td><code>Shirts are not shorts.</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>And the template:</p>
+<pre><code class="language-powershell">&lt;h1&gt;#{Custom.MyJson[Name]}&lt;/h1&gt;
+#{Custom.MyJson.Name} - #{Custom.MyJson.Description}
+From: #{Custom.MyJson.Sizes[0].price | Format C}
+Sizes: #{Custom.MyJson.Sizes}
+</code></pre>
+<p>The result will be:</p>
+<pre><code class="language-powershell">&lt;h1&gt;t-shirt&lt;/h1&gt;
+t-shirt - Shirts are not shorts
+From: $15.00
+Sizes: [{size: &quot;small&quot;, price: 15.00}, {size: &quot;large&quot;, price: 20.00}]
+</code></pre>
+<p>There are a few things to note here.</p>
+<ul>
+<li>The <em>Name</em> property is extracted from the JSON using either dot-notation or indexing.</li>
+<li>Providing an explicit project variable overrides one obtained by walking through the JSON</li>
+<li>Arrays can be accessed using standard numerical index notation</li>
+<li>Variables can map to a sub-section of the JSON variable.</li>
+</ul>
+<h4 id="VariableSubstitutionSyntax-RepetitionoverJSON">Repetition over JSON</h4>
+<p>Give the variables:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MyNumbers</td>
+<td><code>[5,2,4]</code></td>
+</tr>
+<tr>
+<td>MyObjects</td>
+<td><code>{Cat: {Price: 11.5, Description: &quot;Meow&quot;}, Dog: {Price: 17.5, Description: &quot;Woof&quot;}}</code></td>
+</tr>
+</tbody>
+</table>
+<p>And the template:</p>
+<pre><code class="language-powershell">Numbers:
+#{each number in MyNumbers}
+ - #{number}
+#{/each}
+
+Objects:
+#{each item in MyObjects}
+	#{item.Key}: #{item.Value.Price}
+#{/each} 
+</code></pre>
+<p>The resulting text will be:</p>
+<pre><code class="language-powershell">Numbers:
+ - 5
+ - 2
+ - 4
+ 
+Objects:
+Cat: 11.5
+Dog: 17.5
+</code></pre>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/reference/variable-substitution-syntax'>Latest</a></li><li class='disabled'><a href='/docs/v/3.14/reference/variable-substitution-syntax'>3.14</a></li><li class=''><a href='/docs/v/3.13/reference/variable-substitution-syntax'>3.13</a></li><li class=''><a href='/docs/v/3.12/reference/variable-substitution-syntax'>3.12</a></li><li class=''><a href='/docs/v/3.11/reference/variable-substitution-syntax'>3.11</a></li><li class=''><a href='/docs/v/3.10/reference/variable-substitution-syntax'>3.10</a></li><li class=''><a href='/docs/v/3.9/reference/variable-substitution-syntax'>3.9</a></li><li class=''><a href='/docs/v/3.8/reference/variable-substitution-syntax'>3.8</a></li><li class=''><a href='/docs/v/3.7/reference/variable-substitution-syntax'>3.7</a></li><li class=''><a href='/docs/v/3.6/reference/variable-substitution-syntax'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

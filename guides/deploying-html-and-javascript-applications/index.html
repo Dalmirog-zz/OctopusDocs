@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Deploying HTML and JavaScript Applications</h1><p>We are commonly asked how to deploy and configure HTML/JS or Single Page Applications (SPA) running in a browser, or JavaScript applications running in NodeJS. This guide provides a simple example of deploying and configuring a simple JavaScript application using AngularJS.</p>
+<div class="alert alert-info"><p><strong>Not using AngularJS?</strong><br />
+That's fine! This example uses AngularJS but the same basic principles apply for any applications running in a browser or NodeJS. Instead of using AngularJS constants, you could provide globally accessible values, or alternatively provide the configuration values in a separate JavaScript file your application loads as a module. The important part to understand is how to get your Octopus Variables into your application.</p>
+</div>
+<h2 id="DeployingHTMLandJavaScriptApplications-Prerequisites">Prerequisites</h2>
+<p>This guide assumes some familiarity with common Octopus concepts like configuring <a href="/docs/key-concepts/projects">Projects </a>and <a href="/docs/deploying-applications/variables">Variables</a>. To deploy this package using this guide you will need a server with IIS installed since it uses the <a href="/docs/deploying-applications/iis-websites-and-application-pools">IIS Websites and Application Pools</a> deployment steps. Alternatively you could use any other web host, like Express in NodeJS, since this is just a single HTML file with no other dependencies.</p>
+<h2 id="DeployingHTMLandJavaScriptApplications-SampleApplication">Sample Application</h2>
+<p>Here is a very simple AngularJS application which uses <a href="https://docs.angularjs.org/api/auto/service/$provide#constant" rel="nofollow">AngularJS Constants</a> to provide other services, controllers and directives with access to the configuration data stored in Octopus. The important part to note here is where we set the constant: we are going to use the <a href="/docs/deploying-applications/substitute-variables-in-files">Substitute Variables in Files</a> feature to replace the <strong><code>#{MyApp.ConfigValue1}</code></strong> expression at deployment time.</p>
+<p><strong>MyApp.html</strong></p>
+<pre><code class="language-js">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+angular
+    .module('myApp', [])
+	// Create a constant JSON object called 'myConfig' which can be injected
+    .constant(&quot;myConfig&quot;, {
+        &quot;configValue1&quot;: &quot;#{MyApp.ConfigValue1}&quot;,
+        &quot;configValue2&quot;: &quot;#{MyApp.ConfigValue2}&quot;
+    })
+    // Now we can provide configuration by injecting myConfig into this controller
+    .controller(&quot;myCtrl&quot;, function($scope, myConfig) {
+		$scope.message = &quot;Hello world!&quot;;
+		$scope.myConfig = myConfig;
+    })
+&lt;/script&gt;
+&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+  &lt;h1&gt;{{message}}&lt;/h1&gt;
+  &lt;p&gt;&lt;em&gt;These configuration values were set by Octopus Deploy:&lt;/em&gt;&lt;/p&gt;
+  &lt;p&gt;ConfigValue1: {{myConfig.configValue1}}&lt;/p&gt;
+  &lt;p&gt;ConfigValue2: {{myConfig.configValue2}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="DeployingHTMLandJavaScriptApplications-Step1:Uploadthepackagetothebuilt-inrepository">Step 1: Upload the package to the built-in repository</h3>
+<p>Firstly we need to make the package available for Octopus to deploy.</p>
+<div class="alert alert-success"><p>We've crafted and packaged v1.0.0 of this sample application for you to try out (see the link below). Alternatively you can create your own application and <a href="/docs/packaging-applications" class="alert-link">package the application</a> yourself to try it out.</p>
+</div>
+<ol>
+<li>Download <a href="/docs/attachments/myapp.1.0.0.zip">MyApp.1.0.0.zip</a></li>
+<li><a href="/docs/packaging-applications/package-repositories/pushing-packages-to-the-built-in-repository">Upload it to the Octopus Built-In repository</a> (you can do this by going to <em>Library &gt; Packages</em> and clicking the <strong>Upload package</strong> button)</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866205.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866205.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="DeployingHTMLandJavaScriptApplications-Step2:Createtheproject,variablesanddeploymentprocess">Step 2: Create the project, variables and deployment process</h3>
+<p>Now we need to create the project and configure it ready to deploy our JavaScript application.</p>
+<ol>
+<li>Create a new Project and choose an appropriate Lifecycle for testing this sample application.</li>
+<li>Remember you need to target a web server running IIS in order to follow this guide verbatim.</li>
+<li>Configure some project variables to match the JavaScript shown above. <em>You can use these values or any other values you wish - we've chosen to show a <a href="/docs/deploying-applications/variables/binding-syntax">complex expression</a> including an <a href="/docs/deploying-applications/variables/system-variables">Octopus System Variable</a>.</em>
+<a href='#' data-featherlight='/docs/images/5672397/5866206.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866206.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+<li>Configure the deployment process to deploy the MyApp package and host it in an IIS Web Site. Our web servers in this example belong to the <strong>web-server</strong> role.</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866207.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866207.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<ol start="4">
+<li>Configure the IIS Web Site you want Octopus to set up on your behalf.</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866208.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866208.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866209.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866209.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<ol start="5">
+<li>Enable the <a href="/docs/deploying-applications/substitute-variables-in-files">Substitute Variables in Files</a> feature and configure it to replace the expressions in our <code>MyApp.html</code> file with variable values we defined earlier.</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866210.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866210.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="DeployingHTMLandJavaScriptApplications-Step3:Deploy!">Step 3: Deploy!</h3>
+<p>Now when we create a release for this project and deploy it we can see that Octopus has found the <code>MyApp.html</code> file and substituted the variable values into our expressions.</p>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866212.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866212.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>And finally when we load the application in our browser we can see the results have flowed all the way through from Octopus to first-class citizens in our AngularJS application!</p>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866206.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866206.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/5672397/5866211.png' class='zoom' data-title=''><img src='/docs/images/5672397/5866211.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="DeployingHTMLandJavaScriptApplications-Step4:MinifytheJavaScriptanddeployagain!">Step 4: Minify the JavaScript and deploy again!</h3>
+<p>This approach also works perfectly with minified sources. This is because the minifier won't change string literals like <code>&quot;#{MyApp.ConfigValue1}&quot;</code> and the substitution will work just like it did before. In this example we will just minify the JavaScript inline in the HTML file. You can get the same result by moving the JavaScript into an external file and minifying that.</p>
+<ol>
+<li>Unpack the MyApp.1.0.0.zip file</li>
+<li>Minify the contents of the <code>&lt;script&gt;</code> tag. We used <a href="https://jscompress.com/" rel="nofollow">https://jscompress.com/</a> to minify the JavaScript.</li>
+<li>You should notice the <code>&quot;#{MyApp.ConfigValue1}&quot;</code> string literal has been left intact by the minifier.</li>
+<li>Pack the HTML file into a new package and name the file MyApp.1.0.1.zip. This new version of our package has been enhanced with minified sources and will be much faster to download!</li>
+<li>Push the new package into the built-in repository, create a new release and deploy that release. You should see the same result as before, but now with minified sources!</li>
+</ol>
+<p><strong>MyApp.html with minified JavaScript</strong></p>
+<pre><code class="language-js">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+angular.module(&quot;myApp&quot;,[]).constant(&quot;myConfig&quot;,{configValue1:&quot;#{MyApp.ConfigValue1}&quot;,configValue2:&quot;#{MyApp.ConfigValue2}&quot;}).controller(&quot;myCtrl&quot;,function(a,b){a.message=&quot;Hello world!&quot;,a.myConfig=b});
+&lt;/script&gt;
+&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+  &lt;h1&gt;{{message}}&lt;/h1&gt;
+  &lt;p&gt;&lt;em&gt;These configuration values were set by Octopus Deploy:&lt;/em&gt;&lt;/p&gt;
+  &lt;p&gt;ConfigValue1: {{myConfig.configValue1}}&lt;/p&gt;
+  &lt;p&gt;ConfigValue2: {{myConfig.configValue2}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="DeployingHTMLandJavaScriptApplications-Nextsteps">Next steps</h2>
+<p>From this point you could build on this example, pushing configuration variables through from Octopus to your application. You may want to consider how granular you make each constant, perhaps combining related configuration data into the same JSON object.</p>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class='disabled'><a href='/docs/guides/deploying-html-and-javascript-applications'>Latest</a></li><li class=''><a href='/docs/v/3.14/guides/deploying-html-and-javascript-applications'>3.14</a></li><li class=''><a href='/docs/v/3.13/guides/deploying-html-and-javascript-applications'>3.13</a></li><li class=''><a href='/docs/v/3.12/guides/deploying-html-and-javascript-applications'>3.12</a></li><li class=''><a href='/docs/v/3.11/guides/deploying-html-and-javascript-applications'>3.11</a></li><li class=''><a href='/docs/v/3.10/guides/deploying-html-and-javascript-applications'>3.10</a></li><li class=''><a href='/docs/v/3.9/guides/deploying-html-and-javascript-applications'>3.9</a></li><li class=''><a href='/docs/v/3.8/guides/deploying-html-and-javascript-applications'>3.8</a></li><li class=''><a href='/docs/v/3.7/guides/deploying-html-and-javascript-applications'>3.7</a></li><li class=''><a href='/docs/v/3.6/guides/deploying-html-and-javascript-applications'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

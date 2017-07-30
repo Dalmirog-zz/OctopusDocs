@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Docker run with networking</h1><p>To demonstrate some of the basic functionality provided by the new Docker steps, we will walk through the process of starting two containers that can communicate with each other through their own isolated network. The first container will simply start and run a non exiting process, while the second container will ping the first to demonstrate connectivity. As part of this we will set up an external feed to DockerHub and include a cleanup task to remove existing containers. We will use a <strong>Linux</strong> machine which has the latest version of Docker installed and has network access to retrieve images from Docker Hub.</p>
+<div class="alert alert-danger"><p><strong>Windows Containers on Windows Server</strong><br />
+While Docker Containers on Windows Server (not Docker for Windows through Docker Toolbox) are now generally available, this feature appears to still have some issues with key areas such as networking. This is an area that the Docker and Windows team are actively improving. While deploying a Windows Container to a Tentacle target on Windows should work, you may experience issues trying to use custom networks or volumes. We would suggest using Linux targets via SSH for the time being until this feature stabilizes.</p>
+</div>
+<h2 id="Dockerrunwithnetworking-ConfiguringaDockerhost">Configuring a Docker host</h2>
+<p>If you already have a working Linux machine with Docker Engine installed you can use that once you have configured it as an <a href="/docs/v/3.8/deployment-targets/ssh-targets">SSH Target</a> in Octopus.</p>
+<p>If not, you will need to configure a host for our sample application. We recommend using <strong>Ubuntu Trusty 14.04 LTS</strong> or <strong>Ubuntu Xenial 16.04 LTS</strong> for this sample.</p>
+<ol>
+<li>Install Ubuntu</li>
+<li>Configure your Ubuntu machine as an <a href="/docs/v/3.8/deployment-targets/ssh-targets">SSH Target</a> in Octopus - <a href="/docs/v/3.8/guides/node-on-nix-deployments/configuring-target-machine">this guide may be helpful</a>
+<ul>
+<li>Make sure this Deployment Target has a <a href="/docs/v/3.8/key-concepts/machine-roles">Machine Role</a> like <strong>docker-test</strong>. We will configure the Docker steps to target this role.</li>
+</ul>
+</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865822.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865822.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<ol start="3">
+<li>Configure Docker Engine on your Ubuntu machine - <a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/" rel="nofollow">https://docs.docker.com/engine/installation/linux/ubuntulinux/</a></li>
+<li>Configure a Docker Group and grant Octopus the ability to command the Docker Daemon - <a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group" rel="nofollow">https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group</a></li>
+</ol>
+<p>You should now be ready to deploy Docker containers to your Ubuntu machine using Octopus Deploy!</p>
+<h2 id="Dockerrunwithnetworking-ConfiguringaDockerHubfeed">Configuring a DockerHub feed</h2>
+<p>Next we are going to create a connection to the official Docker Hub registry so we can use those images for this demonstration.</p>
+<ol>
+<li>Go to <span class="path">Configuration ➜ Features</span> and enable the <strong>Docker</strong> feature (if you haven't already done so)
+<a href='#' data-featherlight='/docs/images/5670973/5865818.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865818.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+<li>Go to <span class="path">Library ➜ External Feeds ➜ Add Feed</span>.</li>
+<li>Notice the presence of the new <em>Feed Type</em> drop down and select <strong>Docker Container Registry</strong></li>
+<li><em>S</em>et the <em>Name</em> to something meaningful like <strong>DockerHub</strong></li>
+<li>Set the <em>URL</em> to the Docker Hub API url of <strong><a href="https://index.docker.io/v1" rel="nofollow">https://index.docker.io</a></strong>.</li>
+<li>Since the registry is accessible from both the Octopus Server and the SSH endpoint using the same URL, we can leave the <em>RegistryPath</em> field blank.</li>
+<li>Similarly since we will only be using <strong>public official images</strong> from Docker Hub we don't need to provide any credentials.
+<em>If you wanted to access any <strong>public unofficial images</strong> you would need to provide your Docker Hub login details.</em></li>
+<li>Click <strong>Save and Test</strong> to make sure the connection to the Docker Hub registry is working.
+<a href='#' data-featherlight='/docs/images/5670973/5865796.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865796.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865819.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865819.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="Dockerrunwithnetworking-ConfiguringtheDockerProject">Configuring the Docker Project</h2>
+<h3 id="Dockerrunwithnetworking-Step1:DockerNetworkStep">Step 1: Docker Network Step</h3>
+<p>In a newly created project, click <span class="path">Add Step ➜ Create A Docker Network</span>. This step manages parameters that will be passed to the <code>docker network create</code> command.</p>
+<ol>
+<li>Ensure the step is set to run on the <strong>docker-server</strong> role (targeting the Docker host we created earlier)</li>
+<li>Set the <em>Name</em> to <strong>Custom Network</strong>. <em>This name will be referenced later on in subsequent steps that will link the containers to the created network.</em></li>
+<li>Leave the <em>Driver</em> as the default <strong>Bridge</strong> type. <em>This network type allows containers on the same network to immediately communicate with each other, while keeping them isolated from external networks.</em></li>
+<li>Set the <em>Subnet</em> to <code>172.28.6.0/24</code>. *You can optionally provide IP ranges that will define the Subnet, IP Range, and Gateway used by the network. In this case we have opted to just set up the subnet using the <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" rel="nofollow">CIDR format </a><strong><code>172.28.6.0/24</code> meaning that connected containers will be assigned IP addresses in the range <code>172.28.6.0-172.28.6.255</code></strong>.
+<a href='#' data-featherlight='/docs/images/5670973/5865821.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865821.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+</ol>
+<div class="alert alert-info"><p><strong>docker network support</strong><br />
+Keep in mind that as the Docker Network Octopus step simply wraps the <code>docker network</code> command, you will need to ensure your installed version of docker-engine supports this command. This was provided as of the <a href="https://github.com/docker/docker/blob/master/CHANGELOG.md#networking-10" class="alert-link" rel="nofollow">1.9.0 Docker Engine release</a>.</p>
+</div>
+<div class="alert alert-success"><p>For detailed information about Docker networking and additional arguments you can provide, we suggest reading the <a href="https://docs.docker.com/engine/userguide/networking/" class="alert-link" rel="nofollow">Understand Docker container networks</a> and the <a href="https://docs.docker.com/engine/reference/commandline/network_create/" class="alert-link" rel="nofollow">network create</a> Docker documentation.</p>
+</div>
+<h3 id="Dockerrunwithnetworking-Step2:CreatingContainer1">Step 2: Creating Container 1</h3>
+<p>From the project process page, add a new step via <span class="path">Add Step ➜ Run A Docker Container</span>. This step helps you configure the parameters that will be passed to the <a href="https://docs.docker.com/engine/reference/commandline/run/" rel="nofollow">docker run</a> command.</p>
+<ol>
+<li>Set the <em>Name</em> to <strong>First Server</strong></li>
+<li>Ensure the step is set to run on the <strong>docker-server</strong> role (targeting the Docker host and Network we created earlier)</li>
+<li>For the <em>Package Feed</em> the <strong>DockerHub</strong> feed. <em>You may notice the only options are Docker feeds, like the one we created earlier. This is because only Docker feeds will be shown for Docker-specific steps.</em></li>
+<li>Set the <em>Package ID</em> as <strong>busybox</strong>. <em>Note the package auto-complete should search for and return all public images from Docker Hub with the word &quot;busybox&quot;. Since we want to use the official image, select the one that is not preceded by a registry prefix. busybox is a tiny linux distro that, at just over 1 MB, will serve as a sufficient image for this feature demonstration.</em>
+<a href='#' data-featherlight='/docs/images/5670973/5865801.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865801.png' class="img-fluid center" height="auto" width="200" alt='' /></a></li>
+<li>Under the <em>Networking</em> section, select the <em>Network Type</em>as <strong>Custom Network</strong> and provide the name as <strong><code>#{Octopus.Action[Custom Network].Output.Docker.Inspect.Name}</code></strong>.</li>
+</ol>
+<div class="alert alert-success"><p><strong>Using output variables from Docker Inspect</strong><br />
+Once Octopus creates the network in the previous step, it invokes the <a href="https://docs.docker.com/engine/reference/commandline/network_inspect/" class="alert-link" rel="nofollow">docker network inspect</a> command and stores the JSON output in an <a href="/docs/v/3.8/deploying-applications/variables/output-variables" class="alert-link">output variable</a>. This data contains all the information about the network and we will use the network name to signify to the container that it should connect to that network. All the values of the inspect command can be accessed with standard <a href="/docs/v/3.8/reference/variable-substitution-syntax" class="alert-link">variable substitution syntax</a>.</p>
+</div>
+<ol start="6">
+<li>Set <em>Network Alias</em> to <strong>FirstServer</strong>. <em>This will make it easier to identify this specific container from another container in the network.</em></li>
+<li>Skip down to the <em>Additional Arguments</em> section, and set the <em>Command</em> to be <code>/bin/sh -c &quot;ping localhost&quot;</code>. <em>This arbitrary script instructs the linux instance to ping itself forever, keeping the container alive for this demonstration.</em></li>
+</ol>
+<div class="alert alert-info"><p><strong>Container entry point</strong><br />
+The command itself is arbitrary, what is important is that we start a process that keeps running to keep the container alive. Since Octopus starts these containers in <a href="https://docs.docker.com/engine/reference/run/#/detached--d" class="alert-link" rel="nofollow">detached mode</a>, the containers by default are configured to exit when the root process used to run the container exits. This ping command will be treated as the root process and by not stopping, means that the container itself will keep running until we tell it to stop (or the pinging itself fails and terminates). Typically you would be less likely to actually supply <a href="https://docs.docker.com/engine/reference/run/#cmd-default-command-or-options" class="alert-link" rel="nofollow">this command argument</a> through Octopus as you would probably supply a startup command or entry point in your <a href="https://docs.docker.com/engine/reference/builder/" class="alert-link" rel="nofollow">DockerFile</a> when you create your image.</p>
+</div>
+<ol start="8">
+<li>Save the first container configuration and move on to creating the second container step.</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865797.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865797.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Dockerrunwithnetworking-Step3:CreatingContainer2">Step 3: Creating Container 2</h3>
+<p>Now we will create a second container, exactly the same as the first using busybox, but this container will connect to the first container to demonstrate how containers can communicate in a docker network.</p>
+<ol>
+<li>Create a new Run Docker Container step (very much like the first one, but notice some subtle differences):
+<ul>
+<li>Set the <em>Name</em> to <strong>Second Server</strong></li>
+<li>Set the R<em>oles</em> to<strong>docker-server</strong></li>
+<li>Set the <em>Package feed</em> to <strong>DockerHub</strong></li>
+<li>Set the <em>Package ID</em> to <strong>busybox</strong></li>
+<li>Set the <em>Network Type</em> to <strong>Custom Network</strong>using the name <strong><code>#{Octopus.Action[Custom Network].Output.Docker.Inspect.Name}</code></strong></li>
+</ul>
+</li>
+<li>Skip down to the <em>Variables</em> section and under <em>Explicit Variable Mapping</em>, add a variable named <strong>PING_COUNT</strong> to a value of <strong>#</strong>. <em>This will demonstrate the mechanism for getting variables from Octopus into the container at run time via environment variables.</em></li>
+</ol>
+<div class="alert alert-danger"><p><strong>Getting Octopus variables into your container</strong><br />
+The best way of getting variables from Octopus into the container is still under discussion. For our first release, keeping in line with the Docker ethos we are just providing the ability to pass through Octopus variables into the container which are made available as environment variables inside the container. This method has some limitations such as requiring explicit inclusion of each variable required, proper escaping of special characters and line breaks as well as exposing sensitive variables to all processes within that container.</p>
+<p>Some other options include passing through all variables to the container through an environment file or pulling files out of the container, performing variable replacement, and then pushing the files back in using the layered file system, before starting the container up.</p>
+<p>We would love to hear about your thoughts and feedback on these options!</p>
+</div>
+<ol start="3">
+<li>This time set the <em>Command</em> parameter to <strong><code>/bin/sh -c &quot;ping -c \$PING_COUNT FirstServer | grep PING; sleep 5s&quot;</code></strong>. <em>As with Container A, this will start the container with the ping process however in this case it will only ping a limited number of times before exiting with the first line showing the IP address of the server being called.  A 5 second sleep is also appended for demonstration purposes so that we can extract the container information before it exits.</em>
+<a href='#' data-featherlight='/docs/images/5670973/5865798.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865798.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+<li>Save this step</li>
+</ol>
+<h3 id="Dockerrunwithnetworking-Step4:ConfigurethePingCountvariable">Step 4: Configure the PingCount variable</h3>
+<p>Now we need to create a single Project Variable used by the second container to control how many pings to perform before exiting.</p>
+<ol>
+<li>Create a project variable named <strong>PingCount</strong> and give it a value of <strong>2</strong> so that two pings take place before the container exits.
+<a href='#' data-featherlight='/docs/images/5670973/5865823.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865823.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+</ol>
+<h3 id="Dockerrunwithnetworking-Step5:DockerStop">Step 5: Docker Stop</h3>
+<p>Although we could deploy a project as many times as we want with a Docker run step, increasing the number of running containers, you may want to stop containers run from previous deployments before or after creating a new container from the same Image. For this reason we have included the <em>Stop a Docker Resource</em> deployment step. This allows you to configure previous containers or networks to stop (and optionally remove them) before or after any other step in your deployment process. In this case because we are creating a network with a specific subnet, to avoid clashes with networks created as a result of a redeployment we will simply remove everything previously created from this project before the network is created. In your case however, you may want to create multiple stop steps throughout your process before or after each specific container starts. Provide the details as shown below and rearrange to run as the first step of the deployment.</p>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865799.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865799.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Dockerrunwithnetworking-Step5:ScriptStep-AccessingContainerDetails">Step 5: Script Step - Accessing Container Details </h3>
+<p>As one final step we will write out to the logs the IP addresses of the containers that were created, as well as show the ping results of the second container from the Docker logs.</p>
+<ol>
+<li>Create a new script step</li>
+<li>Set the <em>Name</em> to <strong>Get Log</strong></li>
+<li>Set the <em>Roles</em> to <strong>docker-server</strong></li>
+<li>Set the <em>Type</em> to <strong>Bash</strong></li>
+<li>Provide the following code which uses a mixture of advanced Octopus variable parsing, and directly calling the <code>docker logs</code> command:</li>
+</ol>
+<pre><code class="language-bash">echo First Server IP: #{Octopus.Action[First Server].Output.Docker.Inspect.NetworkSettings.Networks[#{Octopus.Action[Custom Network].Output.Docker.Inspect.Name}].IPAddress}
+echo Second Server IP: #{Octopus.Action[Second Server].Output.Docker.Inspect.NetworkSettings.Networks[#{Octopus.Action[Custom Network].Output.Docker.Inspect.Name}].IPAddress}
+echo &quot;Second Server Logs: &quot; $(docker logs #{Octopus.Action[Second Server].Output.Docker.Inspect.Name})
+</code></pre>
+<div class="alert alert-info"><p><strong>Advanced variable parsing and inspection</strong><br />
+Note that to access the IP address of the two containers we are using the results of the inspect information that is extracted right after they are created. This also means that if your container configuration changes after they were created, the inspect information may be outdated. In addition since containers can be added to multiple networks, to get the IP address corresponding to the network we have created, we also need to index the network using an inner variable that resolves to the network name.</p>
+<p>To see the full results of the inspect command try echoing out the variable just up to the <em>Inspect</em> section (i.e. <code>#{Octopus.Action[First Server].Output.Docker.Inspect}</code> ). This will return a large JSON blob that the variable parser, <a href="https://github.com/OctopusDeploy/Octostache" class="alert-link" rel="nofollow">Octostache</a>, is <a href="https://octopus.com/blog/octostache-json-formatting" class="alert-link">now able to traverse.</a></p>
+</div>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865800.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865800.png' class="img-fluid center" height="auto" width="700" alt='' /></a></p>
+<h2 id="Dockerrunwithnetworking-CreatingaReleaseofourDockerProject">Creating a Release of our Docker Project</h2>
+<p>From this point forward the deployment will follow the same process that you should be comfortable with: Good old Octopus Releases.</p>
+<p>Go ahead and create a release of your Docker Project.</p>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865824.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865824.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>Creating releases based on Docker Images</strong><br />
+When creating a release, the Octopus Server will query the Docker registry to retrieve the list of tags for the image selected in the run steps. The tags are then parsed to a Semantic Version where tags that cannot be parsed will be excluded. You will be given the option to select the version of the container that will be used in the deployment.</p>
+<p>Note that &quot;latest&quot; in Octopus is the &quot;highest&quot; <a href="http://semver.org/" class="alert-link" rel="nofollow">Semantic Version</a> and not the image tagged with &quot;latest&quot;.</p>
+</div>
+<h2 id="Dockerrunwithnetworking-DeployingaReleaseofourDockerProject">Deploying a Release of our Docker Project</h2>
+<p>Looking at the results of a deployment you will see some logging indicating the work being performed.</p>
+<div class="alert alert-info"><p><strong>Having problems deploying to Docker?</strong><br />
+Usually this will come down to problems with the Octopus Account you configured accessing the Docker daemon with messages like this:</p>
+<p><code>Cannot connect to the Docker daemon. Is the docker daemon running on this host?</code></p>
+<p>Following the steps here to grant the Octopus Account access to the Docker daemon: <a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group" class="alert-link" rel="nofollow">https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group</a></p>
+</div>
+<p>To identify containers and networks that need to be stopped, all resources created through an Octopus deployment are configured with <a href="https://docs.docker.com/engine/reference/builder/#label" rel="nofollow">labels</a> that contain the project Id, release Id, deployment Id and if applicable, tenant Id. When the clean step is then run, the available networks and containers are then filtered based on the parameters supplied in the step configuration. When a container is flagged to be removed first all linked containers will be disconnected from that network. For containers, all relevant containers are first stopped via the <a href="https://docs.docker.com/engine/reference/commandline/stop/" rel="nofollow">docker stop</a> command and then removed. This provides your process time to gracefully end by receiving the SIGTERM signal before being killed.</p>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865805.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865805.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>The Docker equivalent of the &quot;Package Acquisition&quot; phase involves retrieving the images from the registry using the <a href="https://docs.docker.com/engine/reference/commandline/pull/" rel="nofollow">docker pull</a> command on the target itself. This ensures that the target has the latest copy of that image however due to the nature of containers this will incur next to no bandwidth if it is already up to date. If a newer version of an image is retrieved than is available locally, then it is possibly that only a single &quot;<a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/#/images-and-layers" rel="nofollow">layer</a>&quot; of the image needs to be retrieved and so again, the bandwidth usage is minimized. Note that if credentials are required for the registry, then a <a href="https://docs.docker.com/engine/reference/commandline/login/" rel="nofollow">docker login</a> command is first issued. This will use either the hostname of the registry URI provided, or the <em>Registry Path</em> explicitly provided when setting up the feed. There is currently no &quot;push to target&quot; capability for images in Docker steps.</p>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865804.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865804.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>When creating a network or container, the name and Id as simply echoed to the standard logs. The verbose logs will show the docker version on the target, the full docker command being called and if successful, the results of the inspect command that are passed to an output variable.</p>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865803.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865803.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>In the case of our simple scenario above, the final step should display the IP address of the containers, within the bound of the subnet specified by the configured network, as well as a line from the second container's ping command showing connectivity to the first container.</p>
+<p><a href='#' data-featherlight='/docs/images/5670973/5865802.png' class='zoom' data-title=''><img src='/docs/images/5670973/5865802.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/guides/docker/docker-run-with-networking'>Latest</a></li><li class=''><a href='/docs/v/3.14/guides/docker/docker-run-with-networking'>3.14</a></li><li class=''><a href='/docs/v/3.13/guides/docker/docker-run-with-networking'>3.13</a></li><li class=''><a href='/docs/v/3.12/guides/docker/docker-run-with-networking'>3.12</a></li><li class=''><a href='/docs/v/3.11/guides/docker/docker-run-with-networking'>3.11</a></li><li class=''><a href='/docs/v/3.10/guides/docker/docker-run-with-networking'>3.10</a></li><li class=''><a href='/docs/v/3.9/guides/docker/docker-run-with-networking'>3.9</a></li><li class='disabled'><a href='/docs/v/3.8/guides/docker/docker-run-with-networking'>3.8</a></li><li class=''><a href='/docs/v/3.7/guides/docker/docker-run-with-networking'>3.7</a></li><li class=''><a href='/docs/v/3.6/guides/docker/docker-run-with-networking'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

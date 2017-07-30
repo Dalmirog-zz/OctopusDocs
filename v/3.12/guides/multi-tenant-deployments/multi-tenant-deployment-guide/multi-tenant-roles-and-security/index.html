@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Multi-tenant roles and security</h1><p>Previous step: <a href="/docs/v/3.12/guides/multi-tenant-deployments/multi-tenant-deployment-guide/designing-a-multi-tenant-upgrade-process">Designing a multi-tenant upgrade process</a></p>
+<p>This page describes several common approaches to structuring roles and teams to secure a multi-tenant Octopus instance. Using the permissions system in Octopus you can configure internal team members with different roles who interact with tenants in different ways. You can also configure Octopus to provide access for your external customers. This page explores several of those roles for both internal and external parties.</p>
+<div class="alert alert-success"><p>To get the most out of this guide you will need to understand how to <a href="/docs/v/3.12/administration/managing-users-and-teams" class="alert-link">manage users and teams</a> and how to <a href="/docs/v/3.12/administration/managing-users-and-teams/user-roles" class="alert-link">work with custom roles</a>. Octopus provides an expressive permissions system and you can customize the security configuration to your particular scenario.</p>
+</div>
+<h2 id="Multi-tenantrolesandsecurity-AccountManager">Account Manager</h2>
+<p>Toby is a member of the sales team and manages the relationships for several of your largest customers. In his role Toby:</p>
+<ul>
+<li>is the main point of contact for specific tenants</li>
+<li>manages the details/variables of specific tenants and keeps them up to date</li>
+<li>works with customers to deploy releases to their environments on their behalf</li>
+</ul>
+<h3 id="Multi-tenantrolesandsecurity-Step1:ConfiguretheTenantprojectdeployerrole">Step 1: Configure the Tenant project deployer role</h3>
+<p>Firstly we will create a custom role with the permissions required to deploy releases into tenant environments.</p>
+<div class="alert alert-info"><p>This role is loosely based on the built-in <strong>Project deployer</strong> role but removing the permissions to edit the project.</p>
+</div>
+<div class="alert alert-success"><p>It is usually a good idea to build smaller roles that can be composed together into a team to provide easier management of your team permissions. In this example we are creating a single role to grant all of the required permissions to keep the example simple. In this case you could create a <strong>Tenant project viewer</strong> role and a <strong>Tenant project deployer</strong> role and combine them together into a single team.</p>
+</div>
+<ol>
+<li>In <span class="path">Configuration ➜ Teams ➜ Roles</span> click <strong>Add custom role</strong> and call it <strong>Tenant project deployer</strong></li>
+<li>Set the description to <strong>Tenant project deployers can deploy releases on behalf of tenants</strong></li>
+<li>Choose the following permissions:
+<ol>
+<li>AccountView</li>
+<li>ArtifactView</li>
+<li>DeploymentCreate</li>
+<li>DeploymentView</li>
+<li>EnvironmentView</li>
+<li>EventView</li>
+<li>FeedView</li>
+<li>InterruptionView</li>
+<li>InterruptionViewSubmitResponsible</li>
+<li>LibraryVariableSetView</li>
+<li>LifecycleView</li>
+<li>MachinePolicyView</li>
+<li>MachineView</li>
+<li>ProcessView</li>
+<li>ProjectGroupView</li>
+<li>ProjectView</li>
+<li>ReleaseView</li>
+<li>TaskCancel</li>
+<li>TaskCreate</li>
+<li>TaskView</li>
+<li>TaskViewLog</li>
+<li>TeamView</li>
+<li>TenantEdit</li>
+<li>TenantView</li>
+<li>VariableView</li>
+<li>VariableViewUnscoped</li>
+</ol>
+</li>
+</ol>
+<h3 id="Multi-tenantrolesandsecurity-Step2:ConfiguretheAccountManagersteam">Step 2: Configure the Account Managers team</h3>
+<p>Now we will create a team for all the Account Managers and add the role we created in the last step.</p>
+<ol>
+<li>In <span class="path">Configuration ➜ Teams</span> click Add team and call it <strong>Account Managers</strong></li>
+<li>Click the <strong>Add role</strong> button and add the <strong>Tenant project deployer role</strong></li>
+<li>Click the <strong>Add member</strong> button and add any user accounts that will form part of this team</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5669453/5865792.png' class='zoom' data-title=''><img src='/docs/images/5669453/5865792.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Multi-tenantrolesandsecurity-Step3:Test!">Step 3: Test!</h3>
+<p>Now it's time to test the results of our configuration.</p>
+<ol>
+<li>Create a test user account and add them to your new <strong>Account Managers</strong> team.</li>
+<li>Sign in as the test user and see the results.</li>
+<li>Experiment with what you can and can't do.</li>
+</ol>
+<p>You will probably notice you can see all tenants, projects and environments. We will experiment with reducing scope this in the next steps.</p>
+<h3 id="Multi-tenantrolesandsecurity-Step4:Reducescopeoftheteam">Step 4: Reduce scope of the team</h3>
+<p>Quite often you will want to allocate certain tenants to a team, or restrict which projects/environments a team can access. Using the team you just created you can experiment with reducing scope. You can restrict the team to a specific list of tenants, projects and/or environments.</p>
+<p><a href='#' data-featherlight='/docs/images/5669453/5865793.png' class='zoom' data-title=''><img src='/docs/images/5669453/5865793.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="Multi-tenantrolesandsecurity-Infrastructuremanager">Infrastructure manager</h2>
+<p>Bob is a member of IT infrastructure team and he manages all the virtual servers in the cloud. His only interaction with tenants is to associate them with the appropriate <a href="/docs/v/3.12/deployment-targets">deployment targets</a> and <a href="/docs/v/3.12/key-concepts/environments">environments</a>.  He should have read-only access to tenant details required, and have the ability to manage deployment targets and accounts. This time we will configure the team using a composition of built-in and custom roles.</p>
+<h3 id="Multi-tenantrolesandsecurity-Step1:ConfiguretheTenantviewerrole">Step 1: Configure the Tenant viewer role</h3>
+<p>Similarly to the previous example we will create a custom role with minimum permissions, in this case for viewing tenant details. Later on we will create a team that combines multiple roles together to achieve the desired effect.</p>
+<ol>
+<li>Create a role called <strong>Tenant viewer</strong> with the following permissions:</li>
+<li>TenantView</li>
+</ol>
+<h3 id="Multi-tenantrolesandsecurity-Step2:ConfiguretheTenantEnvironmentManagersteam">Step 2: Configure the Tenant Environment Managers team</h3>
+<p>In this example we will create a new team and combine multiple roles together to achieve the desired result.</p>
+<ol>
+<li>Create a new team called Tenant Environment Managers</li>
+<li>Add the Tenant viewer and Environment manager roles to the team
+<a href='#' data-featherlight='/docs/images/5669453/5865794.png' class='zoom' data-title=''><img src='/docs/images/5669453/5865794.png' class="img-fluid center" height="auto" width="500" alt='' /></a></li>
+<li>Add any specific tenant/environment scoping that makes sense</li>
+<li>Add any specific members to the team that make sense</li>
+</ol>
+<h3 id="Multi-tenantrolesandsecurity-Step3:Test!.1">Step 3: Test!</h3>
+<p>Similarly to the previous example assign a user account, sign in, and test out the resulting behavior. You should notice you can configure new or existing deployment targets including tenant configuration as we described in <a href="/docs/v/3.12/guides/multi-tenant-deployments/multi-tenant-deployment-guide/designing-a-multi-tenant-hosting-model">Designing a multi-tenant hosting model</a>.</p>
+<h3 id="Multi-tenantrolesandsecurity-Step4:Reducescopeoftheteam.1">Step 4: Reduce scope of the team</h3>
+<p>You can also reduce the scope of this team to a certain set of tenants or environments as that makes sense for your scenario. For example, a team might be allocated to manage infrastructure for a particular group of tenants.</p>
+<h2 id="Multi-tenantrolesandsecurity-Self-service">Self-service</h2>
+<p>You may want to provide your actual customers with their own user account in Octopus and the ability to see a personalized dashboard, and potentially perform their own upgrades. This is possible by using the techniques we've already used by scoping a team to a single tenant.</p>
+<div class="alert alert-success"><p>You may want to provide the capabilities of Octopus Deploy to your customers without them knowing it's Octopus under the covers. Octopus is built API-first, and you can use the <a href="/docs/v/3.12/api-and-integration/octopus-rest-api" class="alert-link">Octopus API</a> to build your own web user interface over the top of Octopus to provide all the capabilities of Octopus with your own user experience.</p>
+</div>
+<h3 id="Multi-tenantrolesandsecurity-Step1:Configureateamforthetenant">Step 1: Configure a team for the tenant</h3>
+<p>Firstly we need to create a team with scope limited to the single tenant.</p>
+<ol>
+<li>Create a new team called <strong>Self-Service: <TenantName></strong> like<strong>Self-Service: Beverley Sanchez</strong> in our example.</li>
+<li>Add any roles you desire, in our example we're providing the tenant with the <strong>Tenant project deployer</strong> role</li>
+<li>Scope the team to a single tenant</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5669453/5865795.png' class='zoom' data-title=''><img src='/docs/images/5669453/5865795.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Multi-tenantrolesandsecurity-Step2:Test!">Step 2: Test!</h3>
+<p>Just like the previous examples, create a user account and test Octopus behaves as you'd expect based on the permissions you've granted to the team. You may want to consider limiting scope to a subset of environments or projects depending on your scenario.</p>
+<h3 id="Multi-tenantrolesandsecurity-Step3:Configureuseraccountsforthetenant">Step 3: Configure user accounts for the tenant</h3>
+<p>Now you can create standard Octopus <a href="/docs/v/3.12/administration/managing-users-and-teams">user accounts</a> and add them as members of the tenant-specific team.</p>
+<h2 id="Multi-tenantrolesandsecurity-Nextsteps">Next steps</h2>
+<p>It's important to note that these are example roles and they may not suit every company.  The good news is that they're a great starting point and can be customized to suit different scenarios.</p>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>Latest</a></li><li class=''><a href='/docs/v/3.14/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.14</a></li><li class=''><a href='/docs/v/3.13/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.13</a></li><li class='disabled'><a href='/docs/v/3.12/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.12</a></li><li class=''><a href='/docs/v/3.11/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.11</a></li><li class=''><a href='/docs/v/3.10/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.10</a></li><li class=''><a href='/docs/v/3.9/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.9</a></li><li class=''><a href='/docs/v/3.8/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.8</a></li><li class=''><a href='/docs/v/3.7/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.7</a></li><li class=''><a href='/docs/v/3.6/guides/multi-tenant-deployments/multi-tenant-deployment-guide/multi-tenant-roles-and-security'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>

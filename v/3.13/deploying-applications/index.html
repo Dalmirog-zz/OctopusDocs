@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home - Octopus Deploy</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Octopus Deploy end user documentation">
+<meta name="author" content="Octopus Deploy Pty. Ltd.">
+<link href="https://octopus.com/Content/css?v=gINWHNhE0iHcMgkubiWTdi_Y0omBd0nNmJWowMG1gJM1" rel="stylesheet">
+<link rel="stylesheet" href="https://octopus.com/Content/Print.css" type="text/css" media="print">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - Octopus Deploy">
+<meta property="og:description" content="Octopus Deploy end user documentation">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/content/resources/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/content/resources/Octopus-96x96.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>.btnCopy{position:absolute;right:0;top:0;}.copyToClipboard{position:relative;}@media (min-width: 1200px) {.container{max-width:1600px;width:100%;}}</style>
+</head>
+<body class="">
+ 
+<script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-24461753-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 
+ 
+<script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0021/2568.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ 
+<div class="top-and-splash">
+<div id="top">
+<div id="header">
+<div class="navbar navbar-fixed-top">
+<div class="">
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/">Octopus Deploy</a>
+</div>
+<div id="nav-main" class='navbar-collapse collapse'>
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/why">
+Why Octopus
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company/about">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class=""><a href="/blog">Blog</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="middle">
+<div id="main">
+<div class="stripe stripe-blue">
+<div class="container">
+<span class="page-title">Octopus Deploy Documentation</span>
+</div>
+</div>
+<div style="padding-left: 16px;" class="stripe stripe-white">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<div id="doc_content" class="main-content"><h1>Deploying applications</h1><p>Now that you've <a href="/docs/v/3.13/installation">installed Octopus and Tentacle</a>, and you've created your <a href="/docs/v/3.13/key-concepts/environments">environments</a> and a <a href="/docs/v/3.13/key-concepts/projects">project</a>, and your applications have been <a href="/docs/v/3.13/packaging-applications">packaged for deployment</a>, it's time to look at deploying applications with Octopus Deploy.</p>
+<h2 id="Deployingapplications-Deploymentprocess">Deployment process</h2>
+<p>Each project has a <strong>deployment process</strong>, which can be found on the <strong>Process</strong> tab of the project in the Octopus web portal. The deployment process is like a recipe. It defines the set of instructions that will be run repeatably each time the project is deployed. The deployment process can have one or more steps, and the steps can be ordered using the <strong>Reorder steps</strong> link.</p>
+<p><a href='#' data-featherlight='/docs/images/3048075/3277619.png' class='zoom' data-title=''><img src='/docs/images/3048075/3277619.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-info"><p>By default, the list of steps in a deployment process are run sequentially, one after another.</p>
+<p><a href='#' data-featherlight='/docs/images/3048075/5865849.png' class='zoom' data-title=''><img src='/docs/images/3048075/5865849.png' class="img-fluid center" height="auto" width="300" alt='' /></a><br />
+Also by default, a step that is configured to execute across multiple deployment targets will execute across all of those deployment targets in parallel.</p>
+<p><a href='#' data-featherlight='/docs/images/3048075/5865850.png' class='zoom' data-title=''><img src='/docs/images/3048075/5865850.png' class="img-fluid center" height="auto" width="300" alt='' /></a></p>
+<p>For more information, see the section on <a href="/docs/v/3.13/key-concepts/projects/deployment-processes" class="alert-link">simple and advanced deployment processes</a> and <a href="/docs/v/3.13/patterns/rolling-deployments" class="alert-link">rolling deployments</a>.</p>
+</div>
+<h3 id="Deployingapplications-Addingsteps">Adding steps</h3>
+<p>Steps can be added to the deployment process using the <strong>Add step</strong> button. There are many different types of steps supported by Octopus and we are adding more specific steps all the time. For more information, see the <a href="/docs/v/3.13/deploying-applications/adding-steps">add step</a> section.</p>
+<div class="alert alert-success"><p>If a step you want isn't built-in you should check out the community contributed <a href="/docs/v/3.13/deploying-applications/step-templates" class="alert-link">step templates</a>. If you still don't find it, don't forget: <em>Octopus can do anything, as long as you can script the instructions</em>. Maybe you could contribute your scripts back to the community?</p>
+</div>
+<p><a href='#' data-featherlight='/docs/images/5671696/5865900.png' class='zoom' data-title=''><img src='/docs/images/5671696/5865900.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="Deployingapplications-Commonstepproperties">Common step properties</h2>
+<p>All steps have a name, which is used to identify the step.</p>
+<div class="alert alert-success"><p><strong>What's in a name?</strong><br />
+Be careful when changing names! Octopus commonly uses names as a convenient identity or handle to things, and the steps and actions in a deployment process are special in that way. For example you can use <a href="/docs/v/3.13/deploying-applications/variables/output-variables" class="alert-link">output variables</a> to chain steps together, and you use the name as the indexer for the output variable. For example: <code>#{Octopus.Action[StepA].Output.TestResult}</code></p>
+</div>
+<h3 id="Deployingapplications-Conditions">Conditions</h3>
+<p>Steps can also have conditions. You can restrict a step so that it only runs when deploying to specific <a href="/docs/v/3.13/key-concepts/environments">environments</a> (e.g., an Email step that only runs on production deployments).</p>
+<p><a href='#' data-featherlight='/docs/images/3048075/3277617.png' class='zoom' data-title=''><img src='/docs/images/3048075/3277617.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>If you have created some <a href="/docs/v/3.13/key-concepts/projects/channels">channels</a>, you can also specify whether a step runs only when deploying a release through specific channels (e.g., a Script step that only runs for deployments through certain channels to configure extra telemetry). <em>This will only appear if you have created one or more non-default channels.</em></p>
+<p><a href='#' data-featherlight='/docs/images/3048075/3278573.png' class='zoom' data-title=''><img src='/docs/images/3048075/3278573.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>You can also specify whether a step runs only when previous steps are successful (default), when a previous step fails, or always.</p>
+<p><a href='#' data-featherlight='/docs/images/3048075/3277616.png' class='zoom' data-title=''><img src='/docs/images/3048075/3277616.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p>You can achieve very complex deployment processes in Octopus by leveraging advanced concepts like parallel execution of steps and rolling deployments. Learn more about <a href="/docs/v/3.13/key-concepts/projects/deployment-processes" class="alert-link">simple and complex deployment processes</a>.</p>
+</div>
+<h2 id="in-this-section">In this section</h2>
+<p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
+<ul>
+<li><a href="/docs/v/3.13/deploying-applications/adding-steps">Adding steps</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/deploying-packages">Deploying packages</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/configuration-files">Configuration files</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/custom-installation-directory">Custom Installation Directory</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/iis-websites-and-application-pools">IIS Websites and Application Pools</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/windows-services">Windows Services</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/custom-scripts">Custom scripts</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/delta-compression-for-package-transfers">Delta compression for package transfers</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/email-notifications">Email notifications</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/step-templates">Step Templates</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/sql-server-databases">SQL Server databases</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/guided-failures">Guided failures</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/manual-intervention-and-approvals">Manual intervention and approvals</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/deploying-mobile-applications">Deploying Mobile Applications</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/scheduled-deployments">Scheduled Deployments</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/automatic-release-creation">Automatic Release Creation</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/automatic-deployment-triggers">Automatic Deployment Triggers</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/run-steps-in-parallel">Run steps in parallel</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/artifacts">Artifacts</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/variables">Variables</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/deploying-to-service-fabric">Deploying to Service Fabric</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/deploying-to-azure">Deploying to Azure</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/substitute-variables-in-files">Substitute Variables in Files</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/certificates">Certificates</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/blocking-deployments">Blocking Deployments</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/deploying-virtual-hard-drives">Deploying Virtual Hard Drives</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/docker-containers">Docker Containers</a></li>
+<li><a href="/docs/v/3.13/deploying-applications/performance">Performance</a></li>
+</ul>
+</div>
+</div>
+<div class="col-md-3" style="padding-bottom: 100px">
+<div class="panel panel-info documentation">
+<div class="panel-heading">
+<div class="panel-title">
+<a href="/docs">Documentation</a>
+<div style="margin-top: -3px; margin-bottom: 0" class="dropdown pull-right">
+<button class="btn btn-info btn-xs dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/deploying-applications'>Latest</a></li><li class=''><a href='/docs/v/3.14/deploying-applications'>3.14</a></li><li class='disabled'><a href='/docs/v/3.13/deploying-applications'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications'>3.11</a></li><li class=''><a href='/docs/v/3.10/deploying-applications'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications'>3.6</a></li></ul>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<form action="/search" method="get"> <div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input id="context" name="context" type="hidden" value="docs">
+<input class="form-control search-query" id="q" name="q" placeholder="Search" type="text" value="">
+</div>
+</form>
+<div class="sidebar">
+<ul>
+<li>
+<a class=" " href="/docs/getting-started">Getting started</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/installation">Installation</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/key-concepts">Key Concepts</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/packaging-applications">Packaging applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deployment-targets">Deployment targets</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/deploying-applications">Deploying applications</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/api-and-integration">API and Integration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/patterns">Patterns</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/administration">Administration</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/reference">Reference</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/how-to">How to</a>
+</li>
+<li>
+<a class=" has-children" href="/docs/guides">Guides</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/index.md" class="tutorial" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom">
+<div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/testimonials">Testimonials</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+<br>
+<a href="/company/team">Team</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+<br>
+<a href="/docs/how-to">
+How to
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="http://help.octopusdeploy.com/discussions/questions" class="external">
+Questions
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="http://feeds.feedburner.com/OctopusDeploy"><i class="fa fa-fw fa-rss" style='color: orange'></i> Octopus Deploy Blog</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://octopus.com/bundles/jquery?v=G3cMxyHQisnfgHNXEHQ14yIRldK7D4FD5TlU9xTesBI1"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js" integrity="sha256-zTDNEf7J+bPdCSndhy8DppFjxfRGG5BFJW5obpl0XQs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function ($) {
+        var ts;
+
+        $("div.navbar-fixed-top").autoHidingNavbar();
+            
+        $.featherlight.defaults.closeOnClick = 'anywhere';
+        $.featherlight.defaults.afterOpen = function () {
+            ts = + new Date();
+            $(window).on('scroll', closeFeatherlightOnScroll);
+        };
+
+        function closeFeatherlightOnScroll(event) {
+            var nowTs = + new Date();
+
+            if (ts + 500 > nowTs) {
+                return;
+            }
+            $.featherlight.close(event);
+            $(window).off('scroll', closeFeatherlightOnScroll);
+        }
+    })($);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc_content > h1, #doc_content > h2, #doc_content > h3, #doc_content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+ 
+ 
+</body>
+</html>
