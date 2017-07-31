@@ -149,7 +149,7 @@ You may not need to keep the entire history of releases - we record the entire h
 <p>Instead, we decided to put this control into your hands, allowing you to control how many tasks each Octopus Server node will execute concurrently. This way, you can measure server metrics for <strong>your own deployments</strong>, and then increase/decrease the task cap appropriately. Administrators can change the task cap in <span class="path">Configuration ➜ Nodes</span>.</p>
 <p>The default task cap is set to <code>5</code> out of the box. Based on our load testing, this offered the best balance of throughput and stability for most scenarios.</p>
 <p>See this <a href="https://octopus.com/blog/running-task-cap-and-high-availability">blog post</a> for more details on why we chose this approach.</p>
-<h3 id="using-the-script-consoleoctopus-high-availability">Octopus High Availability</h3>
+<h3 id="octopus-high-availability">Octopus High Availability</h3>
 <p>You can scale out your Octopus Server by implementing a <a href="/docs/v/3.8/administration/high-availability">High Availability</a> cluster. In addition to linearly increasing the performance of your cluster, you can perform certain kinds of maintenance on your Octopus Servers without incurring downtime.</p>
 <h2 id="tips">Tips</h2>
 <p>Follow these tips to tune and maintain the performance of your Octopus:</p>

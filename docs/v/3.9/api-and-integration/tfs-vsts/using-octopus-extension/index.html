@@ -114,22 +114,154 @@ Pricing
 <div class="container">
 <div class="row">
 <div class="col-md-9">
-<div id="doc_content" class="main-content"><h1>Using the Octopus Extension</h1><p>If you are using Visual Studio Team Services (VSTS) (formerly VSO) or an on-premises Team Foundation Server (TFS) 2017 Update 1 (or newer) you can use the <a href="https://github.com/OctopusDeploy/OctoTFS" rel="nofollow">open-source</a> extension for Octopus <a href="https://marketplace.visualstudio.com/items?itemName=octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">available in the VSTS marketplace</a>.</p>
-<div class="alert alert-success"><p>Take a look at our end-to-end guide on <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task" class="alert-link">using the Octopus extension for VSTS and TFS</a>.</p>
-</div>
-<p>For older versions of TFS, <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task/extension-compatibility">refer to the guide on version compatibility</a>.</p>
-<p>Using this extension, you can make use of the following additional Build and Release tasks:</p>
+<div id="doc_content" class="main-content"><h1>Using the Octopus Extension</h1><p>The new structure of Team Foundation Build gives us a great opportunity to integrate better with your build and release processes from Visual Studio Team Services (VSTS) (formerly VSO) and on-premises Team Foundation Server (TFS) servers. We've created a <a href="https://marketplace.visualstudio.com/items/octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">public extension</a> you can install into your VSTS instance or TFS 2017 server.  This extension makes the following tasks available to your Build and Release processes:</p>
 <ul>
-<li><a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task#UsetheTeamFoundationBuildCustomTask-package-application-stepAddaPackageApplicationstep">Package</a> your built application (<a href="/docs/v/3.9/packaging-applications">See more about packaging here</a>)</li>
-<li><a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task#UsetheTeamFoundationBuildCustomTask-push-packages-stepAddaPushPackage(s)toOctopusStep">Push</a> those packages to the Octopus <a href="/docs/v/3.9/packaging-applications/package-repositories/pushing-packages-to-the-built-in-repository">built-in repository</a></li>
-<li><a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task#UsetheTeamFoundationBuildCustomTask-AddaCreateOctopusReleaseStep">Create releases</a> in Octopus</li>
-<li><a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task#UsetheTeamFoundationBuildCustomTask-AddaDeployOctopusReleaseStep">Deploy releases</a> to your environments</li>
-<li><a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task#UsetheTeamFoundationBuildCustomTask-AddaPromoteOctopusReleaseStep">Promote releases</a> between environments</li>
+<li>Packaging your application</li>
+<li>Pushing your package to Octopus</li>
+<li>Creating a Release in Octopus</li>
+<li>Deploying a Release to an Environment in Octopus</li>
+<li>Promoting a Release from one Environment to the next</li>
 </ul>
+<p>You can also view the status of a project in an environment using the Dashboard Widget.</p>
+<p>On this page:</p>
+<div class='toc'>
+  <ul>
+    <li class='toc-h2'><a href='#installing-the-extension'>Installing the extension</a></li>
+    <li class='toc-h2'><a href='#add-a-connection-to-octopus-deploy'>Add a Connection to Octopus Deploy</a>
+      <ul>
+        <li class='toc-h3'><a href='#permissions-required-by-the-api-key'>Permissions required by the API key</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#PackageyourApplicationandPushtoOctopus'>Package your Application and Push to Octopus</a>
+      <ul>
+        <li class='toc-h3'><a href='#PackageyourApplicationandPushtoOctopus-UsingOctoPack'>Using OctoPack to Create and Push a Package</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#UsetheTeamFoundationBuildCustomTask-AddStepstoyourBuildorReleaseProcess'>Add Steps to your Build or Release Process</a>
+      <ul>
+        <li class='toc-h3'><a href='#UsetheTeamFoundationBuildCustomTask-AddStepstoyourBuildorReleaseProcess-packageUsingExtension'>Add a Package Application step</a>
+          <ul>
+            <li class='toc-h4'><a href='#UsetheTeamFoundationBuildCustomTask-PublishPackageArtifact'>Publish Package Artifact</a></li>
+          </ul>
+        </li>
+
+        <li class='toc-h3'><a href='#UsetheTeamFoundationBuildCustomTask-push-packages-stepAddaPushPackage(s)toOctopusStep'>Add a Push Package(s) to Octopus Step</a></li>
+        <li class='toc-h3'><a href='#UsetheTeamFoundationBuildCustomTask-AddaCreateOctopusReleaseStep'>Add a Create Octopus Release Step</a></li>
+        <li class='toc-h3'><a href='#UsetheTeamFoundationBuildCustomTask-AddaDeployOctopusReleaseStep'>Add a Deploy Octopus Release Step</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#UsetheTeamFoundationBuildCustomTask-AddaPromoteOctopusReleaseStep'>Add a Promote Octopus Release Step</a></li>
+    <li class='toc-h2'><a href='#using-the-dashboard-widget'>Using the Dashboard Widget</a></li>
+    <li class='toc-h2'><a href='#in-this-section'>In this section</a></li>
+  </ul>
+</div>
+<p>We've open-sourced the <a href="https://github.com/OctopusDeploy/OctoTFS" rel="nofollow">OctoTFS repository in GitHub</a> if you'd like to contribute.</p>
+<h2 id="installing-the-extension">Installing the extension</h2>
+<p>If you're using <strong>Visual Studio Team Services (VSTS) or on-premises Team Foundation Server (TFS) 2017 (or newer)</strong> you can simply <a href="https://marketplace.visualstudio.com/items/octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">install the extension from the marketplace</a> and follow the instructions below.</p>
+<p>If you're using an earlier version of TFS, see the <a href="/docs/v/3.9/api-and-integration/tfs-vsts/using-octopus-extension/extension-compatibility">Extension Compatibility documentation</a> for details on where to get a compatible extension.</p>
+<p>After installing the extension, follow the below steps to get it running for your build.</p>
+<div class="alert alert-info"><p><strong>Manually installing the extension (not recommended)</strong><br />
+If you want to make changes to the build task that might not be appropriate for everyone, you can download and manually install the build task yourself. See <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task/manually-install-the-build-task" class="alert-link">Manually install the Build Task (not recommended)</a> for details.</p>
+</div>
+<h2 id="add-a-connection-to-octopus-deploy">Add a Connection to Octopus Deploy</h2>
+<p>Hover over the <strong>Manage Project</strong> cog in the top right corner of the project screen in Visual Studio Team Services, and click the <strong>Services</strong> link.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/services-setting.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/services-setting.jpg' class="img-fluid center" height="auto" width="206" alt='' /></a></p>
+<p>Click <strong>New Service Endpoint</strong> and choose <strong>Octopus Deploy</strong>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/new-octopus-connection.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/new-octopus-connection.jpg' class="img-fluid center" height="auto" width="241" alt='' /></a></p>
+<p>Specify a <strong>Connection Name</strong> and specify the <strong>Server Url</strong> to your Octopus Server (including the port if required).</p>
+<p>Enter a valid <a href="/docs/v/3.9/how-to/how-to-create-an-api-key">Octopus API Key</a> in the <strong>API Key</strong> field.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/new-octopus-connection-2.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/new-octopus-connection-2.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>After you've saved the connection, it should be available from the Octopus Deploy Build Tasks.</p>
+<h3 id="permissions-required-by-the-api-key">Permissions required by the API key</h3>
+<p>The API key you choose needs to have sufficient permissions to perform all the tasks specified by your builds.</p>
+<p>For the tasks themselves, these are relatively easy to determine (for example, creating a Release for Project A will require release creation permissions for that project).</p>
+<p>For the VSTS UI elements provided by the extension, the API key must also have the below permissions. If one or more are missing, you should still be able to use the extension, however the UI may encounter failures and require you to type values rather than select them from dropdowns. The dashboard widget will not work at all without its required permissions.</p>
+<p>If there are scope restrictions (e.g. by Project or Environment) against the account, the UI should still work, but results will be similarly restricted.</p>
+<ul>
+<li>ProjectView (for project dropdowns)</li>
+<li>EnvironmentView (for environment dropdowns)</li>
+<li>TenantView (for tenant dropdowns)</li>
+<li>ProcessView (for channel dropdowns)</li>
+<li>DeploymentView (for the dashboard widget)</li>
+<li>TaskView (for the dashboard widget)</li>
+</ul>
+<h2 id="PackageyourApplicationandPushtoOctopus">Package your Application and Push to Octopus</h2>
+<p>To integrate with Octopus Deploy, an application must be packaged into either a NuGet or Zip package, and pushed to Octopus Deploy (or any NuGet repository).</p>
+<div class="alert alert-info"><p>We strongly recommend reading the <a href="/docs/v/3.9/api-and-integration/tfs-vsts/using-octopus-extension/build-versions-in-team-build" class="alert-link">Build Versions in Team Build</a> guide for advice around build and package versions.</p>
+</div>
+<p>There are two options for packaging and pushing:</p>
+<ul>
+<li>Use the <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task">Package Application</a> and <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task">Push Package to Octopus</a> Steps added by this extension.</li>
+<li><a href="#PackageyourApplicationandPushtoOctopus-UsingOctoPack">Use OctoPack</a> as part of your build process.</li>
+</ul>
+<h3 id="PackageyourApplicationandPushtoOctopus-UsingOctoPack">Using OctoPack to Create and Push a Package</h3>
+<p>Follow the <a href="/docs/v/3.9/packaging-applications/nuget-packages/using-octopack">OctoPack instructions</a> to add OctoPack to your project and configure the msbuild arguments.</p>
+<p>In the new Team Foundation build process, the arguments below should be in the <strong>MSBuild Arguments</strong> field for the <strong>Visual Studio Build</strong> or <strong>MSBuild</strong> step. Here is a list of the available variables that you can use from the Microsoft <a href="https://msdn.microsoft.com/Library/vs/alm/Build/scripts/variables" rel="nofollow">Build use variables</a>.</p>
+<pre><code class="language-powershell">/p:RunOctoPack=true /p:OctoPackPublishPackageToHttp=http://path.to.octopus/nuget/packages /p:OctoPackPublishApiKey=API-ABCDEFGHIJLKMNOP
+</code></pre>
+<p><a href='#' data-featherlight='/docs/images/3048587/3278377.png' class='zoom' data-title=''><img src='/docs/images/3048587/3278377.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h2 id="UsetheTeamFoundationBuildCustomTask-AddStepstoyourBuildorReleaseProcess">Add Steps to your Build or Release Process</h2>
+<div class="alert alert-info"><p><strong>Build or Release steps</strong><br />
+The following steps can all be added to either your Build or Release process, depending on which you prefer.</p>
+<p>To add a step to your Build process, edit your Build Definition and click <strong>Add build step</strong>.</p>
+<p>To add a step to your Release process, edit your Release Definition, select the Environment, and click <strong>Add tasks</strong>.</p>
+</div>
+<h3 id="UsetheTeamFoundationBuildCustomTask-AddStepstoyourBuildorReleaseProcess-packageUsingExtension">Add a Package Application step</h3>
+<div class="alert alert-info"><p><strong>If not using OctoPack</strong><br />
+This step is only required if you are not <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task" class="alert-link">using OctoPack</a> to create your package.</p>
+</div>
+<p>Add a step to your Build or Release process, choose <strong>Package</strong>, click <strong>Add</strong> next to the <strong>Package Application</strong> task.</p>
 <p><a href='#' data-featherlight='/docs/images/3048587/add-package-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/add-package-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/3048587/configure-package-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/configure-package-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p><strong>Package versioning</strong><br />
+In the above image, the package version is defined as $(Build.BuildNumber).
+It's a common (and handy) practice to do this, and set the Build Number to be a format that corresponds to a valid NuGet version number.</p>
+<p>We recommend you read the <a href="/docs/v/3.9/api-and-integration/tfs-vsts/using-octopus-extension/build-versions-in-team-build" class="alert-link">Build Versions in Team Build</a> document for full details on versioning builds and packages.</p>
+</div>
+<p>See the <a href="https://marketplace.visualstudio.com/items?itemName=octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">Extension Marketplace page</a> for a description of the fields (or the <a href="/docs/v/3.9/packaging-applications/nuget-packages/using-octo.exe">Octo.exe command-line options</a> for more details).</p>
+<h4 id="UsetheTeamFoundationBuildCustomTask-PublishPackageArtifact">Publish Package Artifact</h4>
+<p>If your Package Application step is part of your Build process and your Push Packages to Octopus step is part of your Release process, then you will need to add a <span class="path">Utility ➜ Publish</span> Artifact step to make the package available to the Release process.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/5865475.png' class='zoom' data-title=''><img src='/docs/images/3048587/5865475.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/3048587/5865476.png' class='zoom' data-title=''><img src='/docs/images/3048587/5865476.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="UsetheTeamFoundationBuildCustomTask-push-packages-stepAddaPushPackage(s)toOctopusStep">Add a Push Package(s) to Octopus Step</h3>
+<p>Add a step to your Build or Release process, choose <strong>Package</strong>, click <strong>Add</strong> the <strong>Push Packages(s) to Octopus</strong> task.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/add-push-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/add-push-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/3048587/configure-push-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/configure-push-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>See the <a href="https://marketplace.visualstudio.com/items?itemName=octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">Extension Marketplace page</a> for a description of the fields (or the <a href="/docs/v/3.9/api-and-integration/octo.exe-command-line/pushing-packages">Octo.exe command-line options</a> for more details).</p>
+<h3 id="UsetheTeamFoundationBuildCustomTask-AddaCreateOctopusReleaseStep">Add a Create Octopus Release Step</h3>
+<p>Add a step to your Build or Release process, choose <strong>Deploy</strong>, click <strong>Add</strong> next to the <strong>Create Octopus Release</strong> task.</p>
 <p><a href='#' data-featherlight='/docs/images/3048587/add-createrelease-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/add-createrelease-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
-<p>You can also view the status of a deployment in any environment using the <a href="/docs/v/3.9/guides/use-the-team-foundation-build-custom-task#Using-The-Dashboard-Widget">Dashboard widget</a>:</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/configure-createrelease-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/configure-createrelease-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>See the <a href="https://marketplace.visualstudio.com/items?itemName=octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">Extension Marketplace page</a> for a description of the fields (or the <a href="/docs/v/3.9/api-and-integration/octo.exe-command-line/creating-releases">Octo.exe command-line options</a> for more details).</p>
+<p>Enabling the Include Changeset Comments and/or Include Work Items options will result in release notes which include deep-links into the TFS Work Items and Changesets.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/3278502.png' class='zoom' data-title=''><img src='/docs/images/3048587/3278502.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="UsetheTeamFoundationBuildCustomTask-AddaDeployOctopusReleaseStep">Add a Deploy Octopus Release Step</h3>
+<p>Add a step to your Build or Release process, choose <strong>Deploy</strong>, click <strong>Add</strong> next to the <strong>Deploy Octopus Release</strong> task.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/add-deploy-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/add-deploy-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/3048587/configure-deploy-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/configure-deploy-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>See the <a href="https://marketplace.visualstudio.com/items?itemName=octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">Extension Marketplace page</a> for a description of the fields (or the <a href="/docs/v/3.9/api-and-integration/octo.exe-command-line/deploying-releases">Octo.exe command-line options</a> for more details).</p>
+<h2 id="UsetheTeamFoundationBuildCustomTask-AddaPromoteOctopusReleaseStep">Add a Promote Octopus Release Step</h2>
+<p>Add a step to your Build or Release process, choose <strong>Deploy</strong>, click <strong>Add</strong> next to the <strong>Promote Octopus Release</strong> task.</p>
+<p><a href='#' data-featherlight='/docs/images/3048587/add-promote-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/add-promote-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><a href='#' data-featherlight='/docs/images/3048587/configure-promote-step.jpg' class='zoom' data-title=''><img src='/docs/images/3048587/configure-promote-step.jpg' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>See the <a href="https://marketplace.visualstudio.com/items?itemName=octopusdeploy.octopus-deploy-build-release-tasks" rel="nofollow">Extension Marketplace page</a> for a description of the fields (or the <a href="/docs/v/3.9/api-and-integration/octo.exe-command-line/deploying-releases">Octo.exe command-line options</a> for more details).</p>
+<h2 id="using-the-dashboard-widget">Using the Dashboard Widget</h2>
+<p>On your VSTS dashboard, click the <code>+</code> icon to add a new widget, then search for &quot;Octopus Deploy&quot;. Add the <strong>Octopus Deploy Status</strong> widget.</p>
+<p>Hover over the widget and click the wrench icon to configure the widget.</p>
+<p>Select an Octopus Deploy connection (see the <a href="#add-a-connection-to-octopus-deploy">Add a Connection</a> section for details), a Project, and an Environment.</p>
+<p><img src='/docs/api-and-integration/tfs-vsts/using-octopus-extension/widget-setup-preview.jpg' class="img-fluid center" alt='' /></p>
+<p>The widget should refresh to show the current status of the selected project in the selected environment.</p>
 <p><img src='/docs/images/3048587/multiple-widget-preview.jpg' class="img-fluid center" alt='' /></p>
+<h2 id="in-this-section">In this section</h2>
+<p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
+<ul>
+<li><a href="/docs/v/3.9/api-and-integration/tfs-vsts/using-octopus-extension/build-versions-in-team-build">Build versions and Packaging in Team Build</a></li>
+<li><a href="/docs/v/3.9/api-and-integration/tfs-vsts/using-octopus-extension/extension-compatibility">VSTS and TFS Extension version compatibility</a></li>
+<li><a href="/docs/v/3.9/api-and-integration/tfs-vsts/using-octopus-extension/manually-install-the-build-task">Manually install the Build Task (not recommended)</a></li>
+</ul>
 </div>
 </div>
 <div class="col-md-3" style="padding-bottom: 100px">
