@@ -114,7 +114,7 @@ Pricing
 <div class="container">
 <div class="row">
 <div class="col-md-9">
-<div id="doc_content" class="main-content"><h1>Using Octopack and Octo.exe with XAML-based builds in TFS</h1><h2 id="TeamFoundationServer(TFS)-PackagingapplicationswhenbuildingwithTeamBuild">Packaging applications when building with Team Build (XAML-based builds)</h2>
+<div id="doc_content" class="main-content"><h1>Using Octopack and Octo.exe with XAML-based builds in TFS</h1><h2 id="Packaging">Packaging applications when building with Team Build (XAML-based builds)</h2>
 <p>When Team Build builds your solution, you will need to package your applications ready to be deployed. This can be done by <a href="/docs/v/3.12/packaging-applications/nuget-packages/using-octopack">installing OctoPack</a> on the projects that you plan to deploy.</p>
 <p>When defining your build definition, you can expand the <strong>Advanced</strong> properties to specify custom arguments for MSBuild. At a minimum, you'll need to pass:</p>
 <pre><code>/p:RunOctoPack=true
@@ -134,7 +134,10 @@ There are plenty of other properties that you can pass here. For example, you ca
 To find your Octopus NuGet repository URL, see the <a href="/docs/v/3.12/packaging-applications/package-repositories" class="alert-link">Package repositories</a> section.</p>
 <p>To create an API key, see the <a href="/docs/v/3.12/how-to/how-to-create-an-api-key" class="alert-link">How to create an API key</a> section.</p>
 </div>
-<h2 id="TeamFoundationServer(TFS)-Deployingautomaticallyafterabuild">Deploying automatically after a build</h2>
+<h2 id="Deployingautomaticallyafterabuild">Deploying automatically after a build</h2>
+<h3 id="Deployingautomaticallyafterabuild-Using-OctoExe">Using Octo.exe (recommended)</h3>
+<p>bla bla use <code>Octo.exe</code></p>
+<h3 id="Deployingautomaticallyafterabuild-Using-AutomaticDeployments">Using Lifecycles and automatic deployments</h3>
 <p>Version 2.6 of Octopus Deploy introduced <a href="/docs/v/3.12/key-concepts/lifecycles">Lifecycles </a>and <a href="/docs/v/3.12/deploying-applications/automatic-release-creation">Automatic Release Creation</a>. You can use these two features to automatically deploy to one or more environments when a new package is pushed to the built-in NuGet repository.</p>
 <p>First, turn on Automatic Release Creation to create a new release when your package is pushed. Then, using the project Lifecycle configure one or more environments in your first phase to deploy automatically when a new release is available.</p>
 <p>By adding these features to the steps above, you can set up complete end-to-end continuous integration:</p>
@@ -144,8 +147,10 @@ To find your Octopus NuGet repository URL, see the <a href="/docs/v/3.12/packagi
 <li>Automatic Release Creation will create a new Release</li>
 <li>Your Lifecycle will trigger a deployment when the release is created</li>
 </ol>
-<h2 id="TeamFoundationServer(TFS)-Walkthrough">Walkthrough</h2>
+<h2 id="VideoWalkthrough">Vide Walkthrough</h2>
 <p>This 6 minute video walks through the above steps to create an end-to-end continuous deployment process for Team Foundation Server.</p>
+<div class="alert alert-info"><p>While the video was recorded using Octopus <code>2.6</code>, it is still valid for Octopus 3.X.</p>
+</div>
 <iframe src="//fast.wistia.net/embed/iframe/jmnuxifuyo" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="360" style="margin: 30px"></iframe>
 </div>
 </div>
