@@ -213,6 +213,7 @@ Did you know you can use XML Config Transforms on any XML files including the <c
 <pre><code class="language-xml">&lt;files&gt;
   &lt;file src=&quot;bin\*.dll&quot; target=&quot;bin&quot; /&gt;
   &lt;file src=&quot;Content\*.css&quot; target=&quot;Content&quot; /&gt;
+  &lt;file src=&quot;Files\**\*.*&quot; target=&quot;Files&quot; exclude=&quot;Files\SuperSecret.cert&quot; /&gt;
 &lt;/files&gt;
 </code></pre>
 <div class="alert alert-warning"><p>If the <code>&lt;files&gt;</code> section exists, OctoPack by default won't attempt to automatically add any extra files to your package, so you'll need to be explicit about which files you want to include. You can override this behavior with <code>/p:OctoPackEnforceAddingFiles=true</code> which will instruct OctoPack to package a combination of files using its conventions, and those defined by your <code>&lt;files&gt;</code> section.</p>
@@ -518,7 +519,7 @@ Done building target &quot;OctoPack&quot; in project &quot;MyApplication.Web.csp
 Latest
 <span class="caret"></span>
 </button>
-<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/packaging-applications/nuget-packages/using-octopack'>Latest</a></li><li class='disabled'><a href='/docs/v/3.14/packaging-applications/nuget-packages/using-octopack'>3.14</a></li><li class=''><a href='/docs/v/3.13/packaging-applications/nuget-packages/using-octopack'>3.13</a></li><li class=''><a href='/docs/v/3.12/packaging-applications/nuget-packages/using-octopack'>3.12</a></li><li class=''><a href='/docs/v/3.11/packaging-applications/nuget-packages/using-octopack'>3.11</a></li><li class=''><a href='/docs/v/3.10/packaging-applications/nuget-packages/using-octopack'>3.10</a></li><li class=''><a href='/docs/v/3.9/packaging-applications/nuget-packages/using-octopack'>3.9</a></li><li class=''><a href='/docs/v/3.8/packaging-applications/nuget-packages/using-octopack'>3.8</a></li><li class=''><a href='/docs/v/3.7/packaging-applications/nuget-packages/using-octopack'>3.7</a></li><li class=''><a href='/docs/v/3.6/packaging-applications/nuget-packages/using-octopack'>3.6</a></li></ul>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/packaging-applications/nuget-packages/using-octopack'>Latest</a></li><li class=''><a href='/docs/v/3.15/packaging-applications/nuget-packages/using-octopack'>3.15</a></li><li class='disabled'><a href='/docs/v/3.14/packaging-applications/nuget-packages/using-octopack'>3.14</a></li><li class=''><a href='/docs/v/3.13/packaging-applications/nuget-packages/using-octopack'>3.13</a></li><li class=''><a href='/docs/v/3.12/packaging-applications/nuget-packages/using-octopack'>3.12</a></li><li class=''><a href='/docs/v/3.11/packaging-applications/nuget-packages/using-octopack'>3.11</a></li><li class=''><a href='/docs/v/3.10/packaging-applications/nuget-packages/using-octopack'>3.10</a></li><li class=''><a href='/docs/v/3.9/packaging-applications/nuget-packages/using-octopack'>3.9</a></li><li class=''><a href='/docs/v/3.8/packaging-applications/nuget-packages/using-octopack'>3.8</a></li><li class=''><a href='/docs/v/3.7/packaging-applications/nuget-packages/using-octopack'>3.7</a></li><li class=''><a href='/docs/v/3.6/packaging-applications/nuget-packages/using-octopack'>3.6</a></li></ul>
 </div>
 </div>
 </div>

@@ -146,44 +146,31 @@ Pricing
 <div class="col-md-9">
 <div id="doc_content" class="main-content"><h1>SSH Targets</h1><p>You may want to target your deployment for non-windows machines where you don't have the ability to run a full Tentacle. In cases such as this, a SSH Target is the next best thing.</p>
 <h2 id="SSHTargets-Topology">Topology</h2>
-<p>In the standard-model the Octopus server talks to the Tentacle (ignoring the distinction between between <a href="/docs/v/3.8/installation/installing-tentacles/polling-tentacles">Polling</a> and <a href="/docs/v/3.8/installation/installing-tentacles/listening-tentacles">Listening</a>) who in turn delegates the actual deployment work to Calamari, which contains all the information regarding conventions and deployments. Calamari then executes the scripts and the Tentacle passes back to the Server the task progress, logs and artifacts.</p>
+<p>In the standard-model the Octopus server talks to the Tentacle (ignoring the distinction between between <a href="/docs/v/3.8/installation/installing-tentacles/polling-tentacles">Polling</a> and <a href="/docs/v/3.8/installation/installing-tentacles/listening-tentacles">Listening</a>) who in turn delegates the actual deployment work to <a href="/docs/v/3.8/api-and-integration/calamari">Calamari</a>, which contains all the information regarding conventions and deployments. Calamari then executes the scripts and the Tentacle passes back to the Server the task progress, logs and artifacts.</p>
 <p><img src='/docs/images/3048063/3277601.png' class="img-fluid center" alt='' /></p>
-<p>As of Octopus Deploy 3.0, Calamari can now also run on mono and therefore any Unix-like OS that supports mono. In this set up the Octopus Server will communicate via SSH and execute bash scripts to invoke Calamari in much the same way that would be done by a Tentacle.</p>
+<p>The Octopus Server will communicate with the target server via SSH and execute bash scripts to invoke Calamari, in much the same way that would be done by a Tentacle.</p>
 <p><img src='/docs/images/3048063/3277602.png' class="img-fluid center" alt='' /></p>
 <p>The great thing about this approach is that by using effectively the same Calamari code base, it should continue to have almost complete feature parity!</p>
 <h2 id="SSHTargets-Requirements">Requirements</h2>
-<p>We support any Unix-like OS that can run mono, and we currently run automated tests against the following platforms:</p>
-<ul>
-<li>Centos 7.3 + Mono 4.4.2</li>
-<li>Debian 8.7 + Mono 4.4.2</li>
-<li>Fedora 23 + Mono 4.4.2</li>
-<li>FreeBSD 10.3 + Mono 4.6.2</li>
-<li>Mac OSX 10.12.5 + Mono 4.6.1</li>
-<li>openSUSE 13.2 + Mono 4.6.0</li>
-<li>Redhat 7.2 + Mono 4.4.2</li>
-<li>SUSE LES 12 SP2 + Mono 4.6.0</li>
-<li>Ubuntu 12.04 LTS + Mono 3.12.1</li>
-<li>Ubuntu 14.04 LTS + Mono 4.0.5</li>
-<li>Ubuntu 16.04 LTS + Mono 4.6.1</li>
-</ul>
-<div class="alert alert-warning"><p><strong>F# and ScriptCS Support</strong><br />
-Please note that F# and ScriptCS support are only available with Mono 4 and above.</p>
-</div>
 <p>We generally expect deployments with Octopus to work with practically any distribution so long as a few key prerequisites are met. Of course, if you notice it failing on some other popular distribution then please drop us a line.</p>
 <p>To use this feature there are the following requirements:</p>
 <ul>
 <li>It must be accessible using SSH and SFTP</li>
 <li>The <code>$HOME</code> environment variable must be available</li>
 <li><code>bash</code> 3+ is available at <code>/bin/bash</code>. (It does not need to be the user’s default shell.)</li>
-<li><code>mono-complete</code> 3.10+ is available (you can find instructions on how to install mono on the related <a href="http://www.mono-project.com/docs/getting-started/install/linux/" rel="nofollow">mono docs page</a>).</li>
 <li><code>tar</code> is available - for unpacking calamari</li>
 <li><code>base64</code> is available - for encoding/decoding variables</li>
 <li><code>grep</code> is available - Everyone needs grep!</li>
 </ul>
 <p>The health check that takes places once you configure the target should check for these requirements and let you know if any dependencies are missing.</p>
-<div class="alert alert-warning"><p><strong>SSL Certificates in Mono</strong><br />
-If you configure your deployment such that the target pulls down the package itself directly from the NuGet repository, the correct SSL certificates need to also be available to mono. By default, mono pre 3.12 didn’t trust any certificates and the root certs in question would need to be either manually imported, or synced with Mozilla’s list by invoking <code>mozroots</code> or <code>cert-sync</code>. Thankfully mono's latest builds perform this step during installation so it should “just work”. See <a href="http://www.mono-project.com/docs/faq/security/" class="alert-link" rel="nofollow">mono’s security FAQ</a> for more details.</p>
+<div class="alert alert-warning"><p>You may see the error message <code>&quot;Required command 'mono' is not available&quot;.</code> when connecting to a Mac OSX instance via SSH, despite the fact that mono is installed and can be executed from a local shell. This is because the environment exposed to a SSH session can differ from the environment used by a local shell.</p>
+<p>To fix this, create a file called <code>.bashrc</code> in the home folder of the user that is connecting to the Mac OSX instance. If the remote user is called <code>octopus</code>, then this file will be located at <code>/Users/octopus/.bashrc</code>.</p>
+<p>Then modify the path environment variable inside the <code>.bashrc</code> file to include the location of the mono executable e.g.</p>
+<pre><code>export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
+</code></pre>
 </div>
+<h3 id="net">.NET</h3>
+<p>Calamari runs on .NET. For deployments to *nix operating-systems the <a href="/docs/v/3.8/deployment-targets/ssh-targets/mono-calamari">Mono framework</a> is required.</p>
 <h2 id="SSHTargets-Footprint">Footprint</h2>
 <p>Getting just the right naming pattern is a tricky balance. In an effort to keep some similarity with the Windows based Tentacle, we have gone with the following approach:</p>
 <p>The root directory for all Octopus work is <code>$HOME/.octopus</code> and all packages are deployed to a relative location similar to that done by a normal Tentacle at <code>$HOME/.octopus/Applications/#{instance}/#{environment}/#{package}/#{version}</code>.
@@ -210,10 +197,12 @@ Since version 3.3, Octopus Deploy has <a href="/docs/v/3.8/packaging-application
 <p>See our <a href="/docs/v/3.8/guides/node-on-nix-deployments" class="alert-link">Node.js sample</a> for an example of deploying to a Linux target</p>
 </div>
 <p><strong>Features</strong></p>
-<p>The vast majority of Octopus features are supported, with the exception of IIS steps and Windows services. To support windows services under Mono, we suggest using <a href="https://linux.die.net/man/1/mono-service" rel="nofollow">mono-service</a>.</p>
+<p>The vast majority of Octopus features are supported when deploying to SSH targets.</p>
+<p>Keep in mind the platform differences such as file paths or separators, line breaks, environment variables and security considerations.</p>
+<p>Obviously Windows-specific features such as IIS and Windows Services are not supported when deploying to non-Windows targets.</p>
 <p><strong>Scripts</strong></p>
 <p>As yet we do not support running PowerShell scripts on Linux, either on their own as a script task, or as pre-deploy/deploy/post-deploy steps. We do however support running bash scripts on SSH endpoints. Conversely, bash is not yet supported on normal Windows Tentacles, even with Cygwin available.</p>
-<p>The deployment process will check for scripts either provided in the deployment step itself or embedded in the package, looking for <code>PreDeploy.sh</code>, <code>Deploy.sh</code> and <code>PostDeploy.sh</code> (names are case-sensitive). If these scripts are found, Calamari will then execute their contents at the appropriate time. Again an interesting side-effect of using Calamari on mono is that any C# or F# scripts should continue to function just like with normal Tentacles. Keep in mind the platform differences such as file paths or separators, line breaks, environment variables and security considerations.</p>
+<p>The deployment process will check for scripts either provided in the deployment step itself or embedded in the package, looking for <code>PreDeploy.sh</code>, <code>Deploy.sh</code> and <code>PostDeploy.sh</code> (names are case-sensitive). If these scripts are found, Calamari will then execute their contents at the appropriate time. </p>
 <p>If you want to start some background task in an script that runs while the deployment continues to complete, you should become familiar with the <code>screen</code> command. For example, running</p>
 <pre><code class="language-bash">echo &quot;Going to Sleep...&quot;
 screen -d -m sleep 20
@@ -237,14 +226,11 @@ echo &quot;I'm Awake!&quot;
 </code></pre>
 </blockquote>
 <p>which results in the server retrieving that file, at the end of that step. Keep in mind that this means the file must be accessible over SFTP using the same credentials as that used during execution.</p>
-<div class="alert alert-danger"><p><strong>XML Transformation Only Supported on Mono 4.2.3+</strong><br />
-In addition to not supporting PowerShell scripts it should also be noted that <strong>XML transformations are only supported on Mono 4.2.3 and above</strong>. Prior to this, variable substitutions will still work without a problem, but the XML transformations will not as they rely on some code in mono that was broken. For details around this bug, please see <a href="https://bugzilla.xamarin.com/show_bug.cgi?id=19426" class="alert-link" rel="nofollow">Xamarin bug 19426</a>.</p>
-</div>
 <div class="alert alert-warning"><p><strong>Environment Variable Differences</strong><br />
 Due to the different platform, some environment variables available on a windows machine will either be named differently or possibly non-existent on other platforms. For example the Windows based variable <code>env:USERNAME</code> roughly correlates to <code>env:USER</code> on an Ubuntu machine however <code>env:ProgramFiles(x86)</code> has no corollary.</p>
 </div>
 <h2 id="SSHTargets-HealthChecks">Health Checks</h2>
-<p>Although there is no Tentacle involved with SSH endpoints there are still some useful metrics that are used to determine its health in regards to its ability to perform deployments. For a standard SSH target, it is the absence of any dependencies (i.e. mono, tar) that deems the endpoint unhealthy (in addition to the typical checks of inability to even connect using the provided credentials) while an absence or out-of-date version of Calamari is considered only a warning as this will be updated when its required by a task.</p>
+<p>Although there is no Tentacle involved with SSH endpoints there are still some useful metrics that are used to determine its health in regards to its ability to perform deployments. For a standard SSH target, it is the absence of any dependencies (e.g. tar) that deems the endpoint unhealthy (in addition to the typical checks of inability to even connect using the provided credentials) while an absence or out-of-date version of Calamari is considered only a warning as this will be updated when its required by a task.</p>
 <p><a href='#' data-featherlight='/docs/images/3048063/3277600.png' class='zoom' data-title=''><img src='/docs/images/3048063/3277600.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
 <p>The introduction of <a href="/docs/v/3.8/deploying-applications/custom-scripts/raw-scripting">Raw Scripting</a> provides the ability to run scripts on SSH endpoints without any additional Octopus dependencies. To facilitate these targets, <a href="/docs/v/3.8/key-concepts/environments/machine-policies">machine policies</a> allow you to configure health checks to test only for SSH connectivity to your machine to be considered healthy.</p>
 <p>Note that due to the Tentacle being effectively a “virtual Tentacle” running on the server itself, if the endpoint is healthy it will indicate in the health logs that the running version is the same as the server version.</p>
@@ -252,6 +238,7 @@ Due to the different platform, some environment variables available on a windows
 <p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
 <ul>
 <li><a href="/docs/v/3.8/deployment-targets/ssh-targets/configuring-ssh-connection">Configuring SSH Connections</a></li>
+<li><a href="/docs/v/3.8/deployment-targets/ssh-targets/mono-calamari">Calamari on Mono</a></li>
 <li><a href="/docs/v/3.8/deployment-targets/ssh-targets/sudo-commands">Sudo Commands</a></li>
 </ul>
 </div>
@@ -266,7 +253,7 @@ Due to the different platform, some environment variables available on a windows
 Latest
 <span class="caret"></span>
 </button>
-<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/deployment-targets/ssh-targets'>Latest</a></li><li class=''><a href='/docs/v/3.14/deployment-targets/ssh-targets'>3.14</a></li><li class=''><a href='/docs/v/3.13/deployment-targets/ssh-targets'>3.13</a></li><li class=''><a href='/docs/v/3.12/deployment-targets/ssh-targets'>3.12</a></li><li class=''><a href='/docs/v/3.11/deployment-targets/ssh-targets'>3.11</a></li><li class=''><a href='/docs/v/3.10/deployment-targets/ssh-targets'>3.10</a></li><li class=''><a href='/docs/v/3.9/deployment-targets/ssh-targets'>3.9</a></li><li class='disabled'><a href='/docs/v/3.8/deployment-targets/ssh-targets'>3.8</a></li><li class=''><a href='/docs/v/3.7/deployment-targets/ssh-targets'>3.7</a></li><li class=''><a href='/docs/v/3.6/deployment-targets/ssh-targets'>3.6</a></li></ul>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/deployment-targets/ssh-targets'>Latest</a></li><li class=''><a href='/docs/v/3.15/deployment-targets/ssh-targets'>3.15</a></li><li class=''><a href='/docs/v/3.14/deployment-targets/ssh-targets'>3.14</a></li><li class=''><a href='/docs/v/3.13/deployment-targets/ssh-targets'>3.13</a></li><li class=''><a href='/docs/v/3.12/deployment-targets/ssh-targets'>3.12</a></li><li class=''><a href='/docs/v/3.11/deployment-targets/ssh-targets'>3.11</a></li><li class=''><a href='/docs/v/3.10/deployment-targets/ssh-targets'>3.10</a></li><li class=''><a href='/docs/v/3.9/deployment-targets/ssh-targets'>3.9</a></li><li class='disabled'><a href='/docs/v/3.8/deployment-targets/ssh-targets'>3.8</a></li><li class=''><a href='/docs/v/3.7/deployment-targets/ssh-targets'>3.7</a></li><li class=''><a href='/docs/v/3.6/deployment-targets/ssh-targets'>3.6</a></li></ul>
 </div>
 </div>
 </div>

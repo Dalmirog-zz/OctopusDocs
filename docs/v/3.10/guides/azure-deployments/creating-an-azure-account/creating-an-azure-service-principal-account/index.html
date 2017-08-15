@@ -199,6 +199,12 @@ Write-Output &quot;Client ID: $($azureAdApplication.ApplicationId)&quot;
 <p><strong>Tenant ID</strong>: The ID of the Active Directory tenant.  You can get this value by clicking 'Properties' in the Directory blade &amp; looking for the value labled Directory ID.</p>
 <h3 id="CreatinganAzureServicePrincipalAccount-Option2:UsetheAzurePortal">Option 2: Use the Azure Portal</h3>
 <p>Alternatively, you can <a href="https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/" rel="nofollow">create a Service Principal via the Azure Portal</a>.</p>
+<div class="alert alert-warning"><p>The Service Principal will default to expiring in 1 year from the time of creation.</p>
+<p>Using the PowerShell script in option 1, you can specify the expiry date by adding the <em>-EndDate</em> parameter to the <em>New-AzureRmADApplication</em> command</p>
+<pre><code class="language-powershell">-EndDate (new-object System.DateTime 2018, 12, 31)
+</code></pre>
+<p>Using option 2, the Azure portal will allow you to select the expiry time when creating the key.</p>
+</div>
 <h2 id="CreatinganAzureServicePrincipalAccount-authenticate-with-service-principalStep2:AllowOctopustoauthenticatewithAzureusingaServicePrincipal">Step 2: Allow Octopus to authenticate with Azure using a Service Principal</h2>
 <p>Navigate to <span class="path">Environments ➜ Accounts</span> and click <em>Add account</em> in the <em>Azure Subscriptions</em> section.</p>
 <p><a href='#' data-featherlight='/docs/images/3702850/3964965.png' class='zoom' data-title=''><img src='/docs/images/3702850/3964965.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
@@ -212,6 +218,42 @@ Write-Output &quot;Client ID: $($azureAdApplication.ApplicationId)&quot;
 <div class="alert alert-info"><p><strong>What is actually tested?</strong><br />
 When you click the Save and Test button, Octopus will attempt to use the account credentials to access the Azure Resource Management (ARM) API and list the Resource Groups in that subscription. You may need to whitelist the appropriate IP Addresses for the Azure Data Center you are targeting. See <a href="/docs/v/3.10/deploying-applications/deploying-to-azure" class="alert-link">deploying to Azure via a Firewall</a> for more details.</p>
 </div>
+<h2 id="CreatingAnAzureServicePrincipalCredential">Creating a new Service Principal Credential</h2>
+<p>If you need to create a new <strong>Service Principal Credential</strong>, this can also be done either via PowerShell or the Azure Portal.</p>
+<h3 id="step-1-creating-a-new-aad-service-principal-credential">Step 1: Creating a new AAD Service Principal Credential</h3>
+<h4 id="CreatinganAzureServicePrincipalCredential-Option1:UsePowerShell">Option 1: Use PowerShell</h4>
+<p>The following PowerShell script will create an additional credential under the existing AAD application</p>
+<pre><code class="language-powershell"># Obviously, replace the following with your own values
+$subscriptionId = &quot;cd21dc34-73dc-4c7d-bd86-041284e0bc45&quot;
+$tenantId = &quot;2a681dca-3230-4e01-abcb-b1fd225c0982&quot;
+$applicationId = &quot;1d7f3207-0d20-4ff3-bdd2-c6928a5dd3f0&quot; 
+$password = &quot;correct horse battery staple 2&quot;
+
+# Login to your Azure Subscription
+Login-AzureRMAccount
+Set-AzureRMContext -SubscriptionId $subscriptionId -TenantId $tenantId
+
+# Get the Azure AD Appliction
+Write-Output &quot;Getting the Azure AD Application&quot;
+$azureAdApp = Get-AzureRmADApplication -ApplicationId $applicationId
+$azureAdApp | Format-Table
+
+Write-Output &quot;Getting the Azure AD Service Principal&quot;
+$azureAdServicePrincpal = Get-AzureRmADServicePrincipal -SearchString $azureAdApp.DisplayName
+$azureAdServicePrincpal | Format-Table
+
+Write-Output &quot;Creating a new Service Principal Credential&quot;
+$servicePrincipalCred = New-AzureRmADSPCredential -ObjectId $azureAdServicePrincipal.Id -EndDate (New-Object System.DateTime 2019,1,31) -Password $password
+$servicePrincipalCred | Format-Table
+
+</code></pre>
+<h4 id="CreatinganAzureServicePrincipalCredential-Option2:UsetheAzurePortal">Option 2: Use the Azure Portal</h4>
+<p>For the Azure Portal steps, create a new Key using the directions <a href="https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/" rel="nofollow">here</a>.</p>
+<h3 id="step-2-updating-the-passwordkey-in-the-octopus-azure-subscriptions">Step 2: Updating the password/key in the Octopus Azure Subscriptions</h3>
+<p>Navigate to <span class="path">Environments ➜ Accounts</span> and click on the account you wish to update in the <em>Azure Subscriptions</em> section.</p>
+<p>Use the <strong>Change</strong> button to modify the password or key and enter the password or key from Step 1.</p>
+<p><a href='#' data-featherlight='/docs/images/3702850/3964968.png' class='zoom' data-title=''><img src='/docs/images/3702850/3964968.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Use the <em>Save and test</em> button to confirm the account can interact with Azure.</p>
 </div>
 </div>
 <div class="col-md-3" style="padding-bottom: 100px">
@@ -224,7 +266,7 @@ When you click the Save and Test button, Octopus will attempt to use the account
 Latest
 <span class="caret"></span>
 </button>
-<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>Latest</a></li><li class=''><a href='/docs/v/3.14/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.14</a></li><li class=''><a href='/docs/v/3.13/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.13</a></li><li class=''><a href='/docs/v/3.12/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.12</a></li><li class=''><a href='/docs/v/3.11/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.11</a></li><li class='disabled'><a href='/docs/v/3.10/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.10</a></li><li class=''><a href='/docs/v/3.9/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.9</a></li><li class=''><a href='/docs/v/3.8/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.8</a></li><li class=''><a href='/docs/v/3.7/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.7</a></li><li class=''><a href='/docs/v/3.6/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.6</a></li></ul>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>Latest</a></li><li class=''><a href='/docs/v/3.15/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.15</a></li><li class=''><a href='/docs/v/3.14/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.14</a></li><li class=''><a href='/docs/v/3.13/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.13</a></li><li class=''><a href='/docs/v/3.12/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.12</a></li><li class=''><a href='/docs/v/3.11/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.11</a></li><li class='disabled'><a href='/docs/v/3.10/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.10</a></li><li class=''><a href='/docs/v/3.9/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.9</a></li><li class=''><a href='/docs/v/3.8/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.8</a></li><li class=''><a href='/docs/v/3.7/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.7</a></li><li class=''><a href='/docs/v/3.6/guides/azure-deployments/creating-an-azure-account/creating-an-azure-service-principal-account'>3.6</a></li></ul>
 </div>
 </div>
 </div>

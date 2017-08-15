@@ -145,6 +145,16 @@ Pricing
 <div class="row">
 <div class="col-md-9">
 <div id="doc_content" class="main-content"><h1>Certificates</h1><p>X.509 certificates are a key component of many deployment processes. Octopus Deploy provides the ability to securely store and manage your certificates, and easily use them in your Octopus Projects.</p>
+<div class='toc'>
+  <ul>
+    <li class='toc-h2'><a href='#securely-store-certificates-and-private-keys'>Securely Store Certificates and Private-Keys</a></li>
+    <li class='toc-h2'><a href='#configure-subscriptions-for-expiry-notifications'>Configure Subscriptions for Expiry Notifications</a></li>
+    <li class='toc-h2'><a href='#import-certificates-into-the-windows-certificate-store'>Import Certificates into the Windows Certificate Store</a></li>
+    <li class='toc-h2'><a href='#use-certificates-for-https-bindings-when-deploying-iis-websites'>Use certificates for HTTPS bindings when deploying IIS Websites</a></li>
+    <li class='toc-h2'><a href='#create-certificate-typed-variables'>Create Certificate-Typed Variables</a></li>
+    <li class='toc-h2'><a href='#in-this-section'>In this section</a></li>
+  </ul>
+</div>
 <h2 id="securely-store-certificates-and-private-keys">Securely Store Certificates and Private-Keys</h2>
 <p><a href='#' data-featherlight='/docs/deploying-applications/certificates/certificate-list.png' class='zoom' data-title=''><img src='/docs/deploying-applications/certificates/certificate-list.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
 <ul>
@@ -161,6 +171,14 @@ Pricing
 <li>Certificate expiry 10-day warning</li>
 <li>Certificate expired</li>
 </ul>
+<div class="alert alert-info"><p>Certificate-expiry events are <em>not</em> raised for <a href="/docs/v/3.14/deploying-applications/certificates/archiving-and-deleting-certificates" class="alert-link">archived</a> certificates.</p>
+</div>
+<div class="alert alert-info"><p>The background task which raises the certificate-expiry events runs:</p>
+<ul>
+<li>10 minutes after the Octopus Server service starts</li>
+<li>Every 4 hours</li>
+</ul>
+</div>
 <h2 id="import-certificates-into-the-windows-certificate-store">Import Certificates into the Windows Certificate Store</h2>
 <p>Certificates can be imported to Windows Certificate Stores as part of a deployment process using the <a href="/docs/v/3.14/deploying-applications/certificates/import-certificate-step">Import Certificate Deployment Step</a></p>
 <p><a href='#' data-featherlight='/docs/deploying-applications/certificates/import-certificate-step-select.png' class='zoom' data-title=''><img src='/docs/deploying-applications/certificates/import-certificate-step-select.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
@@ -197,7 +215,7 @@ Pricing
 Latest
 <span class="caret"></span>
 </button>
-<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/deploying-applications/certificates'>Latest</a></li><li class='disabled'><a href='/docs/v/3.14/deploying-applications/certificates'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/certificates'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/certificates'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/certificates'>3.11</a></li></ul>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/deploying-applications/certificates'>Latest</a></li><li class=''><a href='/docs/v/3.15/deploying-applications/certificates'>3.15</a></li><li class='disabled'><a href='/docs/v/3.14/deploying-applications/certificates'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/certificates'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/certificates'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/certificates'>3.11</a></li></ul>
 </div>
 </div>
 </div>
