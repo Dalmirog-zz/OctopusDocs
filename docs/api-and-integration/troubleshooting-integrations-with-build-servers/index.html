@@ -147,16 +147,68 @@ Pricing
 <div id="doc_content" class="main-content"><h1>Troubleshooting integrations between build servers and Octopus</h1><p>Making your build server work with your deployment server is a key aspect of any successful Continuous Integration (CI) story. For this reason, at Octopus we put a lot of effort in supporting integrations with pretty much any build server technology in the market.</p>
 <p>A key player in this story is our command line tool <code>Octo.exe</code>. This tool exposes some of the most important functionalities of Octopus through easy commands that can be included in pretty much any process. It was built using <code>.NET core</code> so it can be used in Windows, Linux and Mac environments.</p>
 <p>If you are reading this doc, odds are you already tried to run an Octopus-related step in your build process and something didn't work the way you expected it. The goal of this document is to explain a bit how all our integration steps work on the background so anyone can troubleshoot them on their own.</p>
-<h2 id="Troubleshooting-Octopus-Steps">Troubleshooting build steps created by the Octopus Deploy team</h2>
+<div class='toc'>
+  <ul>
+    <li class='toc-h2'><a href='#Octopus-Steps'>Troubleshooting build steps created by the Octopus Deploy team</a>
+      <ul>
+        <li class='toc-h3'><a href='#Octopus-Steps-What-happens-behind'>What happens when an Octopus step is executed during the build process</a></li>
+        <li class='toc-h3'><a href='#Octopus-Steps-Troubleshooting-the-error'>Troubleshooting the error</a></li>
+        <li class='toc-h3'><a href='#Octopus-Steps-Ask-for-help'>Last resource - Ask for help.</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#Custom-Steps'>Troubleshooting build steps created by non-octopus-team-members</a></li>
+  </ul>
+</div>
+<h2 id="Octopus-Steps">Troubleshooting build steps created by the Octopus Deploy team</h2>
+<h3 id="Octopus-Steps-What-happens-behind">What happens when an Octopus step is executed during the build process</h3>
 <p>The Octopus Deploy team supports many of the most popular integration plugins/extensions our there, like the ones for <a href="/docs/api-and-integration/tfs-vsts">VSTS/TFS</a>, <a href="/docs/api-and-integration/teamcity">Teamcity</a> and <a href="/docs/api-and-integration/bamboo">Bamboo</a>. All the steps provided by these extensions/plugins are nothing but wrappers of <code>Octo.exe</code> that provide a UI with fields whose values will be passed to this command line tool during the build.</p>
 <p>Lets take for example this TeamCity <strong>Octopus Deploy: Create Release</strong> step:</p>
 <p><img src='/docs/images/5672460/5672462800.png' class="img-fluid center" alt='' /></p>
 <p>Each of the values marked on the fields above can be seen in the <code>Octo.exe</code> call made by the build server later on:</p>
-<p><img src='/docs/images/5672460/5672463800.png' class="img-fluid center" alt='' />
-<em>This is a screenshot of a TeamCity log fragment eddited for visual purposes. You can check the real log output in our <a href="http://teamcity.octopusdeploy.com/viewLog.html?buildId=440630&amp;buildTypeId=OctoFX_OctoFX&amp;tab=buildLog&amp;state=1021%2C1023#_state=1021,1023&amp;focus=1024" rel="nofollow">Shared TeamCity server</a> by logging in as a guest</em></p>
-<p>The same holds true for this <strong>Package Application</strong> step in VSTS:</p>
+<p><img src='/docs/images/5672460/5672463800.png' class="img-fluid center" alt='' /></p>
+<p><em>This is a screenshot of a TeamCity log fragment eddited for visual purposes. You can check the real log output in our <a href="http://teamcity.octopusdeploy.com/viewLog.html?buildId=440630&amp;buildTypeId=OctoFX_OctoFX&amp;tab=buildLog&amp;state=1021%2C1023#_state=1021,1023&amp;focus=1024" rel="nofollow">Shared TeamCity server</a> by logging in as a guest. You might have to click on that link once to login, and then a second time to go to the higlighted line in the log</em></p>
+<p>The same holds true for this <strong>Package Application</strong> step in VSTS and its log output:</p>
 <p><img src='/docs/images/5672460/5672464800.png' class="img-fluid center" alt='' /></p>
-<p><img src='/docs/images/5672460/56724651400.png' class="img-fluid center" alt='' /></p>
+<p><img src='/docs/images/5672460/56724651200.png' class="img-fluid center" alt='' /></p>
+<p>The bottom line is that every step will in the end call an <code>Octo.exe</code> command. For the full list of commands <a href="/docs/api-and-integration/octo.exe-command-line">check our documentation</a>.</p>
+<h3 id="Octopus-Steps-Troubleshooting-the-error">Troubleshooting the error</h3>
+<p>As shown in the above screenshots, the exact <code>Octo.exe</code> command that was executed (and failed) will be printed in the logs. So the best way to troubleshoot that error would be to copy the full command, and try to run it yourself by <a href="https://octopus.com/downloads">downloading Octo.exe to your local machine</a>. A few tips and gotchas for this:</p>
+<ul>
+<li><p>If you are not familiar with <code>Octo.exe</code>, then <a href="/docs/api-and-integration/octo.exe-command-line">read our documentation about it</a>. Understanding how the command you are troubleshooting works will be critical for your success.</p>
+</li>
+<li><p>Your build server will most likely execute the <code>Octo.exe</code> command from a build agent machine, which won't be identical to your workstation (mostly network-wise). Keep this in mind when troubleshooting your <code>Octo.exe</code>command, and if possible always try to run it from the same machine that your build server is using as build agent.</p>
+</li>
+<li><p>Each version of our extension/plugin will ship with the latest version of <code>Octo.exe</code> at the moment it was created. Perhaps the version of <code>Octo.exe</code> used by your current extension version is not the latest, in which case the recommended thing to do would be to upgrade your extension to the latest version available. You can tell which version of <code>Octo.exe</code> you are using from the initial line that gets printed by the command:</p>
+</li>
+</ul>
+<pre><code>[15:00:43][Octopus Deploy] Running command:   octo.exe create-release --server https://demo.octopusdeploy.com --apikey SECRET --project OctoFX --enableservicemessages --version 3.3.379 --deployto Dev --progress --packageversion 3.3.379 --releasenotes Release created automatically via TeamCity
+[15:00:43][Octopus Deploy] Creating Octopus Deploy release
+[15:00:43][Octopus Deploy] Octopus Deploy Command Line Tool, version 3.3.8+Branch.master.Sha.f8a34fc6097785d7d382ddfaa9a7f009f29bc5fb
+[15:00:43][Octopus Deploy] 
+[15:00:43][Octopus Deploy] Build environment is NoneOrUnknown
+[15:00:43][Octopus Deploy] Handshaking with Octopus server: https://demo.octopusdeploy.com
+[15:00:44][Octopus Deploy] Handshake successful. Octopus version: 3.15.8; API version: 3.0.0
+</code></pre>
+<p><em>In this case we are using <code>Octo.exe</code> version <code>3.3.8</code> agains an Octopus Server version <code>3.15.8</code></em></p>
+<ul>
+<li>If the version of <code>Octo.exe</code> that your build server is using is out of date, and you downloaded that same version and you were able to reproduce the error, try downloading the latest version available of <code>Octo.exe</code> and see if you can still reproduce it. You can <a href="https://www.nuget.org/packages/OctopusTools/" rel="nofollow">download every single version of octo.exe from Nuget</a>. Its possible that the bug was already fixed and we only need to ship a new version of the plugin/extension with the fixed <code>octo.exe</code>. If that's the case, then <a href="https://help.octopusdeploy.com" rel="nofollow">log an issue in our forum</a> so we can take care of it.</li>
+</ul>
+<h3 id="Octopus-Steps-Ask-for-help">Last resource - Ask for help.</h3>
+<p>The Octopus support team will always be there to give you a hand. But do know that the first thing we'll ask you is if you read this guide and followed all the steps on it! If you did and you still couldn't find the error, then <a href="https://help.octopusdeploy.com" rel="nofollow">log an ticket in our forum</a> and include:</p>
+<ul>
+<li>Version of Octopus Server you are running.</li>
+<li>Name and Version of the build server technology you are using.</li>
+<li>If you can provide the version of the extension/plugin you are using, that'll be great.</li>
+<li>A brief description of the error. We'll be specially interested in knowing what you were expecting from the failed step.</li>
+<li>A full build log that shows the <code>octo.exe</code> command.</li>
+</ul>
+<div class="alert alert-warning"><p><strong>Keep sensitive info safe</strong><br />
+Make sure to set the ticket as <strong>private</strong> before attaching the build log, as it might contain sensitive info. If you don't know how to set it to <strong>private</strong>, log the ticket without that log and ask us to do it. Once its done we'll ask you to attach the log.</p>
+</div>
+<h2 id="Custom-Steps">Troubleshooting build steps created by non-octopus-team-members</h2>
+<p>If you are using a custom step/plugin/extension to hook up your Build server with Octopus, then all we can recommend you is to know your <code>Octo.exe</code> game very well.</p>
+<p>If you are using a build server technology <a href="/docs/api-and-integration">that's not in our supported list</a>, then we encourage you to go to our <a href="https://octopusdeploy.uservoice.com/" rel="nofollow">Uservoice page</a> and log a feature request asking us to support it. If enough users vote for it, then It'll show up in our radar and we might be able to do something about it.</p>
 </div>
 </div>
 <div class="col-md-3" style="padding-bottom: 100px">
