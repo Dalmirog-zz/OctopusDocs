@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/key-concepts'>4.0</a></li><li class=''><a href='/docs/key-concepts'>Latest</a></li><li class=''><a href='/docs/v/3.16/key-concepts'>3.16</a></li><li class=''><a href='/docs/v/3.15/key-concepts'>3.15</a></li><li class=''><a href='/docs/v/3.14/key-concepts'>3.14</a></li><li class=''><a href='/docs/v/3.13/key-concepts'>3.13</a></li><li class=''><a href='/docs/v/3.12/key-concepts'>3.12</a></li><li class=''><a href='/docs/v/3.11/key-concepts'>3.11</a></li><li class=''><a href='/docs/v/3.10/key-concepts'>3.10</a></li><li class='disabled'><a href='/docs/v/3.9/key-concepts'>3.9</a></li><li class=''><a href='/docs/v/3.8/key-concepts'>3.8</a></li><li class=''><a href='/docs/v/3.7/key-concepts'>3.7</a></li><li class=''><a href='/docs/v/3.6/key-concepts'>3.6</a></li></ul>
+</div>
+<h1>Key Concepts</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Words like &quot;release&quot; and &quot;deployment&quot; are no doubt terms that you've used in your organization prior to using Octopus Deploy. Perhaps you use them interchangeably, or perhaps they have well defined meanings. As you begin to use and master Octopus, there's some potential for confusion - the concept of a Release as implemented in Octopus might be very different to the concept of a Release currently in use in your organization. This page provides a high-level overview of the various concepts that exist in Octopus, to help to eliminate that confusion.</p>
+<h2 id="KeyConcepts-HowtothinklikeanOctopus">How to think like an Octopus</h2>
+<p>Like all software, Octopus is designed around a model of a specific problem domain - in our case, the domain of deployment automation. In order to truly understand how Octopus works and how to get the best use out of it, it's helpful to take the time to understand our model and some of the terms that we use. It's helpful to think like an Octopus!</p>
+<div class="alert alert-success"><p><strong>Domain driven design</strong><br />
+If you are a fan of <a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215" class="alert-link" rel="nofollow">Domain Driven Design</a>, think of this page as an outline of our domain model or Ubiquitous Language.</p>
+</div>
+<h2 id="KeyConcepts-Environments,machinesandroles">Environments, machines and roles</h2>
+<p>Before you can deploy software, you need somewhere to deploy it <em>to</em>. Any non-trivial application is likely to run on more than one server - you might have Windows Services that run on application servers, or ASP.NET applications that run under IIS on web servers. Each of these servers, whether physical or virtual machines, would be a <em>machine</em> within Octopus. A group of these machines that are deployed to at the same time is called an <em>environment</em>. An environment is made up of multiple <em>machines</em>, and each machine is tagged with a set of <em>roles</em>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048100/3277804.png' class='zoom' data-title=''><img src='/docs/images/3048100/3277804.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>In production, your web sites and Windows Services might run on different physical servers - perhaps dozens of them. However, unless you are extremely lucky, it's unlikely that you have the budget to have an equal number of servers in any of your pre-production environments. When testing your software in a test environment, you might only have a single virtual machine which will run all of the web sites and services on the same machine.</p>
+<p>Octopus handles these differences by introducing a layer of indirection: roles. Instead of saying:</p>
+<blockquote class="blockquote">
+<p>The trading website ASP.NET application should be deployed to PWEB01, PWEB02, ...</p>
+</blockquote>
+<p>We say:</p>
+<blockquote class="blockquote">
+<p>The trading website ASP.NET application should be deployed to machines that are tagged with the <strong>web-server</strong> role.</p>
+</blockquote>
+<p>In production, perhaps you have 10 machines with the web-server role. In staging, perhaps you have only 4. In test, perhaps there is a single machine. Roles make defining your deployment process much easier.</p>
+<p>You can define as many roles, environments and machines as you like - it all depends on how your application is deployed. Throughout our documentation, you'll see us using Development, Test, Staging and Production environments, and <em>web-server</em> and <em>app-server</em> roles, as examples, but your Octopus configuration is likely to be very different. &quot;Production&quot; to you might consist of multiple environments which are actually in different data centers (for example, in London, New York and Tokyo) and deployed to at different times.</p>
+<p>Machines can also belong to more than one environment, although this is not very common.</p>
+<p><a href='#' data-featherlight='/docs/images/3048100/3277803.png' class='zoom' data-title=''><img src='/docs/images/3048100/3277803.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p><strong>More information</strong><br />
+That is a summary of how Octopus models environments and machines, and what the terms mean. To actually deploy software to the remote machines, Octopus relies on agent software called Tentacle. You can read more about <a href="/docs/v/3.9/installation/installing-tentacles" class="alert-link">installing Tentacle</a> and <a href="/docs/v/3.9/key-concepts/environments" class="alert-link">managing environments</a>.</p>
+</div>
+<h2 id="KeyConcepts-Projects,deploymentprocesses,lifecyclesandvariables">Projects, deployment processes, lifecycles and variables</h2>
+<p>A <em>project</em> is one of the most important concepts in Octopus. A project defines:</p>
+<ul>
+<li>A <em><a href="/docs/v/3.9/deploying-applications">deployment process</a></em>, which specifies the steps that need to happen in a given order during the deployment</li>
+<li><em><a href="/docs/v/3.9/deploying-applications/variables">Variables</a></em>, which allow deployments to be parameterized across environments</li>
+</ul>
+<p><a href='#' data-featherlight='/docs/images/3048100/3277800.png' class='zoom' data-title=''><img src='/docs/images/3048100/3277800.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>A project in Octopus can consist of many deliverable components (e.g., web sites, Windows services). It's usually helpful to think of Octopus projects in terms of business projects: if you have 5 developers working together on the &quot;HR Portal rewrite&quot; project, than that's probably a single project in Octopus.</p>
+<div class="alert alert-success"><p><strong>Tip</strong><br />
+Don't confuse Octopus projects with Visual Studio projects. A project in Octopus is more likely to map to an entire Visual Studio solution.</p>
+</div>
+<p>The deployment process consists of a number of steps. Octopus supports many different kinds of steps, such as:</p>
+<ul>
+<li><a href="/docs/v/3.9/deploying-applications/deploying-packages">Deploying NuGet packages</a> (this is how web sites and windows services are <a href="/docs/v/3.9/packaging-applications">packaged</a> and deployed)</li>
+<li>Running ad-hoc <a href="/docs/v/3.9/deploying-applications/custom-scripts">Custom scripts</a></li>
+<li><a href="/docs/v/3.9/deploying-applications/email-notifications">Sending an email</a></li>
+<li>Pausing for <a href="/docs/v/3.9/deploying-applications/manual-intervention-and-approvals">manual intervention</a> by a human</li>
+</ul>
+<p>Importantly, steps are run in a specific order, like following a recipe. It would be dreadful if we tried to deploy a new version of a web site before running the database migrations, as an example. Steps can also be set to run <a href="/docs/v/3.9/deploying-applications">conditionally</a>, as part of a <a href="/docs/v/3.9/patterns/rolling-deployments">rolling deployment</a>, or even in parallel with each other.</p>
+<p>When you define a project, you also select a <a href="/docs/v/3.9/key-concepts/lifecycles">lifecycle</a>. The lifecycle defines the rules around how releases of the project are allowed to be deployed between environments.</p>
+<h2 id="KeyConcepts-Releasesanddeployments">Releases and deployments</h2>
+<p>The deployment process for a project specifies how the project will be deployed. But Octopus isn't designed to deploy something just once; it's designed to deploy the same project over, and over, and over, and over. It's designed for teams that follow agile software development methods, continuously deploying software to environments, getting feedback, making changes, and then deploying again.</p>
+<p>We expect that beyond the initial setup and tweaking, your deployment process won't change between all of these deployments. But of course, the software that you are deploying will. You will make changes to code, commit them to source control, and have a <a href="/docs/v/3.9/api-and-integration">build server</a> build them and run tests. Then the software will be <a href="/docs/v/3.9/packaging-applications">packaged</a> and ready for deployment.</p>
+<p>In Octopus, a release is a snapshot of the <em>deployment process</em> and <em>variables,</em> with a set of <em>packages</em> selected. That <em>release</em> is then <em>deployed</em> to multiple environments, typically to one, then promoted to the next environment if successful.</p>
+<p><a href='#' data-featherlight='/docs/images/3048100/3277799.png' class='zoom' data-title=''><img src='/docs/images/3048100/3277799.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Each time you have a new candidate build that is ready to test, you'll create a <em>release</em>. When you apply a release to an environment, that is a <em>deployment</em>.</p>
+<h2 id="KeyConcepts-Channels">Channels</h2>
+<p>When you start working with Octopus you will typically be creating releases from your main source code branch that are considered to be release candidates for your final production environment. Over time you may find you want to start working on an experimental branch of code, perhaps to introduce a new feature, or an entirely new version of your software. In this case you can either create an entirely new project, or clone the existing project, to manage deployments of this experimental software - but that leads to a lot of possible duplication and rework. In Octopus 3.2 we introduced the concept of <a href="/docs/v/3.9/key-concepts/projects/channels"><em>channels</em> </a>which let you modify the entire deployment process on a per-release basis, all within the same project. For example, you can promote releases created from your main code branch through to your production environment, but restrict releases created from your experimental feature branch to a special test environment perhaps with extra steps and variables.</p>
+<h2 id="KeyConcepts-Tenants">Tenants</h2>
+<p>Over time your software may become so successful that you on-sell it to some external customers, and due to the way the software is architected, you need to deploy a copy of the software once per customer. You could achieve this in Octopus by creating an environment-per-customer, or even a project-per-customer, but this leads to duplication and unnecessary complexity. In Octopus 3.4 we introduced the concept of <a href="/docs/v/3.9/key-concepts/tenants"><em>tenants</em> </a>that you can manage alongside your existing projects and environments.</p>
+<h2 id="in-this-section">In this section</h2>
+<p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
+<ul>
+<li><a href="/docs/v/3.9/key-concepts/environments">Environments</a></li>
+<li><a href="/docs/v/3.9/key-concepts/projects">Projects</a></li>
+<li><a href="/docs/v/3.9/key-concepts/project-groups">Project Groups</a></li>
+<li><a href="/docs/v/3.9/key-concepts/lifecycles">Lifecycles</a></li>
+<li><a href="/docs/v/3.9/key-concepts/machine-roles">Machine Roles</a></li>
+<li><a href="/docs/v/3.9/key-concepts/tenants">Tenants</a></li>
+</ul>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

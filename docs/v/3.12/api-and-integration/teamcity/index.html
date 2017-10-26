@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/api-and-integration/teamcity'>4.0</a></li><li class=''><a href='/docs/api-and-integration/teamcity'>Latest</a></li><li class=''><a href='/docs/v/3.16/api-and-integration/teamcity'>3.16</a></li><li class=''><a href='/docs/v/3.15/api-and-integration/teamcity'>3.15</a></li><li class=''><a href='/docs/v/3.14/api-and-integration/teamcity'>3.14</a></li><li class=''><a href='/docs/v/3.13/api-and-integration/teamcity'>3.13</a></li><li class='disabled'><a href='/docs/v/3.12/api-and-integration/teamcity'>3.12</a></li><li class=''><a href='/docs/v/3.11/api-and-integration/teamcity'>3.11</a></li><li class=''><a href='/docs/v/3.10/api-and-integration/teamcity'>3.10</a></li><li class=''><a href='/docs/v/3.9/api-and-integration/teamcity'>3.9</a></li><li class=''><a href='/docs/v/3.8/api-and-integration/teamcity'>3.8</a></li><li class=''><a href='/docs/v/3.7/api-and-integration/teamcity'>3.7</a></li><li class=''><a href='/docs/v/3.6/api-and-integration/teamcity'>3.6</a></li></ul>
+</div>
+<h1>TeamCity</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p><a href="http://www.jetbrains.com/teamcity/" rel="nofollow">TeamCity</a> from JetBrains is a popular continuous integration server that supports a variety of different version control systems and build runners. Octopus Deploy and TeamCity can work together to make automated, continuous delivery easy.</p>
+<div class='toc'>
+  <ul>
+    <li class='toc-h2'><a href='#TeamCity-HowTCandOctopusWorkTogether'>How TeamCity and Octopus work together</a></li>
+    <li class='toc-h2'><a href='#TeamCity-Installingtheplugin'>Installing the plugin</a>
+      <ul>
+        <li class='toc-h3'><a href='#build-agent-running-windows'>Build agent running Windows</a></li>
+        <li class='toc-h3'><a href='#TeamCity-LinuxAgentsUsingthepluginwithLinuxbuildagents'>Build agent running Linux</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#using-the-steps-from-the-plugin'>Using the steps from the plugin</a>
+      <ul>
+        <li class='toc-h3'><a href='#TeamCity-CreatingReleases'>Creating a release in Octopus</a></li>
+        <li class='toc-h3'><a href='#TeamCity-TriggeringDeployments'>Triggering a deployment in Octopus</a></li>
+        <li class='toc-h3'><a href='#TeamCity-TriggeringDeployments'>Promoting a release in Octopus</a></li>
+        <li class='toc-h3'><a href='#TeamCity-CreatingAndPushingPackages'>Creating a package and pushing it to a repository</a></li>
+      </ul>
+    </li>
+
+    <li class='toc-h2'><a href='#TeamCity-UsingTeamCityAsAPackageFeed'>Consuming the TeamCity NuGet feed in Octopus</a></li>
+    <li class='toc-h2'><a href='#TeamCity-TroubleshootingSteps'>Troubleshooting issues with the plugin steps</a></li>
+  </ul>
+</div>
+<h2 id="TeamCity-HowTCandOctopusWorkTogether">How TeamCity and Octopus work together</h2>
+<p>When using Octopus Deploy with TeamCity, TeamCity will usually be responsible for:</p>
+<p>Checking for changes in source control
+Compiling the code
+Running unit tests
+Creating NuGet packages for deployment
+While Octopus Deploy will be used to take those NuGet packages and to push them to development, test and production environments.</p>
+<p>Integration with TeamCity involves two major parts:</p>
+<ol>
+<li>Creating the NuGet packages from your applications.</li>
+<li>Optionally, when a build completes, having TeamCity make requests to your Octopus Server to:</li>
+</ol>
+<ul>
+<li>Create releases</li>
+<li>Trigger deployments and/or</li>
+<li>Promote releases when a build completes</li>
+</ul>
+<h2 id="TeamCity-Installingtheplugin">Installing the plugin</h2>
+<h3 id="build-agent-running-windows">Build agent running Windows</h3>
+<ol>
+<li>Download the <a href="https://octopus.com/downloads">TeamCity Plugin ZIP file</a></li>
+<li>Shut down your TeamCity server</li>
+<li>Copy the ZIP file with the plugin to <code>&lt;TeamCity Data Directory&gt;/plugins</code></li>
+<li>Start TeamCity server: the plugin files will be unpacked and processed automatically</li>
+</ol>
+<p>The <a href="https://confluence.jetbrains.com/display/TCD10/TeamCity+Data+Directory" rel="nofollow">TeamCity Data Directory</a> can be found on the <strong>Administration | Global Settings</strong> page for a running TeamCity server instance.</p>
+<h3 id="TeamCity-LinuxAgentsUsingthepluginwithLinuxbuildagents">Build agent running Linux</h3>
+<p>Same instructions as for the Windows Agent, but additionally the build agent VM needs to meet the following requirements:</p>
+<ol>
+<li>Have <a href="https://www.microsoft.com/net/core" rel="nofollow">.NET Core</a> installed on the build agent and in the PATH such that the <code>dotnet</code> command runs successfully. To install, follow the linked guide to install the .NET Core SDK for your distribution. Ensure that the <code>dotnet</code> command runs successfully.</li>
+<li>Have the Octo command line tool installed and in the PATH such that the <code>Octo</code> command runs successfully. To install, download the .tar.gz for you system from the <a href="https://octopus.com/downloads">Octopus download page</a>, extract somewhere appropriate and symlink <code>Octo</code> into your PATH. Again, ensure that <code>Octo</code> runs successfully. On Ubuntu you may need to install <code>libunwind8</code> using your package manager<code>.</code></li>
+</ol>
+<h2 id="using-the-steps-from-the-plugin">Using the steps from the plugin</h2>
+<p>As explained in our <a href="/docs/v/3.12/api-and-integration/troubleshooting-integrations-with-build-servers#Octopus-Steps-What-happens-behind">Troubleshooting guide</a>, each of the build runners provided by the plugin correspond to a specific <code>Octo.exe</code> command. While its not necesary to know each command to use these steps, It'll certainly if you ever need to <a href="#TeamCity-TroubleshootingSteps">troubleshoot them</a>.</p>
+<h3 id="TeamCity-CreatingReleases">Creating a release in Octopus</h3>
+<p>To create releases from a build, use the <code>OctopusDeploy: Create Release</code> step. This step will execute <a href="/docs/v/3.12/api-and-integration/octo.exe-command-line/creating-releases">Octo.exe create-release</a> in the background</p>
+<p><a href='#' data-featherlight='/docs/api-and-integration/teamcity_createreleasestep.png' class='zoom' data-title=''><img src='/docs/api-and-integration/teamcity_createreleasestep.png' class="img-fluid center" height="auto" width="500" alt='CreateRelease Step' /></a></p>
+<p><strong>Tips about the step</strong>:</p>
+<ul>
+<li><p>Be default this step will only create a release in Octopus, but it will not deploy it. If you want a deployment to happen right away (and avoid the need of a dedicated build step just for the deploy) simply fill the field <code>Deployment -&gt; Environment(s)</code> with the name of the Environment you want to deploy this release to.</p>
+</li>
+<li><p>If you want TeamCity to fail the build if the release creation/deployment fails in Octopus, make sure to check the box <code>Show Deployment Progress</code>.</p>
+</li>
+</ul>
+<h3 id="TeamCity-TriggeringDeployments">Triggering a deployment in Octopus</h3>
+<p>To trigger a deployment for an already existig releases, use the <code>OctopusDeploy: Deploy Release</code> step. This step will execute <a href="/docs/v/3.12/api-and-integration/octo.exe-command-line/deploying-releases">Octo.exe Deploy-Release</a> in the background</p>
+<p><a href='#' data-featherlight='/docs/api-and-integration/teamcity_deployreleasestep.png' class='zoom' data-title=''><img src='/docs/api-and-integration/teamcity_deployreleasestep.png' class="img-fluid center" height="auto" width="500" alt='DeployRelease Step' /></a></p>
+<h3 id="TeamCity-TriggeringDeployments">Promoting a release in Octopus</h3>
+<p>To promote a release from one environment to another in the same lifecycle, use the <code>OctopusDeploy: Promote Release</code> step. This step will execute <a href="/docs/v/3.12/api-and-integration/octo.exe-command-line/promoting-releases">Octo.exe Promote-Release</a> in the background.</p>
+<p><a href='#' data-featherlight='/docs/api-and-integration/teamcity_promotereleasestep.png' class='zoom' data-title=''><img src='/docs/api-and-integration/teamcity_promotereleasestep.png' class="img-fluid center" height="auto" width="500" alt='PromoteRelease Step' /></a></p>
+<h3 id="TeamCity-CreatingAndPushingPackages">Creating a package and pushing it to a repository</h3>
+<p><strong>If you are using the Octopus built-in repository to store your packages (recommended)</strong></p>
+<p>There are <a href="/docs/v/3.12/packaging-applications">several ways to create packages</a> out of your compiled applications during a build. But if you are using TeamCity, we strongly recommend you to use the <code>OctopusDeploy: Create and Push Packages</code>. This step will execute <a href="/docs/v/3.12/packaging-applications/nuget-packages/using-octo.exe">Octo.exe pack</a> and <a href="/docs/v/3.12/api-and-integration/octo.exe-command-line/pushing-packages">Octo.exe push</a> in the background.</p>
+<p><a href='#' data-featherlight='/docs/api-and-integration/teamcity_createandpushpackagestep.png' class='zoom' data-title=''><img src='/docs/api-and-integration/teamcity_createandpushpackagestep.png' class="img-fluid center" height="auto" width="500" alt='PackAndPushPackage Step' /></a></p>
+<p><strong>Tips about the step</strong>:</p>
+<ul>
+<li><p>This step will only pack the contents of the folder it is pointed to. So you need to make sure you understand how to control the output of your compiler in a way that (1) it only outputs the files you need to pack and deploy and (2) it sends these files to a fixed wolder where you'll be pointing this step to for packaging.</p>
+</li>
+<li><p>The <code>Package Paths</code> field allows you to input multiple lines in case you want to pack multiple directories into different packages. Once all the packages are created, all of them will be pushed to the target repository.</p>
+</li>
+</ul>
+<p><strong>If you are using a 3rd party repository to store your packages</strong></p>
+<p>WIP</p>
+<h2 id="TeamCity-UsingTeamCityAsAPackageFeed">Consuming the TeamCity NuGet feed in Octopus</h2>
+<div class="alert alert-warning"><p><strong>Compatibility</strong><br />
+<strong>Octopus 2.x-3.3.x</strong> will work with <strong>TeamCity 7.0 or newer</strong>.</p>
+<p><strong>Octopus 3.4+</strong> requires <strong>TeamCity 9.0+</strong> due to compatibility problems with the older NuGet v1 feed implemented by earlier versions of TeamCity. Refer to <a href="http://help.octopusdeploy.com/discussions/problems/47581-teamcity-nuget-feed#comment_40952268" class="alert-link" rel="nofollow">this thread</a> and this <a href="https://github.com/OctopusDeploy/Issues/issues/2656" class="alert-link" rel="nofollow">GitHub Issue</a> for more details.</p>
+</div>
+<p>TeamCity 7 and up can act as a NuGet repository. You can enable this by going to the <em>Administration</em>➜<em>NuGet Settings</em> page, and enabling the inbuilt NuGet server. Any build artifacts ending with <code>.nupkg</code> will automatically be served as NuGet packages, which Octopus can consume.</p>
+<p>To connect Octopus to your TeamCity server, add the TeamCity authenticated feed URL to your NuGet settings in Octopus on the <strong>External Feeds</strong> tab under the <strong>Library</strong> page.</p>
+<p><a href='#' data-featherlight='/docs/images/3048176/3278184_%5B,4.0).png' class='zoom' data-title=''><img src='/docs/images/3048176/3278184_%5B,4.0).png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Once added, the TeamCity feed will appear in the NuGet feed list:</p>
+<p><a href='#' data-featherlight='/docs/images/3048176/3278183_%5B,4.0).png' class='zoom' data-title=''><img src='/docs/images/3048176/3278183_%5B,4.0).png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>You can use the <em>Test</em> link (in the doted line menu at the right of the feed) to make sure that the NuGet package is available, before creating your Octopus project:</p>
+<p><a href='#' data-featherlight='/docs/images/3048176/3278182_%5B,4.0).png' class='zoom' data-title=''><img src='/docs/images/3048176/3278182_%5B,4.0).png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p><strong>Tip: delayed package publishing</strong><br />
+NuGet packages created from your build <strong>won't appear in the TeamCity NuGet feed until after the build fully completes</strong>. If you plan to trigger a deployment during a build, this creates a problem: the package won't be in the feed until the build is published, so you won't be able to deploy it.</p>
+<p>The solution is to configure a secondary build configuration, and use a snapshot dependency and build trigger in TeamCity to run the deployment build configuration after the first build configuration completes. The video below demonstrates how to do this.</p>
+</div>
+<h2 id="TeamCity-TroubleshootingSteps">Troubleshooting issues with the plugin steps</h2>
+<p>If you run into any issues with the steps provided by the plugin, please refer to our <a href="/docs/v/3.12/api-and-integration/troubleshooting-integrations-with-build-servers">troubleshooting guide for integrations between Octopus and build servers</a></p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

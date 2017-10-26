@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/administration/authentication-providers/active-directory-authentication'>4.0</a></li><li class=''><a href='/docs/administration/authentication-providers/active-directory-authentication'>Latest</a></li><li class=''><a href='/docs/v/3.16/administration/authentication-providers/active-directory-authentication'>3.16</a></li><li class=''><a href='/docs/v/3.15/administration/authentication-providers/active-directory-authentication'>3.15</a></li><li class=''><a href='/docs/v/3.14/administration/authentication-providers/active-directory-authentication'>3.14</a></li><li class=''><a href='/docs/v/3.13/administration/authentication-providers/active-directory-authentication'>3.13</a></li><li class=''><a href='/docs/v/3.12/administration/authentication-providers/active-directory-authentication'>3.12</a></li><li class=''><a href='/docs/v/3.11/administration/authentication-providers/active-directory-authentication'>3.11</a></li><li class=''><a href='/docs/v/3.10/administration/authentication-providers/active-directory-authentication'>3.10</a></li><li class=''><a href='/docs/v/3.9/administration/authentication-providers/active-directory-authentication'>3.9</a></li><li class='disabled'><a href='/docs/v/3.8/administration/authentication-providers/active-directory-authentication'>3.8</a></li><li class=''><a href='/docs/v/3.7/administration/authentication-providers/active-directory-authentication'>3.7</a></li><li class=''><a href='/docs/v/3.6/administration/authentication-providers/active-directory-authentication'>3.6</a></li></ul>
+</div>
+<h1>Active Directory authentication</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Octopus Deploy can use Windows credentials to identify users. This option is chosen during installation of the Octopus Deploy server, or can be configured later.</p>
+<div class="alert alert-info"><p><strong>Domain user required during setup</strong><br />
+When you go through the Octopus setup wizard, or run the commands below to switch to AD authentication mode, make sure you are signed in to Windows as a domain user. If you are signed in as a local user account on the machine (a non-domain user) you won't be able to query Active Directory, so setup will fail.</p>
+</div>
+<h2 id="ActiveDirectoryauthentication-ActiveDirectorysigninoptions">Active Directory sign in options</h2>
+<p>If you are using Active Directory Authentication with Octopus, there are two ways to sign in.</p>
+<ol>
+<li>Integrated authentication</li>
+<li>Forms-based</li>
+</ol>
+<h2 id="ActiveDirectoryauthentication-Integratedauthentication">Integrated authentication</h2>
+<p>The easiest way to sign in when using Active Directory is to click the <em>Sign in with a domain account</em> link.</p>
+<p><a href='#' data-featherlight='/docs/images/3048127/5865886.png' class='zoom' data-title=''><img src='/docs/images/3048127/5865886.png' class="img-fluid center" alt='' /></a></p>
+<p>This will instruct the Octopus server to issue a browser challenge. If you are signed in on Windows, your Windows credentials will be automatically used to sign you in.</p>
+<p>By default, Octopus issues an NTLM challenge to the browser, but you can configure Octopus to use other authentication schemes using the command line:</p>
+<p><strong>Changing authentication schemes</strong></p>
+<pre><code class="language-bash">Octopus.Server.exe service --stop
+Octopus.Server.exe configure --webAuthenticationScheme=IntegratedWindowsAuthentication
+Octopus.Server.exe service --start
+</code></pre>
+<p>You can use <code>IntegratedWindowsAuthentication</code> to instruct Octopus to use Kerberos instead. <a href="https://msdn.microsoft.com/en-us/library/system.net.authenticationschemes(v=vs.110).aspx" rel="nofollow">Read about other supported values</a>.</p>
+<div class="alert alert-info"><p><strong>How it works</strong><br />
+Octopus is built on top of HTTP.sys, the same kernel driver that IIS is built on top of. You may be familiar with &quot;Integrated Windows Authentication&quot; in IIS; this is actually provided by HTTP.sys. This means that Octopus supports the same challenge-based sign-in mechanisms that IIS supports, including Integrated Windows Authentication.</p>
+<p>When the link is clicked, it redirects to a page which is configured to tell HTTP.sys to issue the browser challenge. The browser and HTTP.sys negotiate the authentication just like an IIS website would. The user principal is then passed to Octopus. Octopus will then query Active Directory for other information about the user.</p>
+</div>
+<h2 id="ActiveDirectoryauthentication-Forms-basedauthenticationwithActiveDirectory">Forms-based authentication with Active Directory</h2>
+<p>Octopus also lets users sign in by entering their Active Directory credentials manually using the HTML form. This is useful if users sometimes need to authenticate with a different account than the one they are signed in to Windows as, or if network configuration prevents integrated authentication from working correctly.</p>
+<p><a href='#' data-featherlight='/docs/images/3048127/5865886.png' class='zoom' data-title=''><img src='/docs/images/3048127/5865886.png' class="img-fluid center" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>How it works</strong><br />
+Using this option, the credentials are posted back to the Octopus server, and Octopus validates them against Active Directory by invoking the Windows API <code>LogonUser()</code> function. If that is successful, Octopus will then query Active Directory for information about the user.</p>
+<p>Keep in mind that if your Octopus server isn't <a href="/docs/v/3.8/how-to/expose-the-octopus-web-portal-over-https" class="alert-link">configured to use HTTPS</a>, these are posted in plain text (just like signing in to any other website).</p>
+</div>
+<p>If the Octopus Deploy server and its users are on the <strong>same domain</strong>, it is sufficient to provide a simple username in this field, for example <em>paul</em>*.*User Principal Names, of the form <em>user@domain.com</em> are also accepted in this scenario.</p>
+<p>If the server and its users are on different domains, or <strong>many domains</strong> are in use, the <em>DOMAIN\user</em> username format must be provided for users who are not a member of the domain the server is in.</p>
+<p>See below for more details and examples related to Trusted Domains.</p>
+<div class="alert alert-info"><p>Users will receive the error &quot;<strong>Username not found.  UPN format may not be supported for your domain configuration.&quot;</strong> if they have entered a UPN and their details could not be located in the domain. This could occur because the UPN really doesn't exist, or it exists in a domain other than the one the Octopus Deploy server is in (which as stated above is not supported).</p>
+</div>
+<p>Forms-based authentication can also be disabled:</p>
+<p><strong>Disabling HTML form sign-in</strong></p>
+<pre><code class="language-bash">Octopus.Server.exe service --stop
+Octopus.Server.exe configure --allowFormsAuthenticationForDomainUsers=false
+Octopus.Server.exe service --start
+</code></pre>
+<p>This will result in integrated sign in being the only option:</p>
+<p><a href='#' data-featherlight='/docs/images/3048127/5865889.png' class='zoom' data-title=''><img src='/docs/images/3048127/5865889.png' class="img-fluid center" alt='' /></a></p>
+<h2 id="ActiveDirectoryauthentication-Switchingbetweenusername/passwordandActiveDirectoryauthentication">Switching between username/password and Active Directory authentication</h2>
+<p>It is possible to reconfigure an existing Octopus Deploy server to use a different authentication mode.</p>
+<div class="alert alert-danger"><p><strong>User accounts are distinct</strong><br />
+In versions prior to 3.5, Octopus Deploy maintains different User records for Active Directory and username/password accounts. That is, a user <em>paul</em> created with username/password authentication will be a different account to the user <em>paul</em> found in Active Directory. This means that after switching between authentication types, teams and preferences will need to be reconfigured.</p>
+<p>When switching from username/password to Active Directory, after running the below commands you will find that duplicate accounts are created the first time an Active Directory user logs into Octopus Deploy. The pre-existing account should be either be deleted directly after the switch, or deleted after the user logs in for the first time using the Active Directory account. The Active Directory provisioned account will be recognizable as <em>paul</em>@domain compared to <em>paul</em>.</p>
+<p>In 3.5 the User records are handled differently, <a href="/docs/v/3.8/administration/authentication-providers#AuthenticationProviders-usersandauthprovidersUsersandAuthenticationProviders" class="alert-link">learn more</a>.</p>
+</div>
+<h3 id="ActiveDirectoryauthentication-ToselectActiveDirectoryauthentication">To select Active Directory authentication</h3>
+<p>To switch from username/password authentication to Active Directory authentication, use the following script from an administrative command prompt on the Octopus Server:</p>
+<p><strong>Selecting Active Directory authentication</strong></p>
+<pre><code class="language-bash">Octopus.Server.exe service --stop
+Octopus.Server.exe configure --webAuthenticationMode=Domain
+Octopus.Server.exe admin --username=YOURUSERNAME
+Octopus.Server.exe service --start
+</code></pre>
+<p>The text <code>YOURUSERNAME</code> should be your Active Directory account name, in either <strong>user@domain</strong> or <strong>domain\user</strong> format (see <a href="/docs/v/3.8/administration/authentication-providers">Authentication Providers</a>).</p>
+<h3 id="ActiveDirectoryauthentication-Toselectusername/passwordauthentication">To select username/password authentication</h3>
+<p>To switch from Active Directory authentication to username/password authentication, use the following script from an administrative command prompt on the Octopus Server:</p>
+<p><strong>Switching to username/password authentication</strong></p>
+<pre><code class="language-bash">Octopus.Server.exe service --stop
+Octopus.Server.exe configure --webAuthenticationMode=UsernamePassword
+Octopus.Server.exe admin --username=YOURUSERNAME
+Octopus.Server.exe service --start
+</code></pre>
+<h3 id="ActiveDirectoryauthentication-Tospecifyacustomcontainer">To specify a custom container</h3>
+<p>In Octopus Deploy version 2.5.11 and newer you can specify a custom container to use for AD Authentication. This feature addresses the issue of authenticating with Active Directory where the Users container is not in default location and permissions prevent queries as a result. Specifying the container will result in the container being used as the root of the context. The container is the distinguished name of a container object. All queries are performed under this root which can be useful in a more restricted environment. This may be the solution if you see a &quot;The specified directory service attribute or value does not exist&quot; error when using Active Directory authentication.</p>
+<p><strong>Setting a custom container</strong></p>
+<pre><code class="language-bash">Octopus.Server.exe service --stop
+Octopus.Server.exe configure --activeDirectoryContainer &quot;CN=Users,DC=GPN,DC=COM&quot;
+Octopus.Server.exe service --start
+</code></pre>
+<p>Where <code>&quot;CN=Users,DC=GPN,DC=COM&quot;</code> should be replaced with your Container.</p>
+<h3 id="ActiveDirectoryauthentication-TrustedDomains">Trusted Domains</h3>
+<p>Using Trusted Domains is supported by Octopus Deploy.  Users from the domain the Octopus Deploy server is a member of will always be allowed to log in.  Users from domains that the Octopus Deploy server's domain trusts will also be able to log in.</p>
+<p>The following diagram illustrates a typical configuration when there is a 2 way trust between the domains.</p>
+<p><a href='#' data-featherlight='/docs/administration/authentication-providers/domains-twoway.png' class='zoom' data-title=''><img src='/docs/administration/authentication-providers/domains-twoway.png' class="img-fluid center" alt='Two-way trust' /></a></p>
+<p>In this configuration the Octopus server is executing as a service account from the same domain that the machine is a member of. When logging in, users from DomainA can use their AD username or UPN whereas users from DomainB must use <em>DOMAIN\user</em> username format. This is required so that the API calls Octopus makes can locate the domain controller for the correct domain (DomainB in this example).</p>
+<p>Another common scenario is to have a 1 way trust between the domains. This configuration is illustrated in the following diagram</p>
+<p><a href='#' data-featherlight='/docs/administration/authentication-providers/domains-oneway.png' class='zoom' data-title=''><img src='/docs/administration/authentication-providers/domains-oneway.png' class="img-fluid center" alt='One-way trust' /></a></p>
+<p>In this example, DomainA trusts DomainB. Given that both domains trust users from DomainB, the Octopus service should be configured to run as an account from DomainB. If the service was configured to run as an account from DomainA then users from DomainB wouldn't be able to log in and Octopus wouldn't be able to query group information from DomainB.</p>
+<p>Learn about <a href="/docs/v/3.8/administration/managing-users-and-teams/external-groups-and-roles">configuring Teams to utilize Trusted Domains</a>.</p>
+<h3 id="ActiveDirectoryauthentication-Troubleshooting">Troubleshooting</h3>
+<p>For more information on troubleshooting, see <a href="/docs/v/3.8/administration/authentication-providers/troubleshooting-active-directory-integration">Troubleshooting Active Directory integration</a>.</p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

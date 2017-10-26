@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/deploying-applications/variables/system-variables'>4.0</a></li><li class=''><a href='/docs/deploying-applications/variables/system-variables'>Latest</a></li><li class=''><a href='/docs/v/3.16/deploying-applications/variables/system-variables'>3.16</a></li><li class='disabled'><a href='/docs/v/3.15/deploying-applications/variables/system-variables'>3.15</a></li><li class=''><a href='/docs/v/3.14/deploying-applications/variables/system-variables'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/variables/system-variables'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/variables/system-variables'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/variables/system-variables'>3.11</a></li><li class=''><a href='/docs/v/3.10/deploying-applications/variables/system-variables'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/variables/system-variables'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/variables/system-variables'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications/variables/system-variables'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/variables/system-variables'>3.6</a></li></ul>
+</div>
+<h1>System variables</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>This page lists built-in <a href="/docs/v/3.15/deploying-applications/variables">variables</a> provided by Octopus that can be used in your deployment <a href="/docs/v/3.15/deploying-applications/custom-scripts">Custom scripts</a>.</p>
+<h2 id="Systemvariables-Deployment">Deployment</h2>
+<p>Deployment-level variables are drawn from the project and release being deployed.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Acquire.MaxParallelism</code></strong> <br/>Controls the number of package acquisitions that will be allowed to run concurrently. Also controls retention processing at the end of the deployment. <em>Default: 10</em></td>
+<td><em>2</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Acquire.DeltaCompressionEnabled</code></strong> <br/>Toggle whether delta compression is enabled when sending packages to targets.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Comments</code></strong> <br/>User-provided comments on the deployment</td>
+<td><em>Signed off by Alice</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Created</code></strong> <br/>The date and time at which the deployment was created</td>
+<td><em>Tuesday 10th September 1:23 PM</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.CreatedBy.DisplayName</code></strong> <br/>The full name of the user who initiated the deployment</td>
+<td><em>Alice King</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.CreatedBy.EmailAddress</code></strong> <br/>The email address of the user who initiated the deployment</td>
+<td><em><a href="mailto:alice@example.com" rel="nofollow">alice@example.com</a></em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.CreatedBy.Id</code></strong> <br/>The ID of the user who initiated the deployment</td>
+<td><em>users-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.CreatedBy.Username</code></strong> <br/>The username of the user who initiated the deployment</td>
+<td><em>alice</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Error</code></strong> <br/>This variable outputs the error/exit code for a failed deployment. <a href="/docs/v/3.15/deploying-applications/variables/system-variables">See here</a></td>
+<td><em>Script returned exit code 123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.ErrorDetail</code></strong> <br/>The error/exit code for the deployment along with the Octopus stack trace. <a href="/docs/v/3.15/deploying-applications/variables/system-variables">See here</a></td>
+<td><em>System.IO.FileNotFoundException: file C:\Missing.txt does not exist (at...)</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.ForcePackageDownload</code></strong> <br/>If true, the package will be freshly downloaded from the feed/repository regardless of whether it is already present on the endpoint <em>(Boolean)</em></td>
+<td><em>False</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Id</code></strong> <br/>The ID of the deployment</td>
+<td><em>deployments-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Name</code></strong> <br/>The name of the deployment</td>
+<td><em>Deploy to Production</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.PreviousSuccessful.Id</code></strong> <br/>The ID of the previous successful deployment of this project in the target environment</td>
+<td><em>deployments-122</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Machines</code></strong> <br/>Ids of machines being targeted by the deployment.</td>
+<td>machines-123,machines-124</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.SpecificMachines</code></strong> <br/>Specific machines being targeted by the deployment, if any*(List)*</td>
+<td><em>machines-123,machines-124</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.ExcludedMachines</code></strong> <br/>Ids of machines that have been excluded from the deployment (generally for being unavailable)</td>
+<td>machines-123,machines-124</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Tenant.Id</code></strong> <br/>The ID of the Tenant being deployed for. If the deployment is untenanted (or pre 3.4.0) then this variable will not be present.</td>
+<td><em>Tenants-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Tenant.Name</code></strong> <br/>The name of the Tenant being deployed for. If the deployment is untenanted (or pre 3.4.0) then this variable will not be present.</td>
+<td><em>Acme Corp</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Deployment.Tenant.Tags</code></strong> <br/>Comma delimited list of tags that belong the the Tenant being deployed for. If the deployment is untenanted (or pre 3.4.0) then this variable will not be present.</td>
+<td><em>Tenant type/External, Upgrade ring/Early adopter</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Endpoint.\_type\_.\_property\_</code></strong> <br/>Properties describing the endpoint being deployed</td>
+<td><em>ftp.example.com</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Environment.Id</code></strong> <br/>The ID of the environment</td>
+<td><em>environments-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Environment.MachinesInRole[\_role\_]</code></strong> <br/>Lists the machines in a specified role</td>
+<td><em>machines-123,machines-124</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Environment.Name</code></strong> <br/>The name of the environment</td>
+<td><em>Production</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Environment.SortOrder</code></strong> <br/>The ordering applied to the environment when it is displayed on the dashboard and elsewhere</td>
+<td><em>3</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Machine.Id</code></strong> <br/>The ID of the machine</td>
+<td><em>machines-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Machine.Name</code></strong> <br/>The name that was used to register the machine in Octopus. Not the same as <em>Hostname</em></td>
+<td><em>WEBSVR01</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Machine.Roles</code></strong> <br/>The roles applied to the machine <em>(List)</em></td>
+<td><em>web-server,frontend</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Machine.Hostname</code></strong> <br/>The host part of the URI that was used to register the machine, could be an IP, hostname depending on what was supplied. Only set for Listening Tentacles</td>
+<td>Database01, Database01.local, 192.168.200.100</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Project.Id</code></strong> <br/>The ID of the project</td>
+<td><em>projects-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Project.Name</code></strong> <br/>The name of the project</td>
+<td><em>OctoFx</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.ProjectGroup.Id</code></strong> <br/>The ID of the projectgroup</td>
+<td><em>projectgroups-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.ProjectGroup.Name</code></strong> <br/>The name of the projectgroup</td>
+<td><em>Public Web Properties</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.Channel.Name</code></strong> <br/>The Channel name associated with the release</td>
+<td><em>2.x Feature Branch</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.Notes</code></strong> <br/>Release notes associated with the release, in Markdown format</td>
+<td><em>Fixes bugs 1, 2 &amp; 3</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.Number</code></strong> <br/>The version number of the release</td>
+<td><em>1.2.3</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.Id</code></strong> <br/>The ID of the release</td>
+<td><em>releases-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.Previous.Id</code></strong> <br/>The ID of the last release of the project</td>
+<td><em>releases-122</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.Previous.Number</code></strong> <br/>The version number of the last release of the project</td>
+<td><em>1.2.2</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.PreviousForEnvironment.Id</code></strong> <br/>The ID of the last release of the project to the current environment</td>
+<td><em>releases-122</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.PreviousForEnvironment.Number</code></strong> <br/>The version number of the last release of the project to the current environment</td>
+<td><em>1.2.2</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.CurrentForEnvironment.Id</code></strong> <br/>The ID of the release of the last successful deployment to the current environment</td>
+<td><em>releases-122</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Release.CurrentForEnvironment.Number</code></strong> <br/>The version number of the release the last successful deployment to the current environment</td>
+<td><em>1.2.2</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Task.Argument[_name_]</code></strong> <br/>Argument values provided when creating the task</td>
+<td><em>deployments-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Task.Id</code></strong> <br/>The ID of the task</td>
+<td><em>servertasks-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Task.Name</code></strong> <br/>The name of the task</td>
+<td><em>Deploy release 1.2.3 to Production</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Task.QueueTime</code></strong> <br/>The date and time the task should be queued for execution. <em><strong>Introduced in Octopus Deploy version 3.17.3</strong></em></td>
+<td><em>Tuesday 10th September 1:30 PM</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Task.QueueTimeExpiry</code></strong> <br/>The date and time before which the task must start. <em><strong>Introduced in Octopus Deploy version 3.17.3</strong></em></td>
+<td><em>Tuesday 10th September 2:30 PM</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.CurrentDeployment.PackageFilePath</code></strong> <br/>The path to the package file being deployed</td>
+<td><em>C:\Octopus\Tentacle\Packages\OctoFx.1.2.3.nupkg</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.CurrentDeployment.TargetedRoles</code></strong> <br/>The intersection of the roles targeted by the step, and those applied to the machine</td>
+<td><em>web-server</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.PreviousInstallation.CustomInstallationDirectory</code></strong> <br/>The directory into which the previous version of the package was deployed</td>
+<td><em>C:\InetPub\WWWRoot\OctoFx</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.PreviousInstallation.OriginalInstalledPath</code></strong> <br/>The directory into which the previous version of the package was extracted</td>
+<td><em>C:\Octopus\Tentacle\Apps\Production\OctoFx\1.2.2</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.PreviousInstallation.PackageFilePath</code></strong> <br/>The path to the package file previously deployed</td>
+<td><em>C:\Octopus\Tentacle\Packages\OctoFx.1.2.2.nupkg</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.PreviousInstallation.PackageVersion</code></strong> <br/>The previous version of the package that was deployed to the Tentacle</td>
+<td><em>1.2.3</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Web.DeploymentLink</code></strong> <br/>A path relative to the Octopus Server URL at which the deployment can be viewed</td>
+<td><em>/app/deployment/deployments-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Web.ProjectLink</code></strong> <br/>A path relative to the Octopus Server URL at which the project can be viewed</td>
+<td><em>/app/projects/projects-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Web.ReleaseLink</code></strong> <br/>A path relative to the Octopus Server URL at which the release can be viewed</td>
+<td><em>/app/releases/releases-123</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-Action">Action</h2>
+<p>Action-level variables are available during execution of an action. Indexer notion such as <code>Octopus.Action[Website].TargetRoles</code> can be used to refer to values for different actions.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Action.Id</code></strong> <br/>The ID of the action</td>
+<td><em>85287bef-fe6c-4eb7-beef-74f5e5a6b5b0</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.IsSkipped</code></strong> <br/>Whether or not the action has been skipped in the current deployment <em>(Boolean)</em></td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Manual.Instructions</code></strong> <br/>The instructions provided for a manual step</td>
+<td><em>Don't break anything 😃</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Manual.ResponsibleTeamIds</code></strong> <br/>The teams responsible for completing a manual step*(List)*</td>
+<td><em>teams-123,teams-124</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.MaxParallelism</code></strong> <br/>The maximum number of machines on which the action will concurrently execute. This value can be set in a project variable to change the default for the project. Additionally you can scope a value to specific actions to control concurrency across your deployment. This is the same variable which is set when configuring a <a href="/docs/v/3.15/patterns/rolling-deployments">rolling deployment</a>. <em>(Number - Default: 10)</em></td>
+<td><em>5</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Name</code></strong> <br/>The name of the action</td>
+<td><em>Website</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Number</code></strong> <br/>The sequence number of the action in the deployment process <em>(Number)</em></td>
+<td><em>5</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.CustomInstallationDirectory</code></strong> <br/>If set, a specific directory to which the package will be copied after extraction</td>
+<td><em>C:\InetPub\WWWRoot\OctoFx</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.CustomInstallationDirectoryShouldBePurgedBeforeDeployment</code></strong> <br/>If true, the all files in the <code>Octopus.Action.Package.CustomInstallationDirectory</code> will be deleted before deployment <em>(Boolean)</em></td>
+<td><em>False</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.DownloadOnTentacle</code></strong> <br/>If true, the package will be downloaded by the Tentacle, rather than pushed by the Octopus server*(Boolean)*</td>
+<td><em>False</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.TreatConfigTransformationWarningsAsErrors</code></strong> <br/>If true, any warnings in configuration transformations will be treated as errors and will fail the deployment** **<em>(Boolean)</em></td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.IgnoreConfigTransformationErrors</code></strong> <br/>If true, any errors in configuration transformations will be treated as informational rather than errors that will fail the deployment** **<em>(Boolean)</em></td>
+<td><em>False</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.IgnoreVariableReplacementErrors</code></strong> <br/>If true, any errors in variable replacement will be treated as a warning rather than an error that will fail the deployment. (<em>Boolean</em>)</td>
+<td><em>False</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.InstallationDirectoryPath</code></strong> <br/>The directory where the package was installed. It is not available prior to package extraction.</td>
+<td><em>C:\InetPub\WWWRoot\OctoFx</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.FeedId</code></strong> <br/>The ID of the feed from which the package being deployed was pulled</td>
+<td><em>feeds-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.PackageId</code></strong> <br/>The ID of the package being deployed</td>
+<td><em>OctoFx.RateService</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.PackageVersion</code></strong> <br/>The version of the package being deployed</td>
+<td><em>1.2.3</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Package.SkipIfAlreadyInstalled</code></strong> <br/>If true, and the version of the package being deployed is already present on the machine, its re-deployment will be skipped (use with caution) <em>(Boolean)</em></td>
+<td><em>False</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Script.ScriptBody</code></strong> <br/>The script being run in a script step</td>
+<td><em>Write-Host 'Hello!'</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Script.Syntax</code></strong> <br/>The syntax of the script being run in a script step</td>
+<td><em>PowerShell</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.SkipRemainingConventions</code></strong> <br/>If set by the user, completes processing of the action without runnning further conventions/scripts <em>(Boolean)</em></td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.TargetRoles</code></strong> <br/>Machine roles targeted by the action <em>(List)</em></td>
+<td><em>web-server,frontend</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Template.Id</code></strong> <br/>If the action is based on a step template, the ID of the template</td>
+<td><em>actiontemplates-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Template.Version</code></strong> <br/>If the action is based on a step template, the version of the template in use <em>(Number)</em></td>
+<td><em>123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Status.Error</code></strong> <br/>If the action failed because of an error, a description of the error</td>
+<td><em>The server could not be contacted</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Status.ErrorDetail</code></strong> <br/>If the action failed because of an error, a full description of the error</td>
+<td><em>System.Net.SocketException: The server ...</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-Azure">Azure</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Action.Azure.CertificateThumbprint</code></strong> <br/>The thumbprint of the X509 certificate used to authenticate with the Azure Subscription targeted by this action</td>
+<td><em>86B5C8E5553981FED961769B2DA3028C619596AC</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.PackageExtractionPath</code></strong> <br/>If set by the user, the temporary path to extract Azure packages into during deployment</td>
+<td>Z:\Temp\packages|</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.SubscriptionId</code></strong> <br/>The Azure Subscription Id being targeted by this action</td>
+<td><em>8affaa7d-3d74-427c-93c5-2d7f6a16e754</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.ResourceGroupDeploymentName</code></strong> <br/>Override the auto-generated resource group deployment name when deploying a resource group</td>
+<td>my-resourcegroupdeployment-name</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-AzureCloudService">Azure Cloud Service</h2>
+<table class="table" Environment>
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Action.Azure.CloudServiceConfigurationFileRelativePath</code></strong> <br/>If set by the user, the relative path to the *.cscfg file, with a fallback to ServiceConfiguration..cscfg or ServiceConfiguration.Cloud.cscfg</td>
+<td><em>ServiceConfiguration.Custom.cscfg</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.CloudServiceName</code></strong> <br/>The name of the Cloud Service being targeted by this action</td>
+<td><em>my-cloudservice-web</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.CloudServicePackageExtractionDisabled</code></strong> <br/>Octopus will not unpack the *.cspkg file if this variable is set to True, instead the *.cspkg file will be pushed to Azure as-is</td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.CloudServicePackagePath</code></strong> <br/>The path of the *.cspkg file used by this action</td>
+<td><em>Z:\Temp\packages\my-cloudservice-web.cspkg</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.LogExtractedCspkg</code></strong> <br/>If true, the contents of the extracted *.cspkg will be written to the log to help diagnose deployment issues <em>(Boolean)</em></td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.Slot</code></strong> <br/>The slot of the Cloud Service being targeted by this action</td>
+<td><em>Staging</em> or <em>Production</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.StorageAccountName</code></strong> <br/>The name of the Azure Storage Account where *.cspkg files will be uploaded to for deployment to the Cloud Service</td>
+<td><em>my-storage-account</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.SwapIfPossible</code></strong> <br/>If true, the action will attempt to perform a VIP swap instead of deploying directly into the targeted Slot</td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.UploadedPackageUri</code></strong> <br/>The Storage URI of the *.cspkg file that will be deployed to the Cloud Service</td>
+<td><a href="https://my-storage-account/container/my-cloudservice.web.cspkg%7C" rel="nofollow">https://my-storage-account/container/my-cloudservice.web.cspkg|</a></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.UseCurrentInstanceCount</code></strong> <br/>If true, the action will maintain the number of Instances in the Cloud Service rather than reverting to what is defined in the *.cspkg file</td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.DeploymentLabel</code></strong> <br/>If set, the custom deployment label will be used for the Azure cloud service deployment. <em><strong>Introduced in Calamari version 3.4.1 which was released with Octopus Deploy version 3.4.4.</strong></em></td>
+<td>my custom label for build 3.x.x</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-AzureWebApps">Azure Web Apps</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Action.Azure.WebAppName</code></strong> <br/>The name of the Web App being targeted by this deployment</td>
+<td><em>my-web-app</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.WebSpaceName</code></strong> <br/>The name of the Web Space being targeted by this deployment</td>
+<td><em>SoutheastAsiaWebSpace1</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.RemoveAdditionalFiles</code></strong> <br/>When <em>True</em> instructs Web Deploy to delete files from the destination that aren't in the source package</td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.PreserveAppData</code></strong> <br/>When <em>True</em> instructs Web Deploy to skip Delete operations in the <strong>App_Data</strong> directory</td>
+<td><em>True</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Azure.AppOffline</code></strong> <br/>When <em>True</em> instructs Web Deploy to safely bring down the app domain by adding a blank <strong>app_offline.html</strong> file in the site root</td>
+<td><em>True</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-Output">Output</h2>
+<p>Output variables are collected during execution of a step and made available to subsequent steps using notation such as <code>Octopus.Action[Website].Output[WEBSVR01].Package.InstallationDirectoryPath</code>to refer to values base on the action and machine that produced them. See also <a href="/docs/v/3.15/deploying-applications/variables/output-variables">Output variables</a>.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.\_property\_</code></strong> <br/>The results of calling <code>Set-OctopusVariable</code> during an action are exposed for use in other actions using this pattern</td>
+<td><em>Octopus.Action[Website].Output.WarmUpResponseTime</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.Manual.Notes</code></strong> <br/>Notes provided by the user who completed a manual step</td>
+<td><em>Signed off by Alice</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.Package.InstallationDirectoryPath</code></strong> <br/>The directory where the package was installed</td>
+<td><em>C:\Octopus\Tentacle\Apps\Production\MyApp\1.2.3</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.Manual.ResponsibleUser.DisplayName</code></strong> <br/>The full name of the user who completed the manual step</td>
+<td><em>Alice King</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.Manual.ResponsibleUser.EmailAddress</code></strong> <br/>The email address of the user who completed the manual step</td>
+<td><em><a href="mailto:alice@example.com" rel="nofollow">alice@example.com</a></em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.Manual.ResponsibleUser.Id</code></strong> <br/>The ID of the user who completed the manual step</td>
+<td><em>users-123</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.Manual.ResponsibleUser.Username</code></strong> <br/>The username of the user who completed the manual step</td>
+<td><em>alice</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.OctopusAzureCloudServiceDeploymentID</code></strong> <br/> The ID of the completed Azure Cloud Service deployment. <em><strong>Introduced in Calamari version 3.7.81 which was released with Octopus Deploy version 3.14.15.</strong></em></td>
+<td><em>c9f52da2b00a4313b3b64bb2ad0f409f</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action[_name_].Output.OctopusAzureCloudServiceDeploymentUrl</code></strong> <br/>The Url of the completed Azure Cloud Service deployment. <em><strong>Introduced in Calamari version 3.7.81 which was released with Octopus Deploy version 3.14.15.</strong></em></td>
+<td><em><a href="http://c9f52da2b00a4313b3b64bb2ad0f409f.cloudapp.net/" rel="nofollow">http://c9f52da2b00a4313b3b64bb2ad0f409f.cloudapp.net/</a></em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-Step">Step</h2>
+<p>Step-level variables are available during execution of a step. Indexer notion such as <code>Octopus.Step[Website].Number</code> can be used to refer to values for different steps.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Step.Id</code></strong> <br/>The ID of the step</td>
+<td><em>80b3ad09-eedf-40d6-9b66-cf97f5c0ffee</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Step.Name</code></strong> <br/>The name of the step</td>
+<td><em>Website</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Step.Number</code></strong> <br/>The number of the step*(Number)*</td>
+<td><em>2</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Step.Status.Code</code></strong> <br/>A code describing the current status of the step</td>
+<td><em>Succeeded</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Step.Status.Error</code></strong> <br/>If the step failed because of an error, a description of the error</td>
+<td><em>The server could not be contacted</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Step.Status.ErrorDetail</code></strong> <br/>If the step failed because of an error, a full description of the error</td>
+<td><em>System.Net.SocketException: The server could not be contacted (at ...)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-Agent">Agent</h2>
+<p>Agent-level variables describe the deployment agent or Tentacle on which the deployment is executing.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Tentacle.Agent.ApplicationDirectoryPath</code></strong> <br/>The directory under which the agent installs packages</td>
+<td><em>C:\Octopus\Tentacle\Apps</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.Agent.InstanceName</code></strong> <br/>The instance name that the agent runs under</td>
+<td><em>Tentacle</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Tentacle.Agent.ProgramDirectoryPath</code></strong> <br/>The directory containing the agent's own executables</td>
+<td><em>C:\Program Files\Octopus Deploy\Tentacle</em></td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Agent.ProgramDirectoryPath</code></strong> <br/>The directory containing either the server or Tentacle's executables depending on which the step being executed on</td>
+<td><em>C:\Program Files\Octopus Deploy\Octopus</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-Server">Server</h2>
+<p>Server-level variables describe the Octopus server on which the deployment is running.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Web.BaseUrl</code></strong> <br/>The default URL at which the server can be accessed. Note that this is based off the server's ListenPrefixes and works in simple configuration scenarios. If you have a load balancer or reverse proxy this value will likely not be suitable for use in referring to the server from a client perspective, e.g. in email templates etc.</td>
+<td><em><a href="https://my-octopus" rel="nofollow">https://my-octopus</a></em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Systemvariables-DeploymentStatusTrackingdeploymentstatus">Tracking deployment status</h2>
+<p>During deployment, Octopus provides variables describing the status of each step.</p>
+<p>Where <code>S</code> is the step name, Octopus will set:</p>
+<pre><code class="language-powershell">Octopus.Step[S].Status.Code
+Octopus.Step[S].Status.Error
+Octopus.Step[S].Status.ErrorDetail
+</code></pre>
+<p>Status codes include <code>Pending</code>, <code>Skipped</code>, <code>Abandoned</code>, <code>canceled</code>, <code>Running</code>, <code>Succeeded</code> and <code>Failed</code>.</p>
+<p>For an action <code>A:</code></p>
+<pre><code class="language-powershell">Octopus.Action[A].IsSkipped
+</code></pre>
+<p>For the deployment as a whole:</p>
+<pre><code class="language-powershell">Octopus.Deployment.Error
+Octopus.Deployment.ErrorDetail
+</code></pre>
+<div class="alert alert-info"><p><strong>Error detail returned</strong><br />
+Octopus.Deployment.Error and Octopus.Deployment.ErrorDetail will only display the exit code and Octopus stack trace for the error. As we cannot parse the deployment log, we can only extract the exit/error codes. It cannot show detailed information on what caused the error. For full information on what happened when the deployment fails, you will need to reference the logs.</p>
+</div>
+<h2 id="Systemvariables-User-modifiablesettings">User-modifiable settings</h2>
+<p>The following variables can be defined as variables in your project to modify the way Octopus behaves.</p>
+<table class="table" Version>
+<thead>
+<tr>
+<th>Name and Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Octopus.Acquire.MaxParallelism</code></strong> <br/>Maximum number of NuGet packages that should be downloaded at once when acquiring packages.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong><code>OctopusPrintVariables</code></strong> <br/>Set to &quot;True&quot; to tell Tentacle to print the value of all variables passed to it. We recommend only using this setting for non-production environments.</td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>OctopusPrintEvaluatedVariables</code></strong> <br/>Set to &quot;True&quot; to tell Tentacle to print the value of all variables passed to it after evaluating them. We recommend only using this setting for non-production environments.</td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>OctopusTreatWarningsAsErrors</code></strong> <br/>Set to &quot;True&quot; to have warnings from XML configuration transforms or PowerShell scripts treated as if they were errors, failing the deployment.</td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>OctopusSkipFreeDiskSpaceCheck</code></strong> <br/>Set to &quot;True&quot; to skip the check for available free disk space when deploying packages. <em><strong>Introduced in Calamari version 3.1.30 which was released with Octopus Deploy version 3.2.18.</strong></em></td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>OctopusFreeDiskSpaceOverrideInMegaBytes</code></strong> <br/>The amount (in megabytes) of available free disk space we should check for (overriding the default 500MB), failing the deployment if not enough free disk space is available. <em><strong>Introduced in Calamari version 3.1.30 which was released with Octopus Deploy version 3.2.18.</strong></em></td>
+<td>100</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.PowerShell.CustomPowerShellVersion</code></strong> <br/>If specified, your PowerShell scripts will be invoked using <code>PowerShell.exe -version {Version}</code> where  is the value you specified. Accepted values are <em>2.0</em>, <em>3.0</em>, <em>4.0, 5.0</em> <em><strong>Introduced in Calamari version 3.3.13 which was released with Octopus Deploy version 3.3.13.</strong></em></td>
+<td>2.0</td>
+</tr>
+<tr>
+<td><strong><code>OctopusDeleteScriptsOnCleanup</code></strong> <br/>For packaged scripts, set to &quot;False&quot; to keep the PreDeploy/Deploy/PostDeploy scripts in the target directory (i.e. don't cleanup).</td>
+<td>False</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.Script.SuppressEnvironmentLogging</code></strong> <br/>To suppress/disable the environment logging that occurs from script (eg. PowerShell or Bash Script Environment Variables logging). This only suppresses script logging and does not suppress the Octopus or Calamari environment logging. <em><strong>Introduced in Calamari version 3.6.5 which was released with Octopus Deploy version 3.6.0.</strong></em></td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>Octopus.Action.PowerShell.ExecuteWithoutProfile</code></strong> <br/>Set to <code>true</code> to not run the Tentacle service account's PowerShell profile script when running PowerShell script steps (available in version 3.3.21+)</td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong><code>OctopusSuppressDuplicateVariableWarning</code></strong> <br/>Set to <code>true</code> to have the duplicate variable message logged as verbose instead of warning. <em><strong>Do this if you are aware of the duplication and that it isn't causing any issues in your deployment</strong></em>  (available in version 3.17.0+)</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

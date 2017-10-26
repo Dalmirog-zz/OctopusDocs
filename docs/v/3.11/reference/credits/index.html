@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/reference/credits'>4.0</a></li><li class=''><a href='/docs/reference/credits'>Latest</a></li><li class=''><a href='/docs/v/3.16/reference/credits'>3.16</a></li><li class=''><a href='/docs/v/3.15/reference/credits'>3.15</a></li><li class=''><a href='/docs/v/3.14/reference/credits'>3.14</a></li><li class=''><a href='/docs/v/3.13/reference/credits'>3.13</a></li><li class=''><a href='/docs/v/3.12/reference/credits'>3.12</a></li><li class='disabled'><a href='/docs/v/3.11/reference/credits'>3.11</a></li><li class=''><a href='/docs/v/3.10/reference/credits'>3.10</a></li><li class=''><a href='/docs/v/3.9/reference/credits'>3.9</a></li><li class=''><a href='/docs/v/3.8/reference/credits'>3.8</a></li><li class=''><a href='/docs/v/3.7/reference/credits'>3.7</a></li><li class=''><a href='/docs/v/3.6/reference/credits'>3.6</a></li></ul>
+</div>
+<h1>Credits</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Octopus Deploy 3.0 is made possible thanks to the following great third-party products.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Package</th>
+<th>Authors and/or maintainers</th>
+<th>Find it at...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ace</td>
+<td>Cloud9</td>
+<td><a href="http://ace.c9.io/" rel="nofollow">http://ace.c9.io/</a></td>
+</tr>
+<tr>
+<td>Angular.js</td>
+<td>Google Inc.</td>
+<td><a href="http://angularjs.org/" rel="nofollow">http://angularjs.org</a></td>
+</tr>
+<tr>
+<td>angular-bootstrap</td>
+<td>Angular UI contributors</td>
+<td><a href="https://github.com/angular-ui/bootstrap" rel="nofollow">https://github.com/angular-ui/bootstrap</a></td>
+</tr>
+<tr>
+<td>angular-bootstrap-switch</td>
+<td>Francesco Pontillo</td>
+<td><a href="https://github.com/frapontillo/angular-bootstrap-switch" rel="nofollow">https://github.com/frapontillo/angular-bootstrap-switch</a></td>
+</tr>
+<tr>
+<td>angular-file-upload</td>
+<td>Alex (nervgh) and contributors</td>
+<td><a href="https://github.com/nervgh/angular-file-upload" rel="nofollow">https://github.com/nervgh/angular-file-upload</a></td>
+</tr>
+<tr>
+<td>angular-ui</td>
+<td>Angular UI contributors</td>
+<td><a href="https://github.com/angular-ui" rel="nofollow">https://github.com/angular-ui</a></td>
+</tr>
+<tr>
+<td>Autofac and integrations</td>
+<td>Autofac Contributors</td>
+<td><a href="http://autofac.org/" rel="nofollow">http://autofac.org/</a></td>
+</tr>
+<tr>
+<td>autofill-directive</td>
+<td>Chesley Brown</td>
+<td><a href="https://github.com/chesleybrown/autofill-directive" rel="nofollow">https://github.com/chesleybrown/autofill-directive</a></td>
+</tr>
+<tr>
+<td>Axialis Icons</td>
+<td>Axialis</td>
+<td><a href="http://axialis.com/" rel="nofollow">http://axialis.com/</a></td>
+</tr>
+<tr>
+<td>Bootstrap</td>
+<td>Twitter Inc.</td>
+<td><a href="http://getbootstrap.com/" rel="nofollow">http://getbootstrap.com/</a></td>
+</tr>
+<tr>
+<td>Bootstrap Date Range Picker</td>
+<td>Dan Grossman and contributors</td>
+<td><a href="https://github.com/dangrossman/bootstrap-daterangepicker" rel="nofollow">https://github.com/dangrossman/bootstrap-daterangepicker</a></td>
+</tr>
+<tr>
+<td>Bootstrap Switch</td>
+<td>Mattia Larentis,Peter Stein,Emanuele Marchi</td>
+<td><a href="http://www.larentis.eu/switch/" rel="nofollow">http://www.larentis.eu/switch/</a></td>
+</tr>
+<tr>
+<td>Bower</td>
+<td>Twitter Inc.</td>
+<td><a href="http://bower.io/" rel="nofollow">http://bower.io/</a></td>
+</tr>
+<tr>
+<td>CsvHelper</td>
+<td>Josh Close</td>
+<td><a href="https://joshclose.github.io/CsvHelper/" rel="nofollow">https://joshclose.github.io/CsvHelper/</a></td>
+</tr>
+<tr>
+<td>D3.js</td>
+<td>Mike Bostock and contributors</td>
+<td><a href="http://d3js.org" rel="nofollow">http://d3js.org</a>/</td>
+</tr>
+<tr>
+<td>es5-shim</td>
+<td>Jordan Harand, Kris Kowall and contributors</td>
+<td><a href="https://github.com/es-shims/es5-shim" rel="nofollow">https://github.com/es-shims/es5-shim</a></td>
+</tr>
+<tr>
+<td>FluentValidation</td>
+<td>Jeremy Skinner</td>
+<td><a href="http://fluentvalidation.codeplex.com/" rel="nofollow">http://fluentvalidation.codeplex.com/</a></td>
+</tr>
+<tr>
+<td>Font Awesome</td>
+<td>Dave Gandy and contributors</td>
+<td><a href="https://github.com/FortAwesome/Font-Awesome" rel="nofollow">https://github.com/FortAwesome/Font-Awesome</a></td>
+</tr>
+<tr>
+<td>grunt</td>
+<td>&quot;Cowboy&quot; Ben Alman</td>
+<td><a href="http://gruntjs.com/" rel="nofollow">http://gruntjs.com/</a></td>
+</tr>
+<tr>
+<td>grunt-contrib</td>
+<td>Grunt Team</td>
+<td><a href="https://github.com/gruntjs/grunt-contrib-clean" rel="nofollow">https://github.com/gruntjs/grunt-contrib-clean</a></td>
+</tr>
+<tr>
+<td>grunt-html2js</td>
+<td>Karl Goldstein</td>
+<td><a href="https://github.com/karlgoldstein/grunt-html2js" rel="nofollow">https://github.com/karlgoldstein/grunt-html2js</a></td>
+</tr>
+<tr>
+<td>grunt-neuter</td>
+<td>Trek Glowacki</td>
+<td><a href="https://github.com/trek/grunt-neuter" rel="nofollow">https://github.com/trek/grunt-neuter</a></td>
+</tr>
+<tr>
+<td>grunt-open</td>
+<td>Jarrod Overson</td>
+<td><a href="https://github.com/onehealth/grunt-open" rel="nofollow">https://github.com/onehealth/grunt-open</a></td>
+</tr>
+<tr>
+<td>JetBrains TeamCity,  ReSharper and WebStorm</td>
+<td>JetBrains</td>
+<td><a href="http://www.jetbrains.com/" rel="nofollow">http://www.jetbrains.com/</a></td>
+</tr>
+<tr>
+<td>jQuery and jQuery UI</td>
+<td>jQuery Foundation and contributors</td>
+<td><a href="http://jquery.com/" rel="nofollow">http://jquery.com/</a></td>
+</tr>
+<tr>
+<td>Json.NET</td>
+<td>James Newton-King</td>
+<td><a href="http://james.newtonking.com/json" rel="nofollow">http://james.newtonking.com/json</a></td>
+</tr>
+<tr>
+<td>JSON2.js</td>
+<td>json.org</td>
+<td><a href="http://www.JSON.org/js.html" rel="nofollow">http://www.JSON.org/js.html</a></td>
+</tr>
+<tr>
+<td>markItUp!</td>
+<td>Jay Salvat</td>
+<td><a href="http://markitup.jaysalvat.com/" rel="nofollow">http://markitup.jaysalvat.com/</a></td>
+</tr>
+<tr>
+<td>Microsoft Windows, Visual Studio and .NET</td>
+<td>Microsoft</td>
+<td><a href="http://www.microsoft.com/net" rel="nofollow">http://www.microsoft.com/net</a></td>
+</tr>
+<tr>
+<td>Moment.js</td>
+<td>Tim Wood</td>
+<td><a href="http://momentjs.com" rel="nofollow">http://momentjs.com</a></td>
+</tr>
+<tr>
+<td>Nancy and integrations</td>
+<td>Andreas Håkansson, Steven Robbins and contributors</td>
+<td><a href="http://nancyfx.org/" rel="nofollow">http://nancyfx.org/</a></td>
+</tr>
+<tr>
+<td>NDesk.Options</td>
+<td>Jonathan Pryor</td>
+<td><a href="http://www.novell.com/" rel="nofollow">http://www.novell.com</a></td>
+</tr>
+<tr>
+<td>ngmin and grunt-ngmin</td>
+<td>Brian Ford</td>
+<td><a href="https://github.com/btford/ngmin" rel="nofollow">https://github.com/btford/ngmin</a></td>
+</tr>
+<tr>
+<td>ngstorage</td>
+<td>G. Kay Lee and contributors</td>
+<td><a href="https://github.com/gsklee/ngStorage" rel="nofollow">https://github.com/gsklee/ngStorage</a></td>
+</tr>
+<tr>
+<td>NLog</td>
+<td>Kim Christensen</td>
+<td><a href="https://github.com/NLog/NLog/" rel="nofollow">http://github.com/NLog/NLog/</a></td>
+</tr>
+<tr>
+<td>NuGet.Core</td>
+<td>Outercurve Foundation</td>
+<td><a href="http://nuget.codeplex.com/" rel="nofollow">http://nuget.codeplex.com/</a></td>
+</tr>
+<tr>
+<td>NuGet.Lucene</td>
+<td>The Motley Fool</td>
+<td><a href="https://github.com/themotleyfool/NuGet.Lucene" rel="nofollow">https://github.com/themotleyfool/NuGet.Lucene</a></td>
+</tr>
+<tr>
+<td>NSubstitute (and dependencies)</td>
+<td>David Tchepak and contributors</td>
+<td><a href="http://nsubstitute.github.io/" rel="nofollow">http://nsubstitute.github.io/</a></td>
+</tr>
+<tr>
+<td>NUnit</td>
+<td>Charlie Poole</td>
+<td><a href="http://nunit.org/" rel="nofollow">http://nunit.org/</a></td>
+</tr>
+<tr>
+<td>Raphaël</td>
+<td>Dmitry Baranovskiy</td>
+<td><a href="http://raphaeljs.com/" rel="nofollow">http://raphaeljs.com</a></td>
+</tr>
+<tr>
+<td>RSVP.js</td>
+<td>Yehuda Katz, Tom Dale, and contributors</td>
+<td><a href="https://github.com/tildeio/rsvp.js" rel="nofollow">https://github.com/tildeio/rsvp.js</a></td>
+</tr>
+<tr>
+<td>Select2</td>
+<td>Igor Vaynberg</td>
+<td><a href="http://ivaynberg.github.io/select2/" rel="nofollow">http://ivaynberg.github.io/select2/</a></td>
+</tr>
+<tr>
+<td>semver.js</td>
+<td>Tom Preston-Werner</td>
+<td><a href="http://semver.org/" rel="nofollow">http://semver.org/</a></td>
+</tr>
+<tr>
+<td>scriptcs</td>
+<td>scriptcs contributors</td>
+<td><a href="http://scriptcs.net/" rel="nofollow">http://scriptcs.net/</a></td>
+</tr>
+<tr>
+<td>showdown.js</td>
+<td>John Fraser</td>
+<td><a href="http://www.attacklab.net" rel="nofollow">http://www.attacklab.net</a></td>
+</tr>
+<tr>
+<td>SlickGrid</td>
+<td>Michael Leibman</td>
+<td><a href="http://github.com/mleibman/slickgrid" rel="nofollow">http://github.com/mleibman/slickgrid</a></td>
+</tr>
+<tr>
+<td>spin.js</td>
+<td>Felix Gnass</td>
+<td><a href="http://fgnass.github.io/spin.js/" rel="nofollow">http://fgnass.github.io/spin.js/</a></td>
+</tr>
+<tr>
+<td>Sprache</td>
+<td>Sprache Contributors</td>
+<td><a href="https://github.com/sprache/sprache" rel="nofollow">https://github.com/sprache/sprache</a></td>
+</tr>
+<tr>
+<td>TestStack.BDDfy</td>
+<td>Mehdi Khalili, Michael Whelan</td>
+<td><a href="https://github.com/TestStack/TestStack.BDDfy" rel="nofollow">https://github.com/TestStack/TestStack.BDDfy</a></td>
+</tr>
+<tr>
+<td>Underscore.js</td>
+<td>Jeremy Ashkenas, DocumentCloud and Investigative Reporters &amp; Editors</td>
+<td><a href="http://underscorejs.org" rel="nofollow">http://underscorejs.org</a></td>
+</tr>
+<tr>
+<td>URI.js</td>
+<td>Rodney Rehm</td>
+<td><a href="http://medialize.github.com/URI.js/" rel="nofollow">http://medialize.github.com/URI.js/</a></td>
+</tr>
+<tr>
+<td>WiX Toolset</td>
+<td>WiX Toolset Contributors</td>
+<td><a href="http://wixtoolset.org/" rel="nofollow">http://wixtoolset.org/</a></td>
+</tr>
+<tr>
+<td>SharpCompress</td>
+<td>Adam Hathcock and contributors</td>
+<td><a href="https://github.com/adamhathcock/sharpcompress" rel="nofollow">https://github.com/adamhathcock/sharpcompress</a></td>
+</tr>
+</tbody>
+</table>
+<p>Each project listed here is the property of its respective copyright owner.</p>
+<div class="alert alert-info"><p>Have we missed something from this list? Typos or inaccuracies? Please let us know via our support forum so that we can fix it. Thanks!</p>
+</div>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

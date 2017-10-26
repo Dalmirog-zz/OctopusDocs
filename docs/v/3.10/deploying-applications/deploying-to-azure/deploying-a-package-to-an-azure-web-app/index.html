@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>4.0</a></li><li class=''><a href='/docs/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>Latest</a></li><li class=''><a href='/docs/v/3.16/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.16</a></li><li class=''><a href='/docs/v/3.15/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.15</a></li><li class=''><a href='/docs/v/3.14/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.11</a></li><li class='disabled'><a href='/docs/v/3.10/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app'>3.6</a></li></ul>
+</div>
+<h1>Deploying a package to an Azure Web App</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Octopus Deploy supports automated deployment of <a href="http://azure.microsoft.com/en-us/services/app-service/web/" rel="nofollow">Azure Web Apps</a> (formerly known as Azure Web Sites).</p>
+<h2 id="DeployingapackagetoanAzureWebApp-UnderstandingAzureWebApps">Understanding Azure Web Apps</h2>
+<p>The Azure Web Apps you build, and how you might want to deploy them, are becoming increasingly complex as the Azure team provide more features to the platform. The best place to stay abreast of changes, and how they might affect your deployments is the <a href="https://azure.microsoft.com/en-us/documentation/services/app-service/web/" rel="nofollow">Azure Web App Documentation</a>, the <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-deploy/" rel="nofollow">many and varied ways you can deploy Web Apps (including Octopus Deploy)</a>. There is also the hidden gem of the <a href="https://github.com/projectkudu/kudu/wiki" rel="nofollow">Project Kudu GitHub repository</a> where you will find many of the hard to find facts about Web Jobs (like the <code>settings.job</code> file, configuring a Continuous Web Job as a Singleton, configuring the Schedule for Scheduled Jobs, how shadow copying enables in-place deployments, and how to shut down gracefully).</p>
+<h3 id="DeployingapackagetoanAzureWebApp-WebAppsaredeployedusingWebDeploy">Web Apps are deployed using Web Deploy</h3>
+<p>Deploying an Azure Web App with Octopus Deploy behaves very similarly to the Visual Studio publish wizard and uses <strong>Web Deploy</strong> to synchronize the files in your package to the Azure Web App. Similarly to Visual Studio you can change how Octopus Deploy invokes Web Deploy using the following options in your deployment steps which enable the most common deployment scenarios. All of these options are discussed below where we describe how to configure the Azure Web App step.</p>
+<div class="alert alert-info"><p><strong>Defaults match Visual Studio</strong><br />
+The default values for these variables were chosen to match Visual Studio following the principle of least surprise. You will typically need to adjust these values depending on your specific circumstances.</p>
+</div>
+<h3 id="DeployingapackagetoanAzureWebApp-WebJobs">Web Jobs</h3>
+<p>You can build Web Jobs <a href="https://azure.microsoft.com/en-us/documentation/articles/websites-webjobs-resources/" rel="nofollow">in almost any way you can imagine</a>, so let's focus this discussion on deploying Web Jobs. Web Jobs are deployed by simply copying the files into the right place in the Web App file system.</p>
+<p>When you use Octopus Deploy to deploy a package to an Azure Web App it will synchronize the files from your package into the Web App via Web Deploy where the root folder of the package matches the root folder of the Web App.</p>
+<p>To deploy a Web Job with Octopus Deploy you simply need to add the executable Web Job(s) into the appropriate folder(s) of your package and deploy them to the Web App.</p>
+<ul>
+<li>Triggered Web Jobs should be added to the <code>app_data/jobs/triggered/{job_name}</code> folder</li>
+<li>Continuous Web Jobs should be added to the <code>app_data/jobs/continuous/{job_name}</code> folder</li>
+</ul>
+<p>See below for more information on packaging Azure Web Apps including Web Jobs.</p>
+<p>For more information refer to the <a href="https://github.com/projectkudu/kudu/wiki/Web-jobs" rel="nofollow">Project Kudu documentation on Web Jobs</a>.</p>
+<h2 id="DeployingapackagetoanAzureWebApp-Step1:Packaging">Step 1: Packaging</h2>
+<p>Your application should be packaged into a <a href="/docs/v/3.10/packaging-applications">supported package</a> where the contents of the package will be synchronized with the Azure Web App via Web Deploy. Your package should include any content and binaries for your Web Site and any Web Jobs using the same folder structure that is expected by the Azure Web App hosting environment.</p>
+<p><strong>Example Azure Web App package with Web Jobs</strong></p>
+<pre><code class="language-powershell">\\MyWebApp.1.0.0.0.nupkg
+    \---app_data
+        \---jobs
+            \---continuous
+                \---WebJob1
+                    |   WebJob1.exe
+                    |   WebJob1.exe.config
+            \---triggered
+                \---WebJob2
+                    |   WebJob2.exe
+                    |   WebJob2.exe.config
+    \---bin
+        \---MyWebApp.dll
+    \---Global.asax
+    \---index.html
+    \---MyWebApp.nuspec
+    \---web.config
+</code></pre>
+<p>A really convenient way to package Web Apps is <a href="/docs/v/3.10/packaging-applications/nuget-packages/using-octopack">using OctoPack</a>. Here's a simplified example that would build the package discussed above.</p>
+<p><strong>MyWebApp.nuspec</strong></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;package &gt;
+  &lt;metadata&gt;
+    &lt;id&gt;MyWebApp&lt;/id&gt;
+    &lt;version&gt;1.0.0.0&lt;/version&gt;
+    &lt;title&gt;MyWebApp&lt;/title&gt;
+    &lt;authors&gt;MyCompany&lt;/authors&gt;
+    &lt;owners&gt;MyCompany&lt;/owners&gt;
+    &lt;projectUrl&gt;https://github.com/MyCompany/MyWebApp&lt;/projectUrl&gt;
+    &lt;iconUrl&gt;&lt;/iconUrl&gt;
+    &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt;
+    &lt;description&gt;MyWebApp with WebJobs&lt;/description&gt;
+    &lt;copyright&gt;Copyright 2015 MyCompany&lt;/copyright&gt;
+  &lt;/metadata&gt;
+  &lt;files&gt;
+  	&lt;file src=&quot;..\WebJob1\bin\**\*.*&quot; target=&quot;app_data\jobs\continuous\WebJob1&quot; /&gt;
+  	&lt;file src=&quot;..\WebJob2\bin\**\*.*&quot; target=&quot;app_data\jobs\triggered\WebJob2&quot; /&gt;
+  &lt;/files&gt;
+&lt;/package&gt;
+</code></pre>
+<div class="alert alert-info"><p><strong>OctoPackEnforceAddingFiles</strong><br />
+If the <strong><files></strong> section exists, OctoPack by default won't attempt to automatically add any extra files to your package, so you'll need to be explicit about which files you want to include. You can override this behavior with <code>/p:OctoPackEnforceAddingFiles=true</code></p>
+</div>
+<p>Here's an example project file with some of the OctoPack configuration set as properties that are convenient for WebApps and WebJobs.</p>
+<p><strong>MyWebApp.csproj</strong></p>
+<pre><code class="language-xml">&lt;PropertyGroup&gt;
+  ...
+  &lt;RunOctoPack&gt;true&lt;/RunOctoPack&gt;&lt;!-- Run OctoPack on every build which is really convenient for testing your package process works as expected --&gt;
+  &lt;OctoPackEnforceAddingFiles&gt;true&lt;/OctoPackEnforceAddingFiles&gt;&lt;!-- Package files included by convention because it's a web project, and package files specified by the &lt;files&gt; node of the nuspec --&gt;
+  &lt;OctoPackPublishPackageToFileShare&gt;..\..\artifacts&lt;/OctoPackPublishPackageToFileShare&gt;&lt;!-- Publish the resultant package to the ..\..\artifacts folder --&gt;
+  ...
+&lt;/PropertyGroup&gt;
+</code></pre>
+<h3 id="DeployingapackagetoanAzureWebApp-Simpleandadvanceddeploymentscenarios">Simple and advanced deployment scenarios</h3>
+<p>The example we've discussed here is the most common scenario for deploying Azure Web Apps: a single package that contains an ASP.NET Web Application and some Web Jobs in the same release cadence. It is possible to implement more complex deployment scenarios where the ASP.NET Web Application and each Web Job follow independent release cadences. In this case you would build multiple packages using the folder structure expected by the Azure Web App hosting framework discussed earlier. Once you've done that you can simply reuse the same Azure Web App Deployment Target to deploy each package when they are released.</p>
+<h3 id="DeployingapackagetoanAzureWebApp-Deployonlyfilesthathavechanged">Deploy only files that have changed</h3>
+<p>NuGet packages are extracted locally and the timestamps are updated at that point in time. It will deploy every file regardless if it has changed or not. If you want to deploy only the changed files, consider these options:</p>
+<ul>
+<li>Use the Checksum file comparison method to only deploy files that have changed. This may work well for moderately-sized applications, but may be prohibitively slow and unreliable for large applications.</li>
+<li>Use Zip packages instead of NuGet. Timestamps are preserved in Zip packages end-to-end throughout the deployment process.</li>
+</ul>
+<p>We have written about these options in detail in <a href="https://octopus.com/blog/reliably-deploying-large-azure-web-apps">our blog</a>.</p>
+<h2 id="DeployingapackagetoanAzureWebApp-Step2:CreateanAzureAccount">Step 2: Create an Azure Account</h2>
+<p>If you haven't already, create an <a href="/docs/v/3.10/key-concepts/environments/accounts/azure-subscription-account">Azure Subscription Account</a> to grant Octopus Deploy access to your Azure Subscription.</p>
+<h2 id="DeployingapackagetoanAzureWebApp-Step3:CreatetheAzureWebAppdeploymentstep">Step 3: Create the Azure Web App deployment step</h2>
+<ol>
+<li>Add a new 'Deploy an Azure Web App' step to your project. For information about adding a step to the deployment process, see the <a href="/docs/v/3.10/deploying-applications/adding-steps">add step</a> section. </li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/5671696/5865899_(,4.0).png' class='zoom' data-title=''><img src='/docs/images/5671696/5865899_(,4.0).png' class="img-fluid center" height="auto" width="170" alt='' /></a></p>
+<h2 id="DeployingapackagetoanAzureWebApp-Step4:ConfigureyourAzureWebAppstep.">Step 4: Configure your Azure Web App step.</h2>
+<p>Once an Account is selected, the list of Azure Web Apps available to the subscription associated with the account will populate the 'Web App' select-list.</p>
+<p>If you choose to run this step on behalf of target roles (maybe you are deploying to multiple geographic regions), you will need to ensure a Deployment Target exists when deploying your Azure Web App. For this, we introduced <a href="/docs/v/3.10/deployment-targets/cloud-regions">Cloud Regions</a>. If you select a role and no Deployment Targets exist at the time of deploying, Octopus will log warnings in your deployment's task log.</p>
+<p><a href='#' data-featherlight='/docs/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app/deploying-an-azure-web-app_(,4.0).png' class='zoom' data-title=''><img src='/docs/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app/deploying-an-azure-web-app_(,4.0).png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<table class="table">
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Account</strong></td>
+<td></td>
+<td>The <a href="/docs/v/3.10/key-concepts/environments/accounts/azure-subscription-account">Azure Account</a> you want to target when deploying this web app. Select one from the list, or use a <a href="/docs/v/3.10/deploying-applications/variables/binding-syntax">variable binding</a> to select an account by its name or ID.</td>
+</tr>
+<tr>
+<td><strong>Web App</strong></td>
+<td></td>
+<td>The actual web app you want to target. Select one from the list, or use a <a href="/docs/v/3.10/deploying-applications/variables/binding-syntax">variable binding</a> to define the name of the web app.</td>
+</tr>
+<tr>
+<td><strong>Physical Path</strong></td>
+<td></td>
+<td>The physical path relative to site root on the web app host. e.g. 'foo' will deploy to 'site\wwwroot\foo'. Leave blank to deploy to root.</td>
+</tr>
+<tr>
+<td><strong>Remove additional files</strong></td>
+<td><em>False</em></td>
+<td>When <em>True</em> instructs Web Deploy to delete files from the destination that aren't in the source package</td>
+</tr>
+<tr>
+<td><strong>Preserve App_Data</strong></td>
+<td><em>False</em></td>
+<td>When <em>True</em> instructs Web Deploy to skip Delete operations in the <strong>App_Data</strong> directory</td>
+</tr>
+<tr>
+<td><strong>Enable AppOffline</strong></td>
+<td><em>False</em></td>
+<td>When <em>True</em> instructs Web Deploy to place <em>app_offline.htm</em> in root deployment directory to safely bring down the app domain.</br>Click <a href="http://www.iis.net/learn/publish/deploying-application-packages/taking-an-application-offline-before-publishing" rel="nofollow">here</a> for more details.</td>
+</tr>
+<tr>
+<td><strong>File comparison method</strong></td>
+<td><em>Timestamp</em></td>
+<td>Can be <em>timestamp</em> or <em>checksum</em> and instructs web deploy to use the selected algorithm to determine which files to update.</br><em>Note: There have been some issues with checksum in earlier versions of web deploy, and we've written about that in detail <a href="https://octopus.com/blog/reliably-deploying-large-azure-web-apps">here</a>.</em></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-success"><p><strong>Use variable binding expressions</strong><br />
+Any of the settings above can be switched to use a variable binding expression. A common example is when you use a naming convention for your different web apps, like <strong>MyApp_Production</strong> and <strong>MyApp_Test</strong> - you can use environment-scoped variables to automatically configure this step depending on the environment you are targeting.</p>
+</div>
+<h3 id="DeployingapackagetoanAzureWebApp-DeploymentfeaturesavailabletoAzureWebAppsteps">Deployment features available to Azure Web App steps</h3>
+<p>The following features are available when deploying a package to an Azure Web App.</p>
+<ul>
+<li><a href="/docs/v/3.10/deploying-applications/custom-scripts">Custom Scripts</a></li>
+<li><a href="/docs/v/3.10/deploying-applications/configuration-files">Configuration Variables</a></li>
+<li><a href="/docs/v/3.10/deploying-applications/configuration-files">Configuration Transforms</a></li>
+<li><a href="/docs/v/3.10/guides/deploying-asp.net-core-web-applications/json-configuration-variables-feature">JSON configuration variables</a></li>
+<li><a href="/docs/v/3.10/reference/variable-substitution-syntax">Substitute variables in files</a></li>
+</ul>
+<div class="alert alert-info"><p>Please note these features actually run on the Octopus Server prior to executing web deploy to synchronize the resultant files to the Azure Web App slot. They don't execute in the Azure Web App host you are eventually targeting.</p>
+</div>
+<div class="alert alert-info"><p>For your convenience the PowerShell session for your <a href="/docs/v/3.10/deploying-applications/custom-scripts" class="alert-link">custom scripts</a> will have the Azure PowerShell module loaded, and the subscription from the account associated with the target will be selected. This means you don't have to worry about loading the Azure PowerShell module nor authenticate with Azure yourself. See the <a href="/docs/v/3.10/guides/azure-deployments/running-azure-powershell" class="alert-link">Azure Powershell documentation</a> for more information. You can write very straightforward scripts like the example below which is from our <a href="/docs/v/3.10/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app/using-deployment-slots-with-azure-web-apps" class="alert-link">guide on using deployment slots with Azure Web Apps</a>:</p>
+<pre><code class="language-powershell">#Swap the staging slot into production
+Switch-AzureWebsiteSlot -Name #{WebSite} -Slot1 Staging -Slot2 Production -Force
+</code></pre>
+</div>
+<h2 id="DeployingapackagetoanAzureWebApp-Deploymentprocess">Deployment process</h2>
+<p>Deployment to an Azure Web App proceeds as follows (more details provided below):</p>
+<ol>
+<li>Download the package from the <a href="/docs/v/3.10/packaging-applications/package-repositories">package repository</a></li>
+<li>Extract the package on the Octopus server to a temporary location</li>
+<li>Any configured or packaged <code>PreDeploy</code> scripts are executed</li>
+<li><a href="/docs/v/3.10/deploying-applications/substitute-variables-in-files">Substitute variables in files </a>(if configured)</li>
+<li><a href="/docs/v/3.10/deploying-applications/configuration-files">XML configuration transformations</a> (if configured) are performed</li>
+<li><a href="/docs/v/3.10/deploying-applications/configuration-files">XML configuration variables</a> (if configured) are replaced</li>
+<li>Any configured or package <code>Deploy</code> scripts are executed</li>
+<li>Execute web deploy to synchronize the resultant files in the temporary location to the web app host</li>
+<li>Any configured or packaged <code>PostDeploy</code> scripts are executed</li>
+</ol>
+<h2 id="DeployingapackagetoanAzureWebApp-Deployingtomultiplegeographicregions">Deploying to multiple geographic regions</h2>
+<p>When your application is deployed to more than one geographic region, you are likely to need per-region configuration settings. You can achieve this result in many different ways, but the two most popular methods we have seen are:</p>
+<ol>
+<li><a href="/docs/v/3.10/deployment-targets/cloud-regions">Cloud Regions</a>: introduced in Octopus 3.4 to enable <a href="/docs/v/3.10/patterns/rolling-deployments">rolling deployments</a> across multiple geographic regions</li>
+<li>Environment-per-region: by creating an environment per region you can leverage <a href="/docs/v/3.10/key-concepts/lifecycles">lifecycles</a> to create a strict release promotion process</li>
+</ol>
+<p>Both methods allow you to modify your deployment process and variables per-region, but have slightly different release promotion paths. Choose the one that suits you best.</p>
+<h2 id="in-this-section">In this section</h2>
+<p>The rest of this section covers these topics in some more detail, and explains how to implement them.</p>
+<ul>
+<li><a href="/docs/v/3.10/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app/deploying-web-jobs">Deploying Web Jobs</a></li>
+<li><a href="/docs/v/3.10/deploying-applications/deploying-to-azure/deploying-a-package-to-an-azure-web-app/using-deployment-slots-with-azure-web-apps">Using Deployment Slots with Azure Web Apps</a></li>
+</ul>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

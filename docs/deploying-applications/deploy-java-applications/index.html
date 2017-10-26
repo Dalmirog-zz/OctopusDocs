@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/deploying-applications/deploy-java-applications'>4.0</a></li><li class='disabled'><a href='/docs/deploying-applications/deploy-java-applications'>Latest</a></li><li class=''><a href='/docs/v/3.16/deploying-applications/deploy-java-applications'>3.16</a></li><li class=''><a href='/docs/v/3.15/deploying-applications/deploy-java-applications'>3.15</a></li><li class=''><a href='/docs/v/3.14/deploying-applications/deploy-java-applications'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/deploy-java-applications'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/deploy-java-applications'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/deploy-java-applications'>3.11</a></li><li class=''><a href='/docs/v/3.10/deploying-applications/deploy-java-applications'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/deploy-java-applications'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/deploy-java-applications'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications/deploy-java-applications'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/deploy-java-applications'>3.6</a></li></ul>
+</div>
+<h1>Java Applications</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Octopus Deploy comes with a number of steps that allow you to deploy and modify the state of Java applications for popular Java application servers.</p>
+<p>In addition, Java packages like <code>jar</code>, <code>war</code>, <code>ear</code> and <code>rar</code> files can be managed as part of the Octopus Deploy library.</p>
+<h2 id="supported-application-servers">Supported Application Servers</h2>
+<p>The following application servers are supported by Octopus Deploy:</p>
+<ul>
+<li>Tomcat 7</li>
+<li>Tomcat 8</li>
+<li>Tomcat 9</li>
+<li>Red Hat JBoss EAP 6</li>
+<li>Red Hat JBoss EAP 7</li>
+<li>WildFly 10</li>
+<li>WildFly 11</li>
+</ul>
+<div class="alert alert-info"><p>The <code>Deploy Java Archive</code> step deploys a Java package to a location on the target machine's filesystem. This means that any Java application server that can deploy applications with a file copy can make use of Octopus Deploy.</p>
+<p>The application servers listed above are those that are tested with Octopus Deploy, and have custom steps for deploying and managing the state of applications.</p>
+</div>
+<h2 id="deploying-java-applications-via-octopus">Deploying Java Applications via Octopus</h2>
+<p>Regardless of which application server you are deploying to, there are a number of common steps that need to be performed.</p>
+<h3 id="push-a-package-to-octopus">1. Push a Package to Octopus</h3>
+<p>For a package to be made available to the deployment steps, it first must be added to the Octopus library.</p>
+<p>The Octopus library accepts files with the <code>jar</code>, <code>war</code>, <code>ear</code> and <code>rar</code> file extensions.</p>
+<p>The package filenames have to adhere to the standard Octopus <a href="https://octopus.com/docs/packaging-applications/versioning-in-octopus-deploy">versioning rules</a>, which are based on the SemVer format.</p>
+<div class="alert alert-info"><p>Java packages tend to be formatted with Maven versioning schemes. Maven versions are mostly compatible with SemVer, but the two versioning schemes are not identical.</p>
+<p>See the section <a href="#building_semver_compatible_artifacts" class="alert-link">Building SemVer Compatible Artifacts</a> for tips on creating valid package filenames from builds tools like Maven and Gradle.</p>
+</div>
+<p>Valid packages can then be added to the library using the <a href="https://octopus.com/docs/packaging-applications/package-repositories/pushing-packages-to-the-built-in-repository">web based interface, or using the CLI tool</a>.</p>
+<h4 id="building-semver-compatible-artifacts"><a name="building_semver_compatible_artifacts"></a>Building SemVer Compatible Artifacts</h4>
+<p>The most common incompatibility between Maven and SemVer formatting comes from the use of a dash to separate the package name from the version.</p>
+<p>For example, by default Maven will build artifacts with names like <code>myapplication-1.0.0-SNAPSHOT.war</code>. To be managed by the built in Octopus library, this filename needs to be in the format <code>myapplication.1.0.0-SNAPSHOT.war</code>.</p>
+<p>The easiest way to generate the correct filenames in a Maven build is to set the <code>finalName</code> element to <code>&lt;finalName&gt;${project.name}.${project.version}&lt;/finalName&gt;</code>.</p>
+<p>The following xml is a snippet from a <code>pom.xml</code> file that defines the <code>finalName</code> option in a SemVer compatible format.</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project
+xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;build&gt;
+    &lt;finalName&gt;${project.name}.${project.version}&lt;/finalName&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<p>Gradle builds can define the filename through the <code>war.archiveName</code> property.</p>
+<p>The following code is a snippet of a <code>build.gradle</code> file that defines the name of the WAR file in a Semver compatible format.</p>
+<pre><code>apply plugin: 'java'
+apply plugin: 'war'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+war.archiveName &quot;${project.name}.${version}.war&quot;
+</code></pre>
+<h3 id="ensure-the-target-meets-the-minimum-requirements">2. Ensure the Target Meets the Minimum Requirements</h3>
+<p>The target machine must have Java 1.8 installed, and the <code>java</code> executable must either be on the path, or the <code>JAVA_HOME</code> environment variable must be set.</p>
+<h2 id="deploying-to-tomcat-via-the-manager">Deploying to Tomcat via the Manager</h2>
+<p>The <code>Deploy to Tomcat via Manager</code> step takes advantage of the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html" rel="nofollow">Manager application</a> shipped with Tomcat to deploy Java applications. The following steps describe the process of deploying a web application (a WAR package) to Tomcat through Octopus Deploy.</p>
+<h3 id="configure-tomcat"><a name="configure_tomcat"></a>1. Configure Tomcat</h3>
+<p>Tomcat needs to be configured with a user that Octopus can use to log into the Manager API.</p>
+<p>Tomcat users are defined in the <code>$CATALINA_HOME/conf/tomcat-users.xml</code> file. The user that will deploy the applications must be added to the <code>manager-script</code> group.</p>
+<p>Here is an example of a <code>$CATALINA_HOME/conf/tomcat-users.xml</code> file that defines a user called <code>tomcat</code> in the <code>manager-script</code> group.</p>
+<pre><code class="language-xml">&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;tomcat-users&gt;
+    &lt;role rolename=&quot;manager-script&quot;/&gt;
+    &lt;user username=&quot;tomcat&quot;
+          password=&quot;thepassword&quot;
+          roles=&quot;manager-script&quot;/&gt;
+&lt;/tomcat-users&gt;
+
+</code></pre>
+<p>See the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html#Configuring_Manager_Application_Access" rel="nofollow">Tomcat documentation</a> for more details on the groups used by the manager application.</p>
+<h3 id="populate-the-tomcat-deployment-step">2. Populate the Tomcat Deployment Step</h3>
+<p>The <code>Deploy to Tomcat via Manager</code> step is used to deploy a package from the Octopus library to Tomcat. The following steps can be used to deploy an application to a Tomcat server.</p>
+<ul>
+<li>Select the <code>Package feed</code> and <code>Package ID</code> that references the Java application to be deployed.</li>
+<li>Define the <code>Context path</code>. This can be the root context with a path of <code>/</code>, a simple path like <code>myapplication</code>, or a nested path like <code>myapplication/v1</code>.</li>
+<li>If you want to take advantage of <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/context.html#Parallel_deployment" rel="nofollow">Tomcat's parallel deployment</a> features, you need to define the populate <code>Deployment Version</code> field. To be effective, these values are required to increase with each deployment . Common values are the Octopus release number, which is defined in the <code>#{Octopus.Release.Number}</code> variable. The package version number can also be used, and is defined in the <code>#{Octopus.Action.Package.NuGetPackageVersion}</code> variable.</li>
+<li>Define the path to the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html" rel="nofollow">Tomcat Manager</a>. The path is relative to the target machine that is running the step, and includes the manager application context path. In most cases the target machine is also the machine hosting Tomcat, so this URL will typically point to <code>localhost</code>. Common examples of the manager URL are <code>http://localhost:8080/manager</code>.</li>
+<li>Supply the <code>Management User</code> and <code>Management Password</code> of the user was defined using the instructions from <a href="#configure_tomcat">Configure Tomcat</a>.</li>
+<li>The <code>Start/Stop the Deployment</code> option allows you to deploy the application in a started or stopped state. Typically you will deploy in a started state.</li>
+</ul>
+<h2 id="deploying-to-tomcat-via-manager-step-details">Deploying to Tomcat via Manager Step Details</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Default Value</th>
+<th>Field Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package feed</td>
+<td>Yes</td>
+<td></td>
+<td>The feed to use to source the Java package from.</td>
+</tr>
+<tr>
+<td>Package ID</td>
+<td>Yes</td>
+<td></td>
+<td>The Java package to deploy.</td>
+</tr>
+<tr>
+<td>Context Path</td>
+<td>No</td>
+<td>Defaults to the deployment file name e.g. <code>mayapplication.1.0.0</code>.</td>
+<td>The context path that the application will be deployed to. Set this value to <code>/</code> to deploy to the root context. Set it to a value like <code>myapplication</code> to deploy to the <code>/myapplication</code> context. Nested contexts are also allowed, such as <code>myapplication/v1.0</code>.<br/><br/>Leading slashes are optional;  <code>/myapplication</code> and  <code>myapplication</code> will both deploy to the  <code>/myapplication</code> context path.</td>
+</tr>
+<tr>
+<td>Deployment Version</td>
+<td>No</td>
+<td>By default no Tomcat version is assigned to the deployment.</td>
+<td>An optional field that defines the Tomcat version that the deployment will be assigned when deployed. Versions are most often used with <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/context.html#Parallel_deployment" rel="nofollow">Tomcat parallel deployments</a>. The version can be set to match the version of the package from Octopus, can be set to a custom version, or the deployment can have no version.<br/><br/>It is common to use either the Octopus release number as the Tomcat version using the variable <code>#{Octopus.Release.Number}</code>, or to use the version number of the package with the variable <code>#{Octopus.Action.Package.NuGetPackageVersion}</code>.</td>
+</tr>
+<tr>
+<td>Tomcat Manager URL</td>
+<td>Yes</td>
+<td></td>
+<td>This field defines the URL of the Tomcat manager application. This is relative to the target machine performing the deployment. When the Tentacle is on the same machine as the Tomcat instance, this URL will typically reference localhost i.e. <code>http://localhost:8080/manager</code>.</td>
+</tr>
+<tr>
+<td>Management User</td>
+<td>Yes</td>
+<td></td>
+<td>The user that is supplied when logging into the Tomcat manager API. Note that this user is required to be part of the <code>manager-script</code> group. See the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html#Configuring_Manager_Application_Access" rel="nofollow">Tomcat documentation</a> for more details on the groups used by the manager application.</td>
+</tr>
+<tr>
+<td>Management Password</td>
+<td>Yes</td>
+<td></td>
+<td>The password that is supplied when logging into the Tomcat manager API.</td>
+</tr>
+<tr>
+<td>Start/Stop the Deployment</td>
+<td>Yes</td>
+<td></td>
+<td>This field defines the state of the application after it is deployed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deploying-to-wildflyjboss-eap">Deploying to WildFly/JBoss EAP</h2>
+<p>The <code>Deploy to WildFly or Red Hat JBoss EAP</code> step uses the management API to deploy applications and change their state. The following steps describe the process of deploying a web application (a WAR package) to WildFly or JBoss EAP through Octopus Deploy.</p>
+<h3 id="configure-authentication">1. Configure Authentication</h3>
+<p>You have two options for authenticating with WildFly and JBoss EAP servers.</p>
+<p>The easiest solution is to use <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1.beta/html/how_to_configure_server_security/securing_the_server_and_its_interfaces#silent-auth" rel="nofollow">silent authentication</a>. Silent authentication allows local users to log into the management API without supplying any credentials, and because Octopus typically executes a deployment from the same machine that is hosting the application server, it is treated as a local user.</p>
+<p>To take advantage of silent authentication, the user running the Octopus deployment on the target machine (i.e the user assigned to the Tentacle service in Windows or the SSH user in Linux or MacOS) must have access to the <code>auth</code>  directory inside the directory defined by the <code>jboss.server.temp.dir</code> variable. By default this directory will be located at <code>$JBOSS_HOME/standalone/tmp/auth</code> or <code>$JBOSS_HOME/domain/tmp/auth</code>.</p>
+<p>The second option is to use the application server <code>add-user</code> script to create a new user, and use these credentials in the Octopus deployment steps.</p>
+<h3 id="populate-the-wildflyjboss-eap-deployment-step">2. Populate the WildFly/JBoss EAP Deployment Step</h3>
+<p>The <code>Deploy to WildFly or Red Hat JBoss EAP</code> step is used to deploy a package from the Octopus library to a WildFly or Red Hat JBoss EAP instance.</p>
+<ul>
+<li>Select the <code>Package feed</code> and <code>Package ID</code> that references the Java application to be deployed.</li>
+<li>Optionally set the <code>Deployment Name</code>, which will define the name of the deployment in the WildFly deployment library. For example, deploying a file from the Octopus library with the filename <code>myapplication.0.0.1.war</code> and setting this field to <code>myapplication.war</code> will mean the deployment is listed in WildFly as <code>myapplication.war</code>. If this field is left blank, the original file name will be used by WildFly. For example, deploying a file from the Octopus library with the filename <code>myapplication.0.0.1.war</code> and leaving this field blank will mean the deployment is listed in the application server as <code>myapplication.0.0.1.war</code>.</li>
+<li>Set the <code>Management Host or IP</code> field to the address that the WildFly management interface is listening to. This value is relative to the target machine that is performing the deployment. Since the target machine performing the deployment is typically the same machine hosting the application server, this value will usually be <code>localhost</code>.</li>
+<li>Set the <code>Management Port</code> to the port bound to the WildFly management interface. For WildFly 10+ and JBoss EAP 7+, this will default to <code>9990</code>. For JBoss EAP 6, this will default to <code>9999</code>.</li>
+<li>The <code>Management Protocol</code> field defines the protocol to be used when interacting with the management interface. For WildFly 10+ and JBoss EAP 7+, this will default to <code>http-remoting</code> or <code>remote+http</code> (the two are equivalent). For JBoss EAP 6, this will default to <code>remoting</code>.</li>
+<li>If you wish to use silent authentication, and have configured the required permissions for the <code>$JBOSS_HOME/standalone/tmp/auth</code> or <code>$JBOSS_HOME/domain/tmp/auth</code> directory, then the <code>Management User</code> and <code>Management Password</code> fields can be left blank. Alternatively these fields can hold the credentials that were configured via the <code>add-user</code> script.</li>
+<li>If you are deploying to a standalone server, the deployment can be enabled or disabled using the <code>Enable/Disable the Deployment</code> field. This field has no effect when deploying to a domain controller.</li>
+<li>If you are deploying to a domain controller, the server groups that will have the deployment enabled must be specified in the <code>Enabled Server Groups</code> field. Likewise the server groups that will have the deployment disabled must be specified in the <code>Disabled Server Groups</code>. Multiple server groups can be specified separated by a comma. These fields has no effect when deploying to a standalone server.</li>
+</ul>
+<p><a name="context_path"></a></p>
+<h4 id="defining-context-paths">Defining Context Paths</h4>
+<p>There are multiple ways that the context of an application deployed to WildFly and JBoss EAP is defined.</p>
+<p>The <code>WEB-INF/jboss-web.xml</code> file inside a war package can define the context path. For example a war package with the following <code>jboss-web.xml</code> file will be deployed to the <code>/myapplication</code> context.</p>
+<pre><code class="language-xml">&lt;jboss-web&gt;
+    &lt;context-root&gt;myapplication&lt;/context-root&gt;
+&lt;/jboss-web&gt;
+</code></pre>
+<p>If not defined in the <code>jboss-web.xml</code> file, the context of a war file will default to the filename of the deployment. For example, a war file called <code>myapplication.war</code> will be deployed to the context <code>/myapplication</code>.</p>
+<p>If the war file has the special name <code>ROOT.war</code> it will be deployed to the root context.</p>
+<p>See <a href="https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html" rel="nofollow">Setting the context root of a web application</a> for more information.</p>
+<p>The context of a web application can also be defined in the <code>application.xml</code> file inside a ear package. For example, package <code>module-web-1.0-SNAPSHOT.war</code> in an ear package with the following <code>application.xml</code> file would de be deployed to the <code>/custom-context-root</code> context.</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;application xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd&quot; version=&quot;7&quot;&gt;
+  &lt;display-name&gt;module-ear&lt;/display-name&gt;
+  &lt;module&gt;
+    &lt;web&gt;
+      &lt;web-uri&gt;module-web-1.0-SNAPSHOT.war&lt;/web-uri&gt;
+      &lt;context-root&gt;/custom-context-root&lt;/context-root&gt;
+    &lt;/web&gt;
+  &lt;/module&gt;
+&lt;/application&gt;
+</code></pre>
+<p>The context that an application has been deployed to is shown in the WildFly logs. Look for an entry with the text <code>Registered web context</code>.</p>
+<pre><code>2017-09-05 02:57:15,598 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 77) WFLYUT0021: Registered web context: /custom-context-root
+</code></pre>
+<h2 id="wildflyjboss-eap-deployment-step-details">WildFly/JBoss EAP Deployment Step Details</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Field Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package feed</td>
+<td>Yes</td>
+<td></td>
+<td>The feed to use to source the Java package from.</td>
+</tr>
+<tr>
+<td>Package ID</td>
+<td>Yes</td>
+<td></td>
+<td>The Java package to deploy.</td>
+</tr>
+<tr>
+<td>Deployment Name</td>
+<td>No</td>
+<td>The package will retain the original file name.</td>
+<td>The optional name of the deployment as it will appear in the application server library. Examples include <code>myapplication.war</code>, <code>myapplication.jar</code>, <code>myapplication.ear</code> or <code>myapplication.rar</code>. If this field is not set, the original filename of the deployment will be used.</td>
+</tr>
+<tr>
+<td>Management Host or IP</td>
+<td>Yes</td>
+<td></td>
+<td>The location of the management interface. This is relative to the target machine performing the deployment. When the Tentacle is on the same machine as the application server instance, this URL will typically reference <code>localhost</code>.</td>
+</tr>
+<tr>
+<td>Management Port</td>
+<td>Yes</td>
+<td></td>
+<td>The port that the management interface is bound to. For WildFly 10+ and JBoss EAP 7+, this defaults to <code>9990</code>. For JBoss EAP 6, this defaults to <code>9999</code>.</td>
+</tr>
+<tr>
+<td>Management Protocol</td>
+<td>Yes</td>
+<td></td>
+<td>The protocol to use when interacting with the management interface. For WildFly 10+ and JBoss EAP 7+, this defaults to <code>http-remoting</code> or <code>remote+http</code> (the two are equivalent). If the management interface is protected with a certificate, the protocols are <code>https-remoting</code> or <code>remote+https</code>. For JBoss EAP 6 this defaults to <code>remoting</code>. Refer to the <a href="http://jbossremoting.jboss.org/remoting-3" rel="nofollow">JBoss Remoting</a> project for more details on these protocols.</td>
+</tr>
+<tr>
+<td>Management User</td>
+<td>No</td>
+<td>Defaults to using silent authentication.</td>
+<td>The username to supply when connecting to the management interface. If left blank, silent authentication will be used. Silent authentication requires that the target machine performing the deployment also be the machine hosting the application server, and that the user performing the deployment (i.e. the Tentacle service user or the SSH user) have access to the <code>$JBOSS_HOME/standalone/tmp/auth</code> or <code>$JBOSS_HOME/domain/tmp/auth</code> directory. See the <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1.beta/html/how_to_configure_server_security/securing_the_server_and_its_interfaces#silent-auth" rel="nofollow">JBoss EAP documentation</a> for more details on silent authentication.</td>
+</tr>
+<tr>
+<td>Management Password</td>
+<td>No</td>
+<td>Defaults to using silent authentication.</td>
+<td>The password to supply when connecting to the management interface. This field is option is using silent authentication.</td>
+</tr>
+<tr>
+<td>Standalone or Domain Server</td>
+<td>Yes</td>
+<td>Standalone</td>
+<td>When set to <code>Standalone</code> the <code>Enable/Disable the Deployment</code> field is presented, and when set to <code>Domain</code>, the <code>Enabled Server Groups</code> and <code>Disabled Server Groups</code> fields are displayed.</td>
+</tr>
+<tr>
+<td>Enable/Disable the Deployment</td>
+<td>Yes</td>
+<td></td>
+<td>When deploying to a standalone server, this field defines if the deployment will be enabled or disabled. This field has no effect when deploying to a domain controller.</td>
+</tr>
+<tr>
+<td>Enabled Server Groups</td>
+<td>No</td>
+<td></td>
+<td>When deploying to a domain controller, this field lists the server groups that will have the deployment enabled in. Multiple server groups can be supplied as a comma separated list. This field has no effect when deploying to a standalone server.</td>
+</tr>
+<tr>
+<td>Disabled Server Groups</td>
+<td>No</td>
+<td></td>
+<td>When deploying to a domain controller, this field lists the server groups that will have the deployment disabled in. Multiple server groups can be supplied as a comma separated list. This field has no effect when deploying to a standalone server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="startingstopping-tomcat-applications">Starting/Stopping Tomcat Applications</h2>
+<p>The <code>Start/Stop App in Tomcat</code> step is used to start or stop applications that have already been deployed to Tomcat. The following steps can be used to start or stop an application deployed to a Tomcat server.</p>
+<ul>
+<li>Define the <code>Context path</code> of the deployed application to start or stop. This can be the root context with a path of <code>/</code>, a simple path like <code>myapplication</code>, or a nested path like <code>myapplication/v1</code>.</li>
+<li>Define the <code>Deployment Version</code> of the deployed application to start or stop. Leave this field blank to modify the state of an unversioned Tomcat deployment.</li>
+<li>Define the path to the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html" rel="nofollow">Tomcat Manager</a>. The path is relative to the target machine that is running the step. In most cases the target machine is also the machine hosting Tomcat, so this URL will typically point to <code>localhost</code>. Common examples of the manager URL are <code>http://localhost:8080/manager</code>.</li>
+<li>Supply the <code>Management User</code> and <code>Management Password</code> of the user was defined using the instructions from <a href="#configure_tomcat">Configure Tomcat</a>.</li>
+<li>The <code>Start/Stop the Deployment</code> option allows you to start or stop the deployed application.</li>
+</ul>
+<h2 id="startingstopping-tomcat-applications-step-details">Starting/Stopping Tomcat Applications Step Details</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Field Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Path</td>
+<td>Yes</td>
+<td></td>
+<td>The context path that the application will be deployed to. Set this value to <code>/</code> to deploy to the root context. Set it to a value like <code>myapplication</code> to deploy to the <code>/myapplication</code> context. Nested contexts are also allowed, such as <code>myapplication/v1.0</code>.<br/><br/>Leading slashes are optional;  <code>/myapplication</code> and  <code>myapplication</code> will both deploy to the  <code>/myapplication</code> context path.</td>
+</tr>
+<tr>
+<td>Deployment Version</td>
+<td>No</td>
+<td>Defaults to modifying the state of the unversioned Tomcat deployment.</td>
+<td>The version of the application to start or stop. Leave the field blank to modify the state of an unversioned Tomcat deployment.</td>
+</tr>
+<tr>
+<td>Tomcat Manager URL</td>
+<td>Yes</td>
+<td></td>
+<td>This field defines the URL of the Tomcat manager application. This is relative to the target machine performing the deployment. When the Tentacle is on the same machine as the Tomcat instance, this URL will typically reference localhost i.e. <code>http://localhost:8080/manager</code>.</td>
+</tr>
+<tr>
+<td>Management User</td>
+<td>Yes</td>
+<td></td>
+<td>The user that is supplied when logging into the Tomcat manager API. Note that this user is required to be part of the <code>manager-script</code> group. See the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html#Configuring_Manager_Application_Access" rel="nofollow">Tomcat documentation</a> for more details on the groups used by the manager application.</td>
+</tr>
+<tr>
+<td>Management Password</td>
+<td>Yes</td>
+<td></td>
+<td>The password that is supplied when logging into the Tomcat manager API.</td>
+</tr>
+<tr>
+<td>Start/Stop the Deployment</td>
+<td>Yes</td>
+<td></td>
+<td>This field defines whether the application will be started or stopped.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enablingdisabling-wildfly-and-eap-applications">Enabling/Disabling WildFly and EAP Applications</h2>
+<p>The <code>Enable/Disable deployment in WildFly</code> step is used to modify the state of a deployed application. The following steps can be used to enable or disable an application deployed to an application server.</p>
+<ul>
+<li>Define set the <code>Deployment Name</code> of the application to be enabled or disabled.</li>
+<li>Set the <code>Management Host or IP</code> field to the address that the WildFly management interface is listening to. This value is relative to the target machine that is performing the deployment. Since the target machine performing the deployment is typically the same machine hosting WildFly, this value will usually be <code>localhost</code>.</li>
+<li>Set the <code>Management Port</code> to the port bound to the WildFly management interface. For WildFly 10+ and JBoss EAP 7+, this will default to <code>9990</code>. For JBoss EAP 6, this will default to <code>9999</code>.</li>
+<li>The <code>Management Protocol</code> field defines the protocol to be used when interacting with the management interface. For WildFly 10+ and JBoss EAP 7+, this will default to <code>http-remoting</code> or <code>remote+http</code> (the two are equivalent). For JBoss EAP 6, this will default to <code>remoting</code>.</li>
+<li>If you wish to use silent authentication, and have configured the required permissions for the <code>$JBOSS_HOME/standalone/tmp/auth</code> or <code>$JBOSS_HOME/domain/tmp/auth</code> directory, then the <code>Management User</code> and <code>Management Password</code> fields can be left blank. Alternatively these fields can hold the credentials that were configured via the <code>add-user</code> script.</li>
+<li>If you are deploying to a standalone server, the deployment can be enabled or disabled using the <code>Enable/Disable the Deployment</code> field. This field has no effect when deploying to a domain controller.</li>
+<li>If you are deploying to a domain controller, the server groups that will have the deployment enabled must be specified in the <code>Enabled Server Groups</code> field. Likewise the server groups that will have the deployment disabled must be specified in the <code>Disabled Server Groups</code>. Multiple server groups can be specified separated by a comma. These fields has no effect when deploying to a standalone server.</li>
+</ul>
+<h2 id="enablingdisabling-wildfly-and-eap-applications-step-details">Enabling/Disabling WildFly and EAP Applications Step Details</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Field Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment Name</td>
+<td>Yes</td>
+<td></td>
+<td>The name of the application to enable or disable. This is the name of the application as it appears in the application server management console. This name may or may not be the same as the name of the package from the Octopus library.</td>
+</tr>
+<tr>
+<td>Management Host or IP</td>
+<td>Yes</td>
+<td></td>
+<td>The location of the management interface. This is relative to the target machine performing the deployment. When the Tentacle is on the same machine as the application server instance, this URL will typically reference <code>localhost</code>.</td>
+</tr>
+<tr>
+<td>Management Port</td>
+<td>Yes</td>
+<td></td>
+<td>The port that the management interface is bound to. For WildFly 10+ and JBoss EAP 7+, this defaults to <code>9990</code>. For JBoss EAP 6, this defaults to <code>9999</code></td>
+</tr>
+<tr>
+<td>Management Protocol</td>
+<td>Yes</td>
+<td></td>
+<td>The protocol to use when interacting with the management interface. For WildFly 10+ and JBoss EAP 7+, this defaults to <code>http-remoting</code> or <code>remote+http</code> (the two are equivalent). If the management interface is protected with a certificate, the protocols are <code>https-remoting</code> or <code>remote+https</code>. For JBoss EAP 6 this defaults to <code>remoting</code>. Refer to the <a href="http://jbossremoting.jboss.org/remoting-3" rel="nofollow">JBoss Remoting</a> project for more details on these protocols.</td>
+</tr>
+<tr>
+<td>Management User</td>
+<td>No</td>
+<td>Defaults to using silent authentication.</td>
+<td>The username to supply when connecting to the management interface. If left blank, silent authentication will be used. Silent authentication requires that the target machine performing the deployment also be the machine hosting the application server, and that the user performing the deployment (i.e. the Tentacle service user or the SSH user) have access to the <code>$JBOSS_HOME/standalone/tmp/auth</code> or <code>$JBOSS_HOME/domain/tmp/auth</code> directory. See the <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1.beta/html/how_to_configure_server_security/securing_the_server_and_its_interfaces#silent-auth" rel="nofollow">JBoss EAP documentation</a> for more details on silent authentication.</td>
+</tr>
+<tr>
+<td>Management Password</td>
+<td>No</td>
+<td>Defaults to using silent authentication.</td>
+<td>The password to supply when connecting to the management interface. This field is option is using silent authentication.</td>
+</tr>
+<tr>
+<td>Standalone or Domain Server</td>
+<td>Yes</td>
+<td>Standalone</td>
+<td>When set to <code>Standalone</code> the <code>Enable/Disable the Deployment</code> field is presented, and when set to <code>Domain</code>, the <code>Enabled Server Groups</code> and <code>Disabled Server Groups</code> fields are displayed.</td>
+</tr>
+<tr>
+<td>Enable/Disable the Deployment</td>
+<td>Yes</td>
+<td></td>
+<td>When deploying to a standalone server, this field defines if the deployment will be enabled or disabled. This field has no effect when deploying to a domain controller.</td>
+</tr>
+<tr>
+<td>Enabled Server Groups</td>
+<td>No</td>
+<td></td>
+<td>When deploying to a domain controller, this field lists the server groups that will have the deployment enabled in. Multiple server groups can be supplied as a comma separated list. This field has no effect when deploying to a standalone server.</td>
+</tr>
+<tr>
+<td>Disabled Server Groups</td>
+<td>No</td>
+<td></td>
+<td>When deploying to a domain controller, this field lists the server groups that will have the deployment disabled in. Multiple server groups can be supplied as a comma separated list. This field has no effect when deploying to a standalone server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deploy-via-package-copy">Deploy via Package Copy</h2>
+<p>The <code>Deploy Java Archive</code> step is used to copy a Java archive to the target machine's filesystem. This step is not tied to any particular application server, and can be used to deploy applications to any server that will accept files copied into a deployment directory.</p>
+<p>The following steps can be used to deploy an application via a file copy to an application server.</p>
+<ul>
+<li>Select the <code>Package feed</code> and <code>Package ID</code> that references the Java application to be deployed.</li>
+<li>Unselect the <code>Explode</code> option. This means we will be copying a repacked package instead of the extracted contents of the original prackage.</li>
+<li>Select the <code>Custom Deploy Directory</code> option.</li>
+<li>Set the <code>Deploy Directory</code> field to the location within the application server where deployments are located. For WildFly or JBoss EAP, this will be a directory like <code>$JBOSS_HOME/standalone/deployments</code>, and for Tomcat it will be <code>$CATALINA_HOME/webapps</code>.</li>
+<li>Set the <code>Deployed Package File Name</code> field to a filename that reflects the desired context path.
+<ul>
+<li>For WildFly or JBoss EAP, the filename will be used for the context. For example, setting <code>Package file name</code> to <code>myapplication.war</code> will result in the application being deployed under the <code>/myapplication</code> context. See <a href="#context_path">Defining Context Paths</a> for more information.</li>
+<li>For Tomcat the filename takes the form <code>context#subcontext##version.war</code>. For example, setting <code>Package file name</code> to <code>myapplication#v1##10.war</code> will result in the application being deployed under the context <code>myapplication/v1</code> with a Tomcat version of <code>10</code>. The version and subcontext are optional, so you could set <code>Package file name</code> to <code>myapplication.war</code>, in which case Tomcat would deploy the application under the <code>/mayapplication</code> context with no version information.</li>
+</ul>
+</li>
+<li>Unselect the <code>Purge</code> option because we don't want to uninstall any existing applications in the deployment directories.</li>
+</ul>
+<h2 id="deploy-java-archive-step-details">Deploy Java Archive Step Details</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Field Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package feed</td>
+<td>Yes</td>
+<td></td>
+<td>The feed to use to source the Java package from.</td>
+</tr>
+<tr>
+<td>Package ID</td>
+<td>Yes</td>
+<td></td>
+<td>The Java package to deploy.</td>
+</tr>
+<tr>
+<td>Explode</td>
+<td>No</td>
+<td></td>
+<td>If selected, the package will be deployed extracted. Note that the package is always extracted as part of the deployment process, to allow features such as substituting variables in files. By default the package is re-created before deploying to the destination. If the <code>Explode</code> option is selected it remains extracted.</td>
+</tr>
+<tr>
+<td>Custom Deploy Directory</td>
+<td>No</td>
+<td></td>
+<td>By default the package will be deployed to the target's application directory. This options allows setting a custom deployment directory.</td>
+</tr>
+<tr>
+<td>Deploy Directory</td>
+<td>No</td>
+<td>The package will be copied into the local Octopus Applications directory by default e.g. <code>C:\Octopus\Applications\Local\myapplication\0.0.1-SNAPSHOT_8\myapplication.0.0.1-SNAPSHOT.war</code></td>
+<td>The installed package will be copied to this location on the remote machine.</td>
+</tr>
+<tr>
+<td>Deployed Package File Name</td>
+<td>No</td>
+<td>The file will default to the original filename from the feed.</td>
+<td>Defines the name of the file that is copied into the destination directory.</td>
+</tr>
+<tr>
+<td>Purge</td>
+<td>No</td>
+<td></td>
+<td>If selected, all files in this location will be removed before the package is copied.</td>
+</tr>
+<tr>
+<td>Exclude from purge</td>
+<td>No</td>
+<td></td>
+<td>A newline-separated list of file or directory names, relative to the installation directory, to leave when it is purged. Extended wildcard syntax is supported. E.g., appsettings.config, Config*.config, ***.config</td>
+</tr>
+</tbody>
+</table>
+<h2 id="variable-substitution-in-java-packages">Variable Substitution in Java Packages</h2>
+<p>Octopus provides the <a href="https://octopus.com/docs/deploying-applications/substitute-variables-in-files">ability to replace variables in packages during deployment</a>. This is done using a <a href="https://octopus.com/docs/reference/variable-substitution-syntax">specific syntax</a> implemented by the <a href="https://github.com/OctopusDeploy/Octostache" rel="nofollow">Octostash</a> library.</p>
+<p>The syntax used by Octostash and Java libraries such as Spring do overlap, so care must be taken to ensure that files intended to be used as Octostash templates during deployment don't interfere with local development.</p>
+<p>For example, you may have a <code>application.properties</code> file that defines an environment variable which reflects the environment that the application has been published to.</p>
+<pre><code class="language-properties">environment: #{Environment}
+</code></pre>
+<p>This file is expected to be used as an Octostash template during deployment, but when testing locally you will receive an error like <code>Unsatisfied dependency expressed through field 'environment';</code>. This is because during local development the template file has not been processed, and the common syntax between Spring and Octostash means Spring is attempting to resolve the variable <code>Environment</code>, which doesn't exist.</p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html" rel="nofollow">Spring profiles</a> provide a convenient way to load valid properties files for local development, while leaving environment specific templates for deployments processed by Octopus.</p>
+<p>For example, you may create a file called <code>application-dev.properties</code> with the following settings:</p>
+<pre><code class="language-properties">environment: Development
+</code></pre>
+<p>Maven can then be instructed to active the <code>dev</code> profile for testing:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;argLine&gt;-Dspring.profiles.active=dev&lt;/argLine&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<p>Gradle can do the same:</p>
+<pre><code>test {
+    systemProperties = [
+            &quot;spring.profiles.active&quot;: &quot;dev&quot;
+    ]
+}
+</code></pre>
+<p>Now local testing is done against a valid properties file, while the main <code>application.properties</code> file is used a template during deployment to environments managed by Octopus.</p>
+<h2 id="error-messages">Error Messages</h2>
+<p>The Java deployment steps include a number of unique error codes that may be displayed in the output if there was an error. Below is a list of the errors, along with any additional troubleshooting steps that can be taken to rectify them.</p>
+<h3 id="wildfly-deploy-error-0001">WILDFLY-DEPLOY-ERROR-0001</h3>
+<p>There was an error taking a snapshot of the current configuration.</p>
+<h3 id="wildfly-deploy-error-0002">WILDFLY-DEPLOY-ERROR-0002</h3>
+<p>There was an error deploying the artifact.</p>
+<h3 id="wildfly-deploy-error-0003">WILDFLY-DEPLOY-ERROR-0003</h3>
+<p>There was an error reading the existing deployments.</p>
+<h3 id="wildfly-deploy-error-0004">WILDFLY-DEPLOY-ERROR-0004</h3>
+<p>There was an error adding the package to the server group.</p>
+<h3 id="wildfly-deploy-error-0005">WILDFLY-DEPLOY-ERROR-0005</h3>
+<p>There was an error deploying the package to the server group.</p>
+<p>This may be due to duplicate context paths. Check that the context path is not already assigned to an existing application.</p>
+<p>See <a href="#context_path">Defining Context Paths</a> for more information on how context paths are assigned in WildFly.</p>
+<p>This may also occur if invalid server group names where supplied when deploying to a domain controller. Look for entries like this in the verbose log output:</p>
+<pre><code>INFO: Result as JSON: {
+    &quot;outcome&quot; : &quot;failed&quot;,
+    &quot;failure-description&quot; : &quot;WFLYCTL0216: Management resource '[(\&quot;server-group\&quot; =&gt; \&quot;invalid-server-group-name\&quot;)]' not found&quot;,
+    &quot;rolled-back&quot; : true
+}
+</code></pre>
+<h3 id="wildfly-deploy-error-0006">WILDFLY-DEPLOY-ERROR-0006</h3>
+<p>There was an error undeploying the package to the server group</p>
+<h3 id="wildfly-deploy-error-0007">WILDFLY-DEPLOY-ERROR-0007</h3>
+<p>There was an error deploying the package to the standalone server.</p>
+<p>This may be due to duplicate context paths. Check that the context path is not already assigned to an existing application.</p>
+<p>See <a href="#context_path">Defining Context Paths</a> for more information on how context paths are assigned in WildFly.</p>
+<p>This may also be caused by an error that prevents the application being deployed from starting up. Check the application server logs for more information.</p>
+<h3 id="wildfly-deploy-error-0008">WILDFLY-DEPLOY-ERROR-0008</h3>
+<p>There was an error enabling the package in the standalone server</p>
+<h3 id="wildfly-deploy-error-0009">WILDFLY-DEPLOY-ERROR-0009</h3>
+<p>There was an error logging into the management API.</p>
+<p>Ensure the server has started and that the ip/hostname and port details are correct.</p>
+<p>Make sure the credentials are correct.</p>
+<h3 id="wildfly-deploy-error-0010">WILDFLY-DEPLOY-ERROR-0010</h3>
+<p>There was an error logging out of the management API</p>
+<h3 id="wildfly-deploy-error-0011">WILDFLY-DEPLOY-ERROR-0011</h3>
+<p>There was an error terminating the CLI object</p>
+<h3 id="wildfly-deploy-error-0012">WILDFLY-DEPLOY-ERROR-0012</h3>
+<p>There was an error changing the deployed state of the application.</p>
+<p>Make sure the application name is correct.</p>
+<h3 id="wildfly-deploy-error-0013">WILDFLY-DEPLOY-ERROR-0013</h3>
+<p>The login was not completed in a reasonable amount of time.</p>
+<p>This can happen if no credentials where supplied with the step, and silent authentication failed.</p>
+<p>Either supply credentials to be used, or ensure that the user performing the deployment (the Tentacle service user in Windows or the SSH user in Linux and MacOS) has access to the application server <code>$JBOSS_HOME/standalone/tmp/auth</code> or <code>$JBOSS_HOME/domain/tmp/auth</code> directory.</p>
+<p>Also ensure that the hostname and port are correct. You should be able to open the admin console using these details.</p>
+<p><a href='#' data-featherlight='/docs/deploying-applications/wildfly-admin-console.png' class='zoom' data-title=''><img src='/docs/deploying-applications/wildfly-admin-console.png' class="img-fluid center" alt='Wildfly Admin Console' /></a></p>
+<h3 id="wildfly-deploy-error-0014">WILDFLY-DEPLOY-ERROR-0014</h3>
+<p>An exception was thrown during the deployment.</p>
+<h3 id="wildfly-deploy-error-0015">WILDFLY-DEPLOY-ERROR-0015</h3>
+<p>Failed to deploy the package to the WildFly/EAP standalone instance</p>
+<h3 id="wildfly-deploy-error-0016">WILDFLY-DEPLOY-ERROR-0016</h3>
+<p>Failed to deploy the package to the WildFly/EAP domain</p>
+<h3 id="wildfly-deploy-error-0017">WILDFLY-DEPLOY-ERROR-0017</h3>
+<p>There was a mismatch between the server type defined in the Octopus Deploy step and the server that was being deployed to. For example, the Octopus Deploy step defined the server as <code>Standalone</code> in the <code>Standalone or Domain Server</code> field, but the server was actually a domain controller. This error won't stop the deployment, but possibly means that the Octopus Step has not configured the correct fields.</p>
+<h3 id="tomcat-deploy-error-0001">TOMCAT-DEPLOY-ERROR-0001</h3>
+<p>There was an error deploying the package to Tomcat</p>
+<h3 id="tomcat-deploy-error-0002">TOMCAT-DEPLOY-ERROR-0002</h3>
+<p>There was an error deploying a tagged package to Tomcat</p>
+<h3 id="tomcat-deploy-error-0003">TOMCAT-DEPLOY-ERROR-0003</h3>
+<p>There was an error undeploying a package from Tomcat</p>
+<h3 id="tomcat-deploy-error-0004">TOMCAT-DEPLOY-ERROR-0004</h3>
+<p>There was an error enabling or disabling a package in Tomcat</p>
+<h3 id="tomcat-deploy-error-0005">TOMCAT-DEPLOY-ERROR-0005</h3>
+<p>This is a catch all error message for unexpected errors during a Tomcat deployment. Ensure that:</p>
+<ul>
+<li>The manager URL is correct. Ensure the URL includes the context of the manager application, and that the port and hostname/IP address are correct. Also ensure that the hostname/IP address can be resolved from the target machine hosting the Tentacle. A common example of a correct manager URL is <code>http://localhost:8080/manager</code>.</li>
+<li>The Tomcat credentials are correct.</li>
+<li>The firewall allows connection to the Tomcat server.</li>
+<li>Tomcat is started and running.</li>
+</ul>
+<h3 id="tomcat-deploy-error-0006">TOMCAT-DEPLOY-ERROR-0006</h3>
+<p>A HTTP return code indicated that the login failed due to bad credentials. Make sure the username and password are correct.</p>
+<h3 id="tomcat-deploy-error-0007">TOMCAT-DEPLOY-ERROR-0007</h3>
+<p>A HTTP return code indicated that the login failed due to invalid group membership. Make sure the user is part of the <code>manager-script</code> group in the <code>tomcat-users.xml</code> file.</p>
+<p>See the <a href="https://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html#Configuring_Manager_Application_Access" rel="nofollow">Tomcat documentation</a> for more details on the groups used by the manager application.</p>
+<h3 id="tomcat-deploy-error-0008">TOMCAT-DEPLOY-ERROR-0008</h3>
+<p>The application was not successfully started or stopped.</p>
+<p>This can happen if the application failed to initialize. Check the Tomcat logs for information on why the application could not be started.</p>
+<p>Also confirm that the context path and version match a deployed application.</p>
+<p>This is treated as a warning during deployment, but an error if encountered during the Tomcat start/stop step.</p>
+<h3 id="java-deploy-error-0001">JAVA-DEPLOY-ERROR-0001</h3>
+<p>The <code>Deploy a package</code> step was used with an unsupported package. This step does not support specialized file formats, like those used with Java packages.</p>
+<p>You may want to use a step like <code>Deploy Java Archive</code> instead.</p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

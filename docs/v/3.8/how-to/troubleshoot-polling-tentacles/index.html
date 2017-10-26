@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/how-to/troubleshoot-polling-tentacles'>4.0</a></li><li class=''><a href='/docs/how-to/troubleshoot-polling-tentacles'>Latest</a></li><li class=''><a href='/docs/v/3.16/how-to/troubleshoot-polling-tentacles'>3.16</a></li><li class=''><a href='/docs/v/3.15/how-to/troubleshoot-polling-tentacles'>3.15</a></li><li class=''><a href='/docs/v/3.14/how-to/troubleshoot-polling-tentacles'>3.14</a></li><li class=''><a href='/docs/v/3.13/how-to/troubleshoot-polling-tentacles'>3.13</a></li><li class=''><a href='/docs/v/3.12/how-to/troubleshoot-polling-tentacles'>3.12</a></li><li class=''><a href='/docs/v/3.11/how-to/troubleshoot-polling-tentacles'>3.11</a></li><li class=''><a href='/docs/v/3.10/how-to/troubleshoot-polling-tentacles'>3.10</a></li><li class=''><a href='/docs/v/3.9/how-to/troubleshoot-polling-tentacles'>3.9</a></li><li class='disabled'><a href='/docs/v/3.8/how-to/troubleshoot-polling-tentacles'>3.8</a></li><li class=''><a href='/docs/v/3.7/how-to/troubleshoot-polling-tentacles'>3.7</a></li><li class=''><a href='/docs/v/3.6/how-to/troubleshoot-polling-tentacles'>3.6</a></li></ul>
+</div>
+<h1>Troubleshoot Polling Tentacles</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>When an Octopus Tentacle is configured in <a href="/docs/v/3.8/installation/installing-tentacles/polling-tentacles">Polling mode</a>, it will attempt to connect to the Octopus Server on the configured TCP port (by default TCP port <strong>10943</strong> on the Octopus Server) poll the Octopus Server for work to be performed.</p>
+<p><a href='#' data-featherlight='/docs/images/5670828/5865874.png' class='zoom' data-title=''><img src='/docs/images/5670828/5865874.png' class="img-fluid center" alt='' /></a></p>
+<p>All of the 'classic' problems of TCP networking: firewalls, proxies, timeouts, DNS issues and so-on can affect Octopus Tentacles. This guide will help to track down these issues when either a machine cannot be registered with the Octopus installation, or a previously working machine fails to health-check with errors from the networking stack.</p>
+<div class="alert alert-success"><p>Before following the steps below, it can be worthwhile to restart the Octopus and Tentacle services, and refresh the browser you're using to connect to the Octopus Web Portal. Neither action <em>should</em>fix a communication problem, but sometimes they can help flush a problem out.</p>
+</div>
+<div class="alert alert-success"><p>If you have worked through this guide without success, it can be worthwhile to completely remove the Tentacle configuration, data, and working folders, and then reconfigure it from scratch. This can be done without any impact to the applications you have deployed. Learn about <a href="/docs/v/3.8/administration/tentacle-configuration-and-file-storage/manually-uninstall-tentacle" class="alert-link">manually uninstalling Tentacle</a>. Working from a clean slate can sometimes expose the underlying problem.</p>
+</div>
+<h2 id="TroubleshootPollingTentacles-Homeinontheproblem">Home in on the problem</h2>
+<p>If you're at &quot;square 1&quot; and can't register a new Tentacle with the Octopus Server, take note of the error presented when you attempt to register the Tentacle. During the registration phase the tooling attempts to use the Octopus Server API (by default TCP Port <strong>80</strong> or <strong>443</strong>). It is not until the registration is successful that the Tentacle will attempt to start polling the Octopus Server (by default TCP port <strong>10943</strong> on the Octopus Server).</p>
+<p>If you are having problems with a previously-working machine, or you've successfully registered a machine but can't get communication to work afterwards, you can find information in three places:</p>
+<ol>
+<li>If the machine has been included in a Health Check or Deployment, examine the Raw Task Log. There's a link to this on the page containing the details of the Health Check or Deployment, which can usually be located using the <em>Tasks</em> page in the Octopus Web Portal.</li>
+<li>On the <em>Environments</em> page of the Octopus Web Portal, click on the problem machine and select the <em>Connectivity</em> tab. There's often specific information about the communication status of the machine here.</li>
+<li>In the Octopus Web Portal, open <span class="path">Configuration ➜ Diagnostics</span>. Information on this page can be helpful to work out what's going on in the Octopus installation. Following the link to <em>Server logs</em> and searching for the machine's name or IP address can turn up useful information.</li>
+</ol>
+<div class="alert alert-success"><p><strong>Don't miss the great info already on the web</strong><br />
+Many communication problems between Octopus Servers and Tentacles have been discussed online. A quick web search for <em>Octopus <your error message></em> will often turn up useful information.</p>
+</div>
+<p>Verify the Tentacle communications settings</p>
+<p><em>On the Tentacle machine</em>, open the Tentacle Manager application from the Start screen or Start menu.</p>
+<p><a href='#' data-featherlight='/docs/images/5670828/5865770.png' class='zoom' data-title=''><img src='/docs/images/5670828/5865770.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>The application should show the service as running.</p>
+<p>There are three pieces of information to verify.</p>
+<ol>
+<li>Ensure that the Tentacle is in <em>Polling</em> mode</li>
+<li>Check the port that the Tentacle polls the Octopus Server on</li>
+<li>Check that the <strong>Octopus Server</strong> thumbprint shown matches the one shown in the <span class="path">Configuration ➜ Certificates</span> screen in the Octopus Web Portal.</li>
+</ol>
+<p>Note that there are two thumbprints displayed - that of the Tentacle itself (shown first in bold) and the thumbprints of trusted servers (shown inline in the gray text).</p>
+<div class="alert alert-info"><p><strong>If any communication settings are incorrect...</strong><br />
+If any of the communications settings are incorrect, choose <em>Delete this Tentacle instance...</em>. After doing so, you'll be presented with the Tentacle installation wizard, where the correct settings can be chosen.</p>
+</div>
+<p>Finally, verify that the Tentacle's thumbprint, shown in bold in the large box, matches any that have been presented in error messages, and in the <em>Machine Settings</em> page on the Octopus Web Portal.</p>
+<h2 id="TroubleshootPollingTentacles-VerifytheOctopusandTentacleservicesarerunning">Verify the Octopus and Tentacle services are running</h2>
+<p>If you're successfully connecting to the Octopus Web Portal with your web browser, you can be confident the Octopus Server service is running.</p>
+<p>The Tentacle Manager usually shows correct service status, but it pays to double-check. <em>On the Tentacle machine</em>, open the Windows Services Control Panel applet (<code>services.msc</code>) and look for &quot;OctopusDeploy Tentacle&quot;. Verify that the service is in the &quot;Running&quot; state.</p>
+<div class="alert alert-info"><p><strong>If the services is not running...</strong><br />
+If the Tentacle service is not running, you can try to start it from the Services applet. Allow 30 seconds for the service to start work, then refresh the Services screen. <strong>If the Tentacle service keeps running</strong>, go back to the Octopus Web Portal and try Health Checking the affected machine again. <strong>If the service stops</strong>, it is likely that the service is crashing during startup; this can be caused by a number of things, most of which can be diagnosed from the Tentacle log files. Inspect these yourself, and either send the <a href="/docs/v/3.8/reference/log-files" class="alert-link">log files</a> or extracts from them showing the issue to the Octopus Deploy Support email address for assistance.</p>
+</div>
+<p>If the service is up and running, continue to the next step.</p>
+<h2 id="TroubleshootPollingTentacles-ConnectlocallytotheOctopusServerpollingendpointusingyourbrowser">Connect locally to the Octopus Server polling endpoint using your browser</h2>
+<p><em>On the Octopus Server machine</em>, open a web browser and navigate to <a href="https://localhost:10943" rel="nofollow">https://localhost:10943</a> (or your chosen Tentacle communications port if it isn't the default). Make sure an<strong>HTTPS</strong> URL is used.</p>
+<ul>
+<li><p>If you're presented with a prompt to &quot;confirm a certificate&quot; or &quot;select a certificate&quot; choose &quot;Cancel&quot; - don't provide one</p>
+</li>
+<li><p>If you're presented with a warning about the invalidity of the site's certificate, &quot;continue to the site&quot; or &quot;add an exception&quot; (Octopus Server uses a self-signed certificate by default)</p>
+</li>
+</ul>
+<p>The page shown should look like the one below.</p>
+<p><a href='#' data-featherlight='/docs/images/3048113/3277906.png' class='zoom' data-title=''><img src='/docs/images/3048113/3277906.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>If you've made it this far, good news! Your Octopus Server is running and ready to accept inbound connections from Polling Tentacles.</p>
+<div class="alert alert-info"><p><strong>If you can't browse to the page...</strong><br />
+If this is where your journey ends, there's a problem on the Octopus Serve machine itself. It is very likely that the Octopus Server is unable to open the communications port, either because of permissions, or because another process is listening on that port. Using the Windows <code>netstat -o -n -a -b</code> command can help to get to the bottom of this quickly. If you're still in trouble, check the Octopus Server <a href="/docs/v/3.8/reference/log-files" class="alert-link">log files</a> and contact Octopus Deploy support.</p>
+</div>
+<h2 id="TroubleshootPollingTentacles-ConnectfromtheTentaclemachine">Connect from the Tentacle machine</h2>
+<p>Next, repeat the process of connecting to the Octopus Server with a web browser, but do this <em>from the Tentacle machine</em>.</p>
+<p>When forming the URL to check:</p>
+<ul>
+<li>First try using the Octopus Server's DNS hostname, e.g. <a href="https://my-octopus:10943" rel="nofollow">https://my-octopus:10943</a></li>
+<li>If this fails, try using the Octopus Server's IP address instead, e.g. <a href="https://1.2.3.4:10943" rel="nofollow">https://1.2.3.4:10943</a> - success using the IP address but not the DNS hostname will indicate a DNS issue</li>
+</ul>
+<div class="alert alert-info"><p><strong>If you can't connect...</strong><br />
+Failing to connect at this step means that you have a network issue preventing traffic between the Tentacles and Octopus Server. Check that the Octopus Server polling port is open in any firewalls, and that other services on the network are working. There's not usually much that Octopus Deploy Support can suggest for these issues as networks are complex and highly varied. Having the network administrator from your organization help diagnose the issue is the best first step. If that draws a blank, please get in touch.</p>
+<p>Remember to check both the built-in Windows Firewall, and any other firewalls (in Amazon EC2, check your security group settings for example).</p>
+</div>
+<p>If the Tentacle welcome page is shown, good news - your network is fine.</p>
+<div class="alert alert-danger"><p><strong>Watch out for proxy servers or SSL offloading...</strong><br />
+Octopus and Tentacle use TCP to communicate, with special handling to enable web browsers to connect for diagnostic purposes. Full HTTP is not supported, so network services like <strong>SSL offloading</strong> are not supported, and <strong>proxies</strong> are not supported in earlier versions of Octopus Deploy. Make sure there's a direct connection between the Tentacle and Octopus Server, without an HTTP proxy or a network appliance performing SSL offloading in between.</p>
+<p><strong>NOTE</strong>: Octopus Deploy 3.4 introduced <a href="/docs/v/3.8/installation/installing-tentacles/proxy-support" class="alert-link">advanced support for HTTP proxies</a>.</p>
+</div>
+<h2 id="TroubleshootPollingTentacles-Tentacleping">Tentacle ping</h2>
+<p>We have built a small utility for testing the communications protocol between two servers called <a href="https://github.com/OctopusDeploy/TentaclePing" rel="nofollow">Tentacle Ping</a>. This tool helps isolate the source of communication problems without needing a full Octopus configuration. It is built as a simple client and server component that emulates the communications protocol used by Octopus Server and Tentacle.</p>
+<p>In Octopus 3.0 you will need <strong>TentaclePing</strong> and <strong>TentaclePong</strong>, you cannot test directly to Octopus Server nor Tentacle:</p>
+<ul>
+<li>Run <strong>TentaclePing</strong> on your Tentacle machine (which is the client in this relationship)</li>
+<li>Run <strong>TentaclePong</strong> on your Octopus Server machine (which is the server in this relationship)</li>
+</ul>
+<p>Use the output to help diagnose what is going wrong.</p>
+<h2 id="TroubleshootPollingTentacles-ChecktheOctopusServerpollingIPaddress">Check the Octopus Server polling IP address</h2>
+<p>Your Octopus Server may have multiple IP addresses that it listens on. For example, in Amazon EC2 machines in a VPN might have both an internal IP address and an external addresses using NAT. Octopus Server may not listen on all addresses; you can check which addresses are configured on the server by running <code>ipconfig /all</code> from the command line and looking for the IPv4 addresses.</p>
+<h2 id="TroubleshootPollingTentacles-CheckOctopusServerserviceaccountpermissions">Check Octopus Server service account permissions</h2>
+<p>If the Octopus Server is running as the <em>Local System</em> account you can skip this section.</p>
+<p>If the Octopus Server is running as a specific user, make sure that the user has &quot;full control&quot; permission to the <em>Octopus Home</em> folder on the machine. This is usually <code>C:\Octopus</code> - apply permissions recursively.</p>
+<h2 id="TroubleshootPollingTentacles-CheckOctopus.Server.exeloadtime">Check Octopus.Server.exe load time</h2>
+<p>In some DMZ-style environments without Internet access, failing to disable Windows code signing certificate revocation list checking will cause Windows to pause during loading of the Octopus applications and installers. This can have a significant negative performance impact, which may prevent Octopus and Tentacles connecting.</p>
+<p>To test this, run:</p>
+<pre><code class="language-powershell">Octopus.Server.exe help
+</code></pre>
+<p>If the command help is not displayed immediately (&lt; 1s) you may need to consider disabling the CRL check while the Octopus Server is configured.</p>
+<p>To do this open <span class="path">Control Panel ➜ Internet Options ➜ Advanced</span>, and uncheck the <em>Check for publisher's certificate revocation</em> option as shown below.</p>
+<p><a href='#' data-featherlight='/docs/images/5670828/5865771.png' class='zoom' data-title=''><img src='/docs/images/5670828/5865771.png' class="img-fluid center" alt='' /></a></p>
+<h2 id="TroubleshootPollingTentacles-SchannelandTLSconfigurationmismatches">Schannel and TLS configuration mismatches</h2>
+<p>Octopus uses <code>Schannel</code> for secure communications and will attempt to use the best available protocol available to both servers.  If you are seeing error messages like below, try <a href="/docs/v/3.8/reference/octopus-tentacle-communication/troubleshooting-schannel-and-tls">Troubleshooting Schannel and TLS</a>:</p>
+<p>Client-side:<code>System.Security.Authentication.AuthenticationException: A call to SSPI failed, see inner exception. ---&gt; System.ComponentModel.Win32Exception: One or more of the parameters passed to the function was invalid</code></p>
+<p>Server-side:<code>System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host.</code></p>
+<h2 id="TroubleshootPollingTentacles-OtherErrorMessages">Other Error Messages</h2>
+<p><strong>Halibut.Transport.Protocol.ConnectionInitializationFailedException: Unable to process remote identity; unknown identity 'HTTP/1.0'</strong></p>
+<p>If a Tentacle health-check fails with an error message containing this error message, then there is network infrastructure inserting a web page into the communication.  The most common components to do this are firewalls and proxy servers so it's recommend to check your network setup to verify connectivity between the two servers using the information above and then update your infrastructure appropriately.</p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

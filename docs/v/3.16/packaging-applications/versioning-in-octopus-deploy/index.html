@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/packaging-applications/versioning-in-octopus-deploy'>4.0</a></li><li class=''><a href='/docs/packaging-applications/versioning-in-octopus-deploy'>Latest</a></li><li class='disabled'><a href='/docs/v/3.16/packaging-applications/versioning-in-octopus-deploy'>3.16</a></li><li class=''><a href='/docs/v/3.15/packaging-applications/versioning-in-octopus-deploy'>3.15</a></li><li class=''><a href='/docs/v/3.14/packaging-applications/versioning-in-octopus-deploy'>3.14</a></li><li class=''><a href='/docs/v/3.13/packaging-applications/versioning-in-octopus-deploy'>3.13</a></li><li class=''><a href='/docs/v/3.12/packaging-applications/versioning-in-octopus-deploy'>3.12</a></li><li class=''><a href='/docs/v/3.11/packaging-applications/versioning-in-octopus-deploy'>3.11</a></li><li class=''><a href='/docs/v/3.10/packaging-applications/versioning-in-octopus-deploy'>3.10</a></li><li class=''><a href='/docs/v/3.9/packaging-applications/versioning-in-octopus-deploy'>3.9</a></li><li class=''><a href='/docs/v/3.8/packaging-applications/versioning-in-octopus-deploy'>3.8</a></li><li class=''><a href='/docs/v/3.7/packaging-applications/versioning-in-octopus-deploy'>3.7</a></li><li class=''><a href='/docs/v/3.6/packaging-applications/versioning-in-octopus-deploy'>3.6</a></li></ul>
+</div>
+<h1>Versioning in Octopus Deploy</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Choosing the best versioning scheme for your applications can be a tricky act of balancing pragmatism and strictness. This page should help you understand how Octopus Deploy handles versions in <a href="/docs/v/3.16/packaging-applications/supported-packages">packages</a>, releases, and <a href="/docs/v/3.16/key-concepts/projects/channels">channels</a>, and subsequently design a versioning scheme that suits your needs.</p>
+<div class="alert alert-success"><p><strong>Use Semantic Versioning (SemVer)</strong><br />
+We strongly recommend using <a href="http://semver.org/" class="alert-link" rel="nofollow">Semantic Versioning</a> as a guide when designing a versioning scheme for your applications. Over the years Octopus Deploy has supported different versions of SemVer:</p>
+<ul>
+<li><a href="http://semver.org/spec/v2.0.0.html" class="alert-link" rel="nofollow">SemVer 2.0</a> (recommended): requires <a href="https://octopus.com/blog/semver2" class="alert-link">Octopus Deploy 3.4</a> or greater</li>
+<li><a href="http://semver.org/spec/v1.0.0.html" class="alert-link" rel="nofollow">SemVer 1.0</a>: all prior versions of Octopus Deploy</li>
+</ul>
+<p><strong>If you want everything to &quot;just work&quot; in every situation, stick with strict SemVer.</strong> To cater for alternative scenarios we have also chosen to support a &quot;pragmatic&quot; implementation of SemVer including support for 4-digit versions (like <code>1.0.0.0</code>) and versions that can be sorted alphanumerically, like <code>2016.09.01-beta.0001</code>. Read further to learn about choosing a versioning scheme, and why we treat versions this way in Octopus Deploy.</p>
+</div>
+<h2 id="VersioninginOctopusDeploy-Choosingaversioningscheme">Choosing a versioning scheme</h2>
+<p>We highly recommend using <a href="http://semver.org/" rel="nofollow">Semantic Versioning</a> for your applications - we use it internally at Octopus Deploy and have found it to be a useful way of communicating semantic meaning with our versions. Think about these factors when considering your own approach to versioning your applications and packages:</p>
+<ol>
+<li>Can you trace a version back to the commit/check-in the application/package was built from? <em>For example: We stamp the SHA hash of the git commit into the metadata component of the Semantic Version for Octopus Deploy which makes it easier to find and fix bugs. We also tag the commit with the version of Octopus Deploy it produced so you can quickly determine which commit produced a particular version of Octopus Deploy.</em></li>
+<li>Can your users easily report a version to the development team that supports #1?</li>
+<li>Will your version numbers be confusing, or will they help people understand the changes that have been made to the software? <em>For example: bumping a major version component (first part) means there are potentially breaking changes, but bumping a patch (3rd part) should be safe to upgrade, and safe to rollback if something goes wrong.</em></li>
+<li>Does your tool chain support the versioning scheme? <em>For example: Octopus Deploy supports Semantic Versioning, which enables enhanced features like <a href="/docs/v/3.16/key-concepts/projects/channels">Channels</a>.</em></li>
+</ol>
+<h3 id="VersioninginOctopusDeploy-Strictnessversuspragmatism">Strictness versus pragmatism</h3>
+<p>Strictly speaking about SemVer 2.0, a version like <code>1.5.2-rc.1</code> is considered a &quot;pre-release&quot; and <code>1.5.2</code> would be considered a &quot;full release&quot;.  In practice, these kinds of concepts carry weight when you are talking about hierarchies of application dependencies like classical NuGet packages or NPM dependencies. This kind of strict semantic versioning enables dependency management tooling to interpret what kind of changes each package version represents. For example, they can automatically protect your software, by preventing you from accidentally upgrading to pre-release versions, or versions that may introduce breaking changes.</p>
+<p>When it comes to application versioning however, we suggest the &quot;pre-release tag&quot; (the bit after the <code>-</code>) can be used for whatever you want. For example: you could build version <code>1.5.2-rc</code> of your application, and configure a <a href="/docs/v/3.16/key-concepts/projects/channels">Channel</a> to promote packages like <code>*-rc</code> to Staging and eventually Production.</p>
+<h3 id="VersioninginOctopusDeploy-HowweversionOctopusDeploy">How we version Octopus Deploy</h3>
+<p>In practice, we use <a href="https://gitversion.readthedocs.io/en/latest/why/" rel="nofollow">GitVersion</a> which interprets our git repository to calculate deterministic versions like <code>3.5.0-beta.2+Branch.master.SHA.56e05fced214c44a37759efa2dfc25a65d8ae98d</code> which are fully SemVer 2.0 compliant.</p>
+<p>With a version like this we can communicate several semantic concepts with our customers:</p>
+<ol>
+<li><p>We can indicate the type of changes between two versions, with these promises:</p>
+<ol type="a">
+<li>Major version change = beware of major breaking changes and new features - upgrading may require some manual intervention - check our release notes</li>
+<li>Minor version change = new features, potential for minor breaking changes and database changes - upgrading should be easy, but rolling back will usually require restoring your database - check our release notes</li>
+<li>Patch version change = small bug fixes and computational logic changes: <strong>safe to update, safe to roll back</strong></li>
+</ol>
+</li>
+<li><p>We can indicate if this is a &quot;full release&quot; or a &quot;pre-release&quot; and we even change the Main Menu color to highlight this is a pre-release version of Octopus based on the Semantic Version.</p>
+</li>
+<li><p>We can uniquely identify the SHA hash of the git commit.</p>
+</li>
+<li><p>We show the version as <code>3.5.0-beta.2</code> in the UI.</p>
+</li>
+<li><p>We log the full &quot;informational version&quot; to all of our task logs so it is easy for us to identify exactly which version of Octopus Server and Calamari were used in a deployment based on a customer sending us a log file.</p>
+</li>
+</ol>
+<h3 id="VersioninginOctopusDeploy-Buildonce,deploymanytimes">Build once, deploy many times</h3>
+<p>One of the mantras at Octopus Deploy is &quot;build once, deploy many times&quot; and &quot;deploy the same binaries you tested&quot;. This works really well when your versioning scheme can be a simple incremental scheme: every time you build you increment the build number. For example, an internal web application where the version number has no binding ramifications - it's primarily to enable traceability for bugs.</p>
+<p>When it comes to versioning Octopus Deploy, we decided to take a slightly different approach and rebuild when we want a new version. The main driver for this is there are differences in the agreement we have with our customers for pre-releases and full-releases.</p>
+<p>For example:</p>
+<ul>
+<li>When preparing to ship Octopus Deploy 3.5, we will build and ship several pre-releases to our customers with a version like <code>3.5.0-beta.1+Branch.release/3.4.0.SHA.53cf8e84bb88e24ae4b4b3df2bsdaab91a3735d8</code> - note the <code>-beta.1</code> pre-release tag.</li>
+<li>When we are ready to ship a full release, we go through the effort to rebuild the software with a version like <code>3.5.0+Branch.master.SHA.27cf8e84bb88e24ae4b4b3df2b77aab91a3735d8</code>, and take it through all the same testing before shipping to our customers - notice this is a &quot;full-release&quot; with no pre-release tag.</li>
+</ul>
+<p>If you are like us, and the pre-release tag carries significant meaning, you should consider taking a similar approach. Otherwise, if the pre-release tag is just for information, perhaps you can consider whether it is useful for other purposes like configuring <a href="/docs/v/3.16/key-concepts/projects/channels">Channels</a>.</p>
+<h2 id="VersioninginOctopusDeploy-HowOctopusDeploytreatsversions">How Octopus Deploy treats versions</h2>
+<p>The Octopus Deploy ecosystem includes a wide variety of external services which care about versions, with some of them being quite opinionated in their versioning implementations, with potential inconsistencies amongst them. Rather than implementing a &quot;lowest common denominator&quot; approach, we have chosen to take a &quot;string-based&quot; approach. This enables you to leverage the idiomatic/natural versioning schemes of your target ecosystem.</p>
+<p>These are the decisions we made on handling versions:</p>
+<ol>
+<li><p><strong>Valid versions:</strong> A version string will be considered valid if it is a &quot;strictly compliant&quot; Semantic Version (according to <a href="http://semver.org/spec/v1.0.0.html" rel="nofollow">SemVer 1.0</a> or <a href="http://semver.org/spec/v2.0.0.html" rel="nofollow">SemVer 2.0</a>). We will also allow for 4-digit versions (like <code>1.0.0.0</code>) and zero-padded versions (like <code>2016.09.01</code>).</p>
+</li>
+<li><p><strong>Comparing versions:</strong> We will compare versions using the &quot;semantic&quot; value (as per the Semantic Version specification).</p>
+<ol type="a">
+<li><p><strong>Equality:</strong> Two versions will be considered to be equal if they are &quot;semantically equivalent&quot;. Some examples:</p>
+<ol type="i">
+<li><code>1.0.0.0 == 1.0.0</code></li>
+<li><code>2016.01.02 == 2016.1.2 == 2016.01.2</code></li>
+</ol>
+</li>
+<li><p><strong>Ordering:</strong> Versions will be sorted &quot;semantically&quot;. Some examples:</p>
+<ol type="i">
+<li><code>1.4.10 &gt; 1.4.9</code></li>
+<li><code>3.0.0-beta.10 &gt; 3.0.0-beta.9</code></li>
+<li><code>1.4.008 &lt; 1.4.9</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>Creating packages (using Octopus tooling like <a href="/docs/v/3.16/packaging-applications/nuget-packages/using-octopack">OctoPack</a> and <a href="/docs/v/3.16/packaging-applications/nuget-packages/using-octo.exe">octo.exe</a>):</strong> <a href="https://en.wikipedia.org/wiki/WYSIWYG" rel="nofollow">WYSIWYG</a> provided the version you've specified is a valid SemanticVersion (as described earlier). For example, if you build a package using <code>octo.exe pack --id=MyPackage --version=2016.01.02</code> the output file will be <code>MyPackage.2016.01.02.nupkg</code>.</p>
+</li>
+<li><p><strong>Interacting with package feeds/repositories (many and varied, including our own):</strong> We just ask the feed for a package with the version string we stored in the release, and accept what the feed tells us.</p>
+</li>
+</ol>
+<div class="alert alert-info"><p><strong>NuGet &quot;Zero Quirks&quot;</strong><br />
+The NuGet team recently made the choice to &quot;normalize&quot; versions which affects everything in the NuGet ecosystem from building packages all the way through to consuming them. The basis for that decision is to ensure there is only ever one &quot;literal representation&quot; of a given &quot;semantic version&quot;. This makes things a lot easier in the long run since &quot;literal comparison&quot; becomes equivalent to &quot;semantic comparison&quot;.</p>
+<p><a href="http://docs.nuget.org/ndocs/create-packages/dependency-versions#normalized-version-numbers" class="alert-link" rel="nofollow">http://docs.nuget.org/ndocs/create-packages/dependency-versions#normalized-version-numbers</a></p>
+<p>This is a really good decision when considering the NuGet ecosystem in isolation. It doesn't work well, however, in the Octopus Deploy ecosystem where you may not be using NuGet's tooling everywhere. Consider the simple example of building a package in a continuous integration tool chain, and then wanting to push that package somewhere. If you happened to build your shiny new <code>v2.0.0.0</code> package, it will be written to disk as <code>MyPackage.2.0.0.nupkg</code> causing your scripts to break if they depended on the filename to be <code>MyPackage.2.0.0.0.nupkg</code>.</p>
+<p>This caused us to take stock of how we handle versions across the Octopus Deploy ecosystem and make the decisions we outlined earlier.</p>
+</div>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

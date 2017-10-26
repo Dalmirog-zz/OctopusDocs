@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/deploying-applications/variables/output-variables'>4.0</a></li><li class=''><a href='/docs/deploying-applications/variables/output-variables'>Latest</a></li><li class=''><a href='/docs/v/3.16/deploying-applications/variables/output-variables'>3.16</a></li><li class=''><a href='/docs/v/3.15/deploying-applications/variables/output-variables'>3.15</a></li><li class=''><a href='/docs/v/3.14/deploying-applications/variables/output-variables'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/variables/output-variables'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/variables/output-variables'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/variables/output-variables'>3.11</a></li><li class=''><a href='/docs/v/3.10/deploying-applications/variables/output-variables'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/variables/output-variables'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/variables/output-variables'>3.8</a></li><li class='disabled'><a href='/docs/v/3.7/deploying-applications/variables/output-variables'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/variables/output-variables'>3.6</a></li></ul>
+</div>
+<h1>Output variables</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Some variables might be dynamic - for example, a value that needs to be calculated, or a value that is the output of running a command. For these scenarios, Octopus supports <strong>output variables</strong>.</p>
+<p>Output variables can be set anywhere that Octopus runs scripts - for example, the <a href="/docs/v/3.7/administration/script-console">Script Console</a>, or <a href="/docs/v/3.7/deploying-applications/custom-scripts">package scripts and script steps</a> in a deployment. <em>See below for examples of setting output variables in each of the different scripting languages supported by Octopus.</em></p>
+<p>For example, you might have a standalone <a href="/docs/v/3.7/deploying-applications/custom-scripts">PowerShell script step</a> called <strong>StepA</strong> that does something like this:</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#1d3434203032' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#aaafdf1ffe2a' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#39c7e85a516e' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#37425534eb09' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='1d3434203032'>
+<pre><code class="language-powershell">Set-OctopusVariable -name &quot;TestResult&quot; -value &quot;Passed&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='aaafdf1ffe2a'>
+<pre><code class="language-c#">Octopus.SetVariable(&quot;TestResult&quot;, &quot;Passed&quot;);
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='39c7e85a516e'>
+<pre><code class="language-bash">set_octopusvariable &quot;TestResult&quot; &quot;Passed&quot;
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='37425534eb09'>
+<pre><code class="language-fsharp">Octopus.setVariable &quot;TestResult&quot; &quot;Passed&quot;
+</code></pre>
+  </div>
+ </div>
+</div>
+<p>You can then use the variable from other steps, either in <a href="/docs/v/3.7/deploying-applications/variables/binding-syntax">variable binding syntax</a>:</p>
+<pre><code class="language-powershell">#{Octopus.Action[StepA].Output.TestResult}
+</code></pre>
+<p>Or other scripts:</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#7b994766406e' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#26fee5ffebc2' data-toggle='tab'>C#</a></li>
+  <li class=''><a href='#aabeb70d515b' data-toggle='tab'>Bash</a></li>
+  <li class=''><a href='#8d7b51978d82' data-toggle='tab'>F#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='7b994766406e'>
+<pre><code class="language-powershell">$TestResult  = $OctopusParameters[&quot;Octopus.Action[StepA].Output.TestResult&quot;]
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='26fee5ffebc2'>
+<pre><code class="language-c#">var testResult = Octopus.Parameters[&quot;Octopus.Action[StepA].Output.TestResult&quot;]
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='aabeb70d515b'>
+<pre><code class="language-bash">testResult = $(get_octopusvariable &quot;Octopus.Action[StepA].Output.TestResult&quot;)
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='8d7b51978d82'>
+<pre><code class="language-fsharp">let testResult = Octopus.findVariable &quot;Octopus.Action[StepA].Output.TestResult&quot;
+</code></pre>
+  </div>
+ </div>
+</div>
+<h2 id="Outputvariables-Systemoutputvariables">System output variables</h2>
+<p>After a step runs, Octopus captures the output variables, and keeps them for use in subsequent steps. In addition to variables that you create yourself using <code>Set-OctopusVariable</code>, Octopus also makes a number of built-in variables available. Here are some examples of commonly used built-in output variables:</p>
+<ul>
+<li>For NuGet package steps:
+<ul>
+<li><code>Octopus.Action[StepName].Output.Package.InstallationDirectoryPath</code> - the path that the package was deployed to</li>
+</ul>
+</li>
+<li>For manual intervention steps:
+<ul>
+<li><code>Octopus.Action[StepName].Output.Manual.Notes</code> - notes entered in response to the manual step</li>
+<li><code>Octopus.Action[StepName].Output.Manual.ResponsibleUser.Id</code></li>
+<li><code>Octopus.Action[StepName].Output.Manual.ResponsibleUser.Username</code></li>
+<li><code>Octopus.Action[StepName].Output.Manual.ResponsibleUser.DisplayName</code></li>
+<li><code>Octopus.Action[StepName].Output.Manual.ResponsibleUser.EmailAddress</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Outputvariables-Outputfrommultiplemachines">Output from multiple machines</h2>
+<p>Output variables become more complex when multiple machines are involved, but they can still be used.</p>
+<p>Imagine that an output variable was set by a script which ran on two machines (Web01 and Web02) in parallel, and that both set it to a different value. Which value should be used in subsequent steps?</p>
+<p>In this scenario, the following output variables would be captured:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Octopus.Action[StepA].Output[Web01].TestResult</code></td>
+<td><code>Passed</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Octopus.Action[StepA].Output[Web02].TestResult</code></td>
+<td><code>Failed</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Octopus.Action[StepA].Output.TestResult</code></td>
+<td><code>Passed</code></td>
+<td>Machine: Web01</td>
+</tr>
+<tr>
+<td><code>Octopus.Action[StepA].Output.TestResult</code></td>
+<td><code>Failed</code></td>
+<td>Machine: Web02</td>
+</tr>
+<tr>
+<td><code>Octopus.Action[StepA].Output.TestResult</code></td>
+<td><code>Passed</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Octopus.Action[StepA].Output.TestResult</code></td>
+<td><code>Failed</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note that for each output variable/machine combination:</p>
+<ul>
+<li>A variable is created with the machine name contained in the variable name: this allows you to reference output variables from set by one machine from another machine</li>
+<li>A variable is created that is <a href="/docs/v/3.7/deploying-applications/variables/scoping-variables">scoped</a> to the machine. This way Web01 will always get the value Web01 set, and Web02 will get the value Web02 set</li>
+<li>A variable is created with no scope, and no differentiator in the name. When referencing this value, the result will be indeterministic, but it allows scripts to use the value without knowing which machine set it</li>
+</ul>
+<p>For some practical examples of using output variables, and how scoping rules are applied, see the following blog posts:</p>
+<ul>
+<li><a href="https://octopus.com/blog/fun-with-output-variables">Fun with output variables</a></li>
+<li><a href="http://octopus.com/blog/changing-website-port-on-each-deployment" rel="nofollow">Changing website ports using output variables</a></li>
+</ul>
+<h2 id="Outputvariables-Settingoutputvariablesusingscripts">Setting output variables using scripts</h2>
+<p>You can set output variables using any of the scripting languages supported by Octopus. In each case we make special functions available to your scripts by bootstrapping them with a template defined in the <a href="https://github.com/OctopusDeploy/Calamari" rel="nofollow">open-source Calamari project</a>.</p>
+<h3 id="Outputvariables-PowerShell">PowerShell</h3>
+<p><a href="https://github.com/OctopusDeploy/Calamari/tree/master/source/Calamari/Integration/Scripting/WindowsPowerShell" rel="nofollow">PowerShell Bootstrapping</a></p>
+<p>From a PowerShell script, you can use the PowerShell CmdLet <code>Set-OctopusVariable</code> to set the name and value of an output variable. The CmdLet takes two parameters:</p>
+<ul>
+<li><code>[string]$name</code> - the name you want to give the output variable following the same naming conventions used for input <a href="/docs/v/3.7/deploying-applications/variables">variables</a></li>
+<li><code>[string]$value</code> - the value you want to give the output variable</li>
+</ul>
+<p>For example:</p>
+<p><strong>PowerShell</strong></p>
+<pre><code class="language-powershell">Set-OctopusVariable -name &quot;TestResult&quot; -value &quot;Passed&quot;
+</code></pre>
+<h3 id="Outputvariables-C#">C#</h3>
+<p><a href="https://github.com/OctopusDeploy/Calamari/tree/master/source/Calamari/Integration/Scripting/ScriptCS" rel="nofollow">ScriptCS Bootstrapping</a></p>
+<p>From a C# script, you can use the <code>public static void SetVariable(string name, string value)</code> method to set the name and value of an output variable.</p>
+<p><strong>C#</strong></p>
+<pre><code class="language-c#">Octopus.SetVariable(&quot;TestResult&quot;, &quot;Passed&quot;);
+</code></pre>
+<h3 id="Outputvariables-Bash">Bash</h3>
+<p><a href="https://github.com/OctopusDeploy/Calamari/tree/master/source/Calamari/Integration/Scripting/Bash" rel="nofollow">Bash Bootstrapping</a></p>
+<p>In a Bash script you can use the <code>set_octopusvariable</code> function to set the name and value of an output variable. This function takes two positional parameters with the same purpose as the PowerShell CmdLet.</p>
+<p><strong>Bash</strong></p>
+<pre><code class="language-bash">set_octopusvariable &quot;TestResult&quot; &quot;Passed&quot;
+</code></pre>
+<h3 id="Outputvariables-F#">F#</h3>
+<div class="alert alert-success"><p>F# support is available in Octopus Deploy 3.4 (or newer).</p>
+</div>
+<p><a href="https://github.com/OctopusDeploy/Calamari/tree/enhancement-fsharpscripts/source/Calamari/Integration/Scripting/FSharp" rel="nofollow">FSharp Bootstrapping</a></p>
+<p>From a F# script, you can use the<code>setVariable : name:string -&gt; value:string -&gt; unit</code> function to collect artifacts. The function takes two parameters with the same purpose as the PowerShell CmdLet.</p>
+<p><strong>F#</strong></p>
+<pre><code class="language-fsharp">Octopus.setVariable &quot;TestResult&quot; &quot;Passed&quot;
+</code></pre>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

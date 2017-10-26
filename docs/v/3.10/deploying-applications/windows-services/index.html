@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/deploying-applications/windows-services'>4.0</a></li><li class=''><a href='/docs/deploying-applications/windows-services'>Latest</a></li><li class=''><a href='/docs/v/3.16/deploying-applications/windows-services'>3.16</a></li><li class=''><a href='/docs/v/3.15/deploying-applications/windows-services'>3.15</a></li><li class=''><a href='/docs/v/3.14/deploying-applications/windows-services'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/windows-services'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/windows-services'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/windows-services'>3.11</a></li><li class='disabled'><a href='/docs/v/3.10/deploying-applications/windows-services'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/windows-services'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/windows-services'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications/windows-services'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/windows-services'>3.6</a></li></ul>
+</div>
+<h1>Windows Services</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Octopus Deploy includes first class support for Windows Service deployments. Octopus can install, reconfigure, and start Windows Services during deployment, usually without requiring any custom scripts.</p>
+<p>When deploying, <code>sc.exe</code> is used to create a Windows Service using the configured settings. If the service already exists, it will be stopped, re-configured, and re-started.</p>
+<p>To deploy a Windows Service, add a <em>Deploy a Windows Service</em> step. For information about adding a step to the deployment process, see the <a href="/docs/v/3.10/deploying-applications/adding-steps">add step</a> section.</p>
+<p><a href='#' data-featherlight='/docs/images/5671696/5865909.png' class='zoom' data-title=''><img src='/docs/images/5671696/5865909.png' class="img-fluid center" height="auto" width="170" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>Pre Octopus 3.4.7</strong><br />
+The <em>Deploy a Windows Service Step</em> was introduced in Octopus version <strong>3.4.7</strong>. Prior to this Windows Services were deployed by enabling the <em>Windows Service</em> feature on a <a href="/docs/v/3.10/deploying-applications/deploying-packages" class="alert-link">Deploy a Package Step</a>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048082/3277662.png' class='zoom' data-title=''><img src='/docs/images/3048082/3277662.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</div>
+<h2 id="WindowsServices-ConfiguringtheStep">Configuring the Step</h2>
+<p><a href='#' data-featherlight='/docs/images/3048082/5865715.png' class='zoom' data-title=''><img src='/docs/images/3048082/5865715.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="WindowsServices-Step1:SelectaPackage">Step 1: Select a Package</h3>
+<p>Use the Package Feed and Package ID fields to select the <a href="/docs/v/3.10/packaging-applications">package</a> containing the executable (.exe) to be installed as a Windows Service.</p>
+<h3 id="WindowsServices-Step2:ConfigureWindowsServiceoptions">Step 2: Configure Windows Service options</h3>
+<table class="table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Service Name</strong></td>
+<td>The name of the Windows Service to create, or re-configure if it already exists.</td>
+</tr>
+<tr>
+<td><strong>Display Name</strong></td>
+<td>Optional display name of the service. If empty, the Service Name will be used instead.</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>A short description of service that will appear in the services control manager.</td>
+</tr>
+<tr>
+<td><strong>Executable path</strong></td>
+<td>The relative path to the executable in the package that the Windows Service will point to. Examples:  <code>MyService.exe</code>,  <code>bin\MyService.exe</code>, <code>foo\bin\MyService.exe</code>, <code>C:\Windows\myservice.exe</code></td>
+</tr>
+<tr>
+<td><strong>Arguments</strong></td>
+<td>Arguments that will always be passed to the service when it starts</td>
+</tr>
+<tr>
+<td><strong>Service account</strong></td>
+<td>The account that the Windows Service should run under. Options are: Local System, Network Service, Local Service, Custom user (you can specify the username and password). <br><br>See below for <a href="#WindowsServices-SecurityConsiderations">Security Considerations</a> and <a href="#WindowsServices-UsingManagedServiceAccounts(MSA)">Using Managed Service Accounts (MSA)</a></td>
+</tr>
+<tr>
+<td><strong>Start mode</strong></td>
+<td>When will the service start: Automatic, Automatic (delayed), Manual, Disabled, Unchanged</td>
+</tr>
+<tr>
+<td><strong>Dependencies</strong></td>
+<td>Any dependencies that the service has. Separate the names using forward slashes (/). For example: <code>LanmanWorkstation/TCPIP</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="WindowsServices-WindowsServicedeploymentinaction">Windows Service deployment in action</h2>
+<p>This three minute video (with captions) demonstrates how to deploy a C# Windows Service project with Octopus Deploy.</p>
+<iframe src="//fast.wistia.net/embed/iframe/33yi0jfjpc" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="640" height="360" style="margin: 30px"></iframe>
+<h2 id="WindowsServices-HowdoesOctopusactuallydeploymyWindowsService?">How does Octopus actually deploy my Windows Service?</h2>
+<p>Out of the box, Octopus will do the right thing to deploy your Windows Service, and the conventions we have chosen will eliminate a lot of problems with file locks, and leaving stale files behind. By default Octopus will follow the conventions described in <a href="/docs/v/3.10/deploying-applications/deploying-packages">Deploying packages</a> and apply the different features you select in the order described in <a href="/docs/v/3.10/reference/package-deployment-feature-ordering">Package deployment feature ordering</a>.</p>
+<div class="alert alert-success"><p>Avoid using the <a href="/docs/v/3.10/deploying-applications/custom-installation-directory" class="alert-link">Custom Installation Directory</a> feature unless you are absolutely required to put your packaged files into a specific physical location on disk.</p>
+</div>
+<p>As an approximation including the Windows Service manager integration:</p>
+<ol>
+<li>Acquire the package as optimally as possible (local package cache and <a href="/docs/v/3.10/deploying-applications/delta-compression-for-package-transfers">delta compression</a>)</li>
+<li>Stop your Windows Service is already running. Ensure that the user account running the Octopus Tentacle has the appropriate permissions to start\stop the Windows Service or this step may fail.</li>
+<li>Create a new folder for the deployment (which avoids many common problems like file locks, and leaving stale files behind)</li>
+<li>Example: <code>C:\Octopus\Applications\[Tenant name]\[Environment name]\[Package name]\[Package version]\</code> where <code>C:\Octopus\Applications</code> is the Tentacle application directory you configured when installing Tentacle)</li>
+<li>Extract the package into the newly created folder</li>
+<li>Execute each of your <a href="/docs/v/3.10/deploying-applications/custom-scripts">custom scripts</a> and the <a href="/docs/v/3.10/deploying-applications">deployment features</a> you've configured will be executed to perform the deployment <a href="/docs/v/3.10/reference/package-deployment-feature-ordering">following this order by convention</a>.</li>
+<li>As part of this process Windows Service will be created, or reconfigured if it already exists, including updating the <strong>binPath</strong> to point to this folder and your executable entry point</li>
+<li>If the <code>Start mode</code> is <code>Automatic</code> or <code>Automatic (delayed)</code>, your Windows Service will be started</li>
+<li><a href="/docs/v/3.10/deploying-applications/variables/output-variables">Output variables</a> and deployment <a href="/docs/v/3.10/deploying-applications/artifacts">artifacts</a> from this step are sent back to the Octopus Server</li>
+</ol>
+<div class="alert alert-success"><p>You can see exactly how Octopus deploys your Windows Service by looking at the scripts in our open-source <a href="https://github.com/OctopusDeploy/Calamari" class="alert-link" rel="nofollow">open-source Calamari</a> project which actually performs the deployment:</p>
+<ul>
+<li><a href="https://github.com/OctopusDeploy/Calamari/blob/master/source/Calamari/Scripts/Octopus.Features.WindowsService_AfterPreDeploy.ps1" class="alert-link" rel="nofollow">Octopus.Features.WindowsService_AfterPreDeploy.ps1</a></li>
+<li><a href="https://github.com/OctopusDeploy/Calamari/blob/master/source/Calamari/Scripts/Octopus.Features.WindowsService_BeforePostDeploy.ps1" class="alert-link" rel="nofollow">Octopus.Features.WindowsService_BeforePostDeploy.ps1</a></li>
+</ul>
+<p>You can inject your own logic into this process using <a href="/docs/v/3.10/deploying-applications/custom-scripts" class="alert-link">custom scripts</a> and understanding where your scripts will execute in the context of <a href="/docs/v/3.10/reference/package-deployment-feature-ordering" class="alert-link">package deployment feature ordering</a>.</p>
+</div>
+<p>If your step's <code>Start mode</code> is not set to <code>Automatic</code> or <code>Automatic (delayed)</code>, Octopus will not start your service. You can choose to start the service by adding a <code>PostDeploy</code> script, for example:</p>
+<div class='code-samples'>
+ <ul class='nav nav-pills' data-tabs='tabs'>
+  <li class='active'><a href='#0f5c1ec33b9d' data-toggle='tab'>PowerShell</a></li>
+  <li class=''><a href='#8fbbda3bf902' data-toggle='tab'>C#</a></li>
+ </ul>
+ <div class='tab-content'>
+  <div class='tab-pane active' id='0f5c1ec33b9d'>
+<pre><code class="language-powershell">Start-Service $OctopusParameters[&quot;Octopus.Action.WindowsService.ServiceName&quot;]
+</code></pre>
+  </div>
+  <div class='tab-pane ' id='8fbbda3bf902'>
+<pre><code class="language-c#">#r &quot;System.ServiceProcess&quot;
+new System.ServiceProcess.ServiceController(Octopus.Parameters[&quot;Octopus.Action.WindowsService.ServiceName&quot;]).Start();
+</code></pre>
+  </div>
+ </div>
+</div>
+<h2 id="WindowsServices-Settingadvancedconfigurationoptions">Setting advanced configuration options</h2>
+<p>Windows Services support some advanced settings not exposed by this feature. You can customize your Windows Service by including a <code>PostDeploy.ps1</code> <a href="/docs/v/3.10/deploying-applications/custom-scripts">custom script</a>.</p>
+<p>This example configures the service <strong>Failure Action</strong> to <strong>Restart.</strong></p>
+<p><strong>PostDeploy.ps1</strong></p>
+<pre><code class="language-powershell">$serviceName = $OctopusParameters[&quot;Octopus.Action.WindowsService.ServiceName&quot;]
+&amp; &quot;sc.exe&quot; failure $serviceName reset= 30 actions= restart/5000
+</code></pre>
+<div class="alert alert-success"><p>This script will run after the Windows Service has been created (or reconfigured), and then started. If you want to customize the Windows Service before it is started, set the Start Mode to Manual, and then start the Windows Service yourself as part of your custom script.</p>
+</div>
+<div class="alert alert-success"><p><strong>Using sc.exe</strong><br />
+This Microsoft TechNet <a href="https://technet.microsoft.com/en-us/library/cc754599.aspx" class="alert-link" rel="nofollow">article</a> is a great reference on the sc.exe utility including the failure action above.</p>
+</div>
+<h2 id="WindowsServices-DeployingServicesbuiltwithTopshelf">Deploying Services built with Topshelf</h2>
+<p><a href="http://topshelf-project.com/" rel="nofollow">Topshelf</a> is a library to build and work with Windows Services easily by allowing your code to run (and be debugged) inside a Console Application, but giving you the option to install and run as a Windows Service.</p>
+<p>While Topshelf has its own command line options to make Service Registration easy, you can still use SC.EXE. This means that deploying a Topshelf enabled application as a Windows Service is easy using the Octopus service deploy feature. The only caveat is the value you specify in the Service Name parameter must match the Service Name specified in your Topshelf configuration code (in Program.cs) or the service will not start.</p>
+<h2 id="WindowsServices-SecurityConsiderations">Security Considerations</h2>
+<p>You will need to consider carefully which Service Account you choose for your Windows Service. If you decide to use a Custom Account, you will need to make sure the Account is granted the <strong>Logon as a Service</strong> logon right (<strong>SeServiceLogonRight</strong>).</p>
+<p>When you use the Services snap-in console to configure your Windows Service, the <strong>SeServiceLogonRight</strong> logon right is automatically assigned to the account. If you use the Sc.exe tool or APIs to configure the account (like Octopus Deploy does on your behalf), the account has to be explicitly granted this right by using tools such as <a href="http://get-carbon.org/" rel="nofollow">Carbon PowerShell module</a>, the Security Policy snap-in (secpol.msc), <code>Secedit.exe</code>, or <code>NTRights.exe</code>. The built-in Windows Service accounts (<code>Local System</code>, <code>Network Service</code>, <code>Local Service</code>), and members of the <strong>Local Administrators</strong> group are assigned this right by default.</p>
+<h3 id="WindowsServices-CarbonPowerShellModule">Carbon PowerShell Module</h3>
+<p><a href="http://get-carbon.org/" rel="nofollow">Carbon</a> is a PowerShell module that can be installed via <a href="https://chocolatey.org/packages/carbon" rel="nofollow">Chocolatey</a>, the PowerShell Gallery, or manually. For the PS gallery in PowerShell 5 or higher, you can run <code>Install-Module Carbon</code>, or to install manually visit their site and clone the repository or download a zip from the Releases page.</p>
+<p>Carbon PowerShell Script example:</p>
+<pre><code class="language-ps"># The Octopus variables below are just examples
+# Use your own #{RunAsUser} or similar variable name.
+
+# The SeServiceLogonRight lets accounts run as a service but isn't mutually exclusive
+# with the &quot;DenyInteractiveLogon&quot; policy to prevent regular users from abusing it
+
+# Check to see if the given account has the appropriate permission
+Test-Privilege -Identity #{ServiceAccountName} -Privilege SeServiceLogonRight
+# Returns False if account doesn't have permission
+
+Grant-Privilege -Identity #{ServiceAccountName} -Privilege SeServiceLogonRight
+# May not return anything
+
+Test-Privilege -Identity #{ServiceAccountName} -Privilege SeServiceLogonRight
+# Returns True once the account has permission
+
+# The SeBatchLogonRight lets accounts trigger scheduled tasks
+
+# Check to see if the given account has the appropriate permission
+Test-Privilege -Identity #{ServiceAccountName} -Privilege SeBatchLogonRight
+# Returns False
+
+Grant-Privilege -Identiy #{BatchAccountName} -Privilege SeBatchLogonRight
+# May not return anything
+
+Test-Privilege -Identity #{ServiceAccountName} -Privilege SeBatchLogonRight
+# Returns True once the account has permission
+</code></pre>
+<h2 id="WindowsServices-UsingManagedServiceAccounts(MSA)">Using Managed Service Accounts (MSA)</h2>
+<blockquote class="blockquote">
+<p>Managed Service Accounts (MSA) allow you to eliminate those never-expire-service-accounts. An MSA is a special domain account that can be managed by the computer that uses it. That computer will change its password periodically without the need of an administrator.</p>
+<p><em><a href="http://www.zeda.nl/index.php/en/en-managed-service-accounts" rel="nofollow">http://www.zeda.nl/index.php/en/en-managed-service-accounts</a></em></p>
+</blockquote>
+<p>To configure the Windows Service to use a Managed Service Account:</p>
+<ol>
+<li>Set the <strong>Service account</strong> to <strong>Custom user...</strong></li>
+<li>Enter the domain name and username, <strong>making sure to append a $ to the username</strong> as shown below</li>
+<li>Bind the <strong>Custom account password</strong> to an <strong>empty value</strong> to ensure no password is set for this account - after all, we want the password managed by the server, not us!</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/3048082/5865840.png' class='zoom' data-title=''><img src='/docs/images/3048082/5865840.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>Important information about using Managed Service Accounts</strong><br />
+There must be a dollar sign ($) at the end of the account name. When you use the Services snap-in console to configure your Windows Service, the <strong>SeServiceLogonRight</strong> logon right is automatically assigned to the account. If you use the Sc.exe tool or APIs to configure the account (like Octopus Deploy does on your behalf), the account has to be explicitly granted this right by using tools such as the <a href="http://get-carbon.org/" class="alert-link" rel="nofollow">Carbon PowerShell module</a>, the Security Policy snap-in (secpol.msc), Secedit.exe, or NTRights.exe.</p>
+<p>Learn about <a href="https://technet.microsoft.com/en-us/library/dd560633(v=ws.10).aspx" class="alert-link" rel="nofollow">Managed Service Accounts</a>.</p>
+</div>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

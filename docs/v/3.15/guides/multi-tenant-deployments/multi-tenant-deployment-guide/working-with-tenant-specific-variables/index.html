@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>4.0</a></li><li class=''><a href='/docs/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>Latest</a></li><li class=''><a href='/docs/v/3.16/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.16</a></li><li class='disabled'><a href='/docs/v/3.15/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.15</a></li><li class=''><a href='/docs/v/3.14/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.14</a></li><li class=''><a href='/docs/v/3.13/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.13</a></li><li class=''><a href='/docs/v/3.12/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.12</a></li><li class=''><a href='/docs/v/3.11/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.11</a></li><li class=''><a href='/docs/v/3.10/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.10</a></li><li class=''><a href='/docs/v/3.9/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.9</a></li><li class=''><a href='/docs/v/3.8/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.8</a></li><li class=''><a href='/docs/v/3.7/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.7</a></li><li class=''><a href='/docs/v/3.6/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-tenant-specific-variables'>3.6</a></li></ul>
+</div>
+<h1>Working with tenant-specific variables</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Previous step: <a href="/docs/v/3.15/guides/multi-tenant-deployments/multi-tenant-deployment-guide/deploying-a-simple-multi-tenant-project">Deploying a simple multi-tenant project</a></p>
+<p>This page describes how to use <a href="/docs/v/3.15/deploying-applications/variables/variable-templates">variable templates</a> as part of a multi-tenant deployment design. We start by building on the existing scenario, providing some background information, and then providing an end-to-end implementation of that scenario.</p>
+<h2 id="Workingwithtenant-specificvariables-Tenant-providedvariablevalues">Tenant-provided variable values</h2>
+<p>Quite often you want to define variable values that are different for each tenant, like database connection settings or a tenant-specific URL. Previously you would have defined these values in the project itself, but now you can define these values directly on the tenant for any connected projects.</p>
+<div class="alert alert-info"><p><strong>Tenant-provided variables are not snapshotted</strong><br />
+When you <a href="/docs/v/3.15/api-and-integration/octo.exe-command-line/creating-releases" class="alert-link">create a release</a> in Octopus Deploy we take a snapshot of the deployment process and the current state of the <a href="/docs/v/3.15/deploying-applications/variables" class="alert-link">project-variables</a>, however we do not take a snapshot of tenant-variables. This enables you to add new tenants at any time and deploy to them without creating a new release. This means any changes you make to tenant-variables will take immediate effect.</p>
+</div>
+<p>We set out with a vision to make this as easy as possible to manage, like the examples shown below.</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865614.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865614.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><em>In the example above we are collecting common variable values that remain constant across projects and environments. This could be really useful for values like a tenant alias, contact details, or other values that will remain constant for each tenant across any projects they are connected to. You could think of these like &quot;custom fields&quot; for your tenants. You can also see a warning indicator leading the way to a problem with Project Variables.</em></p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865615.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865615.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><em>In the example above we are collecting tenant-specific values that differ between projects and environments. This could be really useful for settings for connecting to a database for that tenant/environment. In this example we are using a default value as a template drawing from some common variable values. You can also see the warning indicator telling us we need to provide a value for the <strong>Database password</strong> in the <strong>MT Staging</strong> environment.</em></p>
+<div class="alert alert-success"><p>If you have a wide display we will also put environments side-by-side for easy comparison.</p>
+</div>
+<h2 id="Workingwithtenant-specificvariables-Introducingvariabletemplates">Introducing variable templates</h2>
+<p>To make this possible we have introduced the concept of <a href="/docs/v/3.15/deploying-applications/variables/variable-templates">variable templates</a>. Variable templates let you configure which variables are required to successfully deploy a project. Each variable template can define the data type, name, label, help text, and default value.</p>
+<p>For more information see our reference section: <a href="/docs/v/3.15/deploying-applications/variables/variable-templates">Variable templates</a></p>
+<div class="alert alert-success"><p><strong>Which variable templates apply to each tenant?</strong><br />
+Good question! When you connect a tenant to a project, variable templates defined by the project itself, or by included library variable sets, will be required by the tenant.</p>
+<ol>
+<li>Library variable templates will be collected once - they are considered to be constant for the tenant. Think of these like &quot;custom fields&quot; for your tenants.</li>
+<li>Project variable templates will be collected once for each project/environment combination the tenant is connected to. Think of these like database connection settings for the specific tenant/project/environment combination.</li>
+</ol>
+<p>By carefully designing your variable templates you can implement complex multi-tenant deployment scenarios.</p>
+</div>
+<h2 id="Workingwithtenant-specificvariables-Examplescenario:asimplemulti-tenantwebapplication">Example scenario: a simple multi-tenant web application</h2>
+<p>Let's walk through an example of deploying a multi-tenant web application using our example project <strong>Mojo</strong>. To successfully deploy this web application we will need the <strong>DatabaseConnectionString</strong> to connect to the tenant database and a <strong>HostURL</strong> to configure IIS:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example resultant value required to configure the application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DatabaseConnectionString</code></td>
+<td>Provides access to the tenant's database for that environment.</td>
+<td><code>Server=db.mojo.com;Database=mojo-mytenant-production;User ID=mytenant-production;Password=DC7y6KEMYaA6HVjf</code></td>
+</tr>
+<tr>
+<td><code>HostURL</code></td>
+<td>The URL customers will use to access their instance of the web application for that environment.</td>
+<td><code>https://mytenant.mojo.com</code>(for the customer's production environment), <code>https://mytenant-staging.mojo.com</code> (for the customer's staging environment)</td>
+</tr>
+</tbody>
+</table>
+<p>By carefully designing our variables to be constructed using some conventions, we can make it much easier to collect tenant-specific values, but also allow the tenant to override these conventions if required.</p>
+<ul>
+<li>Step 1: Create project variables</li>
+<li>Step 2: Create project variable templates</li>
+<li>Step 3: Create the &quot;Environment variables&quot; library variable set</li>
+<li>Step 4: Create the &quot;Standard tenant details&quot; library variable set</li>
+<li>Step 5: Include the library variable sets into the project</li>
+<li>Step 6: Fill out the variable values for our tenants</li>
+<li>Step 7: Validate the variable values for the project</li>
+<li>Step 8: Deploy!</li>
+<li>Step 9: Review</li>
+</ul>
+<h3 id="Workingwithtenant-specificvariables-Step1:Createprojectvariables">Step 1: Create project variables</h3>
+<p>Let's start with the end in mind by creating the project variables we need. You'll notice we are binding to some variables that don't exist yet.</p>
+<ol>
+<li>Go to the <em>Variables</em> tab in the <strong>Mojo</strong> project.</li>
+<li>Create the variables shown below.</li>
+</ol>
+<table class="table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DatabaseConnectionString</code></td>
+<td><code>Server=db.mojo.com;Database=#{Tenant.Database.Name};User ID=#{Tenant.Database.UserID};Password=#{Tenant.Database.Password}</code></td>
+<td>The full database connection string</td>
+</tr>
+<tr>
+<td><code>HostURL</code></td>
+<td><code>https://#{Tenant.Domain.Name}</code></td>
+<td>The URL each customer will use to access their instance of the web application, can be overridden to use a custom domain name.</td>
+</tr>
+</tbody>
+</table>
+<p>The result should look like the screenshot below:</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865610.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865610.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step2:Createprojectvariabletemplates">Step 2: Create project variable templates</h3>
+<p>Some of the variables we just created require tenant-specific values like <code>#{Tenant.Database.Name}</code>. We will create variable templates to collect those values from the tenant.</p>
+<p>Rather than managing lots of duplicate data, we will use some default values that continue building upon a simple convention. In this case we will use some URL-friendly versions of the tenant and environment names to build our variable values, <code>Tenant.Alias</code> and <code>Environment.Alias</code>.</p>
+<ol>
+<li>Go to the <span class="path">Variables ➜ Variable Templates</span> tab in the <strong>Mojo</strong> project.</li>
+<li>Create the variable templates shown below:</li>
+</ol>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Label</th>
+<th>Default value</th>
+<th>Help text</th>
+<th>Control type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tenant.Database.Name</code></td>
+<td>Database name</td>
+<td><code>mojo-#{Environment.Alias}.#{Tenant.Alias}</code></td>
+<td>The Name of the database - consider changing the Tenant Alias before changing this.</td>
+<td>Single-line text box</td>
+</tr>
+<tr>
+<td><code>Tenant.Database.UserID</code></td>
+<td>Database username</td>
+<td><code>mojo-#{Environment.Alias}-#{Tenant.Alias}</code></td>
+<td>The User ID used to connect to the tenant database.</td>
+<td>Single-line text box</td>
+</tr>
+<tr>
+<td><code>Tenant.Database.Password</code></td>
+<td>Database password</td>
+<td></td>
+<td>The password used to connect to the tenant database.</td>
+<td>Sensitive/password box</td>
+</tr>
+<tr>
+<td><code>Tenant.Domain.Name</code></td>
+<td>Domain name</td>
+<td><code>#{Tenant.Alias}.mojo.com</code></td>
+<td>An environment-specific name for the Mojo application domain name for this tenant</td>
+<td>Single-line text box</td>
+</tr>
+</tbody>
+</table>
+<p>The result should look like the screenshot below:</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865609.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865609.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step3:Createthe&amp;quot;Environmentvariables&amp;quot;libraryvariableset">Step 3: Create the &quot;Environment variables&quot; library variable set</h3>
+<p>In the previous step we created some variable templates that use the <code>Environment.Alias</code> variable. We will create a simple <a href="/docs/v/3.15/deploying-applications/variables/library-variable-sets">library variable set</a> to provide URL-friendly versions of the target environment's name which we can use in our other variables for defining environment-specific database and domain names.</p>
+<ol>
+<li>Go to <span class="path">Library ➜ Variable Sets</span> and add a new variable set called <strong>Environment variables</strong></li>
+<li>Create the variables shown below:</li>
+</ol>
+<table class="table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Value</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Environment.Alias</code></td>
+<td><code>dev</code></td>
+<td><code>MT Dev</code></td>
+</tr>
+<tr>
+<td><code>Environment.Alias</code></td>
+<td><code>test</code></td>
+<td><code>MT Test</code></td>
+</tr>
+<tr>
+<td><code>Environment.Alias</code></td>
+<td><code>staging</code></td>
+<td><code>MT Staging</code></td>
+</tr>
+<tr>
+<td><code>Environment.Alias</code></td>
+<td><code>production</code></td>
+<td><code>MT Production</code></td>
+</tr>
+</tbody>
+</table>
+<p>The result should look like the screenshot below:</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865607.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865607.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step4:Createthe&amp;quot;Standardtenantdetails&amp;quot;libraryvariableset">Step 4: Create the &quot;Standard tenant details&quot; library variable set</h3>
+<p>In previous steps we also created some variable templates that depend on a variable called Tenant.Alias. In this case we want the tenant to provide a URL-friendly version of the tenant's name, and we will create a library variable template. By using a variable template from a library variable set the tenant will only be prompted once for this value.</p>
+<ol>
+<li>Go to <span class="path">Library ➜ Variable Sets</span> and add a new variable set called <strong>Standard tenant details</strong></li>
+<li>Go to the <em>Variable templates</em> tab and create the templates shown below:</li>
+</ol>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Label</th>
+<th>Default value</th>
+<th>Help text</th>
+<th>Control type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tenant.Alias</code></td>
+<td>Alias</td>
+<td></td>
+<td>This alias will be used to build convention-based settings for the tenant</td>
+<td>Single-line text box</td>
+</tr>
+<tr>
+<td><code>Tenant.ContactEmail</code></td>
+<td>Contact email</td>
+<td></td>
+<td>A comma-separated list of email addresses to send deployment notifications</td>
+<td>Single-line text box</td>
+</tr>
+</tbody>
+</table>
+<p>The result should look like the screenshot below:</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865608.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865608.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step5:Includethelibraryvariablesetsintotheproject">Step 5: Include the library variable sets into the project</h3>
+<p>Now we have created the library variable sets we need to include them in the <strong>Mojo</strong> project so they take effect.</p>
+<ol>
+<li>Go to the <span class="path">Variables ➜ Library Variable Sets</span> tab of the <strong>Mojo</strong> project</li>
+<li>Click <em>Include variable sets from the Library</em> and select the newly created <strong>Environment variables</strong> and <strong>Standard tenant details</strong> variable sets into the project, clicking <em>Apply</em> then <em>Save</em>.</li>
+</ol>
+<h3 id="Workingwithtenant-specificvariables-Step6:Filloutthevariablevaluesforourtenants">Step 6: Fill out the variable values for our tenants</h3>
+<p>Go to our tenant <strong>Beverley Sanchez</strong> and go to <span class="path">Variables ➜ Common Variables</span> where you should be able to fill in the variables required by our <strong>Standard tenant details</strong> variable set:</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865611.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865611.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Now go to the <em>Project Variables</em> tab and you should see the variables required by the <strong>Mojo</strong> project for each environment <strong>Beverley Sanchez</strong> will be deployed into, in this case just <strong>MT Production</strong>. Leave the convention-based variables alone, and click the <em>Set</em> button to set a random password for the database, and click <em>Save</em> to save your changes.</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865612.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865612.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step7:Validatethevariablevaluesfortheproject">Step 7: Validate the variable values for the project</h3>
+<p>Go to the <span class="path">Variables ➜ All Variables</span> tab of the <strong>Mojo</strong> project and you can inspect all of the variables that will be used by the project. If something is wrong, you can click on the link to the source of the value and fix the problem.</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865620.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865620.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step8:Deploy!">Step 8: Deploy!</h3>
+<p>Go to the <strong>Mojo</strong> project, create a new release, and deploy it to the <strong>MT Production</strong> environment for <strong>Beverley Sanchez</strong> and you should see all of the variables flowing through properly now.</p>
+<p><a href='#' data-featherlight='/docs/images/5669247/5865613.png' class='zoom' data-title=''><img src='/docs/images/5669247/5865613.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<h3 id="Workingwithtenant-specificvariables-Step9:Review">Step 9: Review</h3>
+<p>Now that we've configured the variables in this way, let's take a look at the results:</p>
+<ul>
+<li>The configuration that changes per-project is defined in the project</li>
+<li>The configuration that changes per-tenant is set on the tenant</li>
+<li>You can use the convention-based default value for <strong>Tenant.Domain.Name</strong> as defined by the project or you can override it completely by setting a custom value in the tenant</li>
+<li>You can add a new template to the project and know which tenants need that value defined before performing a deployment</li>
+</ul>
+<h2 id="Workingwithtenant-specificvariables-Nextsteps">Next steps</h2>
+<p>Learn about <a href="/docs/v/3.15/guides/multi-tenant-deployments/multi-tenant-deployment-guide/working-with-groups-of-tenants-using-tags">working with groups of tenants using tags</a> as the foundation for <a href="/docs/v/3.15/guides/multi-tenant-deployments/multi-tenant-deployment-guide/designing-a-multi-tenant-upgrade-process">designing a multi-tenant upgrade process</a> and <a href="/docs/v/3.15/guides/multi-tenant-deployments/multi-tenant-deployment-guide/designing-a-multi-tenant-hosting-model">designing a multi-tenant hosting model</a>.</p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

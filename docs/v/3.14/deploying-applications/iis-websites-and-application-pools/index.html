@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/deploying-applications/iis-websites-and-application-pools'>4.0</a></li><li class=''><a href='/docs/deploying-applications/iis-websites-and-application-pools'>Latest</a></li><li class=''><a href='/docs/v/3.16/deploying-applications/iis-websites-and-application-pools'>3.16</a></li><li class=''><a href='/docs/v/3.15/deploying-applications/iis-websites-and-application-pools'>3.15</a></li><li class='disabled'><a href='/docs/v/3.14/deploying-applications/iis-websites-and-application-pools'>3.14</a></li><li class=''><a href='/docs/v/3.13/deploying-applications/iis-websites-and-application-pools'>3.13</a></li><li class=''><a href='/docs/v/3.12/deploying-applications/iis-websites-and-application-pools'>3.12</a></li><li class=''><a href='/docs/v/3.11/deploying-applications/iis-websites-and-application-pools'>3.11</a></li><li class=''><a href='/docs/v/3.10/deploying-applications/iis-websites-and-application-pools'>3.10</a></li><li class=''><a href='/docs/v/3.9/deploying-applications/iis-websites-and-application-pools'>3.9</a></li><li class=''><a href='/docs/v/3.8/deploying-applications/iis-websites-and-application-pools'>3.8</a></li><li class=''><a href='/docs/v/3.7/deploying-applications/iis-websites-and-application-pools'>3.7</a></li><li class=''><a href='/docs/v/3.6/deploying-applications/iis-websites-and-application-pools'>3.6</a></li></ul>
+</div>
+<h1>IIS Websites and Application Pools</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>Configuring IIS is an essential part of deploying any ASP.NET web application. Octopus has built-in support for configuring IIS Web Sites, Applications and Virtual Directories.</p>
+<p>To deploy to IIS, add a <em>Deploy to IIS</em> step. For information about adding a step to the deployment process, see the <a href="/docs/v/3.14/deploying-applications/adding-steps">add step</a> section.</p>
+<p><a href='#' data-featherlight='/docs/deploying-applications/iis-step.png' class='zoom' data-title=''><img src='/docs/deploying-applications/iis-step.png' class="img-fluid center" height="auto" width="170" alt='' /></a></p>
+<div class="alert alert-info"><p><strong>Pre Octopus 3.4.7</strong><br />
+The <em>Deploy an IIS Web Site Step</em> was introduced in Octopus version <strong>3.4.7</strong>. Prior to this IIS Web Sites were deployed by enabling the <em>IIS web site and application pool</em> feature on a <a href="/docs/v/3.14/deploying-applications/deploying-packages" class="alert-link">Deploy a Package Step</a>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048088/3277713.png' class='zoom' data-title=''><img src='/docs/images/3048088/3277713.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</div>
+<h2 id="IISWebsitesandApplicationPools-SelectaPackage">Select a Package</h2>
+<p>Use the <em>Package Feed</em> and <em>Package ID</em> fields to select the <a href="/docs/v/3.14/packaging-applications">package</a> containing the web site content.</p>
+<h2 id="IISWebsitesandApplicationPools-DeploymentType">Deployment Type</h2>
+<p>There are three options for how the Web Site is deployed:</p>
+<ul>
+<li><a href="/docs/v/3.14/deploying-applications/iis-websites-and-application-pools#IISWebsitesandApplicationPools-DeployIISWebSiteweb-site">Web Site</a></li>
+<li><a href="/docs/v/3.14/deploying-applications/iis-websites-and-application-pools#IISWebsitesandApplicationPools-DeployIISVirtualDirectoryvirtual-directory">Virtual Directory</a></li>
+<li><a href="/docs/v/3.14/deploying-applications/iis-websites-and-application-pools#IISWebsitesandApplicationPools-DeployIISWebApplicationweb-application">Web Application</a></li>
+</ul>
+<div class="alert alert-success"><p>Understanding the difference between Sites, Applications and Virtual Directories is important to understand how to use the IIS Websites and Application Pools features in Octopus. Learn more about <a href="https://www.iis.net/learn/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis" class="alert-link" rel="nofollow">Sites, Applications and Virtual Directories in IIS</a>.</p>
+</div>
+<h3 id="IISWebsitesandApplicationPools-DeployIISWebSiteweb-site">Deploy IIS Web Site</h3>
+<p><a href='#' data-featherlight='/docs/deploying-applications/deploy-iis-web-site.png' class='zoom' data-title=''><img src='/docs/deploying-applications/deploy-iis-web-site.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<table class="table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+<th>Examples</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Web Site Name</strong></td>
+<td>The name of the IIS Web Site to create (or reconfigure, if the site already exists).</td>
+<td><code>MyWebSite</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Physical path</strong></td>
+<td>The physical path on disk this Web Site will point to</td>
+<td><code>/Path1/Path2/MySite</code> <br> <code>#{MyCustomInstallationDirectory}</code></td>
+<td>You can specify an absolute path, or a relative path inside the package installation directory.</td>
+</tr>
+<tr>
+<td><strong>Application Pool name</strong></td>
+<td>Name of the Application Pool in IIS to create (or reconfigure, if the application pool already exists)</td>
+<td><code>MyAppPool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>.NET CLR version</strong></td>
+<td>The version of the .NET Common Language Runtime this Application Pool will use.</td>
+<td><ul> <li> <code>v2.0</code> </li> <li> <code>v4.0</code> </li> </ul></td>
+<td>Choose v2.0 for applications built against .NET 2.0, 3.0 or 3.5.  <br> Choose v4.0 for .NET 4.0 or 4.5.</td>
+</tr>
+<tr>
+<td><strong>Identity</strong></td>
+<td>Which account the Application Pool will run under.</td>
+<td><ul> <li><code>Application Pool Identity</code></li> <li><code>Local Service</code></li> <li><code>Local System</code></li> <li> <code>Network Service</code> </li> <li> <code>Custom user (you specify the username/password)</code> </li> </ul></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Start mode</strong></td>
+<td>Specifies whether the IIS Web Site and/or Application Pool are started after a successful release</td>
+<td><ul> <li><code>IIS Application Pool and IIS Web Site</code></li> <li><code>IIS Application Pool Only</code></li> <li><code>Do not start either</code></li> </ul></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Bindings</strong></td>
+<td>Specify any number of HTTP/HTTPS bindings that should be added to the IIS Web Site</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Authentication modes</strong></td>
+<td>Choose which authentication mode(s) IIS should enable</td>
+<td><ul> <li> <code>Anonymous</code> </li> <li> <code>Basic</code> </li> <li> <code>Windows</code> </li> </ul></td>
+<td>You can select more than one authentication mode</td>
+</tr>
+</tbody>
+</table>
+<h3 id="IISWebsitesandApplicationPools-DeployIISVirtualDirectoryvirtual-directory">Deploy IIS Virtual Directory</h3>
+<div class="alert alert-success"><p>The IIS Virtual Directory step requires a parent Web Site to exist in IIS before it runs. You can create a chain of steps like this:</p>
+<ol>
+<li>Make sure the parent Web Site exists in IIS and is configured correctly</li>
+<li>Create any number of Web Applications and Virtual Directories as children of the parent Web Site</li>
+</ol>
+</div>
+<p><a href='#' data-featherlight='/docs/deploying-applications/deploy-iis-virtual-directory.png' class='zoom' data-title=''><img src='/docs/deploying-applications/deploy-iis-virtual-directory.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<table class="table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+<th>Examples</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parent Web Site name</strong></td>
+<td>The name of the parent IIS Web Site.</td>
+<td><code>Default Web Site</code>, <code>MyWebSite</code></td>
+<td>The parent Web Site must exist in IIS before this step runs. This step will not create the Web Site for you.</td>
+</tr>
+<tr>
+<td><strong>Virtual path</strong></td>
+<td>The relative path from the parent IIS Web Site to the Virtual Directory</td>
+<td>If you want a Virtual Directory called <code>MyDirectory</code> belonging to the Site <code>MySite</code> as part of the Application <code>MyApplication</code> you would set the Virtual Path to <code>/MyApplication/MyDirectory</code></td>
+<td>All parent applications/directories must exist. Does not need to match the physical path</td>
+</tr>
+<tr>
+<td><strong>Physical path</strong></td>
+<td>The physical path on disk this Virtual Directory will point to</td>
+<td><code>/Path1/Path2/MyDirectory</code>, <code>#{MyCustomInstallationDirectory}</code></td>
+<td>You can specify an absolute path, or a relative path inside the package installation directory.</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-success"><p>The Virtual Path and Physical Path do not need to match which is one of the true benefits of IIS. You can create a virtual mapping from a URL to a completely unrelated physical path on disk. See <a href="/docs/v/3.14/deploying-applications/iis-websites-and-application-pools" class="alert-link">below</a> for more details.</p>
+</div>
+<h3 id="IISWebsitesandApplicationPools-DeployIISWebApplicationweb-application">Deploy IIS Web Application</h3>
+<div class="alert alert-success"><p>The IIS Web Application step requires a parent Web Site to exist in IIS before it runs. You can create a chain of steps like this:</p>
+<ol>
+<li>Make sure the parent Web Site exists in IIS and is configured correctly</li>
+<li>Create any number of Web Applications and Virtual Directories as children of the parent Web Site</li>
+</ol>
+</div>
+<p><a href='#' data-featherlight='/docs/deploying-applications/deploy-iis-web-application.png' class='zoom' data-title=''><img src='/docs/deploying-applications/deploy-iis-web-application.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p>The Virtual Path and Physical Path do not need to match which is one of the true benefits of IIS. You can create a virtual mapping from a URL to a completely unrelated physical path on disk. See <a href="/docs/v/3.14/deploying-applications/iis-websites-and-application-pools" class="alert-link">below</a> for more details.</p>
+</div>
+<table class="table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+<th>Examples</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parent Web Site Name</strong></td>
+<td>The name of the parent IIS Web Site.</td>
+<td><code>Default Web Site</code>, <code>MyWebSite</code></td>
+<td>The parent Web Site must exist in IIS before this step runs. This step will not create the Web Site for you.</td>
+</tr>
+<tr>
+<td><strong>Virtual Path</strong></td>
+<td>The relative path from the parent IIS Web Site to the Web Application</td>
+<td>If you want a Web Application called <code>MyApplication</code> belonging to the Site <code>MySite</code> you would set the Virtual Path to <code>/MyApplication</code></td>
+<td>All parent applications/directories must exist. Does not need to match the physical path.</td>
+</tr>
+<tr>
+<td><strong>Physical path</strong></td>
+<td>The physical path on disk this Web Application will point to</td>
+<td><code>/Path1/Path2/MyApplication</code>, <code>#{MyCustomInstallationDirectory}</code></td>
+<td>You can specify an absolute path, or a relative path inside the package installation directory.</td>
+</tr>
+<tr>
+<td><strong>Application Pool name</strong></td>
+<td>Name of the Application Pool in IIS to create (or reconfigure, if the Application Pool already exists)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>.NET CLR version</strong></td>
+<td>The version of the .NET Common Language Runtime this Application Pool will use.</td>
+<td><code>v2.0</code>, <code>v4.0</code></td>
+<td>Choose v2.0 for applications built against .NET 2.0, 3.0 or 3.5. Choose v4.0 for .NET 4.0 or 4.5.</td>
+</tr>
+<tr>
+<td><strong>Identity</strong></td>
+<td>Which account the Application Pool will run under.</td>
+<td><code>Application Pool Identity</code>, <code>Local Service</code>, <code>Local System</code>, <code>Network Service</code>, <code>Custom user (you specify the username/password)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="IISWebsitesandApplicationPools-HowOctopusDeploysyourWebSite">How Octopus Deploys your Web Site</h2>
+<p>Out of the box, Octopus will do the right thing to deploy your Web Site using IIS, and the conventions we have chosen will eliminate a lot of problems with file locks, leaving stale files behind, and causing multiple Application Pool restarts. By default Octopus will follow the conventions described in <a href="/docs/v/3.14/deploying-applications/deploying-packages">Deploying packages</a> and apply the different features you select in the order described in <a href="/docs/v/3.14/reference/package-deployment-feature-ordering">Package deployment feature ordering</a>.</p>
+<div class="alert alert-success"><p>Avoid using the <a href="/docs/v/3.14/deploying-applications/custom-installation-directory" class="alert-link">Custom Installation Directory</a> feature unless you are absolutely required to put your packaged files into a specific physical location on disk.</p>
+</div>
+<p>As an approximation including the IIS integration:</p>
+<ol>
+<li>Acquire the package as optimally as possible (local package cache and <a href="/docs/v/3.14/deploying-applications/delta-compression-for-package-transfers">delta compression</a>)</li>
+<li>Create a new folder for the deployment (which avoids many common problems like file locks, leaving stale files behind, and multiple Application Pool restarts)</li>
+<li>Example: <code>C:\Octopus\Applications\[Tenant name]\[Environment name]\[Package name]\[Package version]\</code> where <code>C:\Octopus\Applications</code> is the Tentacle application directory you configured when installing Tentacle)</li>
+<li>Extract the package into the newly created folder</li>
+<li>Execute each of your <a href="/docs/v/3.14/deploying-applications/custom-scripts">custom scripts</a> and the <a href="/docs/v/3.14/deploying-applications">deployment features</a> you've configured will be executed to perform the deployment <a href="/docs/v/3.14/reference/package-deployment-feature-ordering">following this order by convention</a>.</li>
+<li>As part of this process the IIS Web Site, Web Application or Virtual Directory will be configured in a single transaction with IIS, including updating the Physical Path to point to this folder</li>
+<li><a href="/docs/v/3.14/deploying-applications/variables/output-variables">Output variables</a> and deployment <a href="/docs/v/3.14/deploying-applications/artifacts">artifacts</a> from this step are sent back to the Octopus Server</li>
+</ol>
+<div class="alert alert-success"><p>You can see exactly how Octopus integrates with IIS in the <a href="https://github.com/OctopusDeploy/Calamari/blob/master/source/Calamari/Scripts/Octopus.Features.IISWebSite_BeforePostDeploy.ps1" class="alert-link" rel="nofollow">open-source Calamari library</a>.</p>
+</div>
+<h2 id="IISWebsitesandApplicationPools-IISconfigurationinaction">IIS configuration in action</h2>
+<p>This five minute video (with captions) demonstrates how Octopus can be used to deploy an ASP.NET MVC web application to remote IIS servers.</p>
+<iframe src="//fast.wistia.net/embed/iframe/7wfdk4vtge" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="360" style="margin: 30px"></iframe>
+<h2 id="how-to-take-your-website-offline-during-deployment">How to take your website offline during deployment</h2>
+<p>A IIS Website can be taken offline by placing a <code>app_offline.htm</code> file into the root directory of the website. The contents of
+that file will be shown to anyone accessing the site. This is useful if you do not want to users to access the site while
+the deployment is being performed. It recycles the App Pool, releasing any file locks the site may have.</p>
+<p>This can be done by including an <code>app_online.htm</code> file in your website and then renaming it to <code>app_offline.htm</code> at the
+start of the deployment. This can be done via a script or the <code>IIS - Change App Offline</code> step in the
+<a href="/docs/v/3.14/deploying-applications/step-templates/community-step-templates">community library</a>.</p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>

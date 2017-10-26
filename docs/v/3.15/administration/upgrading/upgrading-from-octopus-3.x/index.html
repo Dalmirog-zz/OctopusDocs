@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Getting started - Octopus Deploy</title>
+<meta charset="utf-8">
+<meta name="description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta name="author" content="Octopus Deploy">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css" integrity="sha256-Bl4rr1AwUjcb8VvRrdHXqJvRRCyF7oHsgUl74ELjr7k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://octopus.com/css/lib.min.css?v=kEfV6kYMfTqo5GWH8cZiJKRh0-G2z2KKepFAdIve3gc">
+<link rel="stylesheet" href="https://octopus.com/css/site.min.css?v=uS8Hy-ONZoqeDUdo2owrhAUj0Zt7jsVBc4uxS3TFuCY">
+<script src="https://cdn.optimizely.com/js/590800530.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting started - Octopus Deploy">
+<meta property="og:description" content="From download to deployment, this guide walks you through getting started with Octopus.">
+<meta property="og:site_name" content="Octopus Deploy">
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@OctopusDeploy">
+<meta name="application-name" content="Octopus Deploy">
+<link rel="canonical" href="https://octopus.com/docs/getting-started">
+<link rel="me" type="text/html" href="https://plus.google.com/102650558422902813929?rel=me">
+<link rel="me" type="text/html" href="http://feeds.feedburner.com/OctopusDeploy">
+<link rel="me" type="text/html" href="https://twitter.com/OctopusDeploy">
+<link rel="icon" type="image/png" href="https://octopus.com/images/(global)/favicon.png">
+<link rel="apple-touch-icon" href="https://octopus.com/images/(global)/apple-touch-icon.png">
+<link href="http://feeds.feedburner.com/OctopusDeploy" type="application/rss+xml" rel="alternate" title="Octopus Deploy Blog Feed">
+<link rel="search" type="application/opensearchdescription+xml" href="https://octopus.com/search/opensearchdescription" title="Octopus Deploy">
+<script type="text/javascript">
+        !function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
+                (a[e].o=a[e].o||[]).push(arguments)},f=b.createElement(c),g=b.getElementsByTagName(c)[0],
+            f.async=1,f.src=d,g.parentNode.insertBefore(f,g),h=a.onerror,a.onerror=function(b,c,d,f,g){
+                h&&h(b,c,d,f,g),g||(g=new Error(b)),a[e].q=a[e].q||[],a[e].q.push({
+                    e:g})}}(window,document,"script","//cdn.raygun.io/raygun4js/raygun.min.js","rg4js");
+    </script>
+<link rel="stylesheet" href="https://octopus.com//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css" integrity="sha256-3YM6A3pH4QFCl9WbSU8oXF5N6W/2ylvW0o2g+Z6TmLQ=" crossorigin="anonymous">
+<style>
+        .btnCopy {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .copyToClipboard {
+            position: relative;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="">
+
+<script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-24461753-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+ <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+
+<script type="text/javascript">
+        setTimeout(function () {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0021/2568.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true; a.type = "text/javascript"; b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+
+
+<script type='text/javascript'>
+        (function() {
+            var w = window, d = document;
+            var s = d.createElement('script');
+            s.setAttribute('async', 'true');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+            var f = d.getElementsByTagName('script')[0];
+            f.parentNode.insertBefore(s, f);
+            if (typeof w['_rfi'] !== 'function') {
+                w['_rfi']=function() {
+                    w['_rfi'].commands = w['_rfi'].commands || [];
+                    w['_rfi'].commands.push(arguments);
+                };
+            }
+            _rfi('setArgs', 'ver', '9');
+            _rfi('setArgs', 'rb', '32733');
+            _rfi('setArgs', 'ca', '20781763');
+            _rfi('setArgs', '_o', '32733');
+            _rfi('setArgs', '_t', '20781763');
+            _rfi('track');
+        })();
+    </script>
+<noscript>
+        <iframe src='//20781763p.rfihub.com/ca.html?rb=32733&ca=20781763&_o=32733&_t=20781763&ra=YOUR_CUSTOM_CACHE_BUSTER' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+    </noscript>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div>
+<div class="container">
+<div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a id="logo" class="navbar-brand" href="/"><img src="/images/(global)/octopus-logo.svg" alt="Octopus Deploy" style="width: 30px; height: 32px;">&nbsp;<span class="hidden-sm">Octopus Deploy</span></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<div>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+<a href="/#features">
+Features
+</a>
+</li>
+<li class="">
+<a href="/downloads">
+Downloads
+</a>
+</li>
+<li class="">
+<a href="/company">
+Company
+</a>
+</li>
+<li class="active">
+<a href="/docs">
+Docs
+</a>
+</li>
+<li class="">
+<a href="/support">
+ Support
+</a>
+</li>
+<li class="">
+<a href="/purchase">
+Pricing
+</a>
+</li>
+<li class="">
+<a href="/blog">Blog</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<header class="stripe stripe-blue stripe-narrow">
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<div class="like-h2">Octopus Deploy Documentation</div>
+</div>
+<div class="col-sm-3">
+<div class="text-right">
+<form method="get" action="/docs/search">
+<div class="visible-xs">&nbsp;</div>
+<div class="form-search search-only">
+<i class="search-icon fa fa-search"></i>
+<input class="form-control search-query" id="q" name="q" placeholder="Search" style="width: 100%; text-overflow: ellipsis;" type="text" value="">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="stripe stripe-gray docs">
+<div class="container">
+<div class="row">
+<div class="col-sm-9 col-sm-push-3">
+<article id="doc-content" class="paper" style="padding-bottom: 100px; min-height: 1000px;"><header>
+<div class="dropdown pull-right">
+<button class="btn btn-success dropdown-toggle" type="button" id="versionSelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Version: Latest
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="versionSelector"><li class=''><a href='/docs/v/4.0/administration/upgrading/upgrading-from-octopus-3.x'>4.0</a></li><li class=''><a href='/docs/administration/upgrading/upgrading-from-octopus-3.x'>Latest</a></li><li class=''><a href='/docs/v/3.16/administration/upgrading/upgrading-from-octopus-3.x'>3.16</a></li><li class='disabled'><a href='/docs/v/3.15/administration/upgrading/upgrading-from-octopus-3.x'>3.15</a></li><li class=''><a href='/docs/v/3.14/administration/upgrading/upgrading-from-octopus-3.x'>3.14</a></li><li class=''><a href='/docs/v/3.13/administration/upgrading/upgrading-from-octopus-3.x'>3.13</a></li><li class=''><a href='/docs/v/3.12/administration/upgrading/upgrading-from-octopus-3.x'>3.12</a></li><li class=''><a href='/docs/v/3.11/administration/upgrading/upgrading-from-octopus-3.x'>3.11</a></li><li class=''><a href='/docs/v/3.10/administration/upgrading/upgrading-from-octopus-3.x'>3.10</a></li><li class=''><a href='/docs/v/3.9/administration/upgrading/upgrading-from-octopus-3.x'>3.9</a></li><li class=''><a href='/docs/v/3.8/administration/upgrading/upgrading-from-octopus-3.x'>3.8</a></li><li class=''><a href='/docs/v/3.7/administration/upgrading/upgrading-from-octopus-3.x'>3.7</a></li><li class=''><a href='/docs/v/3.6/administration/upgrading/upgrading-from-octopus-3.x'>3.6</a></li></ul>
+</div>
+<h1>Upgrading from Octopus 3.x</h1>
+<div style="margin: 10px 0; color: #aaa" class="small">Last updated <time datetime="2017-10-24T06:45:02.7253904&#x2B;00:00">2017-10-24T06:45:02.7253904&#x2B;00:00</time></div>
+</header><p>The following guide provides an overview of how the various components of Octopus Deploy 3.x can be updated to the latest release.</p>
+<h2 id="UpgradingfromOctopus3.x-UpdateAvailableNotification">Update Available Notification</h2>
+<p>When an update is available, a bullhorn icon will appear in the top status bar with details and a link to the downloads page.</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/3278327.png' class='zoom' data-title=''><img src='/docs/images/3048440/3278327.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-warning"><p><strong>What is included in the release?</strong><br />
+You can find the differences between your current version and the newest version using our <a href="https://octopus.com/downloads/compare" class="alert-link">Compare versions</a> page. Please note that this will also list the release notes for major and minor version changes which may include <strong>breaking changes</strong> or <strong>dependencies</strong> that you may need to also update. It is important to know what might be effected by your upgrade.</p>
+</div>
+<h2 id="scheduling-maintenance">Scheduling maintenance</h2>
+<p>Upgrading Octopus Server is normally quite fast, however you should allow yourself time to perform a good <a href="/docs/v/3.15/administration/backup-and-restore">backup and restore process</a>.</p>
+<p>You should also consider how long the actual upgrade may take:</p>
+<ul>
+<li><a href="/docs/v/3.15/administration/upgrading##Upgrading-HowweversionOctopusDeploy">Patch</a> upgrades are usually very fast - only the executable binaries are upgraded.</li>
+<li><a href="/docs/v/3.15/administration/upgrading##Upgrading-HowweversionOctopusDeploy">Minor</a> upgrades are usually quite fast, however these releases typically require database changes.</li>
+<li><a href="/docs/v/3.15/administration/upgrading##Upgrading-HowweversionOctopusDeploy">Major</a> upgrades usually require detailed planning.</li>
+</ul>
+<h2 id="UpgradingfromOctopus3.x-UpgradingOctopusServerUpgradingOctopusServer">Upgrading Octopus Server</h2>
+<p>Upgrading the Octopus Deploy Server is easy, you will just need to follow these steps:</p>
+<ol>
+<li><p>Schedule a maintenance window: Octopus Server will be unavailable during the upgrade (unless you are <a href="#upgrading-octopus-ha">upgrading Octopus HA</a>)</p>
+</li>
+<li><p>Switch your server to <a href="/docs/v/3.15/administration/maintenance-mode">Maintenance Mode</a> and wait until all current tasks and deployments have completed. This ensures that no further changes will be made that may potentially become lost if the upgrade fails and you need to rollback.</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/5865775.png' class='zoom' data-title=''><img src='/docs/images/3048440/5865775.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</li>
+<li><p><a href="/docs/v/3.15/administration/backup-and-restore">Backup your database and master key</a> so that it can be restored in case anything goes wrong.</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/5865780.png' class='zoom' data-title=''><img src='/docs/images/3048440/5865780.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</li>
+<li><p>Download the latest <a href="https://octopus.com/downloads">Octopus Deploy MSI installer</a>.</p>
+</li>
+</ol>
+<div class="alert alert-success"><p><strong>No internet connection required for install</strong><br />
+Once you have downloaded the required version of the Octopus Server MSI no further internet connectivity is required. This allows for installation on servers and systems that have no internet connectivity.</p>
+</div>
+<ol>
+<li><p>Run the installer and follow the prompts.</p>
+</li>
+<li><p>Turn <a href="/docs/v/3.15/administration/maintenance-mode">Maintenance Mode</a> <code>OFF</code>.</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/5865776.png' class='zoom' data-title=''><img src='/docs/images/3048440/5865776.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</li>
+<li><p>Calamari will then be automatically updated if required with the next health check or deployment that takes place.</p>
+</li>
+</ol>
+<div class="alert alert-success"><p><strong>No need to upgrade the Tentacle</strong><br />
+Given that the deployment code is now embedded within Calamari, and this gets pushed out automatically as needed by the Octopus Deploy Server, you no longer need be concerned about ensuring the version number between Tentacle and Server remain in lockstep. Builds of the Server and the Tentacle are no longer in sync as of Octopus Deploy 3.14, and Octopus Server v3.x is compatible with all Tentacle 3.x versions. We hope splitting the Tentacle helps relieve some of the hassle and friction involved with upgrading Octopus and provides better communication about changes to Tentacle.</p>
+</div>
+<h2 id="upgrading-octopus-ha">Upgrading Octopus HA</h2>
+<p>You should generally follow the same instructions as above but upgrade one node at a time. This will allow you to keep the cluster running and avoid interruption to your users. Read more about <a href="/docs/v/3.15/administration/high-availability/managing-high-availability-nodes">Managing High Availability Nodes</a>.</p>
+<div class="alert alert-warning"><p>It is important to upgrade all nodes in your cluster during the same maintenance window, especially if the database schema is changed. The database schema will be upgraded when you upgrade the first node. Any nodes running the old version can fail due to a database schema mismatch.</p>
+</div>
+<h3 id="upgrading-octopus-ha-nodes">Upgrading Octopus HA nodes</h3>
+<p>Follow these steps to upgrade each node in your cluster:</p>
+<ol>
+<li><p>Go to the <span class="path">Configuration ➜ Nodes</span> page</p>
+</li>
+<li><p>Set Drain to <code>ON</code> for the node you want to upgrade</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/5865778.png' class='zoom' data-title=''><img src='/docs/images/3048440/5865778.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+</li>
+<li><p>Wait until all the running tasks complete</p>
+</li>
+<li><p>Upgrade the Octopus Server instance on the node</p>
+</li>
+<li><p>Set Drain to <code>OFF</code> so the node starts processing tasks again</p>
+</li>
+</ol>
+<h2 id="UpgradingfromOctopus3.x-UpgradingCalamariUpgradingCalamari">Upgrading Calamari</h2>
+<p>Calamari will either self-update automatically during a deployment if they are out of date with the latest available on the server, or they can be manually updated to avoid interrupting the deployment.</p>
+<h3 id="UpgradingfromOctopus3.x-AutoUpdate">Auto Update</h3>
+<p>During a deployment process one of the first commands that's executed on the Tentacle is a check to confirm that the latest version of Calamari exists on the target machine. This is currently done by checking for the existence for an empty file in the folder location of<code>${env:TentacleHome}\Calamari\{{CalamariVersion}}\Success.txt</code> where the <code>CalamariVersion</code> variable is defined by the latest available on the Server.</p>
+<p>When deploying to an environment with out of date Calamaris, they will be automatically upgraded. An info message on the deployment page will notify the user that this will happen.</p>
+<p><a href='#' data-featherlight='https://cloud.githubusercontent.com/assets/1035315/10598722/bc8ea3f6-773e-11e5-8d0a-c72b6627ab9e.png' class='zoom' data-title=''><img src='https://cloud.githubusercontent.com/assets/1035315/10598722/bc8ea3f6-773e-11e5-8d0a-c72b6627ab9e.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><strong>Manual Update</strong></p>
+<p>The environments page will make machines without latest Calamari yellow, and show a green Update button (per environment) - this will just run a script that ensures Calamari is there.</p>
+<p><a href='#' data-featherlight='https://cloud.githubusercontent.com/assets/1035315/10654656/9d182880-78b0-11e5-8ffd-c4b917e54730.png' class='zoom' data-title=''><img src='https://cloud.githubusercontent.com/assets/1035315/10654656/9d182880-78b0-11e5-8ffd-c4b917e54730.png' class="img-fluid center" alt='' /></a></p>
+<p><a href='#' data-featherlight='https://cloud.githubusercontent.com/assets/1035315/10654668/c07cc9d4-78b0-11e5-90d3-b79eb568e055.png' class='zoom' data-title=''><img src='https://cloud.githubusercontent.com/assets/1035315/10654668/c07cc9d4-78b0-11e5-90d3-b79eb568e055.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p><strong>Upgrading Octopus Tentacles</strong></p>
+<p>The role of Tentacles has changed in Octopus 3.x. Tentacles in 3.x are only responsible for the secure communication protocol, and then calling Calamari to actually perform deployments. This means Tentacle only needs to change when we change some part of the secure communication protocol (hopefully very infrequently).</p>
+<div class="alert alert-info"><p><strong>Why have there been so many different versions of Tentacle 3.x?</strong><br />
+In early versions of 3.x we have been rebuilding Tentacle in lock-step with Octopus Server due to shared dependencies in their project structure even though there have not been any changes to Tentacle itself. We hope to unlock these in the near future.</p>
+</div>
+<p>Octopus 3.1 supports automatically updating Tentacles via the Environments page. You can upgrade all Tentacles which will systematically work through all Machines in all Environments in batches until all Tentacles are upgraded.</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/3278436.png' class='zoom' data-title=''><img src='/docs/images/3048440/3278436.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<p>Alternatively you can upgrade Tentacles one Environment at a time.</p>
+<p><a href='#' data-featherlight='/docs/images/3048440/3278437.png' class='zoom' data-title=''><img src='/docs/images/3048440/3278437.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<div class="alert alert-success"><p><strong>Optional and Required Tentacle upgrades</strong><br />
+In most cases we will maintain backwards compatibility between versions of Octopus Server and Tentacle. In these cases the Environments page will <strong>recommend</strong> updating your Tentacles while still allowing deployments to continue as normal. In the rare occasion we need to break compatibility you will be <strong>required</strong> to upgrade any incompatible Tentacles before you can Deploy to those machines again from the upgraded Octopus Server.</p>
+</div>
+<h2 id="UpgradingfromOctopus3.x-UpgradingTo31UpgradingtoOctopus3.1orgreater">Upgrading to Octopus 3.1 or greater</h2>
+<p>Summary: Tentacle was upgraded from .NET 4.0 to .NET 4.5 to enable TLS 1.2.</p>
+<div class="alert alert-success"><p><strong>You can upgrade to Octopus Server 3.1 without upgrading any Tentacles and get all of the new 3.1 deployment features because Calamari will continue to work on both Tentacle 3.0 and 3.1.</strong></p>
+</div>
+<p>This is the first version of Octopus 3.x where there has been a Tentacle upgrade and it has caused some confusion. This section aims to answer some of the most commonly asked questions about upgrading to Octopus 3.1 and the impact on Tentacles.</p>
+<p><strong>Am I required to upgrade to Tentacle 3.1?</strong>
+No, you aren't required to upgrade to Tentacle 3.1. Tentacle 3.0 will still work and benefit from the latest version of Calamari and all of the deployment features we shipped in Octopus 3.1.</p>
+<p><strong>What changed with Tentacle 3.1?</strong>
+The Octopus-Tentacle communication protocol in 3.1 can use TLS 1.2 which requires .NET 4.5 to be installed on the server.</p>
+<p><strong>When should I upgrade to Tentacle 3.1?</strong>
+We recommend upgrading to Tentacle 3.1 as soon as you are able. Upgrading Tentacles in Octopus 3.1 is automated and can be done through the Environments page. The main benefit you'll get is the Octopus-Tentacle communication protocol can use TLS 1.2.</p>
+<p><strong>What would stop me from upgrading to Tentacle 3.1?</strong>
+<a href="https://msdn.microsoft.com/en-us/library/8z6watww%28v=vs.110%29.aspx" rel="nofollow">Your server needs to support .NET 4.5</a>. Tentacle 3.1 requires .NET 4.5 to be installed on the server, which is what enables TLS 1.2 support, and .NET 4.5 is supported on Windows Server 2008 SP2 or newer. This means Windows Server 2003 and Windows Server 2008 SP1 are not supported for Octopus Server or Tentacle 3.1.</p>
+<p><strong>How can I make Octopus/Tentacle use TLS 1.2 instead of TLS 1.0?</strong>
+Octopus Server and Tentacle to 3.1 will use TLS 1.2 by default. Tentacle 3.0 will still work with Octopus Server 3.1, but the communication protocol will fall back to the lowest-common denominator of TLS 1.0.</p>
+<p><strong>Can I have a mixture of Tentacle 3.0 and 3.1? I'm not ready to upgrade some of my application servers.</strong>
+Yes, you can have a mixture of Tentacle 3.0 and 3.1 working happily with Octopus Server 3.1. We have committed to maintaining compatibility with the communication protocol.</p>
+<p><strong>If I keep running Tentacle 3.0 does that mean I won't get any of the new Octopus 3.1 deployment features?</strong>
+The deployment features are handled by Calamari and Octopus Server makes sure all Tentacles have the latest Calamari. This means servers hosting Tentacle 3.0 or 3.1 will get all of the new deployment features we shipped with Octopus 3.1 by means of the latest Calamari.</p>
+<p><strong>Will you continue to support Windows Server 2003 or Windows Server 2008 SP1?</strong>
+No, from Octopus 3.1 onward we are dropping official support for Octopus Server and Tentacle hosted on Windows Server 2003 or Windows Server 2008 SP1.</p>
+<div class="alert alert-info"><p><strong>Tentacle communications protocol</strong><br />
+Read more about the <a href="/docs/v/3.15/reference/octopus-tentacle-communication" class="alert-link">Octopus - Tentacle communication</a> protocol and <a href="/docs/v/3.15/reference/octopus-tentacle-communication/troubleshooting-schannel-and-tls" class="alert-link">Troubleshooting Schannel and TLS</a>.</p>
+</div>
+<h2 id="UpgradingfromOctopus3.x-UpgradingtoOctopus3.4orgreater">Upgrading to Octopus 3.4 or greater</h2>
+<p>See the <a href="https://octopus.com/downloads/compare?from=3.3.27&amp;to=3.4.0">Release Notes</a> for breaking changes and more information.</p>
+<p><strong>Using TeamCity NuGet feeds?</strong> You will need to upgrade your TeamCity server to v9.0 or newer and <a href="https://teamcity-support.jetbrains.com/hc/en-us/community/posts/206817105-How-to-enable-NuGet-feed-v2" rel="nofollow">enable the NuGet v2 API</a>. Octopus 3.4+ no longer supports the custom NuGet v1 feeds from TeamCity 7.x-8.x. We recommend upgrading to the latest TeamCity version available due to continual improvements in their NuGet feed - or switch to using the <a href="/docs/v/3.15/packaging-applications/package-repositories">Octopus built-in repository</a>.</p>
+<p><strong>Want to use SemVer 2 for packages or releases?</strong> You will need to upgrade OctoPack and/or octo.exe to 3.4 or newer.</p>
+<h2 id="UpgradingfromOctopus3.x-UpgradingtoOctopus3.5orgreater">Upgrading to Octopus 3.5 or greater</h2>
+<p>Some server configuration values are moved from the config file into the database in 3.5+.</p>
+<p>If you are upgrading to a 3.5+ version please backup your server config file prior to upgrading. If you need to downgrade then replace the config with the original file after the downgrade and restart Octopus Deploy server.</p>
+<h2 id="Howtodowngradetoapreviousinstalledinstanceofoctopusserver">How to downgrade to a previously installed instance of Octopus Server</h2>
+<p>If for any reason you need to downgrade to a previous version of Octopus Server, follow the steps below:</p>
+<ol>
+<li>Turn <a href="/docs/v/3.15/administration/maintenance-mode">Maintenance Mode</a> <code>ON</code>.</li>
+</ol>
+<div class="alert alert-warning"><p>Wait until all current tasks and deployments have completed.</p>
+</div>
+<p><a href='#' data-featherlight='/docs/images/3048440/5865775.png' class='zoom' data-title=''><img src='/docs/images/3048440/5865775.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<ol start="2">
+<li>Navigate to the Octopus Manager and stop the Octopus service.</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/3048440/5866175.png' class='zoom' data-title=''><img src='/docs/images/3048440/5866175.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<ol start="3">
+<li>Restore the database, by using the database back up you completed prior to installing the new version you were upgrading to.</li>
+</ol>
+<div class="alert alert-warning"><p>Any data that has been created from between when the backup was taken to when it was restored will be lost. You should always use the most recent backup, or rolling forward may be a better solution if the backup is old.</p>
+</div>
+<ol start="4">
+<li>Download the previous version of the Octopus installer, from our <a href="https://octopus.com/downloads/previous">Previous releases page</a>.</li>
+</ol>
+<p><a href='#' data-featherlight='/docs/images/3048440/5866176.png' class='zoom' data-title=''><img src='/docs/images/3048440/5866176.png' class="img-fluid center" height="auto" width="500" alt='' /></a></p>
+<ol start="5">
+<li>Install the previous version you are rolling back to, over the top of the installation you are rolling back from.</li>
+</ol>
+<div class="alert alert-warning"><p>There is no need to uninstall the newer version you were trying to upgrade to.</p>
+</div>
+<ol start="6">
+<li>Turn <a href="/docs/v/3.15/administration/maintenance-mode">Maintenance Mode</a> <code>OFF</code>.</li>
+</ol>
+<h2 id="UpgradingfromOctopus3.x-Troubleshooting">Troubleshooting</h2>
+<p>In a few cases a bug in a 3rd party component causes the installer displays a &quot;Installation directory must be on a local hard drive&quot; error. If this occurs, running the install again from an elevated command prompt using the following command (replacing Octopus.3.3.4-x64.msi with the name of the installer you are using):</p>
+<p><code>msiexec /i Octopus.3.3.4-x64.msi WIXUI_DONTVALIDATEPATH=&quot;1&quot;</code></p>
+</article>
+</div>
+<div class="col-sm-3 col-sm-pull-9" style="padding-bottom: 100px;">
+<aside class="documentation">
+<div class="sidebar">
+<ul>
+<li class="active expanded ">
+<a href="/docs/getting-started">
+Getting started
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/installation">
+Installation
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/key-concepts">
+Key Concepts
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/packaging-applications">
+Packaging applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deployment-targets">
+Deployment targets
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/api-and-integration">
+API and Integration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/patterns">
+Patterns
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/administration">
+Administration
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/reference">
+Reference
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/how-to">
+How to
+</a>
+</li>
+<li class="  has-children">
+<a href="/docs/guides">
+Guides
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<div>
+<a href="https://github.com/OctopusDeploy/docs/blob/master/docs/getting-started.md" class="small" style="color: #888; margin-left: 30px;" rel="nofollow">Edit this page on GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="stripe stripe-dark" id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<strong>Octopus Deploy</strong>
+<p>
+<a href="/company/about">Company</a>
+<br>
+<a href="/company/roadmap">Roadmap</a>
+<br>
+<a href="/blog">Blog</a>
+<br>
+<a href="/privacy">Privacy policy</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/docs" style="color: inherit">Documentation</a></strong>
+<p>
+<a href="/docs/getting-started">
+Getting started
+</a>
+<br>
+<a href="/docs/packaging-applications">
+Packaging
+</a>
+<br>
+<a href="/docs/deploying-applications">
+Deploying applications
+</a>
+<br>
+<a href="/docs/api-and-integration">
+REST API and integration
+</a>
+</p>
+</div>
+<div class="col-md-3">
+<strong><a href="/support" style="color: inherit">Help &amp; Support</a></strong>
+<p>
+<a href="http://help.octopusdeploy.com/discussions/problems" class="external">
+Problems
+</a>
+<br>
+<a href="https://octopusdeploy.uservoice.com/" class="external">
+Suggestions
+</a>
+<br>
+<a href="/videos">
+Videos
+</a>
+<br>
+<a href="/company/partners">
+Partners
+</a>
+</p>
+</div>
+<div class="col-md-3" style="text-align: left">
+<strong>Follow us</strong>
+<p>
+<a href="https://twitter.com/OctopusDeploy"><i class="fa fa-fw fa-twitter" style='color: rgb(85, 172, 238);'></i> @OctopusDeploy</a><br>
+<a href="https://github.com/OctopusDeploy"><i class="fa fa-fw fa-github" style='color: white'></i> OctopusDeploy</a><br>
+<a href="http://www.youtube.com/c/Octopusdeploy"><i class="fa fa-fw fa-youtube-play" style='color: #D52423'></i> YouTube</a><br>
+<a href="https://confirmsubscription.com/h/d/740FABA4D5BBCE4B"><i class="fa fa-fw fa-envelope" style='color: #7BD678'></i> Newsletter</a><br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="/js/lib.min.js?v=H7vT1bydGbJ--2dVXM72f6mvrmccXO1_ZngVo1ljMow"></script>
+<script src="/js/site.min.js?v=BbAxgvM4cAEWAnX6fUFBDmgll4Ezt--tMgEDROsJQzU"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/sql.min.js" integrity="sha256-J7HuqMJTEc5SsyA8nOP0+kVUMGlQq0LrQAvAVgs1k1E=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/powershell.min.js" integrity="sha256-cRUESDACI7Yr/eSmoHs6zDQu6HmpAkCp0s4xrZ9RnE0=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js" integrity="sha256-putofyQv7OB569xAldpyBnHJ0Uc+7VGp5Us05IgDGss=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/fsharp.min.js" integrity="sha256-EwjgDftHUX2pcHkcn19JrQPazoBiHIDivBrellTCYnA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js" integrity="sha256-WofcoLT8gToeaSmVRe28qpnlFxdBJH1n4K6Bk3YowvU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/twemoji.min.js" integrity="sha256-Y3KC8juDUsBOzJ3XtOH/sj+BAlF9AQr6pEey+4ibaJ4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        (function($) {
+            $('time').each(function(i, e) {
+                var time = moment($(e).attr('datetime')).fromNow();
+                $(e).html(time);
+            });
+
+            hljs.initHighlightingOnLoad();
+
+            anchors.options.placement = 'left';
+            anchors.add('#doc-content > h1, #doc-content > h2, #doc-content > h3, #doc-content > h4');
+
+            twemoji.parse(document.body,
+            {
+                size: '16x16',
+                base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.3/'
+            });
+            
+            function canCopyToClipboard() {
+                return window.clipboardData && window.clipboardData.setData ||
+                    document.queryCommandSupported && document.queryCommandSupported("copy");
+            };
+
+            function copyToClipboard(text) {
+                if (window.clipboardData && window.clipboardData.setData) {
+                    $(window).trigger("copy", e);
+                    return clipboardData.setData("Text", text);
+
+                } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                    var textarea = document.createElement("textarea");
+                    textarea.textContent = text;
+                    textarea.style.position = "fixed";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        return document.execCommand("copy");
+                    } catch (ex) {
+                        console.warn("Copy to clipboard failed.", ex);
+                        return false;
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
+                }
+
+                return false;
+            };
+
+            if (canCopyToClipboard()) {
+                var copyButton =
+                    $("<a title=\"Copy to clipboard\" class=\"btnCopy btn btn-default btn-xs\" href=\"#\" role=\"button\">Copy</a>");
+                copyButton.click(function (e) {
+                    var el = $(this).parent().next().find("code");
+                    if (el) {
+                        copyToClipboard(el[0].textContent);
+                        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show")
+                               .attr("title", "Copy to clipboard").tooltip("fixTitle");
+                    }
+                    e.stopPropagation();
+                    return false;
+                });
+
+                var wrapperForButton =
+                    $("<div class=\"copyToClipboard\"></div>").append(copyButton);
+
+                $("pre").before(wrapperForButton);
+                $("a.btnCopy").tooltip();
+            }
+        })($);
+    </script>
+<script type="text/javascript">
+        $(function () { 
+            var $feedback = $("#docs-feedback");
+            var $initialView = $(".initial-view", $feedback);
+            var $yesView = $(".yes-view", $feedback);
+            var $feedbackView = $(".feedback-view", $feedback);
+            var $confirmationView = $(".confirmation-view", $feedback);
+
+            $yesView.hide();
+            $feedbackView.hide();
+            $confirmationView.hide();
+
+            var yesOrNo = "";
+            var message = "";
+
+            function sendFeedback(message) {
+                $.post("/docs/feedback", { slug : "docs/getting-started", helped : yesOrNo, message : message });
+            };
+
+            $(".close", $feedback).click(function () {
+                $feedback.fadeOut(300);
+            });
+
+            var yesTimer = null;
+
+            $(".no", $feedback).click(function () {
+                yesOrNo = "no";
+                sendFeedback();
+                $initialView.fadeOut(function () {
+                    $feedbackView.show();
+                });
+            });
+
+            $(".yes", $feedback).click(function () {
+                yesOrNo = "yes";
+                sendFeedback();
+
+                $initialView.fadeOut(function () {
+                    $yesView.show();
+                });
+
+                yesTimer = setTimeout(function () {
+                    $feedback.fadeOut();
+                }, 10000);
+            });
+            $(".suggestion", $feedback).click(function (e) {
+                if (yesTimer) {
+                    clearTimeout(yesTimer);
+                }
+                e.preventDefault();
+                $yesView.fadeOut(function () {
+                    $(".feedback-intro", $feedbackView).text("Thanks! Let us know if there's anything we can improve.");
+                    $feedbackView.show();
+                });
+            });
+            $(".send", $feedback).click(function () {
+                message = $(".feedback-textbox", $feedback).val();
+                sendFeedback();
+                $feedbackView.fadeOut(function () {
+                    $confirmationView.show();
+                    setTimeout(function () {
+                        $feedback.fadeOut();
+                    }, 10000);
+                });
+            });
+
+            $feedback.removeClass("hidden");
+            $feedback.hide();
+            $feedback.show();
+        });
+    </script>
+<script type="text/javascript">
+        rg4js('apiKey', 'x6kh9H0AxbqPLcjQVaOZNQ==');
+        rg4js('enablePulse', true);
+        rg4js('enableCrashReporting', true);
+    </script>
+</body>
+</html>
